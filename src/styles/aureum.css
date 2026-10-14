@@ -318,6 +318,7 @@ body:has(.au-home) #header-placeholder {
   line-height: 1.02;
   color: #fff;
   text-wrap: balance;
+  text-shadow: 0 0.08em 0.35em rgba(15, 15, 15, 0.45);
 }
 
 .au-lead,
@@ -380,29 +381,44 @@ body:has(.au-home) #header-placeholder {
   box-shadow: none;
 }
 
-.au-stage {
-  position: relative;
-  flex: 1 1 auto;
+.au-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   width: 100%;
-  min-height: 48vh;
-  margin-top: 0.75rem;
-  overflow: hidden;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.au-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(15, 15, 15, 0.58) 0%, rgba(15, 15, 15, 0.1) 24%, rgba(15, 15, 15, 0.22) 46%, rgba(15, 15, 15, 0.7) 70%, rgba(15, 15, 15, 0.82) 100%);
+  pointer-events: none;
 }
 
 .au-word {
   position: absolute;
-  z-index: 1;
-  right: 0;
-  bottom: -0.12em;
-  left: 0;
+  z-index: 3;
+  bottom: 7%;
+  left: 50%;
+  width: max-content;
   margin: 0;
   font-family: 'Ancizar Serif', Georgia, serif;
-  font-size: clamp(7.5rem, 34vw, 34rem);
+  font-size: clamp(4.6rem, 28vw, 26rem);
   font-weight: 500;
-  line-height: 0.78;
-  letter-spacing: -0.06em;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
   text-align: center;
+  white-space: nowrap;
   color: #fff;
+  text-shadow:
+    0 0.03em 0.02em rgba(15, 15, 15, 0.55),
+    0 0.12em 0.45em rgba(15, 15, 15, 0.45);
+  transform: translateX(-50%);
   pointer-events: none;
   user-select: none;
 }
@@ -418,26 +434,16 @@ body:has(.au-home) #header-placeholder {
   user-select: none;
 }
 
-.au-figure-center {
-  left: 50%;
-  z-index: 2;
-  width: min(52%, 520px);
-  height: 94%;
-  transform: translateX(-50%);
-}
-
 .au-figure-left {
   left: 0;
-  z-index: 3;
-  width: min(34%, 380px);
-  height: 68%;
+  width: min(14vw, 190px);
+  height: min(34vh, 300px);
 }
 
 .au-figure-right {
   right: 0;
-  z-index: 3;
-  width: min(32%, 340px);
-  height: 64%;
+  width: min(12vw, 170px);
+  height: min(32vh, 280px);
 }
 
 .au-band {
