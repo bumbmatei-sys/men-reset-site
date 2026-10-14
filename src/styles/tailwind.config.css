@@ -93,4 +93,8 @@
     max-width: 920px;
     padding-inline: 2rem;
   }
+  /* Rails are 200px. Keep the column clear of them from 1280px up. */
+  @media (width >= 1280px) {
+    max-width: min(920px, calc(100vw - 30rem));
+  }
 }

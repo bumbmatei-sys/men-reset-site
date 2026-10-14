@@ -129,7 +129,7 @@ body.nav-open .sponsor-mobile {
   visibility: hidden;
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1279px) {
   body:has(.sponsor-mobile) #header.header-base-style {
     top: 3.25rem;
   }
@@ -139,9 +139,18 @@ body.nav-open .sponsor-mobile {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .sponsor-mobile {
     display: none;
+  }
+
+  /* Home hero is full-bleed. Keep the rails out of it until the hero has scrolled away. */
+  body:has(.au-home) .sponsor-rail {
+    visibility: hidden;
+  }
+
+  body:has(.au-home) .sponsor-rail.is-shown {
+    visibility: visible;
   }
 
   .sponsor-rail {

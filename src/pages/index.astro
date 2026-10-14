@@ -124,9 +124,20 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
   <JsonLd data={faqLd} />
   <div class="au-home">
     <section class="au-hero" id="hero">
-      <div class="au-wrap au-hero-copy">
-        <p class="au-kicker">For men</p>
-        <h1>How to quit porn and build discipline</h1>
+      <div class="au-hero-copy">
+        <p class="au-kicker au-kicker-light">For men</p>
+        <h1>How to quit porn<br />and build discipline</h1>
+      </div>
+      <div class="au-stage" aria-hidden="true">
+        <p class="au-word">Reset</p>
+        <img class="au-figure au-figure-center" src="/aureum/temple.webp" alt="" width="1400" height="1875" />
+        <img class="au-figure au-figure-left" src="/aureum/reclining.webp" alt="" width="1100" height="1225" />
+        <img class="au-figure au-figure-right" src="/aureum/bust.webp" alt="" width="1000" height="1274" />
+      </div>
+    </section>
+
+    <section class="au-band au-intro" id="intro">
+      <div class="au-wrap au-intro-copy">
         <p class="au-lead">
           <strong>How to quit porn</strong> is not a mood. It is a set of small moves you can repeat on a tired Tuesday. This course is for men who are done hiding the tab, the late-night game, the phone, or the drink.
         </p>
@@ -138,24 +149,9 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
           <a class="au-pill au-pill-ghost" href={startHref}>
             Start the first lesson
           </a>
-          <a class="au-textlink au-textlink-light" href="/tracks">
+          <a class="au-textlink" href="/tracks">
             See every track
           </a>
-        </div>
-      </div>
-      <div class="au-stage" aria-hidden="true">
-        <p class="au-word">Reset</p>
-        <div class="au-layer au-temple" data-parallax="18">
-          <img src="/aureum/temple.webp" alt="" width="1400" height="1875" />
-        </div>
-        <div class="au-layer au-banner" data-parallax="10">
-          <img src="/aureum/statue-left.webp" alt="" width="900" height="456" />
-        </div>
-        <div class="au-layer au-bust" data-parallax="28">
-          <img src="/aureum/bust.webp" alt="" width="1000" height="1274" />
-        </div>
-        <div class="au-layer au-recline" data-parallax="16">
-          <img src="/aureum/reclining.webp" alt="" width="1100" height="1225" />
         </div>
       </div>
     </section>
@@ -309,7 +305,7 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
               </a>
             </div>
           </div>
-          <div class="au-cta-art" data-parallax="20" aria-hidden="true">
+          <div class="au-cta-art" aria-hidden="true">
             <img src="/aureum/reclining.webp" alt="" width="1100" height="1225" />
           </div>
         </div>

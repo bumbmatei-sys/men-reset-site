@@ -21,7 +21,7 @@ const navLinks: NavItem[] = [
 ---
 
 <!-- Desktop nav -->
-<nav role="navigation" aria-label="Main" class="hidden items-center gap-6 text-sm lg:flex">
+<nav role="navigation" aria-label="Main" class="hidden items-center gap-4 text-sm min-[1100px]:flex xl:gap-6">
   {navLinks.map((item) => (
     <a href={item.href} class="hover:text-primary no-underline" tabindex={tabIndex}>
       {item.label}
@@ -30,8 +30,8 @@ const navLinks: NavItem[] = [
 </nav>
 
 <!-- Mobile trigger -->
-<button id="mobile-nav-trigger" data-mobile-nav-trigger class="hover:text-primary outline-primary cursor-pointer rounded-lg outline-offset-8 focus-visible:outline-2 lg:hidden" aria-label={t('labels.open-menu')} tabindex={tabIndex}>
-  <Icon name="heroicons:bars-3" class="h-10 w-10" />
+<button id="mobile-nav-trigger" data-mobile-nav-trigger class="hover:text-primary outline-primary cursor-pointer rounded-lg outline-offset-8 focus-visible:outline-2 min-[1100px]:hidden" aria-label={t('labels.open-menu')} tabindex={tabIndex}>
+  <Icon name="heroicons:bars-3" class="h-8 w-8" />
 </button>
 
 <!-- Mobile overlay -->

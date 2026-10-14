@@ -61,6 +61,19 @@ function setupProcess() {
   };
 }
 
+function setupRails() {
+  const hero = document.querySelector<HTMLElement>('.au-hero');
+  const rails = [...document.querySelectorAll<HTMLElement>('.sponsor-rail')];
+  if (!hero || rails.length === 0) return () => {};
+
+  return () => {
+    const header = document.querySelector('#header');
+    const limit = header?.getBoundingClientRect().bottom ?? 0;
+    const show = hero.getBoundingClientRect().bottom <= limit + 8;
+    rails.forEach((rail) => rail.classList.toggle('is-shown', show));
+  };
+}
+
 function setupParallax(reduce: boolean) {
   const layers = [...document.querySelectorAll<HTMLElement>('[data-parallax]')];
   if (reduce || layers.length === 0) {
@@ -101,6 +114,7 @@ export function mountMotion() {
   setupReveals(reduce);
   const updateProcess = setupProcess();
   const updateParallax = setupParallax(reduce);
+  const updateRails = setupRails();
 
   if (onFrame) {
     window.removeEventListener('scroll', onFrame);
@@ -109,6 +123,7 @@ export function mountMotion() {
   onFrame = () => {
     updateProcess();
     updateParallax();
+    updateRails();
   };
   window.addEventListener('scroll', onFrame, { passive: true });
   window.addEventListener('resize', onFrame);

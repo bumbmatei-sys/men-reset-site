@@ -57,6 +57,17 @@ h3,
   text-decoration: none;
 }
 
+#header .header-content-inner,
+#header nav[aria-label='Main'] {
+  flex-wrap: nowrap;
+}
+
+#header nav[aria-label='Main'] a,
+#header .wordmark,
+#header .btn-primary {
+  white-space: nowrap;
+}
+
 #header .btn-primary,
 .btn-primary,
 .btn-secondary {
@@ -152,9 +163,13 @@ footer[role='contentinfo'] h3 {
   margin-inline: auto;
 }
 
-@media (min-width: 1440px) {
-  .au-wrap {
-    width: min(1040px, calc(100% - 28rem));
+@media (min-width: 1280px) {
+  .au-wrap,
+  .au-process-label,
+  .au-steps,
+  .au-marquee {
+    width: min(920px, calc(100% - 30rem));
+    margin-inline: auto;
   }
 }
 
@@ -274,141 +289,155 @@ body:has(.au-home) #header-placeholder {
   position: relative;
   display: flex;
   min-height: 100vh;
+  min-height: 100svh;
   flex-direction: column;
-  padding-top: 6.25rem;
+  padding-top: 6.75rem;
   overflow: hidden;
   color: #fff;
   background: #0f0f0f;
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1279px) {
   body:has(.sponsor-mobile) .au-hero {
-    padding-top: 9.75rem;
+    padding-top: 10rem;
   }
 }
 
 .au-hero-copy {
   position: relative;
-  z-index: 5;
-  width: min(640px, calc(100% - 2.5rem));
+  z-index: 4;
+  width: min(38rem, calc(100% - 2rem));
+  margin-inline: auto;
+  text-align: center;
 }
 
 .au-hero h1 {
-  max-width: 14ch;
   margin: 0;
-  font-size: clamp(2.4rem, 4.2vw, 3.45rem);
+  font-size: clamp(1.85rem, 4.2vw, 3.45rem);
   font-weight: 500;
   line-height: 1.02;
   color: #fff;
+  text-wrap: balance;
 }
 
 .au-lead,
 .au-note {
-  max-width: 38rem;
-  margin: 1.1rem 0 0;
+  max-width: 40rem;
+  margin: 1rem 0 0;
   font-size: 1.05rem;
-  line-height: 1.6;
-  color: #e0e0e0;
+  line-height: 1.65;
+  color: #4d4d4d;
 }
 
 .au-note {
   margin-top: 0.75rem;
+  color: #4d4d4d;
+}
+
+:where(.dark) .au-lead,
+:where(.dark) .au-note {
   color: #b7b7b7;
+}
+
+.au-intro-copy {
+  text-align: center;
+}
+
+.au-intro .au-lead,
+.au-intro .au-note {
+  margin-inline: auto;
+}
+
+.au-intro .au-actions {
+  justify-content: center;
+}
+
+.au-intro .au-pill {
+  background: #0f0f0f;
+  color: #fff;
+}
+
+.au-intro .au-pill:hover {
+  background: #212121;
+  color: #fff;
+}
+
+.au-intro .au-pill-ghost {
+  background: transparent;
+  color: #0f0f0f;
+  box-shadow: inset 0 0 0 1px #0f0f0f;
+}
+
+.au-intro .au-pill-ghost:hover {
+  background: #0f0f0f;
+  color: #fff;
+}
+
+:where(.dark) .au-intro .au-pill,
+:where(.dark) .au-intro .au-pill-ghost {
+  background: #f3f1ed;
+  color: #0f0f0f;
+  box-shadow: none;
 }
 
 .au-stage {
   position: relative;
-  flex: 1;
-  min-height: 380px;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 48vh;
   margin-top: 0.75rem;
-}
-
-@media (min-width: 960px) {
-  .au-hero {
-    height: 100vh;
-    max-height: 100vh;
-  }
-
-  .au-hero-copy {
-    width: min(34rem, 46%);
-  }
-
-  .au-stage {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 56%;
-    min-height: 0;
-    margin-top: 0;
-  }
-}
-
-@media (min-width: 1440px) {
-  .au-stage {
-    right: 12.5rem;
-    left: 12.5rem;
-  }
+  overflow: hidden;
 }
 
 .au-word {
   position: absolute;
   z-index: 1;
   right: 0;
-  bottom: 0;
+  bottom: -0.12em;
   left: 0;
   margin: 0;
   font-family: 'Ancizar Serif', Georgia, serif;
-  font-size: clamp(6.2rem, 24vw, 22rem);
+  font-size: clamp(7.5rem, 34vw, 34rem);
   font-weight: 500;
   line-height: 0.78;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.06em;
   text-align: center;
   color: #fff;
   pointer-events: none;
   user-select: none;
 }
 
-.au-layer {
+.au-figure {
   position: absolute;
+  bottom: 0;
   z-index: 2;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.au-layer img {
   display: block;
-  width: 100%;
-  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  user-select: none;
 }
 
-.au-temple {
-  top: 4%;
-  left: 34%;
-  width: 32%;
-  opacity: 0.9;
-}
-
-.au-banner {
-  bottom: 10%;
-  left: 4%;
+.au-figure-center {
+  left: 50%;
   z-index: 2;
-  width: 52%;
-  opacity: 0.92;
+  width: min(52%, 520px);
+  height: 94%;
+  transform: translateX(-50%);
 }
 
-.au-bust {
-  right: 0;
-  bottom: 0;
+.au-figure-left {
+  left: 0;
   z-index: 3;
-  width: min(24%, 220px);
+  width: min(34%, 380px);
+  height: 68%;
 }
 
-.au-recline {
-  bottom: 0;
-  left: 18%;
-  z-index: 4;
-  width: min(36%, 380px);
+.au-figure-right {
+  right: 0;
+  z-index: 3;
+  width: min(32%, 340px);
+  height: 64%;
 }
 
 .au-band {
@@ -475,7 +504,8 @@ body:has(.au-home) #header-placeholder {
   list-style: none;
 }
 
-.au-stats {
+.au-stats,
+.au-notes {
   display: grid;
   gap: 1rem;
 }
@@ -611,7 +641,6 @@ body:has(.au-home) #header-placeholder {
     flex-direction: column;
     justify-content: center;
     padding: 0;
-    overflow: hidden;
   }
 
   .au-process-label {
@@ -665,12 +694,10 @@ body:has(.au-home) #header-placeholder {
   .au-step.is-active .au-step-image {
     opacity: 1;
   }
-}
 
-@media (min-width: 960px) and (min-width: 1440px) {
-  .au-process-label,
-  .au-steps {
-    width: min(1040px, calc(100% - 28rem));
+  .au-step:not(.is-active) .au-step-copy,
+  .au-step:not(.is-active) .au-step-image {
+    pointer-events: none;
   }
 }
 
@@ -846,22 +873,20 @@ body:has(.au-home) #header-placeholder {
 }
 
 .au-cta {
-  position: relative;
   display: grid;
-  min-height: 420px;
-  align-items: end;
+  align-items: center;
+  gap: 1.5rem;
   overflow: hidden;
   border-radius: 1.6rem;
-  padding: 2rem 1.4rem 1.8rem;
+  padding: 2rem 1.4rem;
   background: #0f0f0f;
   color: #fff;
 }
 
 @media (min-width: 800px) {
   .au-cta {
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    padding: 3rem 3rem 3rem 3.2rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    padding: 2.5rem 2.5rem 2.5rem 3rem;
   }
 }
 
@@ -873,15 +898,22 @@ body:has(.au-home) #header-placeholder {
   color: #fff;
 }
 
+.au-cta-copy,
+.au-cta-art {
+  min-width: 0;
+}
+
 .au-cta-art {
   pointer-events: none;
 }
 
 .au-cta-art img {
   display: block;
-  width: min(100%, 420px);
+  width: 100%;
+  max-height: 320px;
   margin-inline: auto;
-  margin-top: 1rem;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 .track-card {
