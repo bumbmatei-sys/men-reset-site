@@ -1,7 +1,7 @@
 import { CONSENT_LINE, buildPlan, normalizeEmail, questions, type CheckAnswers, type Plan, type QuestionId } from '../data/check-quiz';
 import { readPlanUrl, requestPlan } from './plan-gate';
 
-type Phase = 'question' | 'consent' | 'result' | 'minor';
+type Phase = 'question' | 'consent' | 'result';
 type EmailStatus = 'sent' | 'failed' | 'none' | 'saving';
 
 type State = {
@@ -118,15 +118,22 @@ function questionMarkup(state: State): string {
   return `${progressMarkup(state.step + 1, questions.length, `Question ${state.step + 1} of ${questions.length}`)}<form class="check-card" data-question="${question.id}"><h2 class="check-prompt" id="check-prompt-label" tabindex="-1">${escapeHtml(question.prompt)}</h2>${hint}<div class="check-options" role="radiogroup" aria-labelledby="check-prompt-label">${options}</div>${error}<div class="check-actions">${state.step > 0 ? '<button type="button" class="btn-secondary" data-action="back">Back</button>' : ''}<button type="submit" class="btn-primary">Continue</button>${skip}</div></form>`;
 }
 
+function isMinor(state: State): boolean {
+  return state.answers.age === 'under-18';
+}
+
 function consentMarkup(state: State): string {
   const error = state.emailError ? `<p class="check-error" role="alert">${escapeHtml(state.emailError)}</p>` : '';
-  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p><label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. If you add one, we send the plan to that address.</p>${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
+  const email = isMinor(state)
+    ? ''
+    : `<label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. If you add one, we send the plan to that address.</p>`;
+  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p>${email}${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
 }
 
 function trackMarkup(track: Plan['track'], label: string): string {
-  const soon = track.status === 'coming-soon' ? '<span class="coming-soon">Coming soon</span>' : '';
+  if (track.status !== 'available') return '';
   const start = track.startHref ? `<a class="btn-primary" href="${track.startHref}">Start the first lesson</a>` : `<a class="btn-primary" href="${track.href}">Open the track</a>`;
-  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3>${soon}<p>${track.status === 'available' ? 'This track is open. The lessons are short and practical.' : 'This track is marked coming soon. So use Break Free while you wait. Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email.'}</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
+  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3><p>This track is open. The lessons are short and practical.</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
 }
 
 function saveLine(state: State): string {
@@ -165,6 +172,7 @@ function phasesMarkup(plan: Plan, unlocked: boolean): string {
 }
 
 function gateMarkup(state: State): string {
+  if (isMinor(state)) return '';
   if (state.emailStatus === 'sent' && state.planUrl) return '';
   if (state.emailStatus === 'saving') return '';
   const message = state.emailError || (state.emailStatus === 'failed' ? 'We could not email the plan. Try again.' : '');
@@ -178,23 +186,18 @@ function resultMarkup(state: State): string {
   const caution = plan.caution ? `<p class="check-caution">${escapeHtml(plan.caution)}</p>` : '';
   const faith = plan.faithNote ? `<section class="check-phase"><h3>If faith is part of it</h3><p>${escapeHtml(plan.faithNote)}</p></section>` : '';
   const companion = plan.companion ? trackMarkup(plan.companion, 'Also on the site') : '';
-  const unlocked = state.emailStatus === 'sent' && Boolean(state.planUrl);
+  const unlocked = isMinor(state) || (state.emailStatus === 'sent' && Boolean(state.planUrl));
   const line = saveLine(state);
   const save = line ? `<p class="check-save" data-save="${state.emailStatus}">${escapeHtml(line)}</p>` : '';
   const earned = unlocked ? marbleImg('check', 'A marble check mark') : '';
-  const download = unlocked && state.planUrl
+  const download = !isMinor(state) && unlocked && state.planUrl
     ? `<a class="btn-primary" href="${escapeHtml(state.planUrl)}">Download the 30-day plan (PDF)</a>`
     : '';
   return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan, unlocked)}${gateMarkup(state)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset</h3><p>Break Free is the free 30-day reset. Days 1-7 are open on the site. Days 8-30 arrive in your inbox as a PDF. The thirty days above are the plan. Basically, start there and let grace do the rest.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions">${download}<button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
 }
 
-function minorMarkup(): string {
-  return `<div class="check-card"><h2 class="check-prompt" tabindex="-1">This check is for adults</h2><p>Call to Reset is for adults 18 and older. We stopped here, and we did not save an answer.</p><p>If you are in trouble, talk to a parent or another trusted adult. If you are in immediate danger, contact emergency services. If you are in a mental-health crisis, call or text 988.</p><div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><a class="btn-primary" href="/">Back to the homepage</a></div></div>`;
-}
-
 function render(root: HTMLElement, state: State) {
-  if (state.phase === 'minor') root.innerHTML = minorMarkup();
-  else if (state.phase === 'consent') root.innerHTML = consentMarkup(state);
+  if (state.phase === 'consent') root.innerHTML = consentMarkup(state);
   else if (state.phase === 'result' && state.plan) root.innerHTML = resultMarkup(state);
   else root.innerHTML = questionMarkup(state);
 
@@ -262,6 +265,7 @@ export function mountCheckQuiz(root: HTMLElement) {
     event.preventDefault();
 
     if (form.hasAttribute('data-plan-gate')) {
+      if (isMinor(state)) return;
       const emailInput = form.querySelector<HTMLInputElement>('#plan-email');
       const email = normalizeEmail(emailInput?.value ?? '');
       if (email === 'invalid' || email === null) {
@@ -288,8 +292,8 @@ export function mountCheckQuiz(root: HTMLElement) {
 
     if (form.dataset.consent === '') {
       const emailInput = form.querySelector<HTMLInputElement>('#check-email');
-      const raw = emailInput?.value ?? '';
-      const email = normalizeEmail(raw);
+      const raw = isMinor(state) ? '' : (emailInput?.value ?? '');
+      const email = isMinor(state) ? null : normalizeEmail(raw);
       if (email === 'invalid') {
         state.email = raw;
         state.emailError = 'Enter a valid email, or leave the field blank.';
@@ -334,11 +338,6 @@ export function mountCheckQuiz(root: HTMLElement) {
     state.formError = '';
     writeAnswer(state.answers, question.id, selected);
     state.moveFocus = true;
-    if (question.id === 'age' && selected === 'under-18') {
-      state.phase = 'minor';
-      paint();
-      return;
-    }
     if (state.step >= questions.length - 1) {
       if (state.answers.faith == null) state.answers.faith = 'skipped';
       state.phase = 'consent';
@@ -355,12 +354,6 @@ export function mountCheckQuiz(root: HTMLElement) {
     if (!action) return;
     state.moveFocus = true;
     if (action === 'back') {
-      if (state.phase === 'minor') {
-        state.phase = 'question';
-        state.step = 0;
-        paint();
-        return;
-      }
       if (state.phase === 'consent') {
         state.phase = 'question';
         state.step = questions.length - 1;

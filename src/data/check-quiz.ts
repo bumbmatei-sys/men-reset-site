@@ -8,7 +8,7 @@ export const questions = [
   {
     id: 'age',
     prompt: 'How old are you?',
-    hint: 'This check is for adults. If you are under 18, it stops here and nothing is saved.',
+    hint: 'The course is for everyone. If you are under 18, we do not ask for an email.',
     options: [
       { value: 'under-18', label: 'Under 18' },
       { value: '18-24', label: '18–24' },
@@ -161,7 +161,7 @@ export type StoredCheck = {
   email: string | null;
 };
 
-export type ParseResult = { ok: true; row: StoredCheck } | { ok: false; error: 'invalid' | 'adults-only' };
+export type ParseResult = { ok: true; row: StoredCheck } | { ok: false; error: 'invalid' };
 
 const TRACKS: TrackLink[] = [
   {
@@ -203,8 +203,8 @@ const TRACKS: TrackLink[] = [
     id: '30-day-reset',
     title: 'Free 30-Day Reset',
     href: '/tracks/30-day-reset',
-    status: 'coming-soon',
-    startHref: null,
+    status: 'available',
+    startHref: '/tracks/30-day-reset',
   },
 ];
 
@@ -332,15 +332,25 @@ function faithNote(faith: CheckAnswers['faith']): string | null {
   }
 }
 
+function liveTrack(id: string): TrackLink {
+  const track = trackById(id);
+  if (track?.status === 'available') return track;
+  const open = trackById('break-free');
+  if (!open) throw new Error('Break Free is missing');
+  return open;
+}
+
 function companionFor(answers: CheckAnswers, primaryId: string): TrackLink | null {
   if (answers.faith !== 'christian' && answers.faith !== 'distant') return null;
   const id = primaryId === 'new-identity-in-christ' ? 'faith-grace-and-the-kingdom' : 'new-identity-in-christ';
-  return trackById(id) ?? null;
+  const track = trackById(id);
+  if (!track || track.status !== 'available') return null;
+  return track;
 }
 
 export function buildPlan(answers: CheckAnswers): Plan {
   const pace = paceOf(answers.duration, answers.frequency);
-  const track = trackById(recommendedTrackId(answers)) ?? TRACKS[TRACKS.length - 1];
+  const track = liveTrack(recommendedTrackId(answers));
   const title = planTitle(answers.struggle);
   const caution =
     answers.struggle === 'alcohol' || answers.struggle === 'substances'
@@ -362,7 +372,6 @@ export function buildPlan(answers: CheckAnswers): Plan {
 export function parseSubmission(input: unknown): ParseResult {
   if (!isRecord(input)) return { ok: false, error: 'invalid' };
   const age = choice(input, 'age');
-  if (age === 'under-18') return { ok: false, error: 'adults-only' };
   const region = choice(input, 'region');
   const struggle = choice(input, 'struggle');
   const duration = choice(input, 'duration');
@@ -375,8 +384,9 @@ export function parseSubmission(input: unknown): ParseResult {
   if (!age || !region || !struggle || !duration || !frequency || !trigger || !want || !source || !faith) {
     return { ok: false, error: 'invalid' };
   }
-  const email = normalizeEmail(readField(input, 'email'));
-  if (email === 'invalid') return { ok: false, error: 'invalid' };
+  const parsedEmail = normalizeEmail(readField(input, 'email'));
+  if (parsedEmail === 'invalid') return { ok: false, error: 'invalid' };
+  const email = age === 'under-18' ? null : parsedEmail;
 
   const answers = { age, region, struggle, duration, frequency, trigger, faith, want, source } as CheckAnswers;
   const plan = buildPlan(answers);

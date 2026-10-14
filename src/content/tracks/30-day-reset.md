@@ -2,7 +2,7 @@
 title: Free 30-Day Reset
 description: A free 30-day reset for any habit. Porn, gaming, the phone, alcohol, substances, or another loop. The free check writes the thirty days for you. Days 1 to 7 are open on the site. The rest comes by email as the full PDF.
 order: 6
-status: coming-soon
+status: available
 targetQuery: 30 day reset
 ---
 

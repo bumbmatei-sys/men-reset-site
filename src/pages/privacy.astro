@@ -16,10 +16,10 @@ const description = `How ${themeConfig.name} handles the self-check, optional em
     <p>
       The only form that can send answers to us is the free check at <a href="/check">/check</a>. Before you submit, the page says: “{CONSENT_LINE}”
     </p>
-    <p>The questions run in your browser. If you leave before the last step, nothing is sent. If you are under 18, the check stops. We do not ask the rest, and we do not store an entry.</p>
+    <p>The questions run in your browser. If you leave before the last step, nothing is sent. The course is for everyone. If the age range is under 18, we do not ask for an email, we do not store an email, and we store the check answers anonymously only. The plan still shows on the page.</p>
     <p>If you finish and the save works, we store the answers you picked from the lists:</p>
     <ul>
-      <li>Age range, for adults 18 and older</li>
+      <li>Age range</li>
       <li>Country or region, from a short list, not a street address</li>
       <li>Main struggle, how long, how often, and the main trigger</li>
       <li>Faith background, only if you answer that question</li>
@@ -30,7 +30,7 @@ const description = `How ${themeConfig.name} handles the self-check, optional em
     <p>We do not store your name, IP address, or browser. The rows sit in a Cloudflare D1 database on the free tier, through a Pages Function. There is no secret and no third-party analytics key in this project.</p>
     <p>If saving fails, days 1 to 7 still appear on the page and nothing from that attempt is stored.</p>
     <h2>Email</h2>
-    <p>The email field is optional. Leave it blank and we store no email, and we do not send one.</p>
+    <p>The email field is optional for anyone 18 or older. Leave it blank and we store no email, and we do not send one. If the age range is under 18, that field is not shown, and an email in the request is not stored.</p>
     <p>If you enter an email on the check, we store that address with the answers and try to send the 30-day plan from plan@calltoreset.site. If you enter an email on a later phase, we store that address on its own and send the same plan. Days 1 to 7 stay on the page if sending fails. The rest of the plan does not. To remove an address, the person who operates the site deletes that row. There is no account page for it yet.</p>
     <h2>On your device</h2>
     <p>When you mark a lesson done, the browser stores that mark in localStorage on your device. Clearing site data removes it. We do not receive that list.</p>

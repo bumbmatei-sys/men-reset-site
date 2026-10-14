@@ -1,6 +1,6 @@
 ---
 title: Break Free
-description: A 30-day plan for anyone who wants to break a habit. Seven practical lessons. Jesus first, then the next plain step. Porn, the phone, gaming, alcohol, a substance, or another loop.
+description: A 7-day plan for anyone who wants to break a habit. Jesus as the starting point, then the next plain step. Porn, the phone, gaming, alcohol, a substance, or another loop.
 order: 1
 status: available
 targetQuery: 30 day plan to break a habit

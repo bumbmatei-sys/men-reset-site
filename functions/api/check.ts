@@ -57,7 +57,7 @@ export const onRequestPost: PagesFunction<CheckEnv> = async ({ request, env }) =
   }
 
   const parsed = parseSubmission(payload);
-  if (!parsed.ok) return json({ ok: false, error: parsed.error, emailStatus: 'none' }, parsed.error === 'adults-only' ? 403 : 400);
+  if (!parsed.ok) return json({ ok: false, error: parsed.error, emailStatus: 'none' }, 400);
 
   const row = parsed.row;
   let emailStatus: EmailStatus = 'none';

@@ -5,11 +5,11 @@ import TrackCard from '@components/course/TrackCard.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack } from '@utils/course';
 
-const tracks = await getTracks();
+const tracks = (await getTracks()).filter((track) => track.data.status === 'available');
 const cards = await Promise.all(
   tracks.map(async (track) => ({
     track,
-    lessonIds: track.data.status === 'available' ? (await lessonsForTrack(track.id)).map((lesson) => lesson.id) : [],
+    lessonIds: (await lessonsForTrack(track.id)).map((lesson) => lesson.id),
   })),
 );
 const title = 'Courses to Break Free and Build Discipline';
@@ -35,7 +35,7 @@ const breadcrumbs = {
   <p class="course-kicker">Tracks</p>
   <h1 class="page-title">Break free, then build the day</h1>
   <p class="page-lead">
-    These tracks are the course. The work is any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit, plus discipline and initiative. Break Free is the 30-day plan. Days 1 to 7 are open here, seven practical lessons you can start today. The rest of the month comes by email. The other tracks are written down so you can see the path. Christian roots. Open to anyone.
+    These tracks are the course. The work is any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit, plus discipline and initiative. Break Free is the 30-day plan. Days 1 to 7 are open here, seven practical lessons you can start today. The rest of the month comes by email. Christian roots. Open to anyone.
   </p>
   <ul class="track-grid page-stack">
     {cards.map(({ track, lessonIds }) => (
