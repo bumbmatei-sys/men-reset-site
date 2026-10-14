@@ -5,7 +5,6 @@ import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
-import PlanEmailForm from '@components/course/PlanEmailForm.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type LessonEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -29,11 +28,7 @@ interface Props {
 }
 
 const { lesson, trackTitle } = Astro.props as Props;
-const gated = lesson.data.order > 1 && lesson.data.track === 'break-free';
-const phaseOne = lesson.data.order === 1 && lesson.data.track === 'break-free';
-const rendered = gated ? null : await render(lesson);
-const Content = rendered?.Content;
-const phaseLabel = lesson.data.order === 2 ? 'Days 8 to 14' : lesson.data.order === 3 ? 'Days 15 to 21' : 'Days 22 to 30';
+const { Content } = await render(lesson);
 const siblings = await lessonsForTrack(lesson.data.track);
 const index = siblings.findIndex((item) => item.id === lesson.id);
 const previous = index > 0 ? siblings[index - 1] : undefined;
@@ -85,11 +80,7 @@ const breadcrumbs = {
     <p class="course-kicker">{trackTitle}</p>
     <h1 class="lesson-title">{lesson.data.title}</h1>
     <p class="lesson-meta">
-      {gated ? (
-        <span>{phaseLabel}</span>
-      ) : (
-        <span>{minutes} min read</span>
-      )}
+      <span>{minutes} min read</span>
       <span aria-hidden="true"> · </span>
       <span>
         Lesson {index + 1} of {siblings.length}
@@ -99,13 +90,7 @@ const breadcrumbs = {
       <p>{lesson.data.description}</p>
     </blockquote>
 
-    {gated ? (
-      <PlanEmailForm>
-        <p>[Copy coming.]</p>
-      </PlanEmailForm>
-    ) : (
-      <>
-        <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
+    <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
           <div class="mb-2 flex items-center justify-between gap-3 text-sm">
             <span data-progress-label>Progress on this device</span>
             <span data-progress-count>0 of {siblings.length} marked done</span>
@@ -150,13 +135,15 @@ const breadcrumbs = {
           </li>
         </ol>
 
-        <div class="lesson-prose mt-8">{Content ? <Content /> : null}</div>
+        <div class="lesson-prose mt-8">
+          <Content />
+        </div>
 
         <section class="scripture-block" aria-labelledby="scripture-heading">
           <h2 id="scripture-heading">Scripture</h2>
           <blockquote>
             <p>{lesson.data.scripture.text}</p>
-            <footer>{lesson.data.scripture.reference}</footer>
+            <footer>{lesson.data.scripture.reference} (KJV)</footer>
           </blockquote>
         </section>
 
@@ -176,17 +163,7 @@ const breadcrumbs = {
           <p>{lesson.data.reflection}</p>
         </section>
 
-        {phaseOne ? (
-          <PlanEmailForm>
-            <div class="plan-close-copy">
-              <p>[Copy coming.]</p>
-            </div>
-          </PlanEmailForm>
-        ) : null}
-      </>
-    )}
-
-    {lesson.data.inspiredBy && !gated ? (
+    {lesson.data.inspiredBy ? (
       <p class="mt-8 max-w-[68ch] text-sm leading-relaxed">
         Inspired by{' '}
         <a href={lesson.data.inspiredBy.url} rel="noopener">
@@ -220,8 +197,6 @@ const breadcrumbs = {
 </Layout>
 
 <script>
-  import { mountPlanGate } from '@scripts/plan-gate';
-
   const STORAGE_KEY = 'reset:lesson-progress';
 
   function readDone(): string[] {
@@ -283,9 +258,5 @@ const breadcrumbs = {
   }
 
   setupProgress();
-  mountPlanGate();
-  document.addEventListener('astro:page-load', () => {
-    setupProgress();
-    mountPlanGate();
-  });
+  document.addEventListener('astro:page-load', setupProgress);
 </script>

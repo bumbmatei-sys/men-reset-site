@@ -6,6 +6,7 @@ import { sponsorsForPlacement } from '@utils/sponsors';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+import PlanEmailForm from '@components/course/PlanEmailForm.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -23,6 +24,7 @@ interface Props {
 const { track } = Astro.props as Props;
 const { Content } = await render(track);
 const lessons = await lessonsForTrack(track.id);
+const planPage = track.id === '30-day-reset';
 const comingSoon = track.data.status === 'coming-soon';
 const pageUrl = new URL(trackPath(track.id), themeConfig.site).toString();
 
@@ -109,6 +111,12 @@ const breadcrumbs = {
     <Content />
   </div>
 
+  {planPage ? (
+    <PlanEmailForm>
+      <p>[Copy coming.]</p>
+    </PlanEmailForm>
+  ) : null}
+
   {lessons.length > 0 ? (
     <section class="page-stack" aria-labelledby="lesson-list-heading">
       <h2 id="lesson-list-heading" class="page-subhead">
@@ -126,7 +134,7 @@ const breadcrumbs = {
         ))}
       </ol>
     </section>
-  ) : (
+  ) : planPage ? null : (
     <p class="mt-8 max-w-[68ch] leading-relaxed">
       Lessons for this track are not published yet. You can take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free">break free from porn</a>.
     </p>
@@ -140,6 +148,8 @@ const breadcrumbs = {
 </Layout>
 
 <script>
+  import { mountPlanGate } from '@scripts/plan-gate';
+
   const STORAGE_KEY = 'reset:lesson-progress';
 
   function readDone(): string[] {
@@ -161,5 +171,9 @@ const breadcrumbs = {
   }
 
   paintTrackComplete();
-  document.addEventListener('astro:page-load', paintTrackComplete);
+  mountPlanGate();
+  document.addEventListener('astro:page-load', () => {
+    paintTrackComplete();
+    mountPlanGate();
+  });
 </script>
