@@ -1,4 +1,4 @@
-const PLUNK_CONTACTS = 'https://next-api.useplunk.com/v1/contacts';
+const PLUNK_CONTACTS = 'https://next-api.useplunk.com/contacts';
 
 /**
  * Adds the address to Plunk as a subscribed contact.
