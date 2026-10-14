@@ -16,10 +16,10 @@ The habit can be porn, a game, the phone, a drink, a substance, or another loop.
 
 ## The four phases
 
-- Days 1–7: tell the truth and remove the easy access. If porn is the fight, learn the urge plan in [how to deal with porn urges](/tracks/break-free-from-porn/how-to-deal-with-porn-urges).
-- Days 8–14: fix the evening. Phone out of the bedroom. A stop time for games. No “one drink” if alcohol is part of the slide.
-- Days 15–21: a short morning that does not depend on motivation. See the sketch on [discipline and a morning routine](/tracks/discipline-and-morning-routine).
-- Days 22–30: one person who knows, and a written rule for the day after a slip. If porn is part of it, read [why you keep going back to porn](/tracks/break-free-from-porn/why-you-keep-going-back-to-porn) so a slip does not become a week.
+- Days 1 to 7: [identity and a clean slate](/tracks/break-free-from-porn/identity-and-a-clean-slate).
+- Days 8 to 14: [dismantling triggers](/tracks/break-free-from-porn/dismantling-triggers).
+- Days 15 to 21: [activating faith](/tracks/break-free-from-porn/activating-faith).
+- Days 22 to 30: [lasting freedom](/tracks/break-free-from-porn/lasting-freedom).
 
 ## Start before the calendar opens
 

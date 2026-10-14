@@ -327,19 +327,14 @@ export function mountCheckQuiz(root: HTMLElement) {
       paint();
       return;
     }
-    if (action === 'download' && state.plan) {
-      const plan = state.plan;
-      const payload = {
-        title: plan.title,
-        lede: plan.lede,
-        caution: plan.caution,
-        faithNote: plan.faithNote,
-        phases: plan.phases,
-        trackTitle: plan.track.title,
-        trackHref: plan.track.href,
-      };
-      sessionStorage.setItem('reset:plan-print', JSON.stringify(payload));
-      window.open('/plan', '_blank');
+    if (action === 'download') {
+      const link = document.createElement('a');
+      link.href = '/plan/call-to-reset-30-day-plan.pdf';
+      link.download = 'call-to-reset-30-day-plan.pdf';
+      link.rel = 'noopener';
+      document.body.append(link);
+      link.click();
+      link.remove();
       return;
     }
     if (action === 'restart') {

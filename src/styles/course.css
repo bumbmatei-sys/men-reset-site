@@ -25,6 +25,43 @@
   line-height: 1.3;
 }
 
+.lesson-prose .phase-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.lesson-prose .phase-days li {
+  display: flex;
+  gap: 0.45rem;
+  align-items: baseline;
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid color-mix(in srgb, #1b2838 14%, transparent);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, white 70%, var(--color-background));
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+:where(.dark) .lesson-prose .phase-days li {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lesson-prose .phase-days span {
+  font-weight: 700;
+}
+
+@media (max-width: 430px) {
+  .lesson-prose .phase-days {
+    grid-template-columns: 1fr;
+  }
+}
+
 .lesson-prose ul {
   margin: 0 0 1rem 1.25rem;
   list-style: disc;

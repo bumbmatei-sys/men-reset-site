@@ -2,7 +2,7 @@ import { buildPlan, type CheckAnswers, type Plan } from '../../src/data/check-qu
 
 /** Keep in step with `communityUrl` in theme.config.ts. */
 const COMMUNITY_URL = 'https://whop.com/matei-bumb/call-to-reset-community/';
-const PLAN_PAGE = 'https://calltoreset.site/plan';
+const PLAN_PDF = 'https://calltoreset.site/plan/call-to-reset-30-day-plan.pdf';
 const PLUNK_SEND = 'https://next-api.useplunk.com/v1/send';
 
 const FROM = { name: 'Call to Reset', email: 'plan@calltoreset.site' };
@@ -26,23 +26,16 @@ function escapeHtml(value: string): string {
 }
 
 function planHtml(plan: Plan): string {
-  const phases = plan.phases
-    .map((phase) => {
-      const days = phase.days.map((day) => `<li style="margin: 0 0 0.45rem;"><strong>Day ${day.day}.</strong> ${escapeHtml(day.action)}</li>`).join('');
-      return `<h2 style="margin: 1.6rem 0 0.6rem; font-size: 1.15rem;">${escapeHtml(phase.title)}</h2><ol style="margin: 0; padding-left: 1.2rem;">${days}</ol>`;
-    })
-    .join('');
   const caution = plan.caution ? `<p style="margin: 1rem 0; padding: 0.75rem 0.9rem; background: #f6efe6;">${escapeHtml(plan.caution)}</p>` : '';
-  const faith = plan.faithNote ? `<h2 style="margin: 1.6rem 0 0.6rem; font-size: 1.15rem;">If faith is part of it</h2><p style="margin: 0; line-height: 1.55;">${escapeHtml(plan.faithNote)}</p>` : '';
+  const faith = plan.faithNote ? `<p style="margin: 1rem 0 0; line-height: 1.55;">${escapeHtml(plan.faithNote)}</p>` : '';
   return `<div style="font-family: Georgia, 'Times New Roman', serif; color: #212121; line-height: 1.5;">
 <p style="margin: 0 0 0.4rem; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">Call to Reset</p>
 <h1 style="margin: 0 0 0.8rem; font-size: 1.7rem; line-height: 1.15;">${escapeHtml(plan.title)}</h1>
 <p style="margin: 0 0 1rem;">${escapeHtml(plan.lede)}</p>
 ${caution}
-${phases}
 ${faith}
-<p style="margin: 1.6rem 0 0.4rem;">The same plan is on the site if you still have that page open. This email is the copy you can keep.</p>
-<p style="margin: 0.4rem 0;"><a href="${PLAN_PAGE}">Open the printable plan</a></p>
+<p style="margin: 1.4rem 0 0.4rem;">Your answers also wrote a plan on the site, on the page where you finished the check. This email carries the 30-day plan itself.</p>
+<p style="margin: 0.4rem 0;"><a href="${PLAN_PDF}">Download the 30-day plan (PDF)</a></p>
 <p style="margin: 0.4rem 0;"><a href="${COMMUNITY_URL}">Join the Whop community</a></p>
 </div>`.replaceAll('{{', '&#123;&#123;');
 }

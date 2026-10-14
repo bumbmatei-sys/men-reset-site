@@ -166,10 +166,10 @@ export type ParseResult = { ok: true; row: StoredCheck } | { ok: false; error: '
 const TRACKS: TrackLink[] = [
   {
     id: 'break-free-from-porn',
-    title: 'Break Free from Porn',
+    title: 'Break Free',
     href: '/tracks/break-free-from-porn',
     status: 'available',
-    startHref: '/tracks/break-free-from-porn/how-to-stop-watching-porn',
+    startHref: '/tracks/break-free-from-porn/identity-and-a-clean-slate',
   },
   {
     id: 'quit-gaming-and-the-phone',
