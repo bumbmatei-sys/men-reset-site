@@ -1,6 +1,5 @@
 ---
 import Layout from '@layouts/default.astro';
-import Headline from '@components/headline.astro';
 import { useTranslations } from '@utils/i18n';
 
 interface Props {
@@ -12,11 +11,19 @@ const { locale, localized404Paths } = Astro.props as Props;
 const t = useTranslations(locale);
 ---
 
-<Layout title={t('pages.404.title')} isError {locale} header={{ closeIcon: true, showTopBanner: false }} showFooterBanner={false}>
-  <Headline text={t('pages.404.title')} class="mt-20" />
-
-  <div class="container mb-20 min-h-48 pt-8 font-semibold whitespace-pre-wrap" data-localized-404-paths={localized404Paths ? JSON.stringify(localized404Paths) : undefined}>
-    {t('pages.404.message')}
+<Layout title={t('pages.404.title')} description={t('pages.404.message')} isError {locale} header={{ showTopBanner: false }} showFooterBanner={false}>
+  <div data-localized-404-paths={localized404Paths ? JSON.stringify(localized404Paths) : undefined}>
+    <p class="course-kicker">404</p>
+    <h1 class="page-title">{t('pages.404.title')}</h1>
+    <p class="page-lead">{t('pages.404.message')}</p>
+    <div class="page-actions">
+      <a class="btn-primary" href="/">
+        Back to the homepage
+      </a>
+      <a class="btn-secondary" href="/tracks">
+        See the tracks
+      </a>
+    </div>
   </div>
 
   {localized404Paths && <script is:inline>

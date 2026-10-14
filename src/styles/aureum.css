@@ -395,8 +395,7 @@ body:has(.au-home) #header-placeholder {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(180deg, rgba(15, 15, 15, 0.42) 0%, rgba(15, 15, 15, 0.05) 16%, rgba(15, 15, 15, 0) 34%, rgba(15, 15, 15, 0) 58%, rgba(15, 15, 15, 0.28) 82%, rgba(15, 15, 15, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(15, 15, 15, 0.42) 0%, rgba(15, 15, 15, 0.05) 16%, rgba(15, 15, 15, 0) 34%, rgba(15, 15, 15, 0) 58%, rgba(15, 15, 15, 0.28) 82%, rgba(15, 15, 15, 0.5) 100%);
   pointer-events: none;
 }
 
@@ -1002,4 +1001,310 @@ body:has(.au-home) #header-placeholder {
 :where(.dark) .sponsor-directory .sponsor-card {
   background: #1d1d1d;
   border-color: #212121;
+}
+
+/* Inner pages and the sections after the intro. The hero and intro stay as they are. */
+
+main .container {
+  padding-top: 2.25rem;
+  padding-bottom: 5rem;
+}
+
+.page-crumb {
+  margin: 0 0 1.25rem;
+  max-width: 68ch;
+  font-family: 'Azeret Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  color: #4d4d4d;
+  overflow-wrap: anywhere;
+}
+
+:where(.dark) .page-crumb {
+  color: #b7b7b7;
+}
+
+.page-crumb a {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.page-crumb a:hover {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.course-kicker,
+.check-kicker,
+.check-count,
+.sponsor-tier-label,
+.sponsor-kicker {
+  font-family: 'Azeret Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4d4d4d;
+}
+
+:where(.dark) .course-kicker,
+:where(.dark) .check-kicker,
+:where(.dark) .check-count,
+:where(.dark) .sponsor-tier-label,
+:where(.dark) .sponsor-kicker {
+  color: #b7b7b7;
+}
+
+.page-title,
+main .container h1,
+.lesson-title {
+  max-width: 20ch;
+  margin: 0.35rem 0 0;
+  font-size: clamp(2.35rem, 5.2vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.page-lead,
+.page-note {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.page-note {
+  font-size: 0.95rem;
+  color: #4d4d4d;
+}
+
+:where(.dark) .page-note {
+  color: #b7b7b7;
+}
+
+.page-prose {
+  margin-top: 1.5rem;
+}
+
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+}
+
+.page-stack {
+  margin-top: 2.5rem;
+}
+
+.page-subhead {
+  margin: 2.75rem 0 0;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 500;
+}
+
+.page-faqs {
+  max-width: 42rem;
+  margin-top: 1rem;
+}
+
+.lesson-prose h2,
+.sponsor-tier h2,
+.sponsor-directory .sponsor-name,
+.check-track h3,
+.check-week h3 {
+  font-weight: 500;
+}
+
+.au-stats > li + li,
+.au-notes > li + li,
+.au-track-grid > li + li,
+.track-grid > li + li,
+.sponsor-tiers > li + li,
+.sponsor-directory > li + li,
+.au-steps > li + li {
+  margin-top: 0;
+}
+
+.au-faq-item summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.au-faq-item summary::after {
+  content: '+';
+  flex: none;
+  font-family: 'Ancizar Serif', Georgia, serif;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.au-faq-item[open] summary::after {
+  content: '–';
+}
+
+.coming-soon {
+  background: #fffce0;
+  color: #0f0f0f;
+  font-family: 'Azeret Mono', ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  box-shadow: inset 0 0 0 1px rgba(15, 15, 15, 0.18);
+}
+
+.progress-card,
+:where(.dark) .progress-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 1.25rem;
+  background: #fff;
+  color: #212121;
+}
+
+:where(.dark) .progress-card {
+  border-color: #212121;
+  background: #1d1d1d;
+  color: #f3f1ed;
+}
+
+.scripture-block,
+:where(.dark) .scripture-block {
+  border-radius: 1.25rem;
+  background: #0f0f0f;
+  color: #f3f1ed;
+}
+
+:where(.dark) .scripture-block {
+  background: #1d1d1d;
+  box-shadow: inset 0 0 0 1px #212121;
+}
+
+.scripture-block h2,
+.scripture-block footer {
+  font-family: 'Azeret Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fffce0;
+}
+
+.scripture-block blockquote {
+  font-family: 'Ancizar Serif', Georgia, serif;
+  font-weight: 500;
+}
+
+:where(.dark) .pull-quote {
+  border-left-color: #fffce0;
+}
+
+:where(.dark) .key-points li::before {
+  background: #fffce0;
+}
+
+:where(.dark) .reflection-card {
+  border-color: #4d4d4d;
+}
+
+.check-save,
+.check-caution,
+:where(.dark) .check-save,
+:where(.dark) .check-caution,
+.check-save[data-save='failed'] {
+  background: #fffce0;
+  color: #0f0f0f;
+}
+
+:where(.dark) .check-save,
+:where(.dark) .check-caution,
+:where(.dark) .check-save[data-save='failed'] {
+  background: #212121;
+  color: #f3f1ed;
+}
+
+:where(.dark) .check-error {
+  color: #fffce0;
+}
+
+article > nav[aria-label='Lesson'] {
+  align-items: stretch;
+}
+
+article > nav[aria-label='Lesson'] a,
+.check-actions .btn-primary,
+.check-actions .btn-secondary,
+.sponsor-tier .btn-primary,
+.page-actions .btn-primary,
+.page-actions .btn-secondary {
+  height: auto;
+  white-space: normal;
+  text-align: center;
+}
+
+.track-card,
+.sponsor-tier,
+.sponsor-directory .sponsor-card,
+.check-card,
+.au-stat,
+.au-note-card {
+  min-width: 0;
+}
+
+.track-title,
+.track-desc,
+.sponsor-tier h2,
+.sponsor-name,
+.check-option span {
+  overflow-wrap: break-word;
+}
+
+footer[role='contentinfo'] .container {
+  align-items: flex-start;
+}
+
+@media (max-width: 1099px) {
+  footer[role='contentinfo'] .container {
+    flex-direction: column;
+  }
+}
+
+footer[role='contentinfo'] .wordmark {
+  display: block;
+  max-width: 8ch;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 0.9;
+  white-space: normal;
+}
+
+footer[role='contentinfo'] nav[aria-label='Footer'],
+footer[role='contentinfo'] nav[aria-label='Footer'] > div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+footer[role='contentinfo'] a {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  footer[role='contentinfo'] .wordmark {
+    margin-inline: auto;
+  }
+}
+
+/* Later width rules were winning over the rail gutter. Keep this after them. */
+@media (min-width: 1280px) {
+  .au-wrap,
+  .au-process-label,
+  .au-steps,
+  .au-marquee {
+    width: min(920px, calc(100% - 30rem));
+    margin-inline: auto;
+  }
 }

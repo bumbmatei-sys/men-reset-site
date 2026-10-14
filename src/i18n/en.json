@@ -90,8 +90,8 @@
   },
   "pages": {
     "404": {
-      "title": "404 - Not Found",
-      "message": "Ooops. You somehow found a page that does not exist.\nMaybe never existed or was deleted.\n\nPlease check the URL or go back to the main page."
+      "title": "This page is not here",
+      "message": "That address does not match a lesson or a page on this site."
     },
     "home": {
       "title": "Welcome to Stardrive - the Astro Boilerplate",

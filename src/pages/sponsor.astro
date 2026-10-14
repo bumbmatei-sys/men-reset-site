@@ -74,15 +74,15 @@ const breadcrumbs = {
 <Layout title={title} description={description}>
   <JsonLd data={faqLd} />
   <JsonLd data={breadcrumbs} />
-  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+  <nav aria-label="Breadcrumb" class="page-crumb">
     <a href="/">Home</a>
     <span aria-hidden="true"> / </span>
     <span>Sponsor</span>
   </nav>
   <p class="course-kicker">Sponsors</p>
-  <h1 class="mt-2 max-w-[16ch] text-4xl font-bold tracking-tight">Sponsor the course</h1>
-  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">Three starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
-  <p class="mt-3 max-w-[68ch] text-sm text-stone-600 dark:text-stone-300">
+  <h1 class="page-title">Sponsor the course</h1>
+  <p class="page-lead">Three starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
+  <p class="page-note">
     See who is already listed on the <a href="/sponsors">sponsors directory</a>. Checkout opens on Dodo Payments.
   </p>
 
@@ -102,12 +102,12 @@ const breadcrumbs = {
     ))}
   </ul>
 
-  <h2 class="mt-10 text-2xl font-bold">Questions</h2>
-  <div class="mt-4 max-w-[68ch] divide-y divide-stone-300/70 dark:divide-white/15">
+  <h2 class="page-subhead">Questions</h2>
+  <div class="au-faq-list page-faqs">
     {faqs.map((faq) => (
-      <details class="py-3">
-        <summary class="cursor-pointer text-lg font-semibold">{faq.q}</summary>
-        <p class="mt-2 leading-relaxed">{faq.a}</p>
+      <details class="au-faq-item">
+        <summary>{faq.q}</summary>
+        <p>{faq.a}</p>
       </details>
     ))}
   </div>

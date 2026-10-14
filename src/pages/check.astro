@@ -19,14 +19,14 @@ const breadcrumbs = {
 
 <Layout title={title} description={description}>
   <JsonLd data={breadcrumbs} />
-  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+  <nav aria-label="Breadcrumb" class="page-crumb">
     <a href="/">Home</a>
     <span aria-hidden="true"> / </span>
     <span>Free check</span>
   </nav>
   <p class="course-kicker">Free check</p>
-  <h1 class="mt-2 max-w-[16ch] text-4xl font-bold tracking-tight">See where you’re stuck</h1>
-  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">Answer nine short questions. You get a 30-day reset shaped by what you want to quit, and one track to open next. Nothing is stored until you submit. The plan still shows if saving fails.</p>
+  <h1 class="page-title">See where you’re stuck</h1>
+  <p class="page-lead">Answer nine short questions. You get a 30-day reset shaped by what you want to quit, and one track to open next. Nothing is stored until you submit. The plan still shows if saving fails.</p>
   <div id="check-app" class="check-app" aria-live="polite"></div>
   <noscript>
     <p class="mt-6 max-w-[68ch]">

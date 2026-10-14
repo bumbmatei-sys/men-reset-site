@@ -67,7 +67,7 @@ const breadcrumbs = {
 <Layout title={title} description={description}>
   <JsonLd data={courseLd} />
   <JsonLd data={breadcrumbs} />
-  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+  <nav aria-label="Breadcrumb" class="page-crumb">
     <a href="/">Home</a>
     <span aria-hidden="true"> / </span>
     <a href="/tracks">Tracks</a>
@@ -75,15 +75,15 @@ const breadcrumbs = {
     <span>{track.data.title}</span>
   </nav>
   <p class="course-kicker">{comingSoon ? 'Coming soon' : 'Course'}</p>
-  <h1 class="mt-2 max-w-[18ch] text-4xl font-bold tracking-tight">{track.data.title}</h1>
-  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">{track.data.description}</p>
-  <div class="lesson-prose mt-6">
+  <h1 class="page-title">{track.data.title}</h1>
+  <p class="page-lead">{track.data.description}</p>
+  <div class="lesson-prose page-prose">
     <Content />
   </div>
 
   {lessons.length > 0 ? (
-    <section class="mt-10" aria-labelledby="lesson-list-heading">
-      <h2 id="lesson-list-heading" class="text-2xl font-bold tracking-tight">
+    <section class="page-stack" aria-labelledby="lesson-list-heading">
+      <h2 id="lesson-list-heading" class="page-subhead">
         Lessons
       </h2>
       <ol class="mt-4 grid gap-3">

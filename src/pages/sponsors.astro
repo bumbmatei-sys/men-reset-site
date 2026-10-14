@@ -32,15 +32,15 @@ const itemList = {
 <Layout title={title} description={description}>
   <JsonLd data={breadcrumbs} />
   <JsonLd data={itemList} />
-  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+  <nav aria-label="Breadcrumb" class="page-crumb">
     <a href="/">Home</a>
     <span aria-hidden="true"> / </span>
     <span>Sponsors</span>
   </nav>
   <p class="course-kicker">Directory</p>
-  <h1 class="mt-2 max-w-[16ch] text-4xl font-bold tracking-tight">Sponsors</h1>
-  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">These are the current sponsors. A few spots are still open.</p>
-  <p class="mt-3">
+  <h1 class="page-title">Sponsors</h1>
+  <p class="page-lead">These cards are placeholders. No brand is listed yet. A few spots are still open.</p>
+  <p class="page-actions">
     <a class="btn-secondary" href="/sponsor">
       Sponsor
     </a>
@@ -52,6 +52,7 @@ const itemList = {
       return (
         <li>
           <a class="sponsor-card" href={href} rel={external ? 'sponsored noopener' : 'sponsored'} target={external ? '_blank' : undefined}>
+            <span class="au-stat-flag">Placeholder</span>
             <span class="sponsor-tier-label">{tierLabel(sponsor.tier)}</span>
             <span class="sponsor-name">{sponsor.name}</span>
             <span class="sponsor-tagline">{sponsor.tagline}</span>
