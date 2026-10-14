@@ -39,8 +39,9 @@ const { locale, button, tabIndex = 0, shrink = true, ctaButton, github } = Astro
       {button.text}
     </a>
   ) : (
-    <a href={getLocaleUrl('/', locale)} class="wordmark block w-fit select-none" tabindex={tabIndex}>
-      {themeConfig.name}
+    <a href={getLocaleUrl('/', locale)} class="brand" tabindex={tabIndex}>
+      <img class="brand-mark" src="/logo/ctr-logo.png" alt="" width="662" height="1132" />
+      <span class="wordmark">{themeConfig.name}</span>
     </a>
   )}
   <div class="flex flex-row-reverse items-center gap-2 lg:flex-row lg:gap-8">

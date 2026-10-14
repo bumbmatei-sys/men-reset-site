@@ -313,7 +313,7 @@ body:has(.au-home) #header-placeholder {
 
 @media (max-width: 1279px) {
   body:has(.sponsor-mobile) .au-hero {
-    padding-top: 10rem;
+    padding-top: calc(var(--sponsor-bar-height, 8.75rem) + 6.75rem);
   }
 }
 
@@ -477,7 +477,7 @@ body:has(.au-home) #header-placeholder {
   }
 
   body:has(.sponsor-mobile) .au-hero {
-    padding-top: 10rem;
+    padding-top: calc(var(--sponsor-bar-height, 8.75rem) + 6.75rem);
   }
 
   .au-hero-copy {
@@ -1425,9 +1425,56 @@ footer[role='contentinfo'] a {
   overflow-wrap: break-word;
 }
 
-@media (max-width: 767px) {
-  footer[role='contentinfo'] .wordmark {
-    margin-inline: auto;
+.brand {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  max-width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: block;
+  width: auto;
+  flex: none;
+}
+
+#header .brand {
+  flex: none;
+  gap: 0.4rem;
+}
+
+#header .brand-mark {
+  height: 30px;
+  max-height: 30px;
+}
+
+#header .brand .wordmark,
+footer[role='contentinfo'] .brand .wordmark {
+  font-family: 'Ancizar Serif', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+#header .brand .wordmark {
+  line-height: 1;
+}
+
+footer[role='contentinfo'] .brand {
+  gap: 0.55rem;
+  align-items: center;
+}
+
+footer[role='contentinfo'] .brand-mark {
+  height: 5.25rem;
+}
+
+@media (min-width: 768px) {
+  footer[role='contentinfo'] .brand-mark {
+    height: 6.75rem;
   }
 }
 

@@ -1,26 +1,19 @@
 [
   {
+    "id": "the-harvest",
+    "name": "The Harvest",
+    "tagline": "Simple tools that help churches care for their people and reach their city.",
+    "cta": "Visit",
+    "url": "https://theharvest.site",
+    "tier": "premium",
+    "logo": "/sponsors/the-harvest.webp"
+  },
+  {
     "id": "placeholder-premium",
     "name": "Your brand here",
-    "tagline": "Directory, recommended links, and the top placement.",
+    "tagline": "The directory, plus the side rail on desktop and the top slot on mobile.",
     "cta": "Sponsor",
     "url": "/sponsor",
     "tier": "premium"
-  },
-  {
-    "id": "placeholder-affiliate",
-    "name": "Your brand here",
-    "tagline": "On the directory, and in the recommended links on course pages.",
-    "cta": "Sponsor",
-    "url": "/sponsor",
-    "tier": "affiliate"
-  },
-  {
-    "id": "placeholder-directory",
-    "name": "Your brand here",
-    "tagline": "A listing on the sponsors directory.",
-    "cta": "Sponsor",
-    "url": "/sponsor",
-    "tier": "directory"
   }
 ]

@@ -410,12 +410,16 @@ export interface ThemeConfig {
    * Checkout URLs are public Dodo Payments links, not secrets.
    */
   sponsorTiers: {
-    id: 'directory' | 'affiliate' | 'premium';
+    id: 'directory' | 'premium';
     name: string;
     /** Starting monthly price in USD. It rises as traffic grows. */
     priceMonthly: number;
     checkoutUrl: string;
   }[];
+  /** Dodo static customer portal. The customer enters the email they paid with and gets a sign-in link. */
+  sponsorPortalUrl: string;
+  /** Shown when the portal does not open. */
+  sponsorHelpEmail: string;
 
   /**
    * A custom list of features from the default boilerplate that has been removed in this projects (either via the starter tool or manually).

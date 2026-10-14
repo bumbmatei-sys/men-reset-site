@@ -1,8 +1,9 @@
 ---
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
+import SponsorManage from '@components/sponsors/SponsorManage.astro';
 import { themeConfig } from '~/theme.config';
-import { sponsorUrl, sponsors, tierLabel } from '@utils/sponsors';
+import { sponsorUrl, sponsors } from '@utils/sponsors';
 
 const title = 'Sponsors';
 const description = `Brands listed on ${themeConfig.name}. This directory is the listing for every sponsor tier.`;
@@ -39,21 +40,22 @@ const itemList = {
   </nav>
   <p class="course-kicker">Directory</p>
   <h1 class="page-title">Sponsors</h1>
-  <p class="page-lead">These cards are placeholders. No brand is listed yet. A few spots are still open.</p>
   <p class="page-actions">
-    <a class="btn-secondary" href="/sponsor">
-      Sponsor
+    <a class="btn-primary" href="/sponsor">
+      Become a sponsor
     </a>
   </p>
+  <p class="page-lead">The Harvest sponsors this site. One spot is still open.</p>
   <ul class="sponsor-directory">
     {sponsors.map((sponsor) => {
       const href = sponsorUrl(sponsor.url, 'directory');
       const external = href.startsWith('http');
+      const open = sponsor.id.startsWith('placeholder');
       return (
         <li>
           <a class="sponsor-card" href={href} rel={external ? 'sponsored noopener' : 'sponsored'} target={external ? '_blank' : undefined}>
-            <span class="au-stat-flag">Placeholder</span>
-            <span class="sponsor-tier-label">{tierLabel(sponsor.tier)}</span>
+            {open ? <span class="au-stat-flag">Open spot</span> : null}
+            {sponsor.logo ? <img class="sponsor-logo" src={sponsor.logo} alt="" width="480" height="796" /> : null}
             <span class="sponsor-name">{sponsor.name}</span>
             <span class="sponsor-tagline">{sponsor.tagline}</span>
             <span class="sponsor-cta">{sponsor.cta}</span>
@@ -62,4 +64,11 @@ const itemList = {
       );
     })}
   </ul>
+  <h2 class="page-subhead">Questions</h2>
+  <div class="au-faq-list page-faqs">
+    <details class="au-faq-item">
+      <summary>Manage or cancel your sponsorship</summary>
+      <SponsorManage />
+    </details>
+  </div>
 </Layout>

@@ -229,14 +229,18 @@ function phase(title: string, start: number, actions: string[]): PlanPhase {
   };
 }
 
+const PHASE_PLAN = [
+  { title: 'Cut the easy path', start: 1, from: 0, to: 7 },
+  { title: 'Meet the hour it happens', start: 8, from: 7, to: 14 },
+  { title: 'Build a day you can repeat', start: 15, from: 14, to: 21 },
+  { title: 'One person, and the day after', start: 22, from: 21, to: 30 },
+] as const;
+
+export const PHASE_INTRO = `Thirty days in four phases. ${PHASE_PLAN.map((item) => item.title).join('. ')}.`;
+
 export function buildPhases(answers: CheckAnswers): PlanPhase[] {
   const name = habit(answers.struggle);
   const days = [...openers(answers.struggle), ...hourDays(answers.trigger, name), ...buildDays(answers.want, name), ...closeDays(name)];
   if (days.length !== 30) throw new Error(`expected 30 days, got ${days.length}`);
-  return [
-    phase('Cut the easy path', 1, days.slice(0, 7)),
-    phase('Meet the hour it happens', 8, days.slice(7, 14)),
-    phase('Build a day you can repeat', 15, days.slice(14, 21)),
-    phase('One person, and the day after', 22, days.slice(21, 30)),
-  ];
+  return PHASE_PLAN.map((item) => phase(item.title, item.start, days.slice(item.from, item.to)));
 }

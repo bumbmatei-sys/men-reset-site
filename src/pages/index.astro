@@ -3,6 +3,7 @@ import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+import JoinNewsletter from '@components/promo/JoinNewsletter.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
 
@@ -149,9 +150,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
 
     <section class="au-band au-intro" id="intro">
       <div class="au-wrap au-intro-copy">
-        <p class="au-lead">
-          Quitting an addiction is not optional. We have to, in order to live a fulfilled life. Porn, gaming, the phone, alcohol, substances, or another habit, the process is the same: break free, build discipline, and take initiative.
-        </p>
+        <p class="au-lead">Quitting an addiction is not optional. We have to, in order to live a fulfilled life. Porn, gaming, the phone, alcohol, substances, or another habit, the process is the same: break free, build discipline, and take initiative.</p>
         <p class="au-note">The foundations are Christian. The course is open to anyone. Honest content. No hype. No fake before-and-after.</p>
         <div class="au-actions">
           <a class="au-pill" href="/check">
@@ -233,9 +232,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
       <div class="au-wrap">
         <p class="au-kicker au-reveal">Tracks</p>
         <h2 class="au-display au-reveal">Start with the fight in front of you</h2>
-        <p class="au-section-lead au-reveal">
-          It doesn't matter what your starting point is. The goal is freedom and advancement into a fulfilled life. Start with the fight in front of you. More content is being added weekly.
-        </p>
+        <p class="au-section-lead au-reveal">It doesn't matter what your starting point is. The goal is freedom and advancement into a fulfilled life. Start with the fight in front of you. More content is being added weekly.</p>
         <ul class="track-grid au-track-grid">
           {cards.map(({ track, lessonIds }) => (
             <li class="au-reveal">
@@ -325,6 +322,12 @@ const marquee = [...marqueeWords, ...marqueeWords];
             <img src="/aureum/bust.webp" alt="" width="1000" height="1274" />
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="au-band" aria-label="Newsletter">
+      <div class="au-wrap">
+        <JoinNewsletter />
       </div>
     </section>
   </div>

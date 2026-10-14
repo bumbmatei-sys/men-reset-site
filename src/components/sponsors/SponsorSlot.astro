@@ -14,13 +14,16 @@ const eligible = sponsorsForPlacement(placement);
 {eligible.length > 0 && (
   <div class:list={['sponsor-slot', className]} data-sponsor-slot={placement}>
     <p class="sponsor-kicker">{label}</p>
-    {eligible.map((sponsor, index) => {
+    {eligible.map((sponsor) => {
       const href = sponsorUrl(sponsor.url, placement);
       const external = href.startsWith('http');
       return (
-        <a class="sponsor-card" data-sponsor-card data-sponsor-id={sponsor.id} href={href} hidden={index !== 0} rel={external ? 'sponsored noopener' : 'sponsored'} target={external ? '_blank' : undefined}>
-          <span class="sponsor-name">{sponsor.name}</span>
-          <span class="sponsor-tagline">{sponsor.tagline}</span>
+        <a class="sponsor-card" data-sponsor-card data-sponsor-id={sponsor.id} href={href} rel={external ? 'sponsored noopener' : 'sponsored'} target={external ? '_blank' : undefined}>
+          {sponsor.logo ? <img class="sponsor-logo" src={sponsor.logo} alt="" width="480" height="796" /> : null}
+          <span class="sponsor-copy">
+            <span class="sponsor-name">{sponsor.name}</span>
+            <span class="sponsor-tagline">{sponsor.tagline}</span>
+          </span>
           <span class="sponsor-cta">{sponsor.cta}</span>
         </a>
       );

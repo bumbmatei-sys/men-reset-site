@@ -1,0 +1,92 @@
+---
+interface Props {
+  headingLevel?: 'h2' | 'h3';
+  onDark?: boolean;
+}
+
+const { headingLevel = 'h2', onDark = false } = Astro.props;
+const Heading = headingLevel;
+---
+
+<form class:list={['newsletter-form', onDark && 'newsletter-form--on-dark']} data-newsletter onsubmit="event.preventDefault()" novalidate>
+  <Heading>Join the newsletter</Heading>
+  <p>Get practical tips once a week. No spam.</p>
+  <div class="newsletter-row">
+    <label class="newsletter-label">
+      Email
+      <input class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
+    </label>
+    <button type="submit" class="btn-primary">
+      Join
+    </button>
+  </div>
+  <p class="newsletter-status" data-newsletter-status role="status" hidden></p>
+</form>
+
+<script>
+  function mountNewsletter() {
+    if (document.documentElement.dataset.newsletterMounted === '1') return;
+    document.documentElement.dataset.newsletterMounted = '1';
+
+    document.addEventListener('submit', async (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement) || !form.hasAttribute('data-newsletter')) return;
+      event.preventDefault();
+
+      const input = form.querySelector<HTMLInputElement>('input[type="email"]');
+      const status = form.querySelector<HTMLElement>('[data-newsletter-status]');
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (!input || !button) return;
+
+      const email = input.value.trim();
+      if (!email) {
+        if (status) {
+          status.hidden = false;
+          status.dataset.state = 'error';
+          status.textContent = 'Enter your email.';
+        }
+        return;
+      }
+
+      button.disabled = true;
+      const previous = button.textContent;
+      button.textContent = 'Joining…';
+      if (status) {
+        status.hidden = true;
+        status.textContent = '';
+        delete status.dataset.state;
+      }
+
+      let ok = false;
+      try {
+        const response = await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email }),
+          signal: AbortSignal.timeout(8000),
+        });
+        let payload: unknown = null;
+        try {
+          payload = await response.json();
+        } catch {
+          payload = null;
+        }
+        ok = response.ok && typeof payload === 'object' && payload !== null && 'ok' in payload && payload.ok === true;
+      } catch {
+        ok = false;
+      }
+
+      if (status) {
+        status.hidden = false;
+        status.dataset.state = ok ? 'ok' : 'error';
+        status.textContent = ok ? 'You are on the list.' : 'We could not add you. Try again.';
+      }
+      if (ok) input.value = '';
+      button.disabled = false;
+      button.textContent = previous || 'Join';
+    });
+  }
+
+  mountNewsletter();
+  document.addEventListener('astro:page-load', mountNewsletter);
+</script>
