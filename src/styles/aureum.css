@@ -451,6 +451,55 @@ body:has(.au-home) #header-placeholder {
   }
 }
 
+/* Phones: one viewport, statues large enough to frame Reset, headline kept clear.
+   480px covers 360–430 layouts when a scrollbar makes the viewport a pixel wider. */
+@media (max-width: 480px) {
+  .au-hero {
+    height: 100svh;
+    max-height: 100svh;
+    min-height: 100svh;
+    padding-top: 4.75rem;
+  }
+
+  body:has(.sponsor-mobile) .au-hero {
+    padding-top: 10rem;
+  }
+
+  .au-hero-copy {
+    width: min(17.5rem, calc(100% - 1.75rem));
+  }
+
+  .au-hero h1 {
+    font-size: 1.62rem;
+    line-height: 1.08;
+  }
+
+  .au-figure {
+    width: auto;
+    height: calc(100svh - 18.5rem);
+    max-width: none;
+  }
+
+  .au-figure-left {
+    left: auto;
+    right: 22%;
+  }
+
+  .au-figure-right {
+    right: auto;
+    left: 22%;
+  }
+
+  .au-word {
+    bottom: 18%;
+    font-size: 27vw;
+  }
+
+  .au-home .au-intro {
+    padding-top: 2.25rem;
+  }
+}
+
 .au-band {
   padding: 6.5rem 0;
   background: #f3f1ed;

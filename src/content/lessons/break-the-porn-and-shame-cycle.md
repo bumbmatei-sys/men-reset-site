@@ -1,6 +1,6 @@
 ---
 title: "Porn and Shame Cycle: How to Break It"
-description: How to break the porn and shame cycle. Shame tells men to hide, and hiding sets up the next night. Here is a smaller confession and a next step.
+description: How to break the porn and shame cycle. Shame tells people to hide, and hiding sets up the next night. Here is a smaller confession and a next step.
 track: break-free-from-porn
 order: 6
 targetQuery: porn and shame cycle
@@ -24,7 +24,7 @@ It is not your personality. It is a loop. Loops can be cut at one point. The poi
 
 ## Tell shame and guilt apart
 
-Guilt says, “That act was wrong, and I can face it.” Shame says, “I am the kind of man who should not be seen.” Guilt can lead to a repair. Shame leads to a locked bathroom and another tab, because if you are already condemned there is nothing left to protect.
+Guilt says, “That act was wrong, and I can face it.” Shame says, “I am the kind of person who should not be seen.” Guilt can lead to a repair. Shame leads to a locked bathroom and another tab, because if you are already condemned there is nothing left to protect.
 
 You do not have to feel the difference perfectly. You can act as if guilt is the one you will obey. That means you stay visible. You answer the text. You show up to work. You do not give the evening to a dark room “until you feel better.”
 
@@ -32,7 +32,7 @@ You do not have to feel the difference perfectly. You can act as if guilt is the
 
 The verse in this lesson is about confession, not about crafting a testimony. Confession is specific. “I watched porn last night after everyone was asleep. I was angry and I did not leave the room.” That is enough for God, and it is enough for one person.
 
-Do not confess to someone who will shame you for sport, and do not confess to a crowd to feel dramatic. One safe man, or your wife if she already knows this fight and has the support she needs, is the right size. If telling your wife would land as a surprise bomb with no care for her, get a pastor or counselor in the room first. Truth is the goal. Reckless dumping is not the same thing.
+Do not confess to someone who will shame you for sport, and do not confess to a crowd to feel dramatic. One safe person, or your spouse if they already know this fight and have the support they need, is the right size. If telling your spouse would land as a surprise with no care for them, get a pastor or counselor in the room first. Truth is the goal. Reckless dumping is not the same thing.
 
 If you pray, pray the specific sentence. Do not add a paragraph about how you will never struggle again. God is not waiting for a sales pitch. The promise in the verse is his faithfulness, not your streak.
 
@@ -60,7 +60,7 @@ Drop these, even if they feel honest.
 
 “Nobody can know.” Somebody can know a three-sentence version. If you truly have no one, the next right move is to find a pastor, a counselor, or a trusted friend this week, not to perfect your privacy.
 
-“I’ll make up for it.” Grand gestures, extra workouts, public piety, buying something for your wife without telling the truth — those can be ways of skipping confession. Do the ordinary repair. Tell the truth. Go to work.
+“I’ll make up for it.” Grand gestures, extra workouts, public piety, buying something for your spouse without telling the truth — those can be ways of skipping confession. Do the ordinary repair. Tell the truth. Go to work.
 
 A short confession you can copy and edit:
 
@@ -70,7 +70,7 @@ Send that, or pray that, and then do the kitchen part whether you feel forgiven 
 
 ## Stay in the room with people
 
-After you tell the truth, you will want to withdraw and “work on yourself” alone. Some quiet is fine. A whole weekend of isolation is the cycle putting its coat back on. Schedule one ordinary thing with a person in the next two days: a meal, a job site, a church hallway, a pickup game. You do not have to discuss porn there. You have to be a man who is still in his life.
+After you tell the truth, you will want to withdraw and “work on yourself” alone. Some quiet is fine. A whole weekend of isolation is the cycle putting its coat back on. Schedule one ordinary thing with a person in the next two days: a meal, a job site, a church hallway, a pickup game. You do not have to discuss porn there. You have to stay in your life.
 
 If the person you told responds badly, do not run back to the habit to settle your nerves. Their reaction is information. You may need a wiser witness. You still move the charger and you still leave the room. The cycle is not allowed to use a clumsy conversation as a ticket.
 

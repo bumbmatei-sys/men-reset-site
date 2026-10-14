@@ -1,6 +1,6 @@
 # Call to Reset
 
-A free, static course for people breaking free from addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian-rooted, plain, and open to anyone. The work is written with men in mind.
+A free, static course for anyone breaking free from addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian-rooted, plain, and open to anyone.
 
 The public name is the `siteName` constant in `theme.config.ts`. Templates read `themeConfig.name`. Change that one string to rename the site.
 

@@ -1,6 +1,6 @@
 ---
 title: How to Deal with Porn Urges Fast
-description: How to deal with porn urges in the first ten minutes. A simple sequence for men when the pull hits at night, at work, or in the bathroom.
+description: How to deal with porn urges in the first ten minutes. A simple sequence for anyone when the pull hits at night, at work, or in the bathroom.
 track: break-free-from-porn
 order: 5
 targetQuery: how to deal with porn urges
@@ -34,9 +34,9 @@ If you are holding the phone, put it down on a surface that is not your hand. If
 2. I do one physical thing.
 3. I tell the truth in one sentence, out loud or in a note.
 
-Physical things that work for most men: walk outside or to another room, drink a full glass of water, ten pushups or a flight of stairs, cold water on the face, a shower with a plan to get dressed immediately after. Pick yours in advance. Novelty is not the point. Repetition is.
+Physical things that work for most people: walk outside or to another room, drink a full glass of water, ten pushups or a flight of stairs, cold water on the face, a shower with a plan to get dressed immediately after. Pick yours in advance. Novelty is not the point. Repetition is.
 
-The sentence can be dull. “Urge. Left the office. Did not open it.” Send it to your witness if you have one. If you do not, the note still counts, and you still need a person soon. See [porn addiction recovery for men](/tracks/break-free-from-porn/porn-addiction-recovery-for-men).
+The sentence can be dull. “Urge. Left the office. Did not open it.” Send it to your witness if you have one. If you do not, the note still counts, and you still need a person soon. See [porn addiction recovery](/tracks/break-free-from-porn/porn-addiction-recovery).
 
 ## Refuse the test look
 

@@ -18,7 +18,7 @@ action: Choose one daily block of twenty minutes with no phone and no porn-adjac
 reflection: What do you look at in the hour before bed, and is it training the attention you actually want?
 ---
 
-**How to reset your brain from porn** is a phrase men search when they want the old pull to quiet down. Be careful with anyone who sells you a scan, a supplement, or a magic day-count. This lesson will not invent a timeline. It will tell you what you can repeat.
+**How to reset your brain from porn** is a phrase people search when they want the old pull to quiet down. Be careful with anyone who sells you a scan, a supplement, or a magic day-count. This lesson will not invent a timeline. It will tell you what you can repeat.
 
 Your attention has been trained to seek a fast, novel, sexual hit. A reset, in plain language, is training it to stay with slower, real things long enough that the hit is no longer the default. That takes days you can describe, not a slogan.
 
@@ -34,7 +34,7 @@ If you only delete porn and keep a firehose of clips, the brain keeps the same m
 
 A short night makes novelty feel urgent. You will “just check” because you are dull and wired at the same time. Protect sleep like it is part of quitting, because it is. Phone out of the bedroom. A consistent time. Caffeine early enough that it is not still running the show at midnight. If you drink to come down, notice that, and do not pretend it is unrelated. Alcohol is on the map of the [30-day reset](/tracks/30-day-reset) for that reason.
 
-You may dream, notice more attraction, or feel flat for a while. Those are common reports from men who stop. They are not a diagnosis from this page. If mood, sleep, or despair get worse and stay worse, talk to a doctor. Stopping a habit should not be your only health plan.
+You may dream, notice more attraction, or feel flat for a while. Those are common reports from people who stop. They are not a diagnosis from this page. If mood, sleep, or despair get worse and stay worse, talk to a doctor. Stopping a habit should not be your only health plan.
 
 ## Make the next look intentional
 

@@ -1,9 +1,9 @@
 ---
 title: Teachings
-description: Practical teachings for men, based on Paul Manwaring. The lessons are coming soon. Nothing here is a quote from him.
+description: Practical teachings for anyone who wants a life aimed at something, based on Paul Manwaring. The lessons are coming soon. Nothing here is a quote from him.
 order: 7
 status: coming-soon
-targetQuery: practical teachings for men
+targetQuery: practical teachings for discipline
 ---
 
 **Practical teachings** for this course follow the line of Paul Manwaring: a life aimed at something, built one ordinary step at a time. This page does not quote him. The lessons are still being written, and a line that is not his will not be put in his mouth.

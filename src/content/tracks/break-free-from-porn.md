@@ -1,6 +1,6 @@
 ---
 title: Break Free from Porn
-description: A practical course for men on how to stop watching porn, handle urges, and break the shame loop. Seven short lessons you can use this week.
+description: A practical course for anyone who wants to stop watching porn, handle urges, and break the shame loop. Seven short lessons you can use this week.
 order: 1
 status: available
 targetQuery: how to stop watching porn

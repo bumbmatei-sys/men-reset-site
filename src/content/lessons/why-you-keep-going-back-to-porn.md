@@ -18,7 +18,7 @@ action: Write the sentence you tell yourself right before you go back. Under it,
 reflection: What do you get from going back that you are not getting, in an honest form, anywhere else in the day?
 ---
 
-**Why do I keep going back to porn** is the question men ask after the third “last time.” The answer is rarely that you are uniquely broken. The answer is that the habit still pays you, the path is still easy, and you have a story that turns one look into a lost night.
+**Why do I keep going back to porn** is the question people ask after the third “last time.” The answer is rarely that you are uniquely broken. The answer is that the habit still pays you, the path is still easy, and you have a story that turns one look into a lost night.
 
 This lesson names those three so you can interrupt them. It will not flatter you, and it will not write you off.
 

@@ -1,12 +1,12 @@
 ---
 title: Quit Gaming and the Phone
-description: How to quit gaming addiction and stop the phone from eating the evening. A coming-soon track for men who lose hours they meant to keep.
+description: How to quit gaming addiction and stop the phone from eating the evening. A coming-soon track for anyone who loses hours they meant to keep.
 order: 2
 status: coming-soon
 targetQuery: how to quit gaming addiction
 ---
 
-**How to quit gaming addiction** and how to put the phone down are the same kind of problem for a lot of men. The session was going to be twenty minutes. It became the night. Work, sleep, and the people in the house got whatever was left.
+**How to quit gaming addiction** and how to put the phone down are the same kind of problem for a lot of people. The session was going to be twenty minutes. It became the night. Work, sleep, and the people in the house got whatever was left.
 
 This track is coming soon. The lessons will cover a hard stop time, what you do with your hands in the first ten minutes after you close the game, and a phone setup that does not rely on willpower at 11 p.m.
 

@@ -1,6 +1,6 @@
 ---
 title: How to Stop Watching Porn for Good
-description: "How to stop watching porn when willpower keeps failing. A plain plan for men: cut the easy path, name the cue, and practice the next ten minutes."
+description: "How to stop watching porn when willpower keeps failing. A plain plan for anyone who wants to quit: cut the easy path, name the cue, and practice the next ten minutes."
 track: break-free-from-porn
 order: 1
 targetQuery: how to stop watching porn
@@ -32,7 +32,7 @@ These are not magic. They buy you a minute. A minute is enough to use the next s
 
 ## Name the cue out loud
 
-Most men describe the problem as “I don’t know what happened.” You do know. It was late. You were bored, angry, lonely, or done performing for everyone. The house got quiet. The phone came out.
+A lot of people describe the problem as “I don’t know what happened.” You do know. It was late. You were bored, angry, lonely, or done performing for everyone. The house got quiet. The phone came out.
 
 Write the cue in one sentence. “When I am alone after 10 p.m. and irritated, I open a browser.” That sentence is more useful than “I have an addiction,” because it tells you when to be on duty. You are not on duty all day. You are on duty at the cue.
 
@@ -50,13 +50,13 @@ Then do one task you can finish: dishes, a shower, a page of something that is n
 
 Secrecy is part of the product. If nobody can see it, the habit does not have to compete with your actual relationships. You do not owe the internet a confession. You do owe one safe person a plain sentence, or you owe a notebook that you will read in daylight.
 
-“I am trying to stop watching porn, and nights are the hard part.” That is enough for a first tell. Pick someone who will not panic and will not shrug. If you do not have that person yet, use the written note and ask God, if you pray, for one man who can hear it. Do not wait for a perfect accountability program.
+“I am trying to stop watching porn, and nights are the hard part.” That is enough for a first tell. Pick someone who will not panic and will not shrug. If you do not have that person yet, use the written note and ask God, if you pray, for one person who can hear it. Do not wait for a perfect accountability program.
 
 ## If you slip
 
 A slip is not proof that the plan failed. Hiding it is how one night becomes four. The next morning, do not give the day to rumination. Write what the cue was, what you skipped, and the one change for tonight. Then do the normal work of the day. Shame wants you useless. Getting to work is part of stopping.
 
-If this has been daily for years, a single evening of friction will feel small. Keep it anyway. [Porn addiction recovery for men](/tracks/break-free-from-porn/porn-addiction-recovery-for-men) is the next lesson, and it is about the kind of man you practice being between the urges, not only during them.
+If this has been daily for years, a single evening of friction will feel small. Keep it anyway. [Porn addiction recovery](/tracks/break-free-from-porn/porn-addiction-recovery) is the next lesson, and it is about the person you practice being between the urges, not only during them.
 
 ## Set the devices once
 
@@ -66,7 +66,7 @@ If you share a home, put the computer in a room people walk through when the day
 
 ## A week that is small enough
 
-Day one is the path: charger, logout, the written cue. Day two is the ten-minute exit, rehearsed once while you are calm. Day three is the sentence to one person or the notebook. Days four through seven are repetition. You will want a bigger program. Ignore that want. A bigger program is how men avoid the boring part that actually changes the night.
+Day one is the path: charger, logout, the written cue. Day two is the ten-minute exit, rehearsed once while you are calm. Day three is the sentence to one person or the notebook. Days four through seven are repetition. You will want a bigger program. Ignore that want. A bigger program is how people avoid the boring part that actually changes the night.
 
 If a day breaks, use the morning rule from the later lessons and continue the count. Do not restart the week at zero in your head. The path changes you made on day one are still there. Check them, because a relapse often includes quietly undoing the friction.
 

@@ -1,6 +1,6 @@
 ---
 title: How to Quit Porn and Masturbation
-description: How to quit porn and masturbation together, without a loophole that keeps the habit alive. A direct plan for men on arousal, boredom, and the next urge.
+description: How to quit porn and masturbation together, without a loophole that keeps the habit alive. A direct plan for anyone on arousal, boredom, and the next urge.
 track: break-free-from-porn
 order: 3
 targetQuery: how to quit porn and masturbation
@@ -18,7 +18,7 @@ action: Write the rule in one line — what you will not do when you are alone t
 reflection: Where do you still give yourself a technical pass that keeps the same images in your head?
 ---
 
-**How to quit porn and masturbation** gets fuzzy when you treat them as separate projects. For a lot of men they are one sequence. The video starts it, or the habit starts it and the video finishes it. If you ban the site and keep the rest, you have renamed the problem.
+**How to quit porn and masturbation** gets fuzzy when you treat them as separate projects. For a lot of people they are one sequence. The video starts it, or the habit starts it and the video finishes it. If you ban the site and keep the rest, you have renamed the problem.
 
 This is adult, direct teaching. It is not a dare to be reckless, and it is not a claim that every married sexual life looks the same. It is about the private habit that runs on fantasy and a screen.
 
@@ -34,7 +34,7 @@ Arousal is not an emergency and it is not a command. Your body can be loud and s
 
 Cold water on your face, a walk, a set of pushups, a shower with the door unlocked if you live with people and the locked bathroom is the danger. Pick one in advance. Deciding during the urge is how the loophole wins.
 
-If you are married, do not use your spouse as a tool to “get it out of your system” with a head full of someone else. That is not intimacy. If sex in your marriage is broken or absent, that is a real problem, and porn will offer a counterfeit. The counterfeit makes the real problem worse. Say the truth to your wife if you safely can, or to a pastor or counselor who will not wink.
+If you are married, do not use your spouse as a tool to “get it out of your system” with a head full of someone else. That is not intimacy. If sex in your marriage is broken or absent, that is a real problem, and porn will offer a counterfeit. The counterfeit makes the real problem worse. Say the truth to your spouse if you safely can, or to a pastor or counselor who will not wink.
 
 ## Watch the helpers that are not helpers
 

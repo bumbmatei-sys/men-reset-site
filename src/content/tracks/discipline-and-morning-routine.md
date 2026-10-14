@@ -1,6 +1,6 @@
 ---
 title: Discipline and a Morning Routine
-description: A morning routine for discipline that a working man can keep. Coming soon, with a simple first version you can try tomorrow.
+description: A morning routine for discipline that anyone with a job can keep. Coming soon, with a simple first version you can try tomorrow.
 order: 3
 status: coming-soon
 targetQuery: morning routine for discipline
