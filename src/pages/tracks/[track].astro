@@ -1,8 +1,6 @@
 ---
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
-import SponsorSlot from '@components/sponsors/SponsorSlot.astro';
-import { sponsorsForPlacement } from '@utils/sponsors';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
@@ -131,12 +129,6 @@ const breadcrumbs = {
     <p class="mt-8 max-w-[68ch] leading-relaxed">
       This track has no lessons yet. Take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free">Break Free</a>.
     </p>
-  )}
-
-  {sponsorsForPlacement('course-card').length > 0 && (
-    <div class="sponsor-inline mt-10 max-w-sm">
-      <SponsorSlot placement="course-card" label="Sponsor" />
-    </div>
   )}
 </Layout>
 

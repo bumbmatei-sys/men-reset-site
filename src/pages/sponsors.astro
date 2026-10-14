@@ -39,12 +39,12 @@ const itemList = {
   </nav>
   <p class="course-kicker">Directory</p>
   <h1 class="page-title">Sponsors</h1>
-  <p class="page-lead">The Harvest sponsors this site. One spot is still open.</p>
   <p class="page-actions">
-    <a class="btn-secondary" href="/sponsor">
-      Sponsor
+    <a class="btn-primary" href="/sponsor">
+      Become a sponsor
     </a>
   </p>
+  <p class="page-lead">The Harvest sponsors this site. One spot is still open.</p>
   <ul class="sponsor-directory">
     {sponsors.map((sponsor) => {
       const href = sponsorUrl(sponsor.url, 'directory');

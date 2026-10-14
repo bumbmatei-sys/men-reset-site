@@ -139,18 +139,12 @@ export const themeConfig: ThemeConfig = {
     {
       id: 'directory',
       name: 'Directory',
-      priceMonthly: 50,
-      checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzAg0hegr2HwfxQN2?quantity=1',
-    },
-    {
-      id: 'affiliate',
-      name: 'Directory + Affiliate',
       priceMonthly: 100,
       checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzErvPQTh33lNbTqj?quantity=1',
     },
     {
       id: 'premium',
-      name: 'Premium',
+      name: 'Side slots',
       priceMonthly: 200,
       checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzInABfQesqBVCJbN?quantity=1',
     },

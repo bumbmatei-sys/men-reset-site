@@ -410,7 +410,7 @@ export interface ThemeConfig {
    * Checkout URLs are public Dodo Payments links, not secrets.
    */
   sponsorTiers: {
-    id: 'directory' | 'affiliate' | 'premium';
+    id: 'directory' | 'premium';
     name: string;
     /** Starting monthly price in USD. It rises as traffic grows. */
     priceMonthly: number;

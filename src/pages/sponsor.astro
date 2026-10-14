@@ -9,11 +9,9 @@ const money = (amount: number) => `$${amount}`;
 function includes(id: string): string {
   switch (id) {
     case 'directory':
-      return 'Listed on the sponsors directory.';
-    case 'affiliate':
-      return 'A directory listing, plus a recommended link on course pages.';
+      return 'A listing in the sponsor directory.';
     case 'premium':
-      return 'Directory, recommended links, the top strip on phones, and the side rails on desktop.';
+      return 'The directory, plus the side rail on desktop and the top slot on mobile.';
     default:
       return '';
   }
@@ -22,7 +20,7 @@ function includes(id: string): string {
 const priceSentence = tiers.map((tier) => `${tier.name} ${money(tier.priceMonthly)} a month`).join(', ');
 
 const title = 'Sponsor the Course';
-const description = `Three starting prices, month to month: ${priceSentence}. The price rises as traffic grows.`;
+const description = `Two starting prices, month to month: ${priceSentence}. The price rises as traffic grows.`;
 
 const faqs = [
   {
@@ -35,7 +33,7 @@ const faqs = [
   },
   {
     q: 'Where does each tier show?',
-    a: 'Directory is a listing on the sponsors directory only. Directory + Affiliate adds a recommended link on course pages. Premium includes both of those, plus the top strip on phones and the side rails on a wide desktop.',
+    a: 'Directory is a listing in the sponsor directory. Side slots adds the side rail on desktop and the top slot on mobile, on every page.',
   },
   {
     q: 'What do you need from me?',
@@ -81,7 +79,7 @@ const breadcrumbs = {
   </nav>
   <p class="course-kicker">Sponsors</p>
   <h1 class="page-title">Sponsor the course</h1>
-  <p class="page-lead">Three starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
+  <p class="page-lead">Two starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
   <p class="page-note">
     See who is already listed on the <a href="/sponsors">sponsors directory</a>. Checkout opens on Dodo Payments.
   </p>

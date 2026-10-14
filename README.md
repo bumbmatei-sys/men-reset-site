@@ -34,7 +34,7 @@ Lessons are Markdown in `src/content/lessons/`. Tracks are Markdown in `src/cont
 
 Mark a track `status: coming-soon` until it has lessons. Available tracks use `status: available`.
 
-Sponsors live in `src/data/sponsors.json`. Each entry has a `tier`: `directory` (the `/sponsors` directory only), `affiliate` (directory plus the recommended link on course pages), or `premium` (those, plus the mobile strip and the left desktop rail). The Harvest is the premium sponsor. One “Your brand here” card stays under it and points at `/sponsor`. Links get `utm_medium=sponsor` and `utm_content` set to the placement (`directory`, `course-card`, `mobile-strip`, or `rail-left`). Dollar amounts stay on `/sponsor` only.
+Sponsors live in `src/data/sponsors.json`. Each entry has a `tier`: `directory` (the `/sponsors` directory only) or `premium` (the directory, plus the top slot on phones and the left rail on desktop). The Harvest is the premium sponsor. One “Your brand here” card stays under it and points at `/sponsor`. Links get `utm_medium=sponsor` and `utm_content` set to the placement (`directory`, `mobile-strip`, or `rail-left`). Dollar amounts stay on `/sponsor` only. There are two monthly tiers: $100 for a directory listing, and $200 for the directory plus those side slots.
 
 Starting prices and the Dodo Payments checkout URLs are `sponsorTiers` in `theme.config.ts`. Dollar amounts are shown only on `/sponsor`. `/advertise` redirects there. The price rises as traffic grows.
 

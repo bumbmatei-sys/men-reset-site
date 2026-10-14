@@ -1,8 +1,8 @@
 import sponsorsData from '../data/sponsors.json' with { type: 'json' };
 import { themeConfig } from '~/theme.config';
 
-export type SponsorTier = 'directory' | 'affiliate' | 'premium';
-export type SponsorPlacement = 'mobile-strip' | 'rail-left' | 'rail-right' | 'course-card' | 'directory';
+export type SponsorTier = 'directory' | 'premium';
+export type SponsorPlacement = 'mobile-strip' | 'rail-left' | 'rail-right' | 'directory';
 
 export interface Sponsor {
   id: string;
@@ -15,7 +15,7 @@ export interface Sponsor {
 }
 
 function isTier(value: string): value is SponsorTier {
-  return value === 'directory' || value === 'affiliate' || value === 'premium';
+  return value === 'directory' || value === 'premium';
 }
 
 export const sponsors: Sponsor[] = sponsorsData.flatMap((entry) => {
@@ -32,10 +32,9 @@ export const sponsors: Sponsor[] = sponsorsData.flatMap((entry) => {
   return [sponsor];
 });
 
-/** Directory lists every tier. Recommended links are affiliate and premium. The strip and rails are premium only. */
+/** Directory lists every tier. The mobile strip and the left rail are the side-slot tier only. */
 export function tierAllows(tier: SponsorTier, placement: SponsorPlacement): boolean {
   if (placement === 'directory') return true;
-  if (placement === 'course-card') return tier === 'affiliate' || tier === 'premium';
   return tier === 'premium';
 }
 
