@@ -10,6 +10,7 @@ const { track, lessonIds = [] } = Astro.props;
 const open = track.data.status === 'available';
 const icons: Record<string, string> = {
   'break-free': 'M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z',
+  'stand-up-and-act-like-a-man': 'M12 2l8 3v7c0 5-3.5 8.5-8 10C7.5 20.5 4 17 4 12V5l8-3zM9 12l2 2 4-4',
   'quit-gaming-and-the-phone': 'M9 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 15h.01',
   'discipline-and-morning-routine': 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4',
   'new-identity-in-christ': 'M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 20a7 7 0 0 1 14 0',
