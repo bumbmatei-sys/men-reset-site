@@ -1,0 +1,11 @@
+---
+import { toSafeJsonScript } from '@utils/security';
+
+interface Props {
+  data: unknown;
+}
+
+const { data } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={toSafeJsonScript(data)} />

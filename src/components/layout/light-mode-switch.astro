@@ -1,0 +1,59 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  label?: string;
+  tabIndex?: number;
+}
+
+const { label = 'Switch color theme', tabIndex = 0 } = Astro.props as Props;
+---
+
+<button id="color-mode-switch" type="button" class="theme-toggle" aria-label={label} title={label} tabindex={tabIndex}>
+  <Icon name="heroicons:sun-16-solid" class="theme-icon theme-icon-sun" aria-hidden="true" />
+  <Icon name="heroicons:moon-16-solid" class="theme-icon theme-icon-moon" aria-hidden="true" />
+</button>
+
+<script>
+  import { getUserTheme, setUserTheme } from '@utils/themeSwitch';
+  import type { UserTheme } from '~types/user-theme';
+
+  const SWITCH_ID = 'color-mode-switch';
+
+  const labelFor = (theme: UserTheme) => (theme === 'dark' ? 'Switch to day mode' : 'Switch to night mode');
+
+  const syncUi = (theme: UserTheme) => {
+    const button = document.getElementById(SWITCH_ID);
+    if (!button) return;
+    const label = labelFor(theme);
+    button.setAttribute('aria-label', label);
+    button.setAttribute('title', label);
+  };
+
+  const toggle = () => {
+    const next: UserTheme = getUserTheme() === 'dark' ? 'light' : 'dark';
+    setUserTheme(next);
+    syncUi(next);
+  };
+
+  const handleClick = () => {
+    toggle();
+  };
+
+  const setup = () => {
+    syncUi(getUserTheme());
+    const button = document.getElementById(SWITCH_ID);
+    button?.removeEventListener('click', handleClick);
+    button?.addEventListener('click', handleClick);
+  };
+
+  setup();
+  document.addEventListener('astro:page-load', setup);
+
+  const motionQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const followSystem = () => {
+    if (localStorage.getItem('user-theme')) return;
+    syncUi(getUserTheme());
+  };
+  motionQuery.addEventListener('change', followSystem);
+</script>

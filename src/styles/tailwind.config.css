@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+/* Tailwind CSS configuration file for custom styles and themes */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Fonts */
+  --font-*: initial;
+  /* Adjust the following font families to your needs */
+  /* Mind to import Google Fonts at the layouts via fontsource (e.g. "import "@fontsource/geist/400.css";") - requires them to be also installed via npm and imported at the layout level */
+  --font-sans: Inter, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-serif: 'Ancizar Serif', Georgia, 'Times New Roman', Times, serif;
+  --font-mono: 'Azeret Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --font-headline: var(--font-serif);
+
+  /* Colors: Base */
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #fff;
+  --color-black: #000;
+  /* Colors: Branding */
+  --color-primary: #0f0f0f;
+  --color-primary-light: #fffce0;
+  --color-primary-dark: #0f0f0f;
+  --color-primary-darker: #0f0f0f;
+  --color-primary-contrast: #fff;
+  --color-primary-light-contrast: #0f0f0f;
+  --color-primary-dark-contrast: #fff;
+  --color-secondary: #acc0d2;
+  --color-secondary-light: #e0e0e0;
+  --color-secondary-dark: #0f0f0f;
+  --color-secondary-contrast: #0f0f0f;
+  --color-secondary-light-contrast: #0f0f0f;
+  --color-secondary-dark-contrast: #f3f1ed;
+  --color-brand: var(--color-primary);
+  /* Colors: Utility */
+  --color-background: #f3f1ed;
+  --color-background-dark: #0f0f0f;
+  --color-text: #212121;
+  --color-text-dark: #f3f1ed;
+
+  /* Custom Animations */
+  --animate-bounce-slow: bounce-small 2s infinite;
+  --animate-bounce-right: bounce-right 1.5s infinite;
+  --animate-ping-slow: ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+  @keyframes bounce-small {
+    0%,
+    100% {
+      transform: translateY(-6%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @keyframes bounce-right {
+    0%,
+    100% {
+      transform: translateX(-30%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateX(0);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  /* Breakpoints */
+  --breakpoint-*: initial;
+  --breakpoint-xs: 414px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 976px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1600px;
+}
+
+/* One centered column. Equal side padding at every width. 920px at desktop leaves room for the sponsor rails. */
+@utility container {
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 700px) {
+    max-width: 46rem;
+    padding-inline: 1.75rem;
+  }
+  @media (width >= 1100px) {
+    max-width: 920px;
+    padding-inline: 2rem;
+  }
+  /* Rails are 200px. Keep the column clear of them from 1280px up. */
+  @media (width >= 1280px) {
+    max-width: min(920px, calc(100vw - 30rem));
+  }
+}

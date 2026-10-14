@@ -1,0 +1,48 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import TrackCard from '@components/course/TrackCard.astro';
+import { themeConfig } from '~/theme.config';
+import { getTracks, lessonsForTrack } from '@utils/course';
+
+const tracks = await getTracks();
+const cards = await Promise.all(
+  tracks.map(async (track) => ({
+    track,
+    lessonIds: track.data.status === 'available' ? (await lessonsForTrack(track.id)).map((lesson) => lesson.id) : [],
+  })),
+);
+const title = 'Courses to Quit Porn, Gaming, and the Phone';
+const description = 'Free course tracks for men: break free from porn, quit gaming and the phone, build a morning routine, and a 30-day reset. Most tracks are coming soon.';
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
+    { '@type': 'ListItem', position: 2, name: 'Tracks', item: new URL('/tracks', themeConfig.site).toString() },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <JsonLd data={breadcrumbs} />
+  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+    <a href="/">Home</a>
+    <span aria-hidden="true"> / </span>
+    <span>Tracks</span>
+  </nav>
+  <h1 class="max-w-[20ch] text-4xl font-bold tracking-tight">Courses to quit porn, gaming, and the phone</h1>
+  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">
+    These tracks are the course. <strong>Break free from porn</strong> is the one you can take today. The others are written down so you can see the path, and marked coming soon until the lessons are ready.
+  </p>
+  <ul class="track-grid mt-8">
+    {
+      cards.map(({ track, lessonIds }) => (
+        <li>
+          <TrackCard {track} {lessonIds} />
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

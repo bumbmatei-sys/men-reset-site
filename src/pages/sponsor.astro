@@ -1,0 +1,114 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { themeConfig } from '~/theme.config';
+
+const tiers = themeConfig.sponsorTiers;
+const money = (amount: number) => `$${amount}`;
+
+function includes(id: string): string {
+  switch (id) {
+    case 'directory':
+      return 'Listed on the sponsors directory.';
+    case 'affiliate':
+      return 'A directory listing, plus a recommended link on course pages.';
+    case 'premium':
+      return 'Directory, recommended links, the top strip on phones, and the side rails on desktop.';
+    default:
+      return '';
+  }
+}
+
+const priceSentence = tiers.map((tier) => `${tier.name} ${money(tier.priceMonthly)} a month`).join(', ');
+
+const title = 'Sponsor the Course';
+const description = `Three starting prices, month to month: ${priceSentence}. The price rises as traffic grows.`;
+
+const faqs = [
+  {
+    q: 'How much does a spot cost?',
+    a: `Starting prices, month to month: ${priceSentence}. There is no auction and no per-click fee. The price rises as traffic grows. The rate on this page is the rate for a new booking.`,
+  },
+  {
+    q: 'Is it month to month?',
+    a: 'Yes. Month to month. You can stop before the next month. There is no annual contract.',
+  },
+  {
+    q: 'Where does each tier show?',
+    a: 'Directory is a listing on the sponsors directory only. Directory + Affiliate adds a recommended link on course pages. Premium includes both of those, plus the top strip on phones and the side rails on a wide desktop.',
+  },
+  {
+    q: 'What do you need from me?',
+    a: 'A name, one line of copy, a link, and a mark if you have one. We edit the line so it fits the page, then send it back before it goes live.',
+  },
+  {
+    q: 'What will you not run?',
+    a: 'No porn, no gambling sites, no payday loans, and nothing that sells the habits this course is helping men leave.',
+  },
+  {
+    q: 'When does the price change?',
+    a: 'The price rises as traffic grows. A sponsor who is already live keeps the rate they booked until they cancel. A new sponsor pays the rate posted that day.',
+  },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
+    { '@type': 'ListItem', position: 2, name: 'Sponsor', item: new URL('/sponsor', themeConfig.site).toString() },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <JsonLd data={faqLd} />
+  <JsonLd data={breadcrumbs} />
+  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+    <a href="/">Home</a>
+    <span aria-hidden="true"> / </span>
+    <span>Sponsor</span>
+  </nav>
+  <p class="course-kicker">Sponsors</p>
+  <h1 class="mt-2 max-w-[16ch] text-4xl font-bold tracking-tight">Sponsor the course</h1>
+  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">Three starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
+  <p class="mt-3 max-w-[68ch] text-sm text-stone-600 dark:text-stone-300">
+    See who is already listed on the <a href="/sponsors">sponsors directory</a>. Checkout opens on Dodo Payments.
+  </p>
+
+  <ul class="sponsor-tiers">
+    {tiers.map((tier) => (
+      <li class="sponsor-tier">
+        <h2>{tier.name}</h2>
+        <p class="sponsor-tier-price">
+          {money(tier.priceMonthly)}
+          <span>/mo</span>
+        </p>
+        <p>{includes(tier.id)}</p>
+        <a class="btn-primary" href={tier.checkoutUrl} rel="noopener noreferrer" target="_blank">
+          Become a sponsor
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="mt-10 text-2xl font-bold">Questions</h2>
+  <div class="mt-4 max-w-[68ch] divide-y divide-stone-300/70 dark:divide-white/15">
+    {faqs.map((faq) => (
+      <details class="py-3">
+        <summary class="cursor-pointer text-lg font-semibold">{faq.q}</summary>
+        <p class="mt-2 leading-relaxed">{faq.a}</p>
+      </details>
+    ))}
+  </div>
+</Layout>

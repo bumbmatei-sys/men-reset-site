@@ -1,0 +1,49 @@
+---
+import SponsorSlot from './SponsorSlot.astro';
+import { sponsorsForPlacement } from '@utils/sponsors';
+
+const showStrip = sponsorsForPlacement('mobile-strip').length > 0;
+const showRails = sponsorsForPlacement('rail-left').length > 0;
+---
+
+{showStrip && (
+  <div class="sponsor-mobile" data-sponsor-region="mobile-strip">
+    <SponsorSlot placement="mobile-strip" label="Sponsor" />
+  </div>
+)}
+{showRails && (
+  <aside class="sponsor-rail sponsor-rail-left" aria-label="Sponsors">
+    <SponsorSlot placement="rail-left" label="Sponsor" />
+  </aside>
+)}
+{showRails && (
+  <aside class="sponsor-rail sponsor-rail-right" aria-label="Sponsors">
+    <SponsorSlot placement="rail-right" label="Sponsor" />
+  </aside>
+)}
+
+<script>
+  function assignSponsors() {
+    const slots = Array.from(document.querySelectorAll<HTMLElement>('[data-sponsor-slot]'));
+    const used = new Set<string>();
+
+    for (const slot of slots) {
+      if (slot.closest('[hidden]')) continue;
+      const cards = Array.from(slot.querySelectorAll<HTMLElement>('[data-sponsor-card]'));
+      if (!cards.length) continue;
+
+      const unused = cards.filter((card) => !used.has(card.dataset.sponsorId || ''));
+      const pool = unused.length ? unused : cards;
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      if (!pick) continue;
+      if (pick.dataset.sponsorId) used.add(pick.dataset.sponsorId);
+
+      for (const card of cards) {
+        card.hidden = card !== pick;
+      }
+    }
+  }
+
+  assignSponsors();
+  document.addEventListener('astro:page-load', assignSponsors);
+</script>
