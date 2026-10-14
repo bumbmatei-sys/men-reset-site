@@ -6,7 +6,6 @@ import { sponsorsForPlacement } from '@utils/sponsors';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
-import PlanEmailForm from '@components/course/PlanEmailForm.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -24,7 +23,7 @@ interface Props {
 const { track } = Astro.props as Props;
 const { Content } = await render(track);
 const lessons = await lessonsForTrack(track.id);
-const planPage = track.id === '30-day-reset';
+const mapPage = track.id === '30-day-reset';
 const comingSoon = track.data.status === 'coming-soon';
 const pageUrl = new URL(trackPath(track.id), themeConfig.site).toString();
 
@@ -91,7 +90,7 @@ const breadcrumbs = {
   )}
   <aside class="takeaway">
     <p class="course-kicker">Key takeaway</p>
-    <p>Read what is open. Do the one step you can finish today. If the lessons are still coming, the free check writes the thirty days now.</p>
+    <p>Read what is open. Do the one step you can finish today. The free check writes a plan from your answers.</p>
   </aside>
   <ol class="habit-loop" aria-label="Habit loop">
     <li>
@@ -111,12 +110,6 @@ const breadcrumbs = {
     <Content />
   </div>
 
-  {planPage ? (
-    <PlanEmailForm>
-      <p>[Copy coming.]</p>
-    </PlanEmailForm>
-  ) : null}
-
   {lessons.length > 0 ? (
     <section class="page-stack" aria-labelledby="lesson-list-heading">
       <h2 id="lesson-list-heading" class="page-subhead">
@@ -134,9 +127,9 @@ const breadcrumbs = {
         ))}
       </ol>
     </section>
-  ) : planPage ? null : (
+  ) : mapPage ? null : (
     <p class="mt-8 max-w-[68ch] leading-relaxed">
-      Lessons for this track are not published yet. You can take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free">break free from porn</a>.
+      This track has no lessons yet. Take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free">Break Free</a>.
     </p>
   )}
 
@@ -148,8 +141,6 @@ const breadcrumbs = {
 </Layout>
 
 <script>
-  import { mountPlanGate } from '@scripts/plan-gate';
-
   const STORAGE_KEY = 'reset:lesson-progress';
 
   function readDone(): string[] {
@@ -171,9 +162,5 @@ const breadcrumbs = {
   }
 
   paintTrackComplete();
-  mountPlanGate();
-  document.addEventListener('astro:page-load', () => {
-    paintTrackComplete();
-    mountPlanGate();
-  });
+  document.addEventListener('astro:page-load', paintTrackComplete);
 </script>

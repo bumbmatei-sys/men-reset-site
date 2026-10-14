@@ -1,23 +1,35 @@
 ---
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+
+interface Props {
+  heading?: string;
+  buttonLabel?: string;
+  successMessage?: string;
+}
+
+const {
+  heading = 'Get the full 30-day plan by email',
+  buttonLabel = 'Send the plan',
+  successMessage = 'Your plan is on its way to your inbox',
+} = Astro.props;
 ---
 
 <section class="plan-gate" data-plan-panel>
   <slot />
   <form class="plan-gate-form" data-plan-gate onsubmit="event.preventDefault()">
-    <h2>Get the full 30-day plan by email</h2>
+    <h2>{heading}</h2>
     <label class="check-email-label" for="plan-email">Email</label>
     <input id="plan-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
     <p class="check-error" data-plan-error hidden></p>
     <div class="check-actions">
-      <button type="submit" class="btn-primary">Send the plan</button>
+      <button type="submit" class="btn-primary">{buttonLabel}</button>
     </div>
   </form>
   <section class="completion-card" data-plan-success hidden>
     <MarbleAccent kind="check" alt="A marble check mark" />
     <div>
       <p class="course-kicker">Sent</p>
-      <p>Your plan is on its way to your inbox</p>
+      <p>{successMessage}</p>
       <a data-plan-link>Download the 30-day plan (PDF)</a>
     </div>
   </section>

@@ -18,13 +18,13 @@ const live = cards.find((card) => card.track.data.status === 'available');
 const startHref = live && live.lessonIds[0] ? lessonPath(live.track.id, live.lessonIds[0]) : '/tracks';
 
 const title = 'How to Quit Addiction, Build Discipline, and Take Initiative';
-const description = 'A free course for breaking free from addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian roots. Open to anyone.';
+const description = 'Break Free is a free 30-day course for breaking free from any addiction. Days 1-7 open on the site. Days 8-30 arrive as a PDF by email. Grace first. Open to anyone.';
 
 const steps = [
   {
     n: '01',
     title: "See where you're going",
-    body: "A free self-check shows where you're stuck. Then you get a free 30-day reset written from those answers.",
+    body: 'A free self-check shows where you are stuck. Then you start Break Free, the free 30-day reset. Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email.',
     cta: 'Take the free check',
     href: '/check',
     external: false,
@@ -86,7 +86,7 @@ const faqs = [
   },
   {
     q: 'Is this only about porn?',
-    a: 'No. The course is for any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit. The open lessons are the 30-day plan. The check writes a plan for the struggle you name.',
+    a: 'No. Break Free is for any addiction that is running the day. Porn, gaming, the phone, alcohol, substances, or another habit. The shape of the work is the same. Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email. The check writes a plan for the struggle you name.',
   },
   {
     q: 'What if I am under 18?',
@@ -150,7 +150,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
     <section class="au-band au-intro" id="intro">
       <div class="au-wrap au-intro-copy">
         <p class="au-lead">
-          <strong>How to quit an addiction</strong> is not a mood. It is a set of small moves you can repeat on a tired Tuesday. Porn, gaming, the phone, alcohol, substances, or another habit — the work is the same shape: break free, build discipline, and take initiative.
+          Quitting an addiction is not a mood. It is a set of small moves you can repeat on a tired Tuesday. Porn, gaming, the phone, alcohol, or another habit. The work is the same shape. Break free, build discipline, take initiative. Jesus meets you where you actually are.
         </p>
         <p class="au-note">The roots are Christian. The course is open to anyone. The writing stays plain. No hype. No fake before-and-after.</p>
         <div class="au-actions">
@@ -234,7 +234,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
         <p class="au-kicker au-reveal">Tracks</p>
         <h2 class="au-display au-reveal">Start with the fight in front of you</h2>
         <p class="au-section-lead au-reveal">
-          <a href="/tracks/break-free">Break Free</a> is open, seven lessons. The <a href="/tracks/30-day-reset">30-day reset</a> has days 1 to 7 on the page. The other tracks are marked coming soon.
+          <a href="/tracks/break-free">Break Free</a> is open today. It is the free 30-day reset. Days 1-7 live on the site. Days 8-30 arrive as a PDF by email. The other tracks are marked coming soon. So start with the fight in front of you.
         </p>
         <ul class="track-grid au-track-grid">
           {cards.map(({ track, lessonIds }) => (
