@@ -77,16 +77,18 @@ const breadcrumbs = {
       <span>{lesson.data.title}</span>
     </nav>
     <p class="course-kicker">{trackTitle}</p>
-    <h1 class="mt-2 max-w-[22ch] text-4xl font-bold tracking-tight">{lesson.data.title}</h1>
-    <p class="mt-3 text-sm text-stone-600 dark:text-stone-300">
+    <h1 class="lesson-title">{lesson.data.title}</h1>
+    <p class="lesson-meta">
       <span>{minutes} min read</span>
       <span aria-hidden="true"> · </span>
       <span>Lesson {index + 1} of {siblings.length}</span>
     </p>
-    <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">{lesson.data.description}</p>
+    <blockquote class="pull-quote">
+      <p>{lesson.data.description}</p>
+    </blockquote>
 
     <div
-      class="mt-6 max-w-[68ch] rounded-xl border border-stone-300/70 p-4 dark:border-white/15"
+      class="progress-card"
       data-lesson-progress
       data-track={lesson.data.track}
       data-lesson={lesson.id}
@@ -102,9 +104,9 @@ const breadcrumbs = {
       <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>Mark this lesson done</button>
     </div>
 
-    <section class="mt-8 max-w-[68ch]" aria-labelledby="key-points-heading">
-      <h2 id="key-points-heading" class="text-xl font-bold">Key points</h2>
-      <ul class="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
+    <section class="key-points" aria-labelledby="key-points-heading">
+      <h2 id="key-points-heading">Key points</h2>
+      <ul>
         {lesson.data.keyPoints.map((point) => <li>{point}</li>)}
       </ul>
     </section>
@@ -113,22 +115,23 @@ const breadcrumbs = {
       <Content />
     </div>
 
-    <section class="mt-10 max-w-[68ch] border-l-4 border-primary pl-4" aria-labelledby="scripture-heading">
-      <h2 id="scripture-heading" class="text-xl font-bold">Scripture</h2>
-      <blockquote class="mt-3 text-lg leading-relaxed">
+    <section class="scripture-block" aria-labelledby="scripture-heading">
+      <h2 id="scripture-heading">Scripture</h2>
+      <blockquote>
         <p>{lesson.data.scripture.text}</p>
-        <footer class="mt-2 text-sm font-semibold">{lesson.data.scripture.reference} (KJV)</footer>
+        <footer>{lesson.data.scripture.reference} (KJV)</footer>
       </blockquote>
     </section>
 
-    <section class="mt-8 max-w-[68ch]" aria-labelledby="action-heading">
-      <h2 id="action-heading" class="text-xl font-bold">Action step</h2>
-      <p class="mt-3 leading-relaxed">{lesson.data.action}</p>
+    <section class="action-callout" aria-labelledby="action-heading">
+      <p class="course-kicker">Do this today</p>
+      <h2 id="action-heading">Action step</h2>
+      <p>{lesson.data.action}</p>
     </section>
 
-    <section class="mt-8 max-w-[68ch]" aria-labelledby="reflection-heading">
-      <h2 id="reflection-heading" class="text-xl font-bold">Reflection</h2>
-      <p class="mt-3 leading-relaxed">{lesson.data.reflection}</p>
+    <section class="reflection-card" aria-labelledby="reflection-heading">
+      <h2 id="reflection-heading">Reflection</h2>
+      <p>{lesson.data.reflection}</p>
     </section>
 
     {

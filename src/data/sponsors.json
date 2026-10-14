@@ -2,7 +2,7 @@
   {
     "id": "placeholder-rails",
     "name": "Your brand here – Advertise",
-    "tagline": "A quiet card beside the lessons. $200 a month, month to month.",
+    "tagline": "A quiet card beside the lessons. {{price}} a month, month to month.",
     "cta": "Book a spot",
     "url": "/advertise"
   },

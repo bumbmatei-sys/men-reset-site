@@ -1,5 +1,6 @@
 ---
 import { sponsorUrl, sponsors, type SponsorPlacement } from '@utils/sponsors';
+import { themeConfig } from '~/theme.config';
 
 interface Props {
   placement: SponsorPlacement;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const { placement, class: className = '', label = 'Sponsor' } = Astro.props;
+const priceLabel = `$${themeConfig.advertise?.priceMonthly ?? 50}`;
 ---
 
 <div class:list={['sponsor-slot', className]} data-sponsor-slot={placement}>
@@ -27,7 +29,7 @@ const { placement, class: className = '', label = 'Sponsor' } = Astro.props;
           target={external ? '_blank' : undefined}
         >
           <span class="sponsor-name">{sponsor.name}</span>
-          <span class="sponsor-tagline">{sponsor.tagline}</span>
+          <span class="sponsor-tagline">{sponsor.tagline.replaceAll('{{price}}', priceLabel)}</span>
           <span class="sponsor-cta">{sponsor.cta}</span>
         </a>
       );

@@ -3,7 +3,7 @@ import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { themeConfig } from '~/theme.config';
 
-const price = themeConfig.advertise?.priceMonthly ?? 200;
+const price = themeConfig.advertise?.priceMonthly ?? 50;
 const bookingUrl = themeConfig.advertise?.bookingUrl ?? 'https://example.com/book-a-spot';
 const priceLabel = `$${price}`;
 const title = 'Advertise on the Course';

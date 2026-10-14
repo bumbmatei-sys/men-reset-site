@@ -21,6 +21,7 @@ const applyTheme = (theme: UserTheme) => {
   if (EC_THEME_LIGHT !== undefined && EC_THEME_DARK !== undefined) {
     root.setAttribute('data-theme', theme === 'dark' ? EC_THEME_DARK : EC_THEME_LIGHT);
   }
+  root.style.colorScheme = theme;
 };
 
 /**
@@ -42,13 +43,9 @@ function getSystemPreference(): UserTheme {
 }
 
 export const getUserTheme = (): UserTheme => {
-  // try to get the theme from local storage
-  let theme = get('user-theme') as UserTheme;
-  if (!theme) {
-    theme = getSystemPreference();
-    void set('user-theme', theme);
-  }
-  // adjust the html element (dark class + data-theme) before returning the theme
+  // A stored value is an explicit choice. With none, follow the system and do not write it.
+  const stored = get('user-theme') as UserTheme | null;
+  const theme = stored === 'dark' || stored === 'light' ? stored : getSystemPreference();
   applyTheme(theme);
   return theme;
 };

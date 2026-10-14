@@ -1,6 +1,6 @@
 # The Reset
 
-A free, static course for men in the United States who want to stop porn, quit gaming and the phone, leave alcohol, and build a disciplined life. Christian-rooted, plain, and open to anyone.
+A free, static course for men who want to stop porn, quit gaming and the phone, leave alcohol, and build a disciplined life. Christian-rooted, plain, and open to anyone.
 
 The public name is the `siteName` constant in `theme.config.ts`. Templates read `themeConfig.name`. Change that one string to rename the site.
 

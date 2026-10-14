@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { getLocaleUrl } from "@utils/i18n";
 import MainNav from "@components/layout/nav/main-nav.astro";
+import LightModeSwitch from "@components/layout/light-mode-switch.astro";
 import { themeConfig } from '~/theme.config';
 
 interface Props {
@@ -31,7 +32,7 @@ interface Props {
 const { locale, button, tabIndex = 0, shrink = true, isHome, ctaButton, github } = Astro.props as Props;
 ---
 
-<div data-shrink={`${shrink}`} class:list={['mx-6 flex h-20 items-center justify-between gap-10 lg:container lg:mx-auto', shrink && 'header-content-inner transition-[height] duration-300']}>
+<div data-shrink={`${shrink}`} class:list={['mx-4 flex h-20 items-center justify-between gap-3 sm:mx-6 lg:container lg:mx-auto lg:gap-10', shrink && 'header-content-inner transition-[height] duration-300']}>
   {button ? (
     <a href={button.href} class="btn-subtle rounded px-3 text-sm" tabindex={tabIndex}>
       <Icon name="heroicons:arrow-left" class="h-4 w-4" />
@@ -44,9 +45,10 @@ const { locale, button, tabIndex = 0, shrink = true, isHome, ctaButton, github }
       {themeConfig.name}
     </a>
   )}
-  <div class="flex flex-row-reverse items-center gap-8 lg:flex-row">
+  <div class="flex flex-row-reverse items-center gap-2 lg:flex-row lg:gap-8">
     <MainNav {locale} {tabIndex} />
-    <div class="flex items-center gap-5">
+    <div class="flex items-center gap-2 sm:gap-3">
+      {themeConfig.darkMode && <LightModeSwitch tabIndex={tabIndex} />}
       {ctaButton && (
         <a href={ctaButton.href} class="btn-primary hidden text-sm sm:block" tabindex={tabIndex}>
           {ctaButton.text}

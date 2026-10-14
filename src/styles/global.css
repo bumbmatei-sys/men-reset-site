@@ -3,6 +3,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -31,10 +36,17 @@
   }
 
   ::selection {
-    @apply bg-secondary text-text-dark;
+    background: var(--color-primary-light);
+    color: var(--color-primary-darker);
   }
   ::-moz-selection {
-    @apply bg-secondary text-text-dark;
+    background: var(--color-primary-light);
+    color: var(--color-primary-darker);
+  }
+
+  :where(.dark) a:hover,
+  :where(.dark) a:focus {
+    color: var(--color-primary-light);
   }
 
   a,

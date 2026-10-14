@@ -14,8 +14,8 @@ export const themeConfig: ThemeConfig = {
   // `import.meta.env?.` is guarded because this file is also imported from `ec.config.mjs`,
   // which Node loads as plain ESM where `import.meta.env` is not defined (only Vite injects it).
   site: siteUrl,
-  primaryColor: '#1f6b4a', // mind to also update the Tailwind config if you change this!
-  themeColor: '#123528',
+  primaryColor: '#c2410c', // mind to also update the Tailwind config if you change this!
+  themeColor: '#121820',
   generateWebmanifest: true,
   name: siteName,
   shortName: siteName,
@@ -122,7 +122,7 @@ export const themeConfig: ThemeConfig = {
   // LLM and coding assistant settings
   llms: {
     autoGeneration: true,
-    intro: 'A free, plain-language course for men in the United States who want to stop porn, quit gaming and the phone, leave alcohol, and build a disciplined life. Christian-rooted and open to anyone. Lessons are short, practical, and original.',
+    intro: 'A free, plain-language course for men who want to stop porn, quit gaming and the phone, leave alcohol, and build a disciplined life. Christian-rooted and open to anyone. Lessons are short, practical, and original.',
     excludePagesPattern: ['/404', '/404_dynamic'],
     includePages: [],
     addArticles: 'none',
@@ -131,7 +131,7 @@ export const themeConfig: ThemeConfig = {
   },
 
   advertise: {
-    priceMonthly: 200,
+    priceMonthly: 50,
     bookingUrl: 'https://example.com/book-a-spot',
   },
 };

@@ -1,10 +1,17 @@
 ---
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
+import TrackCard from '@components/course/TrackCard.astro';
 import { themeConfig } from '~/theme.config';
-import { getTracks, trackPath } from '@utils/course';
+import { getTracks, lessonsForTrack } from '@utils/course';
 
 const tracks = await getTracks();
+const cards = await Promise.all(
+  tracks.map(async (track) => ({
+    track,
+    lessonIds: track.data.status === 'available' ? (await lessonsForTrack(track.id)).map((lesson) => lesson.id) : [],
+  })),
+);
 const title = 'Courses to Quit Porn, Gaming, and the Phone';
 const description = 'Free course tracks for men: break free from porn, quit gaming and the phone, build a morning routine, and a 30-day reset. Most tracks are coming soon.';
 
@@ -29,17 +36,11 @@ const breadcrumbs = {
   <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">
     These tracks are the course. <strong>Break free from porn</strong> is the one you can take today. The others are written down so you can see the path, and marked coming soon until the lessons are ready.
   </p>
-  <ul class="mt-8 grid gap-4">
+  <ul class="track-grid mt-8">
     {
-      tracks.map((track) => (
+      cards.map(({ track, lessonIds }) => (
         <li>
-          <a class="track-card" href={trackPath(track.id)}>
-            <span class="flex flex-wrap items-center gap-2">
-              <span class="text-xl font-bold">{track.data.title}</span>
-              {track.data.status === 'coming-soon' ? <span class="coming-soon">Coming soon</span> : <span class="course-kicker">Open</span>}
-            </span>
-            <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">{track.data.description}</span>
-          </a>
+          <TrackCard {track} {lessonIds} />
         </li>
       ))
     }

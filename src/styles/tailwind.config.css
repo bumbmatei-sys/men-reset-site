@@ -20,25 +20,25 @@
   --color-white: #fff;
   --color-black: #000;
   /* Colors: Branding */
-  --color-primary: #1f6b4a;
-  --color-primary-light: #3d9a6e;
-  --color-primary-dark: #154832;
-  --color-primary-darker: #0c2e20;
+  --color-primary: #c2410c;
+  --color-primary-light: #f0b04a;
+  --color-primary-dark: #9a3412;
+  --color-primary-darker: #1b2838;
   --color-primary-contrast: #fff;
-  --color-primary-light-contrast: #04140c;
+  --color-primary-light-contrast: #1b2430;
   --color-primary-dark-contrast: #fff;
-  --color-secondary: #8a6a3b;
-  --color-secondary-light: #c4a574;
-  --color-secondary-dark: #123528;
-  --color-secondary-contrast: #fff;
-  --color-secondary-light-contrast: #000;
-  --color-secondary-dark-contrast: #fff;
+  --color-secondary: #e8a54b;
+  --color-secondary-light: #f6d7a8;
+  --color-secondary-dark: #121820;
+  --color-secondary-contrast: #1b2430;
+  --color-secondary-light-contrast: #1b2430;
+  --color-secondary-dark-contrast: #f4efe6;
   --color-brand: var(--color-primary);
   /* Colors: Utility */
-  --color-background: var(--color-stone-50);
-  --color-background-dark: var(--color-stone-900);
-  --color-text: var(--color-stone-900);
-  --color-text-dark: var(--color-stone-50);
+  --color-background: #f4efe6;
+  --color-background-dark: #121820;
+  --color-text: #1b2430;
+  --color-text-dark: #f4efe6;
 
   /* Custom Animations */
   --animate-bounce-slow: bounce-small 2s infinite;
