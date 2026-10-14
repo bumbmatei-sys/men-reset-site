@@ -1437,15 +1437,13 @@ footer[role='contentinfo'] a {
 
 .brand-mark {
   display: block;
-  height: 2.35rem;
   width: auto;
   flex: none;
 }
 
-@media (max-width: 420px) {
-  #header .brand-mark {
-    height: 1.85rem;
-  }
+#header .brand-mark {
+  height: 30px;
+  max-height: 30px;
 }
 
 footer[role='contentinfo'] .brand {
