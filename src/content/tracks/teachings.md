@@ -10,4 +10,4 @@ targetQuery: practical teachings for discipline
 
 This track is coming soon. When it opens, each lesson will stay short: one idea, one practice for the day, and a plain sentence on what to do with it.
 
-Until then, the open path is [Break Free](/tracks/break-free-from-porn). If you want the month shaped to where you are stuck, take the [free check](/check).
+Until then, the open path is [Break Free](/tracks/break-free). If you want the month shaped to where you are stuck, take the [free check](/check).

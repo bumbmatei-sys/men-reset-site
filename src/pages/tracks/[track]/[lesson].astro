@@ -5,7 +5,34 @@ import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
-import { getTracks, lessonsForTrack, lessonPath, trackPath, type LessonEntry } from '@utils/course';
+import PlanEmailForm from '@components/course/PlanEmailForm.astro';
+import { getTracks, isPlanPhase, lessonsForTrack, lessonPath, planPhaseLessons, trackPath, type LessonEntry } from '@utils/course';
+
+const PLAN_BUTTON = 'Send me the PDF';
+const PLAN_SUCCESS = 'It is on the way. Check your inbox. If it is not there in a few minutes, look in spam. See you in day 8.';
+
+const PHASE_COPY: Record<string, { heading: string; teaser?: string; closing?: string }> = {
+  'identity-and-a-clean-slate': {
+    heading: 'Get days 8 to 30 by email',
+    closing:
+      'That is day 7. Well done. Don\'t let what you are going through become your identity. Jesus already made you clean. These seven days were you living like it. Days 8 to 30 are in the full PDF. Put your email below and the rest of the month comes to you.',
+  },
+  'dismantling-triggers': {
+    heading: 'Get days 8 to 14 by email',
+    teaser:
+      'Days 8 to 14 are about the triggers. The urge always shows up somewhere, and something always comes before it. This phase looks at that pattern and closes the door early. The day content is in the full PDF.',
+  },
+  'activating-faith': {
+    heading: 'Get days 15 to 21 by email',
+    teaser:
+      'Faith is our positive response to what Jesus already did. It is not trying harder. Days 15 to 21 are about believing again and saying out loud what He gave you. The day content is in the full PDF.',
+  },
+  'lasting-freedom': {
+    heading: 'Get days 22 to 30 by email',
+    teaser:
+      'Days 22 to 30 are about the long run. What you do on the quiet days, not only the loud ones. Freedom is lived out week after week with Jesus. The day content is in the full PDF.',
+  },
+};
 
 export async function getStaticPaths() {
   const tracks = await getTracks();
@@ -19,6 +46,15 @@ export async function getStaticPaths() {
       });
     }
   }
+  const breakFree = tracks.find((track) => track.id === 'break-free');
+  if (breakFree) {
+    for (const lesson of await planPhaseLessons()) {
+      paths.push({
+        params: { track: breakFree.id, lesson: lesson.id },
+        props: { lesson, trackTitle: breakFree.data.title },
+      });
+    }
+  }
   return paths;
 }
 
@@ -28,28 +64,35 @@ interface Props {
 }
 
 const { lesson, trackTitle } = Astro.props as Props;
-const { Content } = await render(lesson);
-const siblings = await lessonsForTrack(lesson.data.track);
+const planPhase = isPlanPhase(lesson.id);
+const phaseCopy = PHASE_COPY[lesson.id];
+const locked = planPhase && !phaseCopy?.closing;
+const pageDescription = locked ? (phaseCopy?.teaser ?? lesson.data.description) : lesson.data.description;
+const { Content } = locked ? { Content: null } : await render(lesson);
+const phases = await planPhaseLessons();
+const siblings = planPhase ? phases : await lessonsForTrack(lesson.data.track);
 const index = siblings.findIndex((item) => item.id === lesson.id);
 const previous = index > 0 ? siblings[index - 1] : undefined;
 const next = index >= 0 && index < siblings.length - 1 ? siblings[index + 1] : undefined;
 const minutes = getReadingTime(lesson.body) ?? '6';
 const pageUrl = new URL(lessonPath(lesson.data.track, lesson.id), themeConfig.site).toString();
-const trackUrl = new URL(trackPath(lesson.data.track), themeConfig.site).toString();
+const trackUrl = new URL(trackPath(planPhase ? '30-day-reset' : lesson.data.track), themeConfig.site).toString();
 const lessonIds = siblings.map((item) => item.id).join(',');
+const crumbTrackHref = planPhase ? '/tracks/30-day-reset' : trackPath(lesson.data.track);
+const crumbTrackTitle = planPhase ? 'Free 30-Day Reset' : trackTitle;
 
 const articleLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: lesson.data.title,
-  description: lesson.data.description,
+  description: pageDescription,
   datePublished: lesson.data.publishDate.toISOString(),
   dateModified: (lesson.data.updateDate ?? lesson.data.publishDate).toISOString(),
   inLanguage: 'en-US',
   mainEntityOfPage: pageUrl,
   author: { '@type': 'Organization', name: themeConfig.name, url: themeConfig.site },
   publisher: { '@type': 'Organization', name: themeConfig.name, url: themeConfig.site },
-  isPartOf: { '@type': 'Course', name: trackTitle, url: trackUrl },
+  isPartOf: { '@type': 'Course', name: crumbTrackTitle, url: trackUrl },
 };
 
 const breadcrumbs = {
@@ -58,13 +101,13 @@ const breadcrumbs = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
     { '@type': 'ListItem', position: 2, name: 'Tracks', item: new URL('/tracks', themeConfig.site).toString() },
-    { '@type': 'ListItem', position: 3, name: trackTitle, item: trackUrl },
+    { '@type': 'ListItem', position: 3, name: crumbTrackTitle, item: trackUrl },
     { '@type': 'ListItem', position: 4, name: lesson.data.title, item: pageUrl },
   ],
 };
 ---
 
-<Layout title={lesson.data.title} description={lesson.data.description}>
+<Layout title={lesson.data.title} description={pageDescription}>
   <JsonLd data={articleLd} />
   <JsonLd data={breadcrumbs} />
   <article>
@@ -73,97 +116,123 @@ const breadcrumbs = {
       <span aria-hidden="true"> / </span>
       <a href="/tracks">Tracks</a>
       <span aria-hidden="true"> / </span>
-      <a href={trackPath(lesson.data.track)}>{trackTitle}</a>
+      <a href={crumbTrackHref}>{crumbTrackTitle}</a>
       <span aria-hidden="true"> / </span>
       <span>{lesson.data.title}</span>
     </nav>
-    <p class="course-kicker">{trackTitle}</p>
+    <p class="course-kicker">{crumbTrackTitle}</p>
     <h1 class="lesson-title">{lesson.data.title}</h1>
-    <p class="lesson-meta">
-      <span>{minutes} min read</span>
-      <span aria-hidden="true"> · </span>
-      <span>
-        Lesson {index + 1} of {siblings.length}
-      </span>
-    </p>
+    {locked ? null : (
+      <p class="lesson-meta">
+        <span>{minutes} min read</span>
+        {planPhase ? null : (
+          <>
+            <span aria-hidden="true"> · </span>
+            <span>
+              Lesson {index + 1} of {siblings.length}
+            </span>
+          </>
+        )}
+      </p>
+    )}
     <blockquote class="pull-quote">
       <p>{lesson.data.description}</p>
     </blockquote>
 
-    <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
-      <div class="mb-2 flex items-center justify-between gap-3 text-sm">
-        <span data-progress-label>Progress on this device</span>
-        <span data-progress-count>0 of {siblings.length} marked done</span>
+    {planPhase ? null : (
+      <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
+        <div class="mb-2 flex items-center justify-between gap-3 text-sm">
+          <span data-progress-label>Progress on this device</span>
+          <span data-progress-count>0 of {siblings.length} marked done</span>
+        </div>
+        <div class="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700" aria-hidden="true">
+          <div data-progress-bar class="bg-primary h-full w-0"></div>
+        </div>
+        <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>
+          Mark this lesson done
+        </button>
       </div>
-      <div class="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700" aria-hidden="true">
-        <div data-progress-bar class="bg-primary h-full w-0"></div>
+    )}
+
+    {planPhase ? null : (
+      <section class="completion-card" data-lesson-complete hidden>
+        <MarbleAccent kind="check" alt="A marble check mark" />
+        <div>
+          <p class="course-kicker" data-completion-kicker>Lesson complete</p>
+          <p data-completion-copy>This lesson is marked done on this device.</p>
+        </div>
+      </section>
+    )}
+
+    {locked ? null : (
+      <section class="key-points" aria-labelledby="key-points-heading">
+        <h2 id="key-points-heading">Key points</h2>
+        <ul>
+          {lesson.data.keyPoints.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {planPhase ? null : (
+      <ol class="habit-loop" aria-label="Habit loop">
+        <li>
+          <span class="habit-label">Trigger</span>
+          <p>The cue that starts it: a time, a feeling, or the device already in your hand.</p>
+        </li>
+        <li>
+          <span class="habit-label">Routine</span>
+          <p>The habit itself. Name it in one word before you try to change it.</p>
+        </li>
+        <li>
+          <span class="habit-label">Reward</span>
+          <p>What the habit was buying. Replace that, or the routine comes back.</p>
+        </li>
+      </ol>
+    )}
+
+    {Content ? (
+      <div class="lesson-prose mt-8">
+        <Content />
       </div>
-      <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>
-        Mark this lesson done
-      </button>
-    </div>
+    ) : null}
 
-    <section class="completion-card" data-lesson-complete hidden>
-      <MarbleAccent kind="check" alt="A marble check mark" />
-      <div>
-        <p class="course-kicker" data-completion-kicker>Lesson complete</p>
-        <p data-completion-copy>This lesson is marked done on this device.</p>
-      </div>
-    </section>
+    {locked ? null : (
+      <section class="scripture-block" aria-labelledby="scripture-heading">
+        <h2 id="scripture-heading">Scripture</h2>
+        <blockquote>
+          <p>{lesson.data.scripture.text}</p>
+          <footer>
+            {lesson.data.scripture.reference}{planPhase ? '' : ' (KJV)'}
+          </footer>
+        </blockquote>
+      </section>
+    )}
 
-    <section class="key-points" aria-labelledby="key-points-heading">
-      <h2 id="key-points-heading">Key points</h2>
-      <ul>
-        {lesson.data.keyPoints.map((point) => (
-          <li>{point}</li>
-        ))}
-      </ul>
-    </section>
+    {locked ? null : (
+      <aside class="takeaway">
+        <p class="course-kicker">Key takeaway</p>
+        <p>{lesson.data.keyPoints[0]}</p>
+      </aside>
+    )}
 
-    <ol class="habit-loop" aria-label="Habit loop">
-      <li>
-        <span class="habit-label">Trigger</span>
-        <p>The cue that starts it: a time, a feeling, or the device already in your hand.</p>
-      </li>
-      <li>
-        <span class="habit-label">Routine</span>
-        <p>The habit itself. Name it in one word before you try to change it.</p>
-      </li>
-      <li>
-        <span class="habit-label">Reward</span>
-        <p>What the habit was buying. Replace that, or the routine comes back.</p>
-      </li>
-    </ol>
+    {locked ? null : (
+      <section class="action-callout" aria-labelledby="action-heading">
+        <p class="course-kicker">Do this today</p>
+        <h2 id="action-heading">Action step</h2>
+        <p>{lesson.data.action}</p>
+      </section>
+    )}
 
-    <div class="lesson-prose mt-8">
-      <Content />
-    </div>
+    {locked ? null : (
+      <section class="reflection-card" aria-labelledby="reflection-heading">
+        <h2 id="reflection-heading">Reflection</h2>
+        <p>{lesson.data.reflection}</p>
+      </section>
+    )}
 
-    <section class="scripture-block" aria-labelledby="scripture-heading">
-      <h2 id="scripture-heading">Scripture</h2>
-      <blockquote>
-        <p>{lesson.data.scripture.text}</p>
-        <footer>{lesson.data.scripture.reference}</footer>
-      </blockquote>
-    </section>
-
-    <aside class="takeaway">
-      <p class="course-kicker">Key takeaway</p>
-      <p>{lesson.data.keyPoints[0]}</p>
-    </aside>
-
-    <section class="action-callout" aria-labelledby="action-heading">
-      <p class="course-kicker">Do this today</p>
-      <h2 id="action-heading">Action step</h2>
-      <p>{lesson.data.action}</p>
-    </section>
-
-    <section class="reflection-card" aria-labelledby="reflection-heading">
-      <h2 id="reflection-heading">Reflection</h2>
-      <p>{lesson.data.reflection}</p>
-    </section>
-
-    {lesson.data.inspiredBy ? (
+    {lesson.data.inspiredBy && !planPhase ? (
       <p class="mt-8 max-w-[68ch] text-sm leading-relaxed">
         Inspired by{' '}
         <a href={lesson.data.inspiredBy.url} rel="noopener">
@@ -173,14 +242,20 @@ const breadcrumbs = {
       </p>
     ) : null}
 
+    {phaseCopy ? (
+      <PlanEmailForm heading={phaseCopy.heading} buttonLabel={PLAN_BUTTON} successMessage={PLAN_SUCCESS}>
+        <p>{phaseCopy.closing ?? phaseCopy.teaser}</p>
+      </PlanEmailForm>
+    ) : null}
+
     <nav class="mt-10 flex flex-col gap-3 border-t border-stone-300/70 pt-6 sm:flex-row sm:justify-between" aria-label="Lesson">
       {previous ? (
         <a class="btn-secondary" href={lessonPath(lesson.data.track, previous.id)}>
           Previous: {previous.data.title}
         </a>
       ) : (
-        <a class="btn-secondary" href={trackPath(lesson.data.track)}>
-          Back to {trackTitle}
+        <a class="btn-secondary" href={crumbTrackHref}>
+          Back to {crumbTrackTitle}
         </a>
       )}
       {next ? (
@@ -197,6 +272,8 @@ const breadcrumbs = {
 </Layout>
 
 <script>
+  import { mountPlanGate } from '@scripts/plan-gate';
+
   const STORAGE_KEY = 'reset:lesson-progress';
 
   function readDone(): string[] {
@@ -258,5 +335,9 @@ const breadcrumbs = {
   }
 
   setupProgress();
-  document.addEventListener('astro:page-load', setupProgress);
+  mountPlanGate();
+  document.addEventListener('astro:page-load', () => {
+    setupProgress();
+    mountPlanGate();
+  });
 </script>

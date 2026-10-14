@@ -4,7 +4,7 @@ import JsonLd from '@components/seo/JsonLd.astro';
 import { themeConfig } from '~/theme.config';
 
 const title = 'See Where You’re Stuck';
-const description = 'A free self-check that recommends a track and a 30-day reset for the addiction you name. It runs in your browser and still shows the plan if saving fails.';
+const description = 'A free self-check that recommends a track and a 30-day reset for the addiction you name. It runs in your browser.';
 const pageUrl = new URL('/check', themeConfig.site).toString();
 
 const breadcrumbs = {
@@ -26,11 +26,11 @@ const breadcrumbs = {
   </nav>
   <p class="course-kicker">Free check</p>
   <h1 class="page-title">See where you’re stuck</h1>
-  <p class="page-lead">Answer nine short questions. You get a 30-day reset shaped by the addiction you want to quit, and one track to open next. Email is optional. Nothing is stored until you submit. The plan still shows if saving fails.</p>
+  <p class="page-lead">Answer nine short questions. You get a 30-day reset shaped by the addiction you want to quit, and one track to open next. Email is optional. Nothing is stored until you submit.</p>
   <div id="check-app" class="check-app" aria-live="polite"></div>
   <noscript>
     <p class="mt-6 max-w-[68ch]">
-      This check runs in the browser. Enable JavaScript to answer the questions. You can still read <a href="/tracks/30-day-reset">the 30-day reset</a>, <a href="/tracks">every track</a>, or <a href="/tracks/break-free-from-porn">break free from porn</a>.
+      This check runs in the browser. Enable JavaScript to answer the questions. You can still read <a href="/tracks/30-day-reset">the 30-day reset</a>, <a href="/tracks">every track</a>, or <a href="/tracks/break-free">break free from porn</a>.
     </p>
   </noscript>
 </Layout>

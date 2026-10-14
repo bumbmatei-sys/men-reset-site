@@ -40,7 +40,7 @@ Starting prices and the Dodo Payments checkout URLs are `sponsorTiers` in `theme
 
 ## Cloudflare D1
 
-Anonymous self-check rows live in D1. The schema is `migrations/0001_check_responses.sql`. The binding is `DB` in `wrangler.jsonc`. `database_id` in that file is the production database. It is not a secret.
+Anonymous self-check rows live in D1. The schema is `migrations/0001_check_responses.sql`. Plan-gate emails live in `migrations/0002_plan_emails.sql`. The binding is `DB` in `wrangler.jsonc`. `database_id` in that file is the production database. It is not a secret. Apply `0002` before the plan form can store an address.
 
 ```bash
 npx wrangler d1 create the-reset-check
@@ -61,7 +61,7 @@ npx wrangler d1 migrations apply the-reset-check --local
 npx wrangler pages dev dist
 ```
 
-No API token or ad pixel belongs in the repo. Email addresses are stored only when someone types one. If they do, `functions/email/send-plan.ts` posts the plan to Plunk (`POST /v1/send`) using the Pages secret `PLUNK_API_KEY`. Set that secret in Cloudflare. Do not commit it. The sender is `plan@calltoreset.site` and that domain has to be verified in Plunk before mail will deliver. If the key is missing or Plunk rejects the message, the result page says so and the plan stays on the page.
+No API token or ad pixel belongs in the repo. Email addresses are stored only when someone types one. If they do, `functions/email/send-plan.ts` posts the plan to Plunk (`POST /v1/send`) using the Pages secret `PLUNK_API_KEY`. Set that secret in Cloudflare. Do not commit it. The sender is `plan@calltoreset.site` and that domain has to be verified in Plunk before mail will deliver. If the key is missing or Plunk rejects the message, the page says so. Days 1 to 7 stay on the page. The PDF is not linked until the send succeeds. The check uses `/api/check`. The phase gate uses `/api/plan`.
 
 ## Cloudflare Pages
 

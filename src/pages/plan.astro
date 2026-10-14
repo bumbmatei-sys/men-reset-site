@@ -117,7 +117,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
       const list = document.createElement('ol');
       list.className = 'plan-days';
       for (const day of phase.days) {
-        if (!day || typeof day.day !== 'number' || typeof day.action !== 'string') continue;
+        if (!day || typeof day.day !== 'number' || typeof day.action !== 'string' || day.day > 7) continue;
         const item = document.createElement('li');
         const label = document.createElement('span');
         label.className = 'check-day';
@@ -125,6 +125,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
         item.append(label, document.createTextNode(` ${day.action}`));
         list.append(item);
       }
+      if (!list.childElementCount) continue;
       section.append(list);
       body.append(section);
     }

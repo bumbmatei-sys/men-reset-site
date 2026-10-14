@@ -7,24 +7,24 @@ import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
 
 const locale = themeConfig.i18n.defaultLocale;
-const tracks = await getTracks();
+const tracks = (await getTracks()).filter((track) => track.data.status === 'available');
 const cards = await Promise.all(
   tracks.map(async (track) => ({
     track,
-    lessonIds: track.data.status === 'available' ? (await lessonsForTrack(track.id)).map((lesson) => lesson.id) : [],
+    lessonIds: (await lessonsForTrack(track.id)).map((lesson) => lesson.id),
   })),
 );
 const live = cards.find((card) => card.track.data.status === 'available');
 const startHref = live && live.lessonIds[0] ? lessonPath(live.track.id, live.lessonIds[0]) : '/tracks';
 
 const title = 'How to Quit Addiction, Build Discipline, and Take Initiative';
-const description = 'A free course for breaking free from addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian roots. Open to anyone.';
+const description = 'Break Free is a free 30-day course for breaking free from any addiction. Days 1-7 open on the site. Days 8-30 arrive as a PDF by email. Grace first. Open to anyone.';
 
 const steps = [
   {
     n: '01',
     title: "See where you're going",
-    body: "A free self-check shows where you're stuck. Then you get a free 30-day reset written from those answers.",
+    body: 'A free self-check shows where you are stuck. Then you start Break Free, the free 30-day reset. Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email.',
     cta: 'Take the free check',
     href: '/check',
     external: false,
@@ -34,9 +34,9 @@ const steps = [
   {
     n: '02',
     title: 'Build your future, step by step',
-    body: 'Practical teachings for a life aimed at something. The track is being written. Nothing here is a borrowed quote.',
-    cta: 'Open the teachings track',
-    href: '/tracks/teachings',
+    body: 'Practical teachings for a life aimed at something. Build with a vision. Take initiative. Know your next steps.',
+    cta: 'Start Break Free',
+    href: '/tracks/break-free',
     external: false,
     image: '/aureum/process-02.webp',
     alt: 'Marble figure with a compass and a scroll',
@@ -44,7 +44,7 @@ const steps = [
   {
     n: '03',
     title: "You're not alone",
-    body: 'A community on Whop for people doing this work. Join if you want a room, not a feed.',
+    body: 'A community for people doing this work. Join the room, not a feed.',
     cta: 'Join the community',
     href: themeConfig.communityUrl,
     external: true,
@@ -54,7 +54,7 @@ const steps = [
   {
     n: '04',
     title: 'Grow further',
-    body: 'Paid coaching and the grow-further room are not open yet. Apply soon lands in the community until that page is published.',
+    body: 'Private coaching for growing further into your God-given mission. Private community + 1:1 sessions.',
     cta: 'Apply soon',
     href: themeConfig.communityUrl,
     external: true,
@@ -64,9 +64,9 @@ const steps = [
 ];
 
 const stats = [
-  { figure: '30 days', label: 'A free reset written from your answers' },
+  { figure: '30 days', label: 'A free reset program to set you up for a new life.' },
   { figure: '9 questions', label: 'A free check you can finish in one sitting' },
-  { figure: '4 steps', label: 'The path from the check to the next room' },
+  { figure: '4 steps', label: 'The path from the check into the first steps of your new life.' },
 ];
 
 const notes = [
@@ -86,11 +86,11 @@ const faqs = [
   },
   {
     q: 'Is this only about porn?',
-    a: 'No. The course is for any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit. The open lessons are the 30-day plan. The check writes a plan for the struggle you name.',
+    a: 'No. Break Free is for any addiction that is running the day. Porn, gaming, the phone, alcohol, substances, or another habit. The shape of the work is the same. Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email. The check writes a plan for the struggle you name.',
   },
   {
     q: 'What if I am under 18?',
-    a: 'The free check stops. This course is for adults. It will not give sexual how-to, and it does not save an under-18 answer.',
+    a: 'The course is for everyone. Young people fight addictions too. The content stays clean, with no sexual detail.',
   },
   {
     q: 'Where are the sponsor prices?',
@@ -150,9 +150,9 @@ const marquee = [...marqueeWords, ...marqueeWords];
     <section class="au-band au-intro" id="intro">
       <div class="au-wrap au-intro-copy">
         <p class="au-lead">
-          <strong>How to quit an addiction</strong> is not a mood. It is a set of small moves you can repeat on a tired Tuesday. Porn, gaming, the phone, alcohol, substances, or another habit — the work is the same shape: break free, build discipline, and take initiative.
+          Quitting an addiction is not optional. We have to, in order to live a fulfilled life. Porn, gaming, the phone, alcohol, substances, or another habit, the process is the same: break free, build discipline, and take initiative.
         </p>
-        <p class="au-note">The roots are Christian. The course is open to anyone. The writing stays plain. No hype. No fake before-and-after.</p>
+        <p class="au-note">The foundations are Christian. The course is open to anyone. Honest content. No hype. No fake before-and-after.</p>
         <div class="au-actions">
           <a class="au-pill" href="/check">
             Take the free check
@@ -170,13 +170,13 @@ const marquee = [...marqueeWords, ...marqueeWords];
     <section class="au-band au-problem" id="problem">
       <div class="au-wrap">
         <p class="au-kicker au-reveal">The trap</p>
-        <h2 class="au-display au-reveal">The night takes the day</h2>
-        <p class="au-section-lead au-reveal">The tab, the match, the scroll, the drink. It starts as a break. It ends as the evening, and the morning is already spent.</p>
+        <h2 class="au-display au-reveal">The night's actions overtake the daily living.</h2>
+        <p class="au-section-lead au-reveal">That website, the match, the scroll, the drink or the substance. All have a trigger point. And the loop repeats over and over and over again.</p>
         <article class="au-problem-card au-reveal">
           <img src="/aureum/problem.webp" alt="Marble figures bent over scrolls" width="720" height="526" />
           <div>
             <h3>You already know the pattern</h3>
-            <p>Hiding it did not make it smaller. This course names the fight in plain words, then gives you one move for today. Not a new identity slogan. A next step.</p>
+            <p>Hiding it doesn't make it smaller. The mission of this platform is to name the problem in plain words, then guide you into your freedom. Not a new identity slogan or hype. A next practical step into a better life.</p>
           </div>
         </article>
       </div>
@@ -234,7 +234,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
         <p class="au-kicker au-reveal">Tracks</p>
         <h2 class="au-display au-reveal">Start with the fight in front of you</h2>
         <p class="au-section-lead au-reveal">
-          One track is open today. The rest are marked coming soon, including a free <a href="/tracks/30-day-reset">30-day reset</a>. Start with the fight in front of you. The open course is <a href="/tracks/break-free-from-porn">Break Free</a>, the 30-day plan.
+          It doesn't matter what your starting point is. The goal is freedom and advancement into a fulfilled life. Start with the fight in front of you. More content is being added weekly.
         </p>
         <ul class="track-grid au-track-grid">
           {cards.map(({ track, lessonIds }) => (
@@ -250,19 +250,18 @@ const marquee = [...marqueeWords, ...marqueeWords];
       <div class="au-wrap au-lesson-grid">
         <div>
           <p class="au-kicker">A lesson</p>
-          <h2 class="au-display">How a lesson works</h2>
+          <h2 class="au-display">How the courses work</h2>
         </div>
         <div>
-          <p>Each open lesson is one phase of the 30 days. You get the point up front, then the days in order.</p>
+          <p>Each course is a short set of lessons, one point at a time.</p>
           <ul>
-            <li>Key points you can remember without a notebook.</li>
-            <li>One scripture, then the days of that phase.</li>
-            <li>An action step and a reflection question.</li>
-            <li>Your place in the track, saved on this device only.</li>
+            <li>One point per lesson, short enough to remember without a notebook.</li>
+            <li>One scripture, explained in plain words.</li>
+            <li>One action step and one reflection question.</li>
+            <li>Your progress is saved on this device only.</li>
           </ul>
           <p>
-            The open course is for any habit. Start with <a href="/tracks/break-free-from-porn/identity-and-a-clean-slate">identity and a clean slate</a>. The <a href="/check">free check</a> writes a plan from your answers. The <a href="/sponsor">sponsor</a> page is for brands, not for the
-            work itself.
+            The 30-day PDF plan is separate. You get it by email from the free <a href="/check">check</a>. The <a href="/sponsor">sponsor</a> page is for brands, not for the work itself.
           </p>
         </div>
       </div>

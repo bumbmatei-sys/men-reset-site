@@ -12,4 +12,4 @@ This track is coming soon. It will be short practices for waking, making the bed
 
 You can borrow the shape now. Pick a wake time you can hit four days this week. Put the phone in another room before you sleep. When the alarm goes off, stand up and do one chore before you sit. That is the whole prototype.
 
-If nights are the leak, start the open course: [identity and a clean slate](/tracks/break-free-from-porn/identity-and-a-clean-slate). A morning routine on top of a wrecked night will not hold.
+If nights are the leak, start the open course: [how to stop watching porn](/tracks/break-free/how-to-stop-watching-porn). A morning routine on top of a wrecked night will not hold.

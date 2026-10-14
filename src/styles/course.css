@@ -1300,6 +1300,18 @@ body.nav-open .sponsor-mobile {
   width: 5.75rem;
 }
 
+@media (min-width: 960px) {
+  .au-process-head {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .au-process-head .marble-flow {
+    width: 3rem;
+    order: -1;
+  }
+}
+
 .completion-card:not([hidden]) {
   display: flex;
   align-items: center;
@@ -1326,6 +1338,30 @@ body.nav-open .sponsor-mobile {
 .completion-card p:last-child {
   margin: 0.3rem 0 0;
   line-height: 1.5;
+}
+
+.plan-gate {
+  max-width: 68ch;
+  margin-top: 1.5rem;
+}
+
+.plan-gate-form h2,
+.plan-gate-form h3 {
+  margin: 0.2rem 0 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  line-height: 1.15;
+}
+
+.plan-gate-form .input-primary {
+  max-width: 28rem;
+  margin-top: 0.4rem;
+}
+
+.completion-card a {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: #fffce0;
+  text-decoration: underline;
 }
 
 @media (max-width: 959px) {

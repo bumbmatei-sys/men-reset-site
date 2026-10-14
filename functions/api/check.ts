@@ -1,5 +1,5 @@
 import { parseSubmission, type CheckAnswers, type StoredCheck } from '../../src/data/check-quiz';
-import { sendPlanEmail } from '../email/send-plan';
+import { PLAN_PATH, sendPlanEmail } from '../email/send-plan';
 
 type CheckEnv = {
   DB?: D1Database;
@@ -8,7 +8,7 @@ type CheckEnv = {
 
 type EmailStatus = 'sent' | 'failed' | 'none';
 
-function json(body: { ok: boolean; error?: string; emailStatus: EmailStatus }, status: number): Response {
+function json(body: { ok: boolean; error?: string; emailStatus: EmailStatus; planUrl?: string }, status: number): Response {
   return Response.json(body, {
     status,
     headers: { 'cache-control': 'no-store' },
@@ -31,7 +31,7 @@ function answersFromRow(row: StoredCheck): CheckAnswers {
 
 /**
  * Stores one anonymous self-check and, when an email was given, sends the plan.
- * The browser still shows the plan if this fails.
+ * Days 1 to 7 still render in the browser if this fails. The PDF path is not returned.
  * Nothing here reads the IP address, user agent, or cookies.
  */
 export const onRequestPost: PagesFunction<CheckEnv> = async ({ request, env }) => {
@@ -57,7 +57,7 @@ export const onRequestPost: PagesFunction<CheckEnv> = async ({ request, env }) =
   }
 
   const parsed = parseSubmission(payload);
-  if (!parsed.ok) return json({ ok: false, error: parsed.error, emailStatus: 'none' }, parsed.error === 'adults-only' ? 403 : 400);
+  if (!parsed.ok) return json({ ok: false, error: parsed.error, emailStatus: 'none' }, 400);
 
   const row = parsed.row;
   let emailStatus: EmailStatus = 'none';
@@ -65,8 +65,9 @@ export const onRequestPost: PagesFunction<CheckEnv> = async ({ request, env }) =
     const sent = await sendPlanEmail(env.PLUNK_API_KEY, row.email, answersFromRow(row));
     emailStatus = sent ? 'sent' : 'failed';
   }
+  const planUrl = emailStatus === 'sent' ? PLAN_PATH : undefined;
 
-  if (!env.DB) return json({ ok: false, error: 'unavailable', emailStatus }, 503);
+  if (!env.DB) return json({ ok: false, error: 'unavailable', emailStatus, planUrl }, 503);
 
   try {
     await env.DB.prepare(
@@ -78,8 +79,8 @@ export const onRequestPost: PagesFunction<CheckEnv> = async ({ request, env }) =
       .run();
   } catch (error) {
     console.error('check_insert_failed', error instanceof Error ? error.name : 'unknown');
-    return json({ ok: false, error: 'unavailable', emailStatus }, 503);
+    return json({ ok: false, error: 'unavailable', emailStatus, planUrl }, 503);
   }
 
-  return json({ ok: true, emailStatus }, 201);
+  return json({ ok: true, emailStatus, planUrl }, 201);
 };

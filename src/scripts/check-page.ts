@@ -1,6 +1,7 @@
 import { CONSENT_LINE, buildPlan, normalizeEmail, questions, type CheckAnswers, type Plan, type QuestionId } from '../data/check-quiz';
+import { readPlanUrl, requestPlan } from './plan-gate';
 
-type Phase = 'question' | 'consent' | 'result' | 'minor';
+type Phase = 'question' | 'consent' | 'result';
 type EmailStatus = 'sent' | 'failed' | 'none' | 'saving';
 
 type State = {
@@ -12,7 +13,9 @@ type State = {
   formError: string;
   emailStatus: EmailStatus;
   saved: boolean;
+  settled: boolean;
   plan: Plan | null;
+  planUrl: string | null;
   moveFocus: boolean;
 };
 
@@ -115,22 +118,28 @@ function questionMarkup(state: State): string {
   return `${progressMarkup(state.step + 1, questions.length, `Question ${state.step + 1} of ${questions.length}`)}<form class="check-card" data-question="${question.id}"><h2 class="check-prompt" id="check-prompt-label" tabindex="-1">${escapeHtml(question.prompt)}</h2>${hint}<div class="check-options" role="radiogroup" aria-labelledby="check-prompt-label">${options}</div>${error}<div class="check-actions">${state.step > 0 ? '<button type="button" class="btn-secondary" data-action="back">Back</button>' : ''}<button type="submit" class="btn-primary">Continue</button>${skip}</div></form>`;
 }
 
+function isMinor(state: State): boolean {
+  return state.answers.age === 'under-18';
+}
+
 function consentMarkup(state: State): string {
   const error = state.emailError ? `<p class="check-error" role="alert">${escapeHtml(state.emailError)}</p>` : '';
-  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p><label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. If you add one, we send the plan to that address. The plan shows on the next screen either way.</p>${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
+  const email = isMinor(state)
+    ? ''
+    : `<label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. If you add one, we send the plan to that address.</p>`;
+  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p>${email}${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
 }
 
 function trackMarkup(track: Plan['track'], label: string): string {
-  const soon = track.status === 'coming-soon' ? '<span class="coming-soon">Coming soon</span>' : '';
+  if (track.status !== 'available') return '';
   const start = track.startHref ? `<a class="btn-primary" href="${track.startHref}">Start the first lesson</a>` : `<a class="btn-primary" href="${track.href}">Open the track</a>`;
-  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3>${soon}<p>${track.status === 'available' ? 'This track is open. The lessons are short and practical.' : 'This track is marked coming soon. Use the thirty days on this page until it opens.'}</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
+  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3><p>This track is open. The lessons are short and practical.</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
 }
 
 function saveLine(state: State): string {
-  if (state.emailStatus === 'saving') return state.email ? 'Sending your plan…' : '';
+  if (state.emailStatus === 'saving') return 'Sending your plan…';
   if (state.emailStatus === 'sent') return 'Your plan is on its way to your inbox';
-  if (state.email && state.emailStatus === 'failed') return 'We could not email the plan. It is on this page, and you can download it.';
-  if (!state.saved) return 'We could not save this check. Your plan is still here.';
+  if (state.settled && !state.saved && state.emailStatus !== 'failed') return 'We could not save this check. Days 1 to 7 are still here.';
   return '';
 }
 
@@ -144,15 +153,31 @@ function marbleImg(kind: 'check' | 'flow' | 'scroll', alt: string): string {
   return `<img class="marble-accent marble-${kind}" src="${src}" alt="${alt}" width="${width}" height="${height}" loading="lazy" decoding="async" />`;
 }
 
-function phasesMarkup(plan: Plan): string {
-  const head = `<div class="marble-row">${marbleImg('flow', 'Marble diagram of four connected steps')}<div><p class="check-kicker">Four phases</p><p>One action a day. Finish the phase, then go on.</p></div></div>`;
+function phaseTeaser(): string {
+  return '[Copy coming.]';
+}
+
+function phasesMarkup(plan: Plan, unlocked: boolean): string {
+  const head = `<div class="marble-row">${marbleImg('flow', 'Marble diagram of four connected steps')}<div><p class="check-kicker">Four phases</p><p>[Copy coming.]</p></div></div>`;
   const sections = plan.phases
-    .map((phase) => {
-      const days = phase.days.map((day) => `<li><span class="check-day">Day ${day.day}</span> ${escapeHtml(day.action)}</li>`).join('');
-      return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><ol class="check-days">${days}</ol></section>`;
+    .map((phase, index) => {
+      if (index === 0 || unlocked) {
+        const days = phase.days.map((day) => `<li><span class="check-day">Day ${day.day}</span> ${escapeHtml(day.action)}</li>`).join('');
+        return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><ol class="check-days">${days}</ol></section>`;
+      }
+      return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><p>${escapeHtml(phaseTeaser())}</p></section>`;
     })
     .join('');
   return head + sections;
+}
+
+function gateMarkup(state: State): string {
+  if (isMinor(state)) return '';
+  if (state.emailStatus === 'sent' && state.planUrl) return '';
+  if (state.emailStatus === 'saving') return '';
+  const message = state.emailError || (state.emailStatus === 'failed' ? 'We could not email the plan. Try again.' : '');
+  const error = message ? `<p class="check-error" role="alert">${escapeHtml(message)}</p>` : '';
+  return `<form class="plan-gate-form" data-plan-gate data-plan-source="result"><h3>Get the full 30-day plan by email</h3><label class="check-email-label" for="plan-email">Email</label><input id="plan-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" required />${error}<div class="check-actions"><button type="submit" class="btn-primary">Send the plan</button></div></form>`;
 }
 
 function resultMarkup(state: State): string {
@@ -161,20 +186,18 @@ function resultMarkup(state: State): string {
   const caution = plan.caution ? `<p class="check-caution">${escapeHtml(plan.caution)}</p>` : '';
   const faith = plan.faithNote ? `<section class="check-phase"><h3>If faith is part of it</h3><p>${escapeHtml(plan.faithNote)}</p></section>` : '';
   const companion = plan.companion ? trackMarkup(plan.companion, 'Also on the site') : '';
+  const unlocked = isMinor(state) || (state.emailStatus === 'sent' && Boolean(state.planUrl));
   const line = saveLine(state);
   const save = line ? `<p class="check-save" data-save="${state.emailStatus}">${escapeHtml(line)}</p>` : '';
-  const earned = state.email ? marbleImg('check', 'A marble check mark') : '';
-  const download = `${marbleImg('scroll', 'A marble scroll')}<button type="button" class="btn-primary" data-action="download">Download your 30-day plan (PDF)</button><button type="button" class="btn-secondary" data-action="restart">Start over</button>`;
-  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset track</h3><p>The daily pages will live on the free 30-day reset. They are marked coming soon. The thirty days above are the plan until those pages open.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions marble-download">${download}</div></div>`;
-}
-
-function minorMarkup(): string {
-  return `<div class="check-card"><h2 class="check-prompt" tabindex="-1">This check is for adults</h2><p>Call to Reset is for adults 18 and older. We stopped here, and we did not save an answer.</p><p>If you are in trouble, talk to a parent or another trusted adult. If you are in immediate danger, contact emergency services. If you are in a mental-health crisis, call or text 988.</p><div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><a class="btn-primary" href="/">Back to the homepage</a></div></div>`;
+  const earned = unlocked ? marbleImg('check', 'A marble check mark') : '';
+  const download = !isMinor(state) && unlocked && state.planUrl
+    ? `<a class="btn-primary" href="${escapeHtml(state.planUrl)}">Download the 30-day plan (PDF)</a>`
+    : '';
+  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan, unlocked)}${gateMarkup(state)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset</h3><p>Break Free is the free 30-day reset. Days 1-7 are open on the site. Days 8-30 arrive in your inbox as a PDF. The thirty days above are the plan. Basically, start there and let grace do the rest.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions">${download}<button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
 }
 
 function render(root: HTMLElement, state: State) {
-  if (state.phase === 'minor') root.innerHTML = minorMarkup();
-  else if (state.phase === 'consent') root.innerHTML = consentMarkup(state);
+  if (state.phase === 'consent') root.innerHTML = consentMarkup(state);
   else if (state.phase === 'result' && state.plan) root.innerHTML = resultMarkup(state);
   else root.innerHTML = questionMarkup(state);
 
@@ -190,7 +213,7 @@ function readEmailStatus(payload: unknown): 'sent' | 'failed' | 'none' | null {
   return null;
 }
 
-async function saveAnswers(answers: CheckAnswers, email: string | null): Promise<{ saved: boolean; emailStatus: 'sent' | 'failed' | 'none' }> {
+async function saveAnswers(answers: CheckAnswers, email: string | null): Promise<{ saved: boolean; emailStatus: 'sent' | 'failed' | 'none'; planUrl: string | null }> {
   const fallback = email ? 'failed' : 'none';
   try {
     const response = await fetch('/api/check', {
@@ -205,11 +228,13 @@ async function saveAnswers(answers: CheckAnswers, email: string | null): Promise
     } catch {
       payload = null;
     }
-    const emailStatus = readEmailStatus(payload) ?? fallback;
+    const reported = readEmailStatus(payload) ?? fallback;
+    const planUrl = reported === 'sent' ? readPlanUrl(payload) : null;
+    const emailStatus = reported === 'sent' && !planUrl ? 'failed' : reported;
     const saved = response.ok && typeof payload === 'object' && payload !== null && 'ok' in payload && payload.ok === true;
-    return { saved, emailStatus };
+    return { saved, emailStatus, planUrl };
   } catch {
-    return { saved: false, emailStatus: fallback };
+    return { saved: false, emailStatus: fallback, planUrl: null };
   }
 }
 
@@ -226,7 +251,9 @@ export function mountCheckQuiz(root: HTMLElement) {
     formError: '',
     emailStatus: 'none',
     saved: false,
+    settled: false,
     plan: null,
+    planUrl: null,
     moveFocus: false,
   };
 
@@ -237,10 +264,36 @@ export function mountCheckQuiz(root: HTMLElement) {
     if (!(form instanceof HTMLFormElement) || !root.contains(form)) return;
     event.preventDefault();
 
+    if (form.hasAttribute('data-plan-gate')) {
+      if (isMinor(state)) return;
+      const emailInput = form.querySelector<HTMLInputElement>('#plan-email');
+      const email = normalizeEmail(emailInput?.value ?? '');
+      if (email === 'invalid' || email === null) {
+        state.email = emailInput?.value ?? '';
+        state.emailError = 'Enter a valid email.';
+        state.moveFocus = false;
+        paint();
+        return;
+      }
+      state.email = email;
+      state.emailError = '';
+      state.emailStatus = 'saving';
+      state.planUrl = null;
+      state.moveFocus = false;
+      paint();
+      void requestPlan(email, 'result').then((result) => {
+        state.emailStatus = result.emailStatus;
+        state.planUrl = result.planUrl;
+        state.moveFocus = false;
+        paint();
+      });
+      return;
+    }
+
     if (form.dataset.consent === '') {
       const emailInput = form.querySelector<HTMLInputElement>('#check-email');
-      const raw = emailInput?.value ?? '';
-      const email = normalizeEmail(raw);
+      const raw = isMinor(state) ? '' : (emailInput?.value ?? '');
+      const email = isMinor(state) ? null : normalizeEmail(raw);
       if (email === 'invalid') {
         state.email = raw;
         state.emailError = 'Enter a valid email, or leave the field blank.';
@@ -256,13 +309,17 @@ export function mountCheckQuiz(root: HTMLElement) {
       state.phase = 'result';
       state.emailStatus = email ? 'saving' : 'none';
       state.saved = false;
+      state.settled = false;
+      state.planUrl = null;
       state.moveFocus = true;
       paint();
       const plan = state.plan;
       void saveAnswers(state.answers, email).then((save) => {
         if (state.plan !== plan) return;
         state.saved = save.saved;
+        state.settled = true;
         state.emailStatus = save.emailStatus;
+        state.planUrl = save.planUrl;
         state.moveFocus = false;
         paint();
       });
@@ -281,11 +338,6 @@ export function mountCheckQuiz(root: HTMLElement) {
     state.formError = '';
     writeAnswer(state.answers, question.id, selected);
     state.moveFocus = true;
-    if (question.id === 'age' && selected === 'under-18') {
-      state.phase = 'minor';
-      paint();
-      return;
-    }
     if (state.step >= questions.length - 1) {
       if (state.answers.faith == null) state.answers.faith = 'skipped';
       state.phase = 'consent';
@@ -302,12 +354,6 @@ export function mountCheckQuiz(root: HTMLElement) {
     if (!action) return;
     state.moveFocus = true;
     if (action === 'back') {
-      if (state.phase === 'minor') {
-        state.phase = 'question';
-        state.step = 0;
-        paint();
-        return;
-      }
       if (state.phase === 'consent') {
         state.phase = 'question';
         state.step = questions.length - 1;
@@ -327,16 +373,6 @@ export function mountCheckQuiz(root: HTMLElement) {
       paint();
       return;
     }
-    if (action === 'download') {
-      const link = document.createElement('a');
-      link.href = '/plan/call-to-reset-30-day-plan.pdf';
-      link.download = 'call-to-reset-30-day-plan.pdf';
-      link.rel = 'noopener';
-      document.body.append(link);
-      link.click();
-      link.remove();
-      return;
-    }
     if (action === 'restart') {
       state.phase = 'question';
       state.step = 0;
@@ -346,7 +382,9 @@ export function mountCheckQuiz(root: HTMLElement) {
       state.formError = '';
       state.emailStatus = 'none';
       state.saved = false;
+      state.settled = false;
       state.plan = null;
+      state.planUrl = null;
       paint();
     }
   });

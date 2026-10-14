@@ -10,6 +10,6 @@ targetQuery: how to quit gaming addiction
 
 This track is coming soon. The lessons will cover a hard stop time, what you do with your hands in the first ten minutes after you close the game, and a phone setup that does not rely on willpower at 11 p.m.
 
-Until those lessons are up, use the open track if porn is also in the mix: [break free from porn](/tracks/break-free-from-porn). The urge plan there transfers. Name the cue, leave the room, and do one physical thing before you negotiate with yourself.
+Until those lessons are up, use the open track: [Break Free](/tracks/break-free). Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email. The urge plan there transfers. Name the cue, leave the room, and do one physical thing before you negotiate with yourself.
 
 If the phone is the whole problem, start with one rule you can keep for seven days: no phone in the bedroom, and the charger lives in the kitchen. That is not the full course. It is a stake in the ground while this track is written.

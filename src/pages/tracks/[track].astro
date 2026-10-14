@@ -23,6 +23,7 @@ interface Props {
 const { track } = Astro.props as Props;
 const { Content } = await render(track);
 const lessons = await lessonsForTrack(track.id);
+const mapPage = track.id === '30-day-reset';
 const comingSoon = track.data.status === 'coming-soon';
 const pageUrl = new URL(trackPath(track.id), themeConfig.site).toString();
 
@@ -89,7 +90,7 @@ const breadcrumbs = {
   )}
   <aside class="takeaway">
     <p class="course-kicker">Key takeaway</p>
-    <p>Read what is open. Do the one step you can finish today. If the lessons are still coming, the free check writes the thirty days now.</p>
+    <p>Read what is open. Do the one step you can finish today. The free check writes a plan from your answers.</p>
   </aside>
   <ol class="habit-loop" aria-label="Habit loop">
     <li>
@@ -126,9 +127,9 @@ const breadcrumbs = {
         ))}
       </ol>
     </section>
-  ) : (
+  ) : mapPage ? null : (
     <p class="mt-8 max-w-[68ch] leading-relaxed">
-      Lessons for this track are not published yet. You can take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free-from-porn">break free from porn</a>.
+      This track has no lessons yet. Take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free">Break Free</a>.
     </p>
   )}
 

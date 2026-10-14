@@ -1,7 +1,7 @@
 ---
 title: Identity and a Clean Slate
 description: Days 1 to 7 of the 30-day plan. You start from the bath Jesus already gave you, then you wash the dust off your feet.
-track: break-free-from-porn
+track: break-free
 order: 1
 targetQuery: identity and a clean slate
 publishDate: 2026-10-14
@@ -117,4 +117,3 @@ Your victory does not come from striving. It comes from resting in the finished 
 
 **Prayer.** Lord, I stop my self-effort today. I receive Your rest deep into my soul. Amen.
 
-Next is [dismantling triggers](/tracks/break-free-from-porn/dismantling-triggers), days 8 to 14. The full month is also in the [30-day plan (PDF)](/plan/call-to-reset-30-day-plan.pdf).

@@ -1,32 +1,28 @@
 ---
 title: Free 30-Day Reset
-description: A free 30-day reset for any addiction — porn, gaming, the phone, alcohol, substances, or another habit. The daily pages are coming soon. The check writes the month now.
+description: A free 30-day reset for any habit. Porn, gaming, the phone, alcohol, substances, or another loop. The free check writes the thirty days for you. Days 1 to 7 are open on the site. The rest comes by email as the full PDF.
 order: 6
-status: coming-soon
+status: available
 targetQuery: 30 day reset
 ---
 
-Want the month shaped to where you are stuck? Take the [free check](/check). It recommends a track and writes a 30-day plan on the page. If you add an email, we try to send that plan. The plan still shows if saving or sending fails.
+Want the month shaped to where you are stuck? Take the [free check](/check). It reads your answers and writes a 30-day plan right there on the page.
 
 ## What the month is
 
-A **30-day reset** works when the days are boring on purpose. The point is not a dramatic vow. The point is thirty mornings where the same few moves happen even if you feel flat.
+A 30-day reset is not a dramatic vow. It is thirty mornings where the same few moves happen, even when you feel flat.
 
-The habit can be porn, a game, the phone, a drink, a substance, or another loop. The check names which one. This page is the map until the daily lessons open.
+Don't let what you are going through become your identity. The habit can be porn, a game, the phone, a drink, a substance, or another loop. The check names which one.
+
+Basically, God is not telling us what we need to receive. He is telling us what we already have. Jesus did the work. So the month is about standing in it.
+
+Man or woman, any habit, you can take this.
 
 ## The four phases
 
-- Days 1 to 7: [identity and a clean slate](/tracks/break-free-from-porn/identity-and-a-clean-slate).
-- Days 8 to 14: [dismantling triggers](/tracks/break-free-from-porn/dismantling-triggers).
-- Days 15 to 21: [activating faith](/tracks/break-free-from-porn/activating-faith).
-- Days 22 to 30: [lasting freedom](/tracks/break-free-from-porn/lasting-freedom).
+- Days 1 to 7: [Identity and a clean slate](/tracks/break-free/identity-and-a-clean-slate). Open on the site.
+- Days 8 to 14: [Dismantling triggers](/tracks/break-free/dismantling-triggers). Full PDF by email.
+- Days 15 to 21: [Activating faith](/tracks/break-free/activating-faith). Full PDF by email.
+- Days 22 to 30: [Lasting freedom](/tracks/break-free/lasting-freedom). Full PDF by email.
 
-## Start before the calendar opens
-
-You do not have to wait for the daily pages.
-
-1. Take the [free check](/check).
-2. Do day 1 from the plan it writes.
-3. If porn is the open fight, start [break free from porn](/tracks/break-free-from-porn) and keep a check mark on paper.
-
-When this path opens, you will already have days behind you.
+Days 1 to 7 you can read here now. When day 7 is done, put your email down and the rest of the month comes as the full PDF.
