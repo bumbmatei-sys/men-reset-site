@@ -5,6 +5,7 @@ import SponsorSlot from '@components/sponsors/SponsorSlot.astro';
 import { sponsorsForPlacement } from '@utils/sponsors';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
+import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -77,6 +78,15 @@ const breadcrumbs = {
   <p class="course-kicker">{comingSoon ? 'Coming soon' : 'Course'}</p>
   <h1 class="page-title">{track.data.title}</h1>
   <p class="page-lead">{track.data.description}</p>
+  {lessons.length > 0 && (
+    <section class="completion-card" data-track-complete data-lesson-ids={lessons.map((lesson) => lesson.id).join(',')} hidden>
+      <MarbleAccent kind="check" alt="A marble check mark" />
+      <div>
+        <p class="course-kicker">Course complete</p>
+        <p>Every lesson in this track is marked done on this device.</p>
+      </div>
+    </section>
+  )}
   <aside class="takeaway">
     <p class="course-kicker">Key takeaway</p>
     <p>Read what is open. Do the one step you can finish today. If the lessons are still coming, the free check writes the thirty days now.</p>
@@ -128,3 +138,28 @@ const breadcrumbs = {
     </div>
   )}
 </Layout>
+
+<script>
+  const STORAGE_KEY = 'reset:lesson-progress';
+
+  function readDone(): string[] {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const parsed = raw ? (JSON.parse(raw) as { done?: unknown }) : {};
+      return Array.isArray(parsed.done) ? parsed.done.filter((id): id is string => typeof id === 'string') : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function paintTrackComplete() {
+    const root = document.querySelector<HTMLElement>('[data-track-complete]');
+    if (!root) return;
+    const ids = (root.dataset.lessonIds || '').split(',').filter(Boolean);
+    const done = readDone();
+    root.hidden = ids.length === 0 || !ids.every((id) => done.includes(id));
+  }
+
+  paintTrackComplete();
+  document.addEventListener('astro:page-load', paintTrackComplete);
+</script>

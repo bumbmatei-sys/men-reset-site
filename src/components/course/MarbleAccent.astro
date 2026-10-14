@@ -1,0 +1,20 @@
+---
+type Kind = 'check' | 'spheres' | 'flow' | 'scroll';
+
+interface Props {
+  kind: Kind;
+  alt: string;
+}
+
+const files = {
+  check: { src: '/images/marble/marble-check.webp', width: 512, height: 500 },
+  spheres: { src: '/images/marble/marble-spheres.webp', width: 512, height: 408 },
+  flow: { src: '/images/marble/marble-flow-diagram.webp', width: 854, height: 1024 },
+  scroll: { src: '/images/marble/marble-scroll.webp', width: 512, height: 383 },
+} as const;
+
+const { kind, alt } = Astro.props;
+const file = files[kind];
+---
+
+<img class:list={['marble-accent', `marble-${kind}`]} src={file.src} alt={alt} width={file.width} height={file.height} loading="lazy" decoding="async" />

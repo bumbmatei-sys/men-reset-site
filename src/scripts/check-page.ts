@@ -134,13 +134,25 @@ function saveLine(state: State): string {
   return '';
 }
 
+function marbleImg(kind: 'check' | 'flow' | 'scroll', alt: string): string {
+  const files = {
+    check: ['/images/marble/marble-check.webp', 512, 500],
+    flow: ['/images/marble/marble-flow-diagram.webp', 854, 1024],
+    scroll: ['/images/marble/marble-scroll.webp', 512, 383],
+  } as const;
+  const [src, width, height] = files[kind];
+  return `<img class="marble-accent marble-${kind}" src="${src}" alt="${alt}" width="${width}" height="${height}" loading="lazy" decoding="async" />`;
+}
+
 function phasesMarkup(plan: Plan): string {
-  return plan.phases
+  const head = `<div class="marble-row">${marbleImg('flow', 'Marble diagram of four connected steps')}<div><p class="check-kicker">Four phases</p><p>One action a day. Finish the phase, then go on.</p></div></div>`;
+  const sections = plan.phases
     .map((phase) => {
       const days = phase.days.map((day) => `<li><span class="check-day">Day ${day.day}</span> ${escapeHtml(day.action)}</li>`).join('');
       return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><ol class="check-days">${days}</ol></section>`;
     })
     .join('');
+  return head + sections;
 }
 
 function resultMarkup(state: State): string {
@@ -151,7 +163,9 @@ function resultMarkup(state: State): string {
   const companion = plan.companion ? trackMarkup(plan.companion, 'Also on the site') : '';
   const line = saveLine(state);
   const save = line ? `<p class="check-save" data-save="${state.emailStatus}">${escapeHtml(line)}</p>` : '';
-  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card"><h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset track</h3><p>The daily pages will live on the free 30-day reset. They are marked coming soon. The thirty days above are the plan until those pages open.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions"><button type="button" class="btn-primary" data-action="download">Download your 30-day plan (PDF)</button><button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
+  const earned = state.email ? marbleImg('check', 'A marble check mark') : '';
+  const download = `${marbleImg('scroll', 'A marble scroll')}<button type="button" class="btn-primary" data-action="download">Download your 30-day plan (PDF)</button><button type="button" class="btn-secondary" data-action="restart">Start over</button>`;
+  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset track</h3><p>The daily pages will live on the free 30-day reset. They are marked coming soon. The thirty days above are the plan until those pages open.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions marble-download">${download}</div></div>`;
 }
 
 function minorMarkup(): string {

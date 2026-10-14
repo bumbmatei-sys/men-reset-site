@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/default.astro';
+import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { themeConfig } from '~/theme.config';
 
 const title = 'Your 30-day plan';
@@ -16,7 +17,10 @@ const description = 'A printable copy of the 30-day reset from the free check. O
       Open this page from your result, after the free check, to print the plan that was written for you. If you asked for the email, the full plan is in that message.
     </p>
     <div data-plan-body hidden></div>
-    <div class="plan-actions check-actions">
+    <div class="plan-actions check-actions marble-download">
+      <span data-plan-scroll hidden>
+        <MarbleAccent kind="scroll" alt="A marble scroll" />
+      </span>
       <button type="button" class="btn-primary" data-plan-print hidden>
         Print or save as PDF
       </button>
@@ -63,11 +67,13 @@ const description = 'A printable copy of the 30-day reset from the free check. O
     const empty = document.querySelector<HTMLElement>('[data-plan-empty]');
     const body = document.querySelector<HTMLElement>('[data-plan-body]');
     const print = document.querySelector<HTMLButtonElement>('[data-plan-print]');
+    const scroll = document.querySelector<HTMLElement>('[data-plan-scroll]');
     if (!title || !empty || !body || !print) return;
     title.textContent = plan.title;
     document.title = `${plan.title} | Call to Reset`;
     empty.hidden = true;
     body.hidden = false;
+    if (scroll) scroll.hidden = false;
     body.replaceChildren();
     body.append(text('p', 'plan-lede', plan.lede));
     if (plan.caution) body.append(text('p', 'check-caution', plan.caution));
@@ -86,6 +92,22 @@ const description = 'A printable copy of the 30-day reset from the free check. O
       loop.append(li);
     }
     body.append(loop);
+
+    const phasesHead = document.createElement('div');
+    phasesHead.className = 'marble-row';
+    const flow = document.createElement('img');
+    flow.className = 'marble-accent marble-flow';
+    flow.src = '/images/marble/marble-flow-diagram.webp';
+    flow.alt = 'Marble diagram of four connected steps';
+    flow.width = 854;
+    flow.height = 1024;
+    flow.loading = 'lazy';
+    flow.decoding = 'async';
+    const phasesCopy = document.createElement('div');
+    phasesCopy.append(text('p', 'check-kicker', 'Four phases'));
+    phasesCopy.append(text('p', '', 'One action a day. Finish the phase, then go on.'));
+    phasesHead.append(flow, phasesCopy);
+    body.append(phasesHead);
 
     for (const phase of plan.phases) {
       if (!phase || typeof phase.title !== 'string' || !Array.isArray(phase.days)) continue;

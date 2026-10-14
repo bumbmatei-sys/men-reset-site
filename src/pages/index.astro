@@ -2,6 +2,7 @@
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
+import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
 
@@ -183,9 +184,16 @@ const marquee = [...marqueeWords, ...marqueeWords];
 
     <section class="au-band au-impact" id="impact">
       <div class="au-wrap">
-        <p class="au-kicker au-reveal">Impact</p>
-        <h2 class="au-display au-reveal">What you can start today</h2>
-        <p class="au-section-lead au-reveal">These are the pieces of the course, not results we are claiming. No invented counts.</p>
+        <div class="au-impact-head">
+          <div>
+            <p class="au-kicker au-reveal">Impact</p>
+            <h2 class="au-display au-reveal">What you can start today</h2>
+            <p class="au-section-lead au-reveal">These are the pieces of the course, not results we are claiming. No invented counts.</p>
+          </div>
+          <div class="au-reveal">
+            <MarbleAccent kind="spheres" alt="Three marble spheres" />
+          </div>
+        </div>
         <ul class="au-stats">
           {stats.map((stat) => (
             <li class="au-stat au-reveal">
@@ -199,7 +207,10 @@ const marquee = [...marqueeWords, ...marqueeWords];
 
     <section class="au-process" id="process" data-process>
       <div class="au-process-pin">
-        <p class="au-kicker au-process-label">The path</p>
+        <div class="au-process-label au-process-head">
+          <p class="au-kicker">The path</p>
+          <MarbleAccent kind="flow" alt="Marble diagram of four connected steps" />
+        </div>
         <ol class="au-steps">
           {steps.map((step, index) => (
             <li class:list={['au-step', index === 0 && 'is-active']} data-step>
