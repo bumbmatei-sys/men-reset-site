@@ -313,7 +313,7 @@ body:has(.au-home) #header-placeholder {
 
 @media (max-width: 1279px) {
   body:has(.sponsor-mobile) .au-hero {
-    padding-top: calc(var(--sponsor-bar-height, 8.75rem) + 6.75rem);
+    padding-top: calc(var(--sponsor-bar-height, 2.6rem) + 6.75rem);
   }
 }
 
@@ -477,7 +477,7 @@ body:has(.au-home) #header-placeholder {
   }
 
   body:has(.sponsor-mobile) .au-hero {
-    padding-top: calc(var(--sponsor-bar-height, 8.75rem) + 6.75rem);
+    padding-top: calc(var(--sponsor-bar-height, 2.6rem) + 6.75rem);
   }
 
   .au-hero-copy {
@@ -1469,12 +1469,12 @@ footer[role='contentinfo'] .brand {
 }
 
 footer[role='contentinfo'] .brand-mark {
-  height: 5.25rem;
+  height: 3.25rem;
 }
 
 @media (min-width: 768px) {
   footer[role='contentinfo'] .brand-mark {
-    height: 6.75rem;
+    height: 4.15rem;
   }
 }
 

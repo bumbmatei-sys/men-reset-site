@@ -16,3 +16,8 @@ const showRail = sponsorsForPlacement('rail-left').length > 0;
     <SponsorSlot placement="rail-left" label="Sponsor" />
   </aside>
 )}
+{showRail && (
+  <aside class="sponsor-rail sponsor-rail-right" aria-label="Sponsors">
+    <SponsorSlot placement="rail-right" label="Sponsor" />
+  </aside>
+)}

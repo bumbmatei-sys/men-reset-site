@@ -16,14 +16,11 @@ scripture:
   text: "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."
 action: Write one sentence that starts with "I am a person who..." and names a behavior you will do today before 8 p.m. Do that behavior, then tell one person or write it down that you did it.
 reflection: If someone only watched your evenings for a week, what would they say you are practicing?
-inspiredBy:
-  label: James Clear on identity-based habits
-  url: https://jamesclear.com/identity-based-habits
 ---
 
 **Stopping a habit** fails when it is only a ban. You remove the thing and leave a hole. The hole fills with the same night, because nothing else has a claim on it.
 
-This lesson is about who you practice being on a normal Wednesday. The idea is simple. You become what you repeatedly do, so aim the repetition on purpose. A longer essay on that idea is linked at the bottom as a source. The steps here are written for this fight.
+This lesson is about who you practice being on a normal Wednesday. The idea is simple. You become what you repeatedly do, so aim the repetition on purpose. The steps here are written for this fight.
 
 And first, grace. Jesus is not waiting for you to have a clean week before He is close to you. He is close now. That is exactly why we can look at this honestly and not fall apart.
 

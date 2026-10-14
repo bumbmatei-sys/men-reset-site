@@ -136,7 +136,7 @@ export const themeConfig: ThemeConfig = {
   growUrl: 'https://whop.com/matei-bumb/call-to-reset-grow-further/',
 
   sponsorPortalUrl: 'https://customer.dodopayments.com/login/bus_0NktsnPIFswdL6K7awd7R',
-  sponsorHelpEmail: 'plan@calltoreset.site',
+  sponsorHelpEmail: 'support@calltoreset.site',
 
   sponsorTiers: [
     {

@@ -151,12 +151,6 @@ const lessons = defineCollection({
     }),
     action: z.string(),
     reflection: z.string(),
-    inspiredBy: z
-      .object({
-        label: z.string(),
-        url: httpUrl,
-      })
-      .optional(),
   }),
 });
 

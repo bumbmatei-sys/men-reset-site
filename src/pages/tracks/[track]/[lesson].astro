@@ -6,7 +6,6 @@ import { themeConfig } from '~/theme.config';
 import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import PlanEmailForm from '@components/course/PlanEmailForm.astro';
-import JoinNewsletter from '@components/promo/JoinNewsletter.astro';
 import { getTracks, isPlanPhase, lessonsForTrack, lessonPath, planPhaseLessons, trackPath, type LessonEntry } from '@utils/course';
 
 const PLAN_BUTTON = 'Send me the PDF';
@@ -236,16 +235,6 @@ const breadcrumbs = {
       </section>
     )}
 
-    {lesson.data.inspiredBy && !planPhase ? (
-      <p class="mt-8 max-w-[68ch] text-sm leading-relaxed">
-        Inspired by{' '}
-        <a href={lesson.data.inspiredBy.url} rel="noopener">
-          {lesson.data.inspiredBy.label}
-        </a>
-        . The lesson itself is original writing.
-      </p>
-    ) : null}
-
     {phaseCopy ? (
       <PlanEmailForm heading={phaseCopy.heading} buttonLabel={PLAN_BUTTON} successMessage={PLAN_SUCCESS}>
         <p>{phaseCopy.closing ?? phaseCopy.teaser}</p>
@@ -272,7 +261,6 @@ const breadcrumbs = {
         </a>
       )}
     </nav>
-    <JoinNewsletter />
   </article>
 </Layout>
 

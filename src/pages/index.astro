@@ -3,7 +3,6 @@ import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
-import JoinNewsletter from '@components/promo/JoinNewsletter.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
 
@@ -322,12 +321,6 @@ const marquee = [...marqueeWords, ...marqueeWords];
             <img src="/aureum/bust.webp" alt="" width="1000" height="1274" />
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="au-band" aria-label="Newsletter">
-      <div class="au-wrap">
-        <JoinNewsletter />
       </div>
     </section>
   </div>

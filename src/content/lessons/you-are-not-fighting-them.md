@@ -16,9 +16,6 @@ scripture:
   text: Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood.
 action: "This week, pick one person close to you and fight for them in prayer every day. Ask Jesus to protect their heart and mind. Don't fight with them. Pray for them."
 reflection: The person who annoys you this week is not your enemy.
-inspiredBy:
-  label: Stand Firm & Act Like Men, Wk 3
-  url: https://www.youtube.com/watch?v=0Z8Z-J7dcv0
 ---
 
 Let me be honest with you about something.
