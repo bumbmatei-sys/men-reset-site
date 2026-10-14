@@ -32,7 +32,7 @@ interface Props {
 const { locale, button, tabIndex = 0, shrink = true, isHome, ctaButton, github } = Astro.props as Props;
 ---
 
-<div data-shrink={`${shrink}`} class:list={['mx-4 flex h-20 items-center justify-between gap-3 sm:mx-6 lg:container lg:mx-auto lg:gap-10', shrink && 'header-content-inner transition-[height] duration-300']}>
+<div data-shrink={`${shrink}`} class:list={['container flex h-20 items-center justify-between gap-3 lg:gap-10', shrink && 'header-content-inner transition-[height] duration-300']}>
   {button ? (
     <a href={button.href} class="btn-subtle rounded px-3 text-sm" tabindex={tabIndex}>
       <Icon name="heroicons:arrow-left" class="h-4 w-4" />
