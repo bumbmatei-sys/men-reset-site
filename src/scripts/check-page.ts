@@ -120,13 +120,13 @@ function questionMarkup(state: State): string {
 
 function consentMarkup(state: State): string {
   const error = state.emailError ? `<p class="check-error" role="alert">${escapeHtml(state.emailError)}</p>` : '';
-  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p><label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. Days 1 to 7 show next. Add an email if you want the full 30 days.</p>${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
+  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p><label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. If you add one, we send the plan to that address.</p>${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
 }
 
 function trackMarkup(track: Plan['track'], label: string): string {
   const soon = track.status === 'coming-soon' ? '<span class="coming-soon">Coming soon</span>' : '';
   const start = track.startHref ? `<a class="btn-primary" href="${track.startHref}">Start the first lesson</a>` : `<a class="btn-primary" href="${track.href}">Open the track</a>`;
-  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3>${soon}<p>${track.status === 'available' ? 'This track is open. The lessons are short and practical.' : 'This track is still being written. Days 1 to 7 are on this page. The rest of the month comes by email.'}</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
+  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3>${soon}<p>${track.status === 'available' ? 'This track is open. The lessons are short and practical.' : '[Copy coming.]'}</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
 }
 
 function saveLine(state: State): string {
@@ -146,22 +146,19 @@ function marbleImg(kind: 'check' | 'flow' | 'scroll', alt: string): string {
   return `<img class="marble-accent marble-${kind}" src="${src}" alt="${alt}" width="${width}" height="${height}" loading="lazy" decoding="async" />`;
 }
 
-function phaseTeaser(index: number): string {
-  if (index === 1) return 'Basically, this week you meet the hour the habit shows up. Jesus does not change His mind about you while you do it. The days themselves come by email.';
-  if (index === 2) return 'So this week you build a day you can repeat. Grace first. Then one plain practice. The list is in the plan.';
-  if (index === 3) return 'The last stretch is one person who knows, and the day after day 30. You do not have to invent it. Ask for the plan.';
-  return 'Ask for the plan and this phase comes by email.';
+function phaseTeaser(): string {
+  return '[Copy coming.]';
 }
 
 function phasesMarkup(plan: Plan, unlocked: boolean): string {
-  const head = `<div class="marble-row">${marbleImg('flow', 'Marble diagram of four connected steps')}<div><p class="check-kicker">Four phases</p><p>Days 1 to 7 are here. The rest of the month comes by email.</p></div></div>`;
+  const head = `<div class="marble-row">${marbleImg('flow', 'Marble diagram of four connected steps')}<div><p class="check-kicker">Four phases</p><p>[Copy coming.]</p></div></div>`;
   const sections = plan.phases
     .map((phase, index) => {
       if (index === 0 || unlocked) {
         const days = phase.days.map((day) => `<li><span class="check-day">Day ${day.day}</span> ${escapeHtml(day.action)}</li>`).join('');
         return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><ol class="check-days">${days}</ol></section>`;
       }
-      return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><p>${escapeHtml(phaseTeaser(index))}</p></section>`;
+      return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><p>${escapeHtml(phaseTeaser())}</p></section>`;
     })
     .join('');
   return head + sections;
@@ -188,7 +185,7 @@ function resultMarkup(state: State): string {
   const download = unlocked && state.planUrl
     ? `<a class="btn-primary" href="${escapeHtml(state.planUrl)}">Download the 30-day plan (PDF)</a>`
     : '';
-  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan, unlocked)}${gateMarkup(state)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset</h3><p>Days 1 to 7 are on the site. Days 8 to 30 come by email.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions">${download}<button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
+  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan, unlocked)}${gateMarkup(state)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset</h3><p>[Copy coming.]</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions">${download}<button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
 }
 
 function minorMarkup(): string {

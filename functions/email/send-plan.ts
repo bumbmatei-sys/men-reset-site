@@ -48,7 +48,7 @@ ${faith}
 
 function linkHtml(): string {
   return wrap(`<h1 style="margin: 0 0 0.8rem; font-size: 1.7rem; line-height: 1.15;">Your 30-day plan</h1>
-<p style="margin: 0 0 1rem;">Basically, Jesus already bathed you. So the month is foot washing, closed doors, and a life pointed at what He gave you to build. The habit can be porn, the phone, a game, a drink, a substance, or another loop.</p>`);
+<p style="margin: 0 0 1rem;">Here is the 30-day plan.</p>`);
 }
 
 async function postPlunk(apiKey: string | undefined, email: string, body: string): Promise<boolean> {

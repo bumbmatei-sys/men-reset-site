@@ -1,7 +1,7 @@
 ---
 title: Lasting Freedom
 description: Days 22 to 30. You obey quickly, run toward the mission Jesus gave you, and walk out as His child, not as someone managing a habit.
-track: break-free-from-porn
+track: break-free
 order: 4
 targetQuery: lasting freedom in jesus
 publishDate: 2026-10-14
@@ -20,7 +20,7 @@ reflection: If Jesus asked what you are running toward, what would you say besid
 
 Freedom is already yours in Jesus. You are not squeezing it out of the last nine days. Basically, these days are obedience with a direction. So you stop living as someone who only runs from a habit. You run toward the work He gave you. The habit can still be porn, a screen, a drink, a substance, or the old hideout. The name on you is child.
 
-Days 1 to 21 are in [the clean slate](/tracks/break-free-from-porn/identity-and-a-clean-slate), [the triggers](/tracks/break-free-from-porn/dismantling-triggers), and [faith](/tracks/break-free-from-porn/activating-faith).
+Days 1 to 21 are in [the clean slate](/tracks/break-free/identity-and-a-clean-slate), [the triggers](/tracks/break-free/dismantling-triggers), and [faith](/tracks/break-free/activating-faith).
 
 <ol class="phase-days">
   <li><span>22</span> Obey now</li>
@@ -141,5 +141,3 @@ Freedom is your identity and your inheritance in Jesus.
 **Do this.** Read back your Day 1, Day 14, and Day 23 declarations. Close these 30 days by taking communion and thanking God for your full bath.
 
 **Prayer.** Lord Jesus, I close these 30 days in Your presence. I do not walk out as an addict trying to stay clean. I walk out as Your forgiven, loved child. Freedom is already mine. Amen.
-
-The same month is the plan you asked for by email.

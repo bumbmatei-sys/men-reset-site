@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+import PlanEmailForm from '@components/course/PlanEmailForm.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type LessonEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -28,7 +29,8 @@ interface Props {
 }
 
 const { lesson, trackTitle } = Astro.props as Props;
-const gated = lesson.data.order > 1 && lesson.data.track === 'break-free-from-porn';
+const gated = lesson.data.order > 1 && lesson.data.track === 'break-free';
+const phaseOne = lesson.data.order === 1 && lesson.data.track === 'break-free';
 const rendered = gated ? null : await render(lesson);
 const Content = rendered?.Content;
 const phaseLabel = lesson.data.order === 2 ? 'Days 8 to 14' : lesson.data.order === 3 ? 'Days 15 to 21' : 'Days 22 to 30';
@@ -98,26 +100,9 @@ const breadcrumbs = {
     </blockquote>
 
     {gated ? (
-      <section class="plan-gate" data-plan-panel>
-        <p>Basically, Jesus already bathed you. So this phase does not start by earning that again. The days themselves come by email.</p>
-        <form class="plan-gate-form" data-plan-gate onsubmit="event.preventDefault()">
-          <h2>Get the full 30-day plan by email</h2>
-          <label class="check-email-label" for="plan-email">Email</label>
-          <input id="plan-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
-          <p class="check-error" data-plan-error hidden></p>
-          <div class="check-actions">
-            <button type="submit" class="btn-primary">Send the plan</button>
-          </div>
-        </form>
-        <section class="completion-card" data-plan-success hidden>
-          <MarbleAccent kind="check" alt="A marble check mark" />
-          <div>
-            <p class="course-kicker">Sent</p>
-            <p>Your plan is on its way to your inbox</p>
-            <a data-plan-link>Download the 30-day plan (PDF)</a>
-          </div>
-        </section>
-      </section>
+      <PlanEmailForm>
+        <p>[Copy coming.]</p>
+      </PlanEmailForm>
     ) : (
       <>
         <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
@@ -190,6 +175,14 @@ const breadcrumbs = {
           <h2 id="reflection-heading">Reflection</h2>
           <p>{lesson.data.reflection}</p>
         </section>
+
+        {phaseOne ? (
+          <PlanEmailForm>
+            <div class="plan-close-copy">
+              <p>[Copy coming.]</p>
+            </div>
+          </PlanEmailForm>
+        ) : null}
       </>
     )}
 

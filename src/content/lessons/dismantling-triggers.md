@@ -1,7 +1,7 @@
 ---
 title: Dismantling Triggers
 description: Days 8 to 14. You tell the truth about tiredness, shut the digital doors, and choose the end of the story over five seconds of impulse.
-track: break-free-from-porn
+track: break-free
 order: 2
 targetQuery: dismantling triggers
 publishDate: 2026-10-14
@@ -20,7 +20,7 @@ reflection: Which door are you still leaving open because closing it would cost 
 
 You already belong to Jesus. That does not change when a trigger shows up. Basically, the next seven days are about the doors you keep leaving open. The habit can be a screen, a drink, a substance, a game, or the old loop you already know. So you do not fight it by grit. You shut the door, and you stay near God.
 
-Start with [the clean slate](/tracks/break-free-from-porn/identity-and-a-clean-slate) if you skipped days 1 to 7.
+Start with [the clean slate](/tracks/break-free/identity-and-a-clean-slate) if you skipped days 1 to 7.
 
 <ol class="phase-days">
   <li><span>8</span> Tell the truth about tired</li>
@@ -120,4 +120,4 @@ Akarit is the end. The outcome. Peace. You live with that end in view. You choos
 
 **Prayer.** Father, keep eternity in front of my eyes today. Let my final destination shape every private choice. Amen.
 
-Next is [activating faith](/tracks/break-free-from-porn/activating-faith), days 15 to 21.
+Next is [activating faith](/tracks/break-free/activating-faith), days 15 to 21.

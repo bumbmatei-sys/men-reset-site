@@ -165,11 +165,11 @@ export type ParseResult = { ok: true; row: StoredCheck } | { ok: false; error: '
 
 const TRACKS: TrackLink[] = [
   {
-    id: 'break-free-from-porn',
+    id: 'break-free',
     title: 'Break Free',
-    href: '/tracks/break-free-from-porn',
+    href: '/tracks/break-free',
     status: 'available',
-    startHref: '/tracks/break-free-from-porn/identity-and-a-clean-slate',
+    startHref: '/tracks/break-free/identity-and-a-clean-slate',
   },
   {
     id: 'quit-gaming-and-the-phone',
@@ -256,7 +256,7 @@ function paceOf(duration: string, frequency: string): 'steady' | 'burst' | 'stan
 function recommendedTrackId(answers: CheckAnswers): string {
   switch (answers.struggle) {
     case 'porn':
-      return 'break-free-from-porn';
+      return 'break-free';
     case 'gaming':
     case 'phone':
       return 'quit-gaming-and-the-phone';

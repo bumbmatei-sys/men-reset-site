@@ -12,9 +12,9 @@ Basically, you do not earn a clean record this month. Jesus already bathed you. 
 
 Take the phases in order.
 
-1. [Identity and a clean slate](/tracks/break-free-from-porn/identity-and-a-clean-slate). Days 1 to 7.
-2. [Dismantling triggers](/tracks/break-free-from-porn/dismantling-triggers). Days 8 to 14.
-3. [Activating faith](/tracks/break-free-from-porn/activating-faith). Days 15 to 21.
-4. [Lasting freedom](/tracks/break-free-from-porn/lasting-freedom). Days 22 to 30.
+1. [Identity and a clean slate](/tracks/break-free/identity-and-a-clean-slate). Days 1 to 7.
+2. [Dismantling triggers](/tracks/break-free/dismantling-triggers). Days 8 to 14.
+3. [Activating faith](/tracks/break-free/activating-faith). Days 15 to 21.
+4. [Lasting freedom](/tracks/break-free/lasting-freedom). Days 22 to 30.
 
-Days 1 to 7 are on this site. Days 8 to 30 come by email, after you ask. The free check still writes days 1 to 7 from your answers.
+[Copy coming.]

@@ -1,7 +1,7 @@
 ---
 title: Activating Faith
 description: Days 15 to 21. You mix the Word with faith, take thoughts captive, and use praise when the urge shows up.
-track: break-free-from-porn
+track: break-free
 order: 3
 targetQuery: activating faith
 publishDate: 2026-10-14
@@ -20,7 +20,7 @@ reflection: Where are you still arguing with a promise Jesus already made?
 
 The bath still holds. Jesus has not changed His mind about you. Basically, a verse you only store does not feed you. So these seven days you mix the Word with faith. You say it. You agree with it. You stand in it when the habit knocks. That habit might be porn, a scroll, a drink, a substance, or the thought you keep renting. The answer is the same. Agree with Jesus.
 
-If you have not shut the easy doors, go back to [dismantling triggers](/tracks/break-free-from-porn/dismantling-triggers).
+If you have not shut the easy doors, go back to [dismantling triggers](/tracks/break-free/dismantling-triggers).
 
 <ol class="phase-days">
   <li><span>15</span> Mix it with faith</li>
@@ -116,4 +116,4 @@ Praise is your weapon. The enemy cannot work on your desires where God is being 
 
 **Prayer.** Lord, I lift Your name high today. Let praise in my mouth break every attack against who I am in You. Amen.
 
-Next is [lasting freedom](/tracks/break-free-from-porn/lasting-freedom), days 22 to 30.
+Next is [lasting freedom](/tracks/break-free/lasting-freedom), days 22 to 30.

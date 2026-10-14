@@ -89,8 +89,8 @@ async function submitGate(form: HTMLFormElement) {
 
 /** Lesson pages only. The check result handles its own form so the two do not both submit. */
 export function mountPlanGate() {
-  if (document.documentElement.dataset.planGate === '1') return;
-  document.documentElement.dataset.planGate = '1';
+  if (document.documentElement.dataset.planGateMounted === '1') return;
+  document.documentElement.dataset.planGateMounted = '1';
   document.addEventListener('submit', (event) => {
     const form = event.target;
     if (!(form instanceof HTMLFormElement) || !form.hasAttribute('data-plan-gate')) return;
