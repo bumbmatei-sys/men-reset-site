@@ -1427,8 +1427,9 @@ footer[role='contentinfo'] a {
 
 .brand {
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.4rem;
   width: fit-content;
   max-width: 100%;
   color: inherit;
@@ -1441,13 +1442,29 @@ footer[role='contentinfo'] a {
   flex: none;
 }
 
+#header .brand {
+  flex: none;
+  gap: 0.4rem;
+}
+
 #header .brand-mark {
   height: 30px;
   max-height: 30px;
 }
 
+#header .brand .wordmark,
+footer[role='contentinfo'] .brand .wordmark {
+  font-family: 'Ancizar Serif', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+#header .brand .wordmark {
+  line-height: 1;
+}
+
 footer[role='contentinfo'] .brand {
-  gap: 0.85rem;
+  gap: 0.55rem;
   align-items: center;
 }
 
