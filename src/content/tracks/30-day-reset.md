@@ -6,6 +6,8 @@ status: coming-soon
 targetQuery: 30 day porn reset
 ---
 
+Want the month shaped to where you are stuck? Take the [free check](/check). It recommends a track and writes a 30-day plan on the page. Nothing is stored unless you submit, and the plan still shows if saving fails.
+
 A **30-day porn reset** works when the days are boring on purpose. The point is not a dramatic vow. The point is thirty mornings where the same few moves happen even if you feel flat.
 
 This path is coming soon. The plan, so you can see it before the daily pages exist:

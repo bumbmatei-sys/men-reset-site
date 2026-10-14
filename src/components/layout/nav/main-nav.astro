@@ -12,10 +12,11 @@ const { locale, tabIndex = 0 } = Astro.props as Props;
 const t = useTranslations(locale);
 
 const navLinks: NavItem[] = [
+  { href: '/check', label: 'Free check' },
   { href: '/tracks', label: 'Tracks' },
   { href: '/tracks/break-free-from-porn', label: 'Quit porn' },
   { href: '/tracks/30-day-reset', label: '30-day reset' },
-  { href: '/advertise', label: 'Advertise' },
+  { href: '/sponsor', label: 'Sponsor' },
 ];
 ---
 

@@ -4,7 +4,9 @@ A free, static course for men who want to stop porn, quit gaming and the phone, 
 
 The public name is the `siteName` constant in `theme.config.ts`. Templates read `themeConfig.name`. Change that one string to rename the site.
 
-This project was scaffolded with `npm create stardrive@latest` (Stardrive, by Jens Kuerschner). Output is fully static HTML in `dist/`. There is no Workers adapter, no paid API, and no secrets.
+This project was scaffolded with `npm create stardrive@latest` (Stardrive, by Jens Kuerschner). Pages are static HTML in `dist/`. There is no Workers adapter, no paid API, and no secrets.
+
+The free check at `/check` is the one exception: a Pages Function at `functions/api/check.ts` can store anonymous answers in D1 (free tier). The quiz still shows the plan if that save fails. See [Cloudflare D1](#cloudflare-d1) below.
 
 ## Scripts
 
@@ -32,24 +34,49 @@ Lessons are Markdown in `src/content/lessons/`. Tracks are Markdown in `src/cont
 
 Mark a track `status: coming-soon` until it has lessons. Available tracks use `status: available`.
 
-Sponsors live in `src/data/sponsors.json`. Until a real sponsor exists, the entries are “Your brand here – Advertise” and point at `/advertise`. Links get `utm_medium=sponsor` and `utm_content` set to the placement (`mobile-strip`, `rail-left`, `rail-right`, or `course-card`).
+Sponsors live in `src/data/sponsors.json`. Each entry has a `tier`: `directory` (the `/sponsors` directory only), `affiliate` (directory plus the recommended link on course pages), or `premium` (those, plus the mobile strip and desktop side rails). Until a real sponsor exists, the entries are “Your brand here” and point at `/sponsor`. Links get `utm_medium=sponsor` and `utm_content` set to the placement (`directory`, `course-card`, `mobile-strip`, `rail-left`, or `rail-right`).
 
-The advertise price and the Book a spot URL are `advertise.priceMonthly` and `advertise.bookingUrl` in `theme.config.ts`. The booking URL is a placeholder (`https://example.com/book-a-spot`) until a real checkout exists.
+Starting prices and the Dodo Payments checkout URLs are `sponsorTiers` in `theme.config.ts`. Dollar amounts are shown only on `/sponsor`. `/advertise` redirects there. The price rises as traffic grows.
+
+## Cloudflare D1
+
+Anonymous self-check rows live in D1. The schema is `migrations/0001_check_responses.sql`. The binding is `DB` in `wrangler.jsonc`. `database_id` in that file is a placeholder, not a secret. Replace it before a production deploy.
+
+```bash
+npx wrangler d1 create the-reset-check
+```
+
+Copy the printed `database_id` into `wrangler.jsonc`, then apply the migration:
+
+```bash
+npx wrangler d1 migrations apply the-reset-check --local
+npx wrangler d1 migrations apply the-reset-check --remote
+```
+
+Local Pages preview, with the function and a local database:
+
+```bash
+npm run build
+npx wrangler d1 migrations apply the-reset-check --local
+npx wrangler pages dev dist
+```
+
+No API token, mail key, or ad pixel belongs in the repo. Email addresses are stored only when someone types one. This version does not send mail.
 
 ## Cloudflare Pages
 
-Static hosting. No environment variables and no secrets.
+Static pages, plus the `/api/check` Function above. No environment variables and no secrets.
 
 Create a Pages project and use these build settings:
 
-| Setting | Value |
-| --- | --- |
-| Framework preset | Astro |
-| Build command | `npm run build` |
-| Build output directory | `dist` |
-| Root directory | `/` |
-| Node.js version | `22` (22.22.3 or newer) |
-| Environment variables | none |
+| Setting                | Value                   |
+| ---------------------- | ----------------------- |
+| Framework preset       | Astro                   |
+| Build command          | `npm run build`         |
+| Build output directory | `dist`                  |
+| Root directory         | `/`                     |
+| Node.js version        | `22` (22.22.3 or newer) |
+| Environment variables  | none                    |
 
 `wrangler.jsonc` sets `pages_build_output_dir` to `./dist` for Wrangler Pages deploys:
 

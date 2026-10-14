@@ -1,23 +1,26 @@
 [
   {
-    "id": "placeholder-rails",
-    "name": "Your brand here – Advertise",
-    "tagline": "A quiet card beside the lessons. {{price}} a month, month to month.",
-    "cta": "Book a spot",
-    "url": "/advertise"
+    "id": "placeholder-premium",
+    "name": "Your brand here",
+    "tagline": "Directory, recommended links, and the top placement.",
+    "cta": "Sponsor",
+    "url": "/sponsor",
+    "tier": "premium"
   },
   {
-    "id": "placeholder-strip",
-    "name": "Your brand here – Advertise",
-    "tagline": "Reach men who are doing the work to change. Price rises as traffic grows.",
-    "cta": "See the rate",
-    "url": "/advertise"
+    "id": "placeholder-affiliate",
+    "name": "Your brand here",
+    "tagline": "On the directory, and in the recommended links on course pages.",
+    "cta": "Sponsor",
+    "url": "/sponsor",
+    "tier": "affiliate"
   },
   {
-    "id": "placeholder-course",
-    "name": "Your brand here – Advertise",
-    "tagline": "One line, your link, no shouting. Open a spot while the site is still young.",
-    "cta": "Advertise",
-    "url": "/advertise"
+    "id": "placeholder-directory",
+    "name": "Your brand here",
+    "tagline": "A listing on the sponsors directory.",
+    "cta": "Sponsor",
+    "url": "/sponsor",
+    "tier": "directory"
   }
 ]

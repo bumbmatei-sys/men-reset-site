@@ -17,10 +17,12 @@ const currentYear = new Date().getFullYear();
       {t('nav.legal-notice')}
     </a>
     <div class="hidden opacity-50 sm:block">|</div>
-    <a class="unstyle-link hover:text-text-dark" href={getLocaleUrl('privacy-policy', locale)}>
+    <a class="unstyle-link hover:text-text-dark" href={getLocaleUrl('privacy', locale)}>
       {t('nav.privacy-policy')}
     </a>
   </div>
   <div class="hidden opacity-50 lg:block">|</div>
-  <div>&copy; {currentYear} {themeConfig.name}</div>
+  <div>
+    &copy; {currentYear} {themeConfig.name}
+  </div>
 </nav>

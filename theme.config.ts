@@ -130,8 +130,24 @@ export const themeConfig: ThemeConfig = {
     addFAQ: 'none',
   },
 
-  advertise: {
-    priceMonthly: 50,
-    bookingUrl: 'https://example.com/book-a-spot',
-  },
+  sponsorTiers: [
+    {
+      id: 'directory',
+      name: 'Directory',
+      priceMonthly: 50,
+      checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzAg0hegr2HwfxQN2?quantity=1',
+    },
+    {
+      id: 'affiliate',
+      name: 'Directory + Affiliate',
+      priceMonthly: 100,
+      checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzErvPQTh33lNbTqj?quantity=1',
+    },
+    {
+      id: 'premium',
+      name: 'Premium',
+      priceMonthly: 200,
+      checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzInABfQesqBVCJbN?quantity=1',
+    },
+  ],
 };

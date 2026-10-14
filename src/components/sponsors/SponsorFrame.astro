@@ -1,16 +1,26 @@
 ---
 import SponsorSlot from './SponsorSlot.astro';
+import { sponsorsForPlacement } from '@utils/sponsors';
+
+const showStrip = sponsorsForPlacement('mobile-strip').length > 0;
+const showRails = sponsorsForPlacement('rail-left').length > 0;
 ---
 
-<div class="sponsor-mobile" data-sponsor-region="mobile-strip">
-  <SponsorSlot placement="mobile-strip" label="Sponsor" />
-</div>
-<aside class="sponsor-rail sponsor-rail-left" aria-label="Sponsors">
-  <SponsorSlot placement="rail-left" label="Sponsor" />
-</aside>
-<aside class="sponsor-rail sponsor-rail-right" aria-label="Sponsors">
-  <SponsorSlot placement="rail-right" label="Sponsor" />
-</aside>
+{showStrip && (
+  <div class="sponsor-mobile" data-sponsor-region="mobile-strip">
+    <SponsorSlot placement="mobile-strip" label="Sponsor" />
+  </div>
+)}
+{showRails && (
+  <aside class="sponsor-rail sponsor-rail-left" aria-label="Sponsors">
+    <SponsorSlot placement="rail-left" label="Sponsor" />
+  </aside>
+)}
+{showRails && (
+  <aside class="sponsor-rail sponsor-rail-right" aria-label="Sponsors">
+    <SponsorSlot placement="rail-right" label="Sponsor" />
+  </aside>
+)}
 
 <script>
   function assignSponsors() {

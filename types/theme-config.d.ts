@@ -401,15 +401,16 @@ export interface ThemeConfig {
   askAiTrigger?: string;
 
   /**
-   * Sponsor pricing and the booking link used by /advertise.
-   * The public site name is `name` — do not duplicate it here.
+   * Sponsor tiers. Dollar amounts are rendered only on `/sponsor`.
+   * Checkout URLs are public Dodo Payments links, not secrets.
    */
-  advertise?: {
-    /** Flat monthly price in USD. */
+  sponsorTiers: {
+    id: 'directory' | 'affiliate' | 'premium';
+    name: string;
+    /** Starting monthly price in USD. It rises as traffic grows. */
     priceMonthly: number;
-    /** Placeholder or live URL for the "Book a spot" button. */
-    bookingUrl: string;
-  };
+    checkoutUrl: string;
+  }[];
 
   /**
    * A custom list of features from the default boilerplate that has been removed in this projects (either via the starter tool or manually).

@@ -1,0 +1,41 @@
+---
+import Layout from '@layouts/default.astro';
+import { CONSENT_LINE } from '@data/check-quiz';
+import { themeConfig } from '~/theme.config';
+
+const title = 'Privacy';
+const description = `How ${themeConfig.name} handles the self-check, optional email, lesson progress on your device, and sponsor links.`;
+---
+
+<Layout title={title} description={description} robots="noindex, follow">
+  <h1 class="text-4xl font-bold tracking-tight">Privacy</h1>
+  <div class="lesson-prose mt-6">
+    <p>This site does not ask you to create an account. There are no advertising pixels.</p>
+    <h2>The self-check</h2>
+    <p>
+      The only form that can send answers to us is the free check at <a href="/check">/check</a>. Before you submit, the page says: “{CONSENT_LINE}”
+    </p>
+    <p>The questions run in your browser. If you leave before the last step, nothing is sent. If you are under 18, the check stops. We do not ask the rest, and we do not store an entry.</p>
+    <p>If you finish and the save works, we store the answers you picked from the lists:</p>
+    <ul>
+      <li>Age range, for adults 18 and older</li>
+      <li>Country or region, from a short list, not a street address</li>
+      <li>Main struggle, how long, how often, and the main trigger</li>
+      <li>Faith background, only if you answer that question</li>
+      <li>What you want most from the next 30 days</li>
+      <li>How you heard about the site</li>
+      <li>Which plan variant and track the check recommended</li>
+    </ul>
+    <p>We do not store your name, IP address, or browser. The rows sit in a Cloudflare D1 database on the free tier, through a Pages Function. There is no secret and no third-party analytics key in this project.</p>
+    <p>If saving fails, the plan still appears on the page and nothing from that attempt is stored.</p>
+    <h2>Email</h2>
+    <p>The email field is optional. Leave it blank and we store no email.</p>
+    <p>If you enter an email, we store that address with the answers so we can send the 30-day plan. This version does not send mail. No mail provider is connected. The plan is shown on the page either way. To remove an address, the person who operates the site deletes that row in the database. There is no account page for it yet.</p>
+    <h2>On your device</h2>
+    <p>When you mark a lesson done, the browser stores that mark in localStorage on your device. Clearing site data removes it. We do not receive that list.</p>
+    <h2>Sponsors</h2>
+    <p>Sponsor cards link away from the site, or to the sponsor page. Those links include utm_medium=sponsor and utm_content set to the placement, so a sponsor can tell which slot was clicked. We do not add your name or email to those links.</p>
+    <h2>Hosting</h2>
+    <p>Pages are static files. A host such as Cloudflare may log ordinary web requests. We do not copy those logs into the check database. We do not sell this information.</p>
+  </div>
+</Layout>

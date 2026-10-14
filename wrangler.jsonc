@@ -2,5 +2,17 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "the-reset",
   "compatibility_date": "2026-10-14",
-  "pages_build_output_dir": "./dist"
+  "pages_build_output_dir": "./dist",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "the-reset-check",
+      // Placeholder id, not a secret. Replace it with the id printed by
+      // `npx wrangler d1 create the-reset-check` before a production deploy.
+      "database_id": "00000000-0000-4000-8000-000000000001",
+      // Local `wrangler pages dev` uses this preview id, not the production database.
+      "preview_database_id": "DB",
+      "migrations_dir": "migrations",
+    },
+  ],
 }

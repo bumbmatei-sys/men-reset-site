@@ -37,14 +37,23 @@ const itemList = {
   <section class="hero-band">
     <div class="container hero-copy">
       <p class="hero-kicker">For men</p>
-      <h1>How to quit porn <span>and build discipline</span></h1>
+      <h1>
+        How to quit porn <span>and build discipline</span>
+      </h1>
       <p class="hero-lead">
         <strong>How to quit porn</strong> is not a mood. It is a set of small moves you can repeat on a tired Tuesday. This course is for men who are done hiding the tab, the late-night game, the phone, or the drink.
       </p>
       <p class="hero-note">The roots are Christian. You do not have to share that faith to use the steps. The writing stays plain. No hype. No fake before-and-after.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href={startHref}>Start the first lesson</a>
-        <a class="btn-secondary hero-secondary" href="/tracks">See every track</a>
+        <a class="btn-primary" href="/check">
+          Take the free check
+        </a>
+        <a class="btn-secondary hero-secondary" href={startHref}>
+          Start the first lesson
+        </a>
+        <a class="btn-secondary hero-secondary" href="/tracks">
+          See every track
+        </a>
       </div>
     </div>
   </section>
@@ -56,13 +65,11 @@ const itemList = {
         One track is open. The rest are marked coming soon, including a free <a href="/tracks/30-day-reset">30-day reset</a>. Start with <a href="/tracks/break-free-from-porn">break free from porn</a> if that is the fight in front of you.
       </p>
       <ul class="track-grid">
-        {
-          cards.map(({ track, lessonIds }) => (
-            <li>
-              <TrackCard {track} {lessonIds} />
-            </li>
-          ))
-        }
+        {cards.map(({ track, lessonIds }) => (
+          <li>
+            <TrackCard {track} {lessonIds} />
+          </li>
+        ))}
       </ul>
     </section>
 
@@ -76,7 +83,7 @@ const itemList = {
         <li>Your place in the track, saved on this device only.</li>
       </ul>
       <p>
-        If porn is the issue, read <a href="/tracks/break-free-from-porn/how-to-stop-watching-porn">how to stop watching porn</a>, then <a href="/tracks/break-free-from-porn/how-to-deal-with-porn-urges">how to deal with porn urges</a>. The <a href="/advertise">advertise</a> page is for brands, not for the work itself.
+        If porn is the issue, read <a href="/tracks/break-free-from-porn/how-to-stop-watching-porn">how to stop watching porn</a>, then <a href="/tracks/break-free-from-porn/how-to-deal-with-porn-urges">how to deal with porn urges</a>. The <a href="/sponsor">sponsor</a> page is for brands, not for the work itself.
       </p>
     </section>
   </div>

@@ -2,6 +2,7 @@
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import SponsorSlot from '@components/sponsors/SponsorSlot.astro';
+import { sponsorsForPlacement } from '@utils/sponsors';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
@@ -80,30 +81,32 @@ const breadcrumbs = {
     <Content />
   </div>
 
-  {
-    lessons.length > 0 ? (
-      <section class="mt-10" aria-labelledby="lesson-list-heading">
-        <h2 id="lesson-list-heading" class="text-2xl font-bold tracking-tight">Lessons</h2>
-        <ol class="mt-4 grid gap-3">
-          {lessons.map((lesson, index) => (
-            <li>
-              <a class="track-card" href={lessonPath(track.id, lesson.id)}>
-                <span class="text-sm font-semibold text-stone-500">Lesson {index + 1}</span>
-                <span class="text-lg font-bold">{lesson.data.title}</span>
-                <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">{lesson.data.description}</span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </section>
-    ) : (
-      <p class="mt-8 max-w-[68ch] leading-relaxed">
-        Lessons for this track are not published yet. You can start the open track, <a href="/tracks/break-free-from-porn">break free from porn</a>, or go back to <a href="/tracks">all tracks</a>.
-      </p>
-    )
-  }
+  {lessons.length > 0 ? (
+    <section class="mt-10" aria-labelledby="lesson-list-heading">
+      <h2 id="lesson-list-heading" class="text-2xl font-bold tracking-tight">
+        Lessons
+      </h2>
+      <ol class="mt-4 grid gap-3">
+        {lessons.map((lesson, index) => (
+          <li>
+            <a class="track-card" href={lessonPath(track.id, lesson.id)}>
+              <span class="text-sm font-semibold text-stone-500">Lesson {index + 1}</span>
+              <span class="text-lg font-bold">{lesson.data.title}</span>
+              <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">{lesson.data.description}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ) : (
+    <p class="mt-8 max-w-[68ch] leading-relaxed">
+      Lessons for this track are not published yet. You can start the open track, <a href="/tracks/break-free-from-porn">break free from porn</a>, or go back to <a href="/tracks">all tracks</a>.
+    </p>
+  )}
 
-  <div class="sponsor-inline mt-10 max-w-sm">
-    <SponsorSlot placement="course-card" label="Sponsor" />
-  </div>
+  {sponsorsForPlacement('course-card').length > 0 && (
+    <div class="sponsor-inline mt-10 max-w-sm">
+      <SponsorSlot placement="course-card" label="Sponsor" />
+    </div>
+  )}
 </Layout>

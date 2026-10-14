@@ -1,0 +1,49 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { themeConfig } from '~/theme.config';
+
+const title = 'See Where You’re Stuck';
+const description = 'A free self-check that recommends a track and a 30-day reset from your answers. It runs in your browser and still shows the plan if saving fails.';
+const pageUrl = new URL('/check', themeConfig.site).toString();
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
+    { '@type': 'ListItem', position: 2, name: 'Free check', item: pageUrl },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <JsonLd data={breadcrumbs} />
+  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+    <a href="/">Home</a>
+    <span aria-hidden="true"> / </span>
+    <span>Free check</span>
+  </nav>
+  <p class="course-kicker">Free check</p>
+  <h1 class="mt-2 max-w-[16ch] text-4xl font-bold tracking-tight">See where you’re stuck</h1>
+  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">Answer nine short questions. You get a 30-day reset shaped by what you want to quit, and one track to open next. Nothing is stored until you submit. The plan still shows if saving fails.</p>
+  <div id="check-app" class="check-app" aria-live="polite"></div>
+  <noscript>
+    <p class="mt-6 max-w-[68ch]">
+      This check runs in the browser. Enable JavaScript to answer the questions. You can still read <a href="/tracks/30-day-reset">the 30-day reset</a> and <a href="/tracks/break-free-from-porn">break free from porn</a>.
+    </p>
+  </noscript>
+</Layout>
+
+<script>
+  import { mountCheckQuiz } from '@scripts/check-page';
+
+  function bootCheck() {
+    const root = document.getElementById('check-app');
+    if (!(root instanceof HTMLElement)) return;
+    mountCheckQuiz(root);
+  }
+
+  document.addEventListener('astro:page-load', bootCheck);
+  bootCheck();
+</script>
