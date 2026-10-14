@@ -451,7 +451,7 @@ body:has(.au-home) #header-placeholder {
   }
 }
 
-/* Phones: one viewport, statues large enough to frame Reset, headline kept clear.
+/* Phones: statues sit in the bottom corners so Reset stays readable between them.
    480px covers 360–430 layouts when a scrollbar makes the viewport a pixel wider. */
 @media (max-width: 480px) {
   .au-hero {
@@ -475,24 +475,25 @@ body:has(.au-home) #header-placeholder {
   }
 
   .au-figure {
-    width: auto;
-    height: calc(100svh - 18.5rem);
+    width: 45%;
+    height: auto;
     max-width: none;
+    bottom: 0;
   }
 
   .au-figure-left {
-    left: auto;
-    right: 22%;
+    left: 0;
+    right: auto;
   }
 
   .au-figure-right {
-    right: auto;
-    left: 22%;
+    right: 0;
+    left: auto;
   }
 
   .au-word {
-    bottom: 18%;
-    font-size: 27vw;
+    bottom: 2%;
+    font-size: 23vw;
   }
 
   .au-home .au-intro {
