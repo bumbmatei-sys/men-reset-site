@@ -67,7 +67,7 @@ const breadcrumbs = {
   <JsonLd data={articleLd} />
   <JsonLd data={breadcrumbs} />
   <article>
-    <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+    <nav aria-label="Breadcrumb" class="page-crumb">
       <a href="/">Home</a>
       <span aria-hidden="true"> / </span>
       <a href="/tracks">Tracks</a>
@@ -81,19 +81,15 @@ const breadcrumbs = {
     <p class="lesson-meta">
       <span>{minutes} min read</span>
       <span aria-hidden="true"> · </span>
-      <span>Lesson {index + 1} of {siblings.length}</span>
+      <span>
+        Lesson {index + 1} of {siblings.length}
+      </span>
     </p>
     <blockquote class="pull-quote">
       <p>{lesson.data.description}</p>
     </blockquote>
 
-    <div
-      class="progress-card"
-      data-lesson-progress
-      data-track={lesson.data.track}
-      data-lesson={lesson.id}
-      data-lesson-ids={lessonIds}
-    >
+    <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
       <div class="mb-2 flex items-center justify-between gap-3 text-sm">
         <span data-progress-label>Progress on this device</span>
         <span data-progress-count>0 of {siblings.length} marked done</span>
@@ -101,13 +97,17 @@ const breadcrumbs = {
       <div class="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700" aria-hidden="true">
         <div data-progress-bar class="bg-primary h-full w-0"></div>
       </div>
-      <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>Mark this lesson done</button>
+      <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>
+        Mark this lesson done
+      </button>
     </div>
 
     <section class="key-points" aria-labelledby="key-points-heading">
       <h2 id="key-points-heading">Key points</h2>
       <ul>
-        {lesson.data.keyPoints.map((point) => <li>{point}</li>)}
+        {lesson.data.keyPoints.map((point) => (
+          <li>{point}</li>
+        ))}
       </ul>
     </section>
 
@@ -134,37 +134,35 @@ const breadcrumbs = {
       <p>{lesson.data.reflection}</p>
     </section>
 
-    {
-      lesson.data.inspiredBy ? (
-        <p class="mt-8 max-w-[68ch] text-sm leading-relaxed">
-          Inspired by <a href={lesson.data.inspiredBy.url} rel="noopener">{lesson.data.inspiredBy.label}</a>. The lesson itself is original writing.
-        </p>
-      ) : null
-    }
+    {lesson.data.inspiredBy ? (
+      <p class="mt-8 max-w-[68ch] text-sm leading-relaxed">
+        Inspired by{' '}
+        <a href={lesson.data.inspiredBy.url} rel="noopener">
+          {lesson.data.inspiredBy.label}
+        </a>
+        . The lesson itself is original writing.
+      </p>
+    ) : null}
 
     <nav class="mt-10 flex flex-col gap-3 border-t border-stone-300/70 pt-6 sm:flex-row sm:justify-between" aria-label="Lesson">
-      {
-        previous ? (
-          <a class="btn-secondary" href={lessonPath(lesson.data.track, previous.id)}>
-            Previous: {previous.data.title}
-          </a>
-        ) : (
-          <a class="btn-secondary" href={trackPath(lesson.data.track)}>
-            Back to {trackTitle}
-          </a>
-        )
-      }
-      {
-        next ? (
-          <a class="btn-primary" href={lessonPath(lesson.data.track, next.id)}>
-            Next: {next.data.title}
-          </a>
-        ) : (
-          <a class="btn-primary" href="/tracks">
-            All tracks
-          </a>
-        )
-      }
+      {previous ? (
+        <a class="btn-secondary" href={lessonPath(lesson.data.track, previous.id)}>
+          Previous: {previous.data.title}
+        </a>
+      ) : (
+        <a class="btn-secondary" href={trackPath(lesson.data.track)}>
+          Back to {trackTitle}
+        </a>
+      )}
+      {next ? (
+        <a class="btn-primary" href={lessonPath(lesson.data.track, next.id)}>
+          Next: {next.data.title}
+        </a>
+      ) : (
+        <a class="btn-primary" href="/tracks">
+          All tracks
+        </a>
+      )}
     </nav>
   </article>
 </Layout>

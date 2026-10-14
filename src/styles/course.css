@@ -284,33 +284,44 @@ body.nav-open .sponsor-mobile {
   flex: none;
   align-items: center;
   justify-content: center;
-  border: 1px solid color-mix(in srgb, var(--color-primary) 65%, #1b2838);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--color-primary-light) 28%, white);
-  color: var(--color-primary-darker);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #0f0f0f;
   cursor: pointer;
-  box-shadow: 0 1px 0 color-mix(in srgb, white 70%, transparent);
+  box-shadow: none;
+  appearance: none;
 }
 
-.theme-toggle:hover {
-  background: var(--color-primary-light);
+.theme-toggle:hover,
+.theme-toggle:active,
+:where(.dark) .theme-toggle:hover,
+:where(.dark) .theme-toggle:active {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.theme-toggle:focus {
+  outline: none;
 }
 
 .theme-toggle:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #0f0f0f;
   outline-offset: 3px;
 }
 
 :where(.dark) .theme-toggle {
-  border-color: color-mix(in srgb, var(--color-primary-light) 70%, transparent);
-  background: color-mix(in srgb, var(--color-primary) 28%, #121820);
-  color: var(--color-primary-light);
+  background: transparent;
+  color: #f3f1ed;
+  border: 0;
   box-shadow: none;
 }
 
-:where(.dark) .theme-toggle:hover {
-  background: color-mix(in srgb, var(--color-primary-light) 24%, #1b2838);
-  color: #f4efe6;
+:where(.dark) .theme-toggle:focus-visible {
+  outline-color: #f3f1ed;
 }
 
 .theme-icon {

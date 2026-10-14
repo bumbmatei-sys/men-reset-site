@@ -27,22 +27,21 @@ const breadcrumbs = {
 
 <Layout title={title} description={description}>
   <JsonLd data={breadcrumbs} />
-  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+  <nav aria-label="Breadcrumb" class="page-crumb">
     <a href="/">Home</a>
     <span aria-hidden="true"> / </span>
     <span>Tracks</span>
   </nav>
-  <h1 class="max-w-[20ch] text-4xl font-bold tracking-tight">Courses to quit porn, gaming, and the phone</h1>
-  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">
+  <p class="course-kicker">Tracks</p>
+  <h1 class="page-title">Courses to quit porn, gaming, and the phone</h1>
+  <p class="page-lead">
     These tracks are the course. <strong>Break free from porn</strong> is the one you can take today. The others are written down so you can see the path, and marked coming soon until the lessons are ready.
   </p>
-  <ul class="track-grid mt-8">
-    {
-      cards.map(({ track, lessonIds }) => (
-        <li>
-          <TrackCard {track} {lessonIds} />
-        </li>
-      ))
-    }
+  <ul class="track-grid page-stack">
+    {cards.map(({ track, lessonIds }) => (
+      <li>
+        <TrackCard {track} {lessonIds} />
+      </li>
+    ))}
   </ul>
 </Layout>
