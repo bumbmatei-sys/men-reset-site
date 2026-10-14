@@ -451,15 +451,15 @@ body:has(.au-home) #header-placeholder {
   }
 }
 
-/* Phones: statues fill the bottom corners. Reset sits on their chest, fully inside the hero.
-   480px covers 360–430 layouts when a scrollbar makes the viewport a pixel wider.
-   Statue height is 50% of the width times 1.274. The open chest is about halfway down. */
+/* Phones: headline, then a full-width Reset, then one right-aligned statue.
+   The landscape ends at the statue. 480px covers 360–430 when a scrollbar adds a pixel. */
 @media (max-width: 480px) {
   .au-hero {
-    height: 100svh;
-    max-height: 100svh;
-    min-height: 100svh;
+    height: auto;
+    max-height: none;
+    min-height: 0;
     padding-top: 4.75rem;
+    padding-bottom: 0;
   }
 
   body:has(.sponsor-mobile) .au-hero {
@@ -475,27 +475,34 @@ body:has(.au-home) #header-placeholder {
     line-height: 1.08;
   }
 
-  .au-figure {
-    width: 50%;
-    height: auto;
-    max-width: none;
-    bottom: 0;
+  .au-word {
+    position: relative;
+    z-index: 2;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    margin: 0.35rem 0 0;
+    transform: none;
+    font-size: 44vw;
+    line-height: 0.9;
+    text-align: center;
   }
 
   .au-figure-left {
-    left: 0;
-    right: auto;
+    display: none;
   }
 
   .au-figure-right {
-    right: 0;
+    position: relative;
+    z-index: 3;
+    align-self: flex-end;
+    width: 64%;
+    height: auto;
+    max-width: none;
+    bottom: auto;
     left: auto;
-  }
-
-  .au-word {
-    bottom: 23vw;
-    font-size: 22vw;
-    line-height: 1;
+    right: auto;
+    margin-top: -6vw;
   }
 
   .au-home .au-intro {
