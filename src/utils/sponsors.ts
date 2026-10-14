@@ -11,13 +11,26 @@ export interface Sponsor {
   cta: string;
   url: string;
   tier: SponsorTier;
+  logo?: string;
 }
 
 function isTier(value: string): value is SponsorTier {
   return value === 'directory' || value === 'affiliate' || value === 'premium';
 }
 
-export const sponsors: Sponsor[] = sponsorsData.flatMap((entry) => (isTier(entry.tier) ? [{ ...entry, tier: entry.tier }] : []));
+export const sponsors: Sponsor[] = sponsorsData.flatMap((entry) => {
+  if (!isTier(entry.tier)) return [];
+  const sponsor: Sponsor = {
+    id: entry.id,
+    name: entry.name,
+    tagline: entry.tagline,
+    cta: entry.cta,
+    url: entry.url,
+    tier: entry.tier,
+  };
+  if ('logo' in entry && typeof entry.logo === 'string' && entry.logo.startsWith('/')) sponsor.logo = entry.logo;
+  return [sponsor];
+});
 
 /** Directory lists every tier. Recommended links are affiliate and premium. The strip and rails are premium only. */
 export function tierAllows(tier: SponsorTier, placement: SponsorPlacement): boolean {

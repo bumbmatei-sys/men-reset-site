@@ -1,4 +1,5 @@
 import { CONSENT_LINE, buildPlan, normalizeEmail, questions, type CheckAnswers, type Plan, type QuestionId } from '../data/check-quiz';
+import { PHASE_INTRO } from '../data/plan-days';
 import { readPlanUrl, requestPlan } from './plan-gate';
 
 type Phase = 'question' | 'consent' | 'result';
@@ -154,15 +155,19 @@ function marbleImg(kind: 'check' | 'flow' | 'scroll', alt: string): string {
 }
 
 function phaseTeaser(): string {
-  return '[Copy coming.]';
+  return 'These days come by email with the full plan.';
+}
+
+function newsletterMarkup(): string {
+  return `<form class="newsletter-form" data-newsletter onsubmit="event.preventDefault()" novalidate><h3>Join the newsletter</h3><p>Get practical tips once a week. No spam.</p><div class="newsletter-row"><label class="newsletter-label">Email <input class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required /></label><button type="submit" class="btn-primary">Join</button></div><p class="newsletter-status" data-newsletter-status role="status" hidden></p></form>`;
 }
 
 function phasesMarkup(plan: Plan, unlocked: boolean): string {
-  const head = `<div class="marble-row">${marbleImg('flow', 'Marble diagram of four connected steps')}<div><p class="check-kicker">Four phases</p><p>[Copy coming.]</p></div></div>`;
+  const head = `<div class="marble-row">${marbleImg('flow', 'Marble diagram of four connected steps')}<div><p class="check-kicker">Four phases</p><p>${escapeHtml(PHASE_INTRO)}</p></div></div>`;
   const sections = plan.phases
     .map((phase, index) => {
       if (index === 0 || unlocked) {
-        const days = phase.days.map((day) => `<li><span class="check-day">Day ${day.day}</span> ${escapeHtml(day.action)}</li>`).join('');
+        const days = phase.days.map((day) => `<li><span class="check-day">Day ${day.day}</span>${escapeHtml(day.action)}</li>`).join('');
         return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><ol class="check-days">${days}</ol></section>`;
       }
       return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><p>${escapeHtml(phaseTeaser())}</p></section>`;
@@ -190,10 +195,8 @@ function resultMarkup(state: State): string {
   const line = saveLine(state);
   const save = line ? `<p class="check-save" data-save="${state.emailStatus}">${escapeHtml(line)}</p>` : '';
   const earned = unlocked ? marbleImg('check', 'A marble check mark') : '';
-  const download = !isMinor(state) && unlocked && state.planUrl
-    ? `<a class="btn-primary" href="${escapeHtml(state.planUrl)}">Download the 30-day plan (PDF)</a>`
-    : '';
-  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan, unlocked)}${gateMarkup(state)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset</h3><p>Break Free is the free 30-day reset. Days 1-7 are open on the site. Days 8-30 arrive in your inbox as a PDF. The thirty days above are the plan. Basically, start there and let grace do the rest.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions">${download}<button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
+  const download = !isMinor(state) && unlocked && state.planUrl ? `<a class="btn-primary" href="${escapeHtml(state.planUrl)}">Download the 30-day plan (PDF)</a>` : '';
+  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card">${earned}<h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan, unlocked)}${gateMarkup(state)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset</h3><p>Break Free is the free 30-day reset. Days 1-7 are open on the site. Days 8-30 arrive in your inbox as a PDF. The thirty days above are the plan. Basically, start there and let grace do the rest.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions">${download}<button type="button" class="btn-secondary" data-action="restart">Start over</button></div>${newsletterMarkup()}</div>`;
 }
 
 function render(root: HTMLElement, state: State) {
@@ -262,6 +265,7 @@ export function mountCheckQuiz(root: HTMLElement) {
   root.addEventListener('submit', (event) => {
     const form = event.target;
     if (!(form instanceof HTMLFormElement) || !root.contains(form)) return;
+    if (form.hasAttribute('data-newsletter')) return;
     event.preventDefault();
 
     if (form.hasAttribute('data-plan-gate')) {

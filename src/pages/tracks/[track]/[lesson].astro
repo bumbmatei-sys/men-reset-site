@@ -6,6 +6,7 @@ import { themeConfig } from '~/theme.config';
 import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import PlanEmailForm from '@components/course/PlanEmailForm.astro';
+import JoinNewsletter from '@components/promo/JoinNewsletter.astro';
 import { getTracks, isPlanPhase, lessonsForTrack, lessonPath, planPhaseLessons, trackPath, type LessonEntry } from '@utils/course';
 
 const PLAN_BUTTON = 'Send me the PDF';
@@ -158,7 +159,9 @@ const breadcrumbs = {
       <section class="completion-card" data-lesson-complete hidden>
         <MarbleAccent kind="check" alt="A marble check mark" />
         <div>
-          <p class="course-kicker" data-completion-kicker>Lesson complete</p>
+          <p class="course-kicker" data-completion-kicker>
+            Lesson complete
+          </p>
           <p data-completion-copy>This lesson is marked done on this device.</p>
         </div>
       </section>
@@ -204,7 +207,8 @@ const breadcrumbs = {
         <blockquote>
           <p>{lesson.data.scripture.text}</p>
           <footer>
-            {lesson.data.scripture.reference}{planPhase ? '' : ' (KJV)'}
+            {lesson.data.scripture.reference}
+            {planPhase ? '' : ' (KJV)'}
           </footer>
         </blockquote>
       </section>
@@ -268,6 +272,7 @@ const breadcrumbs = {
         </a>
       )}
     </nav>
+    <JoinNewsletter />
   </article>
 </Layout>
 
@@ -312,9 +317,7 @@ const breadcrumbs = {
       const copy = complete.querySelector<HTMLElement>('[data-completion-copy]');
       if (kicker) kicker.textContent = finished ? 'Course complete' : 'Lesson complete';
       if (copy) {
-        copy.textContent = finished
-          ? 'Every lesson in this track is marked done on this device.'
-          : 'This lesson is marked done on this device.';
+        copy.textContent = finished ? 'Every lesson in this track is marked done on this device.' : 'This lesson is marked done on this device.';
       }
     }
   }

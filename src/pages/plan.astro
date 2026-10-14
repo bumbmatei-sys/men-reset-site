@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/default.astro';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+import { PHASE_INTRO } from '@data/plan-days';
 import { themeConfig } from '~/theme.config';
 
 const title = 'Your 30-day plan';
@@ -16,7 +17,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
     <p class="page-lead" data-plan-empty>
       Open this page from your result, after the free check, to print the plan that was written for you. If you asked for the email, the full plan is in that message.
     </p>
-    <div data-plan-body hidden></div>
+    <div data-plan-body data-phase-intro={PHASE_INTRO} hidden></div>
     <div class="plan-actions check-actions marble-download">
       <span data-plan-scroll hidden>
         <MarbleAccent kind="scroll" alt="A marble scroll" />
@@ -105,7 +106,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
     flow.decoding = 'async';
     const phasesCopy = document.createElement('div');
     phasesCopy.append(text('p', 'check-kicker', 'Four phases'));
-    phasesCopy.append(text('p', '', 'One action a day. Finish the phase, then go on.'));
+    phasesCopy.append(text('p', '', body.dataset.phaseIntro || ''));
     phasesHead.append(flow, phasesCopy);
     body.append(phasesHead);
 
@@ -122,7 +123,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
         const label = document.createElement('span');
         label.className = 'check-day';
         label.textContent = `Day ${day.day}`;
-        item.append(label, document.createTextNode(` ${day.action}`));
+        item.append(label, document.createTextNode(day.action));
         list.append(item);
       }
       if (!list.childElementCount) continue;
@@ -186,6 +187,10 @@ const description = 'A printable copy of the 30-day reset from the free check. O
     list-style: none;
   }
   .plan-days li {
+    display: grid;
+    grid-template-columns: 4.6rem minmax(0, 1fr);
+    column-gap: 0.35rem;
+    align-items: start;
     margin: 0 0 0.55rem;
     line-height: 1.5;
   }

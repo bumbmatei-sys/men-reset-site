@@ -4,7 +4,7 @@ import { useTranslations, getLocaleUrl } from "@utils/i18n";
 import { themeConfig } from '~/theme.config';
 import FooterNav from "@components/layout/nav/footer-nav.astro";
 import LegalNav from "@components/layout/nav/legal.astro";
-import NewsletterSignup from "@components/promo/newsletter-signup.astro";
+import JoinNewsletter from "@components/promo/JoinNewsletter.astro";
 
 interface Props {
   locale: string;
@@ -74,7 +74,7 @@ const linkedinUrl: string | undefined = undefined;
     </div>
     <div class="flex w-full flex-col md:w-fit">
       <FooterNav {locale} {isHome} />
-      {(themeConfig.promotions?.newsletterSignup === true || themeConfig.promotions?.newsletterSignup === 'footer') && <NewsletterSignup {locale} inFooter={true} />}
+      <JoinNewsletter onDark={true} />
     </div>
   </div>
   <div class="container mt-10 flex flex-col flex-wrap items-center justify-between gap-x-14 gap-y-6 border-t border-white/10 py-6 pt-7 sm:flex-row-reverse">

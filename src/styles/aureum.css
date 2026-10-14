@@ -313,7 +313,7 @@ body:has(.au-home) #header-placeholder {
 
 @media (max-width: 1279px) {
   body:has(.sponsor-mobile) .au-hero {
-    padding-top: 10rem;
+    padding-top: calc(var(--sponsor-bar-height, 8.75rem) + 6.75rem);
   }
 }
 
@@ -477,7 +477,7 @@ body:has(.au-home) #header-placeholder {
   }
 
   body:has(.sponsor-mobile) .au-hero {
-    padding-top: 10rem;
+    padding-top: calc(var(--sponsor-bar-height, 8.75rem) + 6.75rem);
   }
 
   .au-hero-copy {
