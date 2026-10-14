@@ -1,7 +1,7 @@
 import { CONSENT_LINE, buildPlan, normalizeEmail, questions, type CheckAnswers, type Plan, type QuestionId } from '../data/check-quiz';
 
 type Phase = 'question' | 'consent' | 'result' | 'minor';
-type SaveState = 'idle' | 'saving' | 'stored' | 'stored-email' | 'failed';
+type EmailStatus = 'sent' | 'failed' | 'none' | 'saving';
 
 type State = {
   phase: Phase;
@@ -10,7 +10,8 @@ type State = {
   email: string;
   emailError: string;
   formError: string;
-  save: SaveState;
+  emailStatus: EmailStatus;
+  saved: boolean;
   plan: Plan | null;
   moveFocus: boolean;
 };
@@ -116,25 +117,41 @@ function questionMarkup(state: State): string {
 
 function consentMarkup(state: State): string {
   const error = state.emailError ? `<p class="check-error" role="alert">${escapeHtml(state.emailError)}</p>` : '';
-  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p><label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. If you add one, we keep it with these answers so we can send the plan. Mail is not connected yet, so nothing is sent. The plan shows on the next screen either way.</p>${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
+  return `${progressMarkup(questions.length, questions.length, 'Last step')}<form class="check-card" data-consent><h2 class="check-prompt" tabindex="-1">Your plan is ready</h2><p class="check-consent">${escapeHtml(CONSENT_LINE)}</p><p class="check-hint"><a href="/privacy">Read the privacy page</a></p><label class="check-email-label" for="check-email">Email the plan (optional)</label><input id="check-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${escapeHtml(state.email)}" /><p class="check-hint">Leave this blank and we store no email. If you add one, we send the plan to that address. The plan shows on the next screen either way.</p>${error}<div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><button type="submit" class="btn-primary">See my plan</button></div></form>`;
 }
 
 function trackMarkup(track: Plan['track'], label: string): string {
   const soon = track.status === 'coming-soon' ? '<span class="coming-soon">Coming soon</span>' : '';
   const start = track.startHref ? `<a class="btn-primary" href="${track.startHref}">Start the first lesson</a>` : `<a class="btn-primary" href="${track.href}">Open the track</a>`;
-  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3>${soon}<p>${track.status === 'available' ? 'This track is open. The lessons are short and practical.' : 'This track is marked coming soon. Use the four weeks on this page until it opens.'}</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
+  return `<section class="check-track"><p class="check-kicker">${escapeHtml(label)}</p><h3>${escapeHtml(track.title)}</h3>${soon}<p>${track.status === 'available' ? 'This track is open. The lessons are short and practical.' : 'This track is marked coming soon. Use the thirty days on this page until it opens.'}</p><div class="check-actions">${start}<a class="btn-secondary" href="${track.href}">Track page</a></div></section>`;
 }
 
-function resultMarkup(plan: Plan, save: SaveState): string {
-  const weeks = plan.weeks.map((week) => `<section class="check-week"><h3>${escapeHtml(week.title)}</h3><p>${escapeHtml(week.body)}</p></section>`).join('');
+function saveLine(state: State): string {
+  if (state.emailStatus === 'saving') return state.email ? 'Sending your plan…' : '';
+  if (state.emailStatus === 'sent') return 'Your plan is on its way to your inbox';
+  if (state.email && state.emailStatus === 'failed') return 'We could not email the plan. It is on this page, and you can download it.';
+  if (!state.saved) return 'We could not save this check. Your plan is still here.';
+  return '';
+}
+
+function phasesMarkup(plan: Plan): string {
+  return plan.phases
+    .map((phase) => {
+      const days = phase.days.map((day) => `<li><span class="check-day">Day ${day.day}</span> ${escapeHtml(day.action)}</li>`).join('');
+      return `<section class="check-phase"><h3>${escapeHtml(phase.title)}</h3><ol class="check-days">${days}</ol></section>`;
+    })
+    .join('');
+}
+
+function resultMarkup(state: State): string {
+  const plan = state.plan;
+  if (!plan) return '';
   const caution = plan.caution ? `<p class="check-caution">${escapeHtml(plan.caution)}</p>` : '';
-  const faith = plan.faithNote ? `<section class="check-week"><h3>If faith is part of it</h3><p>${escapeHtml(plan.faithNote)}</p></section>` : '';
+  const faith = plan.faithNote ? `<section class="check-phase"><h3>If faith is part of it</h3><p>${escapeHtml(plan.faithNote)}</p></section>` : '';
   const companion = plan.companion ? trackMarkup(plan.companion, 'Also on the site') : '';
-  let saveText = 'Saving your answers…';
-  if (save === 'stored') saveText = 'Saved anonymously. No email was stored.';
-  if (save === 'stored-email') saveText = 'We stored that email with these answers. Mail is not connected yet, so the plan was not sent. It is on this page.';
-  if (save === 'failed') saveText = 'We could not save this check. Your plan is still here, and nothing was stored.';
-  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card"><h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p><p class="check-hint">This is a sorting tool, not a diagnosis or medical advice. If you are in immediate danger, contact emergency services. If you are in a mental-health crisis, call or text 988.</p>${caution}<p class="check-save" data-save="${save}">${escapeHtml(saveText)}</p>${trackMarkup(plan.track, 'Recommended track')}<div class="check-weeks">${weeks}</div>${faith}${companion}<section class="check-week"><h3>The 30-day reset track</h3><p>The daily pages will live on the free 30-day reset. They are marked coming soon. The four weeks above are the plan until those pages open.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions"><button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
+  const line = saveLine(state);
+  const save = line ? `<p class="check-save" data-save="${state.emailStatus}">${escapeHtml(line)}</p>` : '';
+  return `${progressMarkup(questions.length, questions.length, 'Your plan')}<div class="check-card"><h2 class="check-prompt" tabindex="-1">${escapeHtml(plan.title)}</h2><p class="check-lede">${escapeHtml(plan.lede)}</p>${caution}${save}<aside class="takeaway"><p class="course-kicker">Key takeaway</p><p>Thirty days. One action a day. Do the day in front of you, then stop.</p></aside><ol class="habit-loop" aria-label="Habit loop"><li><span class="habit-label">Trigger</span><p>The hour or feeling that starts it.</p></li><li><span class="habit-label">Routine</span><p>The habit you named in the check.</p></li><li><span class="habit-label">Reward</span><p>The first ten minutes you do instead.</p></li></ol>${trackMarkup(plan.track, 'Recommended track')}<div class="check-phases">${phasesMarkup(plan)}</div>${faith}${companion}<section class="check-phase"><h3>The 30-day reset track</h3><p>The daily pages will live on the free 30-day reset. They are marked coming soon. The thirty days above are the plan until those pages open.</p><a class="btn-secondary" href="${plan.resetHref}">Open the 30-day reset</a></section><div class="check-actions"><button type="button" class="btn-primary" data-action="download">Download your 30-day plan (PDF)</button><button type="button" class="btn-secondary" data-action="restart">Start over</button></div></div>`;
 }
 
 function minorMarkup(): string {
@@ -144,7 +161,7 @@ function minorMarkup(): string {
 function render(root: HTMLElement, state: State) {
   if (state.phase === 'minor') root.innerHTML = minorMarkup();
   else if (state.phase === 'consent') root.innerHTML = consentMarkup(state);
-  else if (state.phase === 'result' && state.plan) root.innerHTML = resultMarkup(state.plan, state.save);
+  else if (state.phase === 'result' && state.plan) root.innerHTML = resultMarkup(state);
   else root.innerHTML = questionMarkup(state);
 
   if (!state.moveFocus) return;
@@ -152,7 +169,15 @@ function render(root: HTMLElement, state: State) {
   prompt?.focus();
 }
 
-async function saveAnswers(answers: CheckAnswers, email: string | null): Promise<'stored' | 'stored-email' | 'failed'> {
+function readEmailStatus(payload: unknown): 'sent' | 'failed' | 'none' | null {
+  if (typeof payload !== 'object' || payload === null || !('emailStatus' in payload)) return null;
+  const value = payload.emailStatus;
+  if (value === 'sent' || value === 'failed' || value === 'none') return value;
+  return null;
+}
+
+async function saveAnswers(answers: CheckAnswers, email: string | null): Promise<{ saved: boolean; emailStatus: 'sent' | 'failed' | 'none' }> {
+  const fallback = email ? 'failed' : 'none';
   try {
     const response = await fetch('/api/check', {
       method: 'POST',
@@ -160,12 +185,17 @@ async function saveAnswers(answers: CheckAnswers, email: string | null): Promise
       body: JSON.stringify({ ...answers, email }),
       signal: AbortSignal.timeout(8000),
     });
-    if (!response.ok) return 'failed';
-    const payload: unknown = await response.json();
-    if (typeof payload !== 'object' || payload === null || !('ok' in payload) || payload.ok !== true) return 'failed';
-    return email ? 'stored-email' : 'stored';
+    let payload: unknown = null;
+    try {
+      payload = await response.json();
+    } catch {
+      payload = null;
+    }
+    const emailStatus = readEmailStatus(payload) ?? fallback;
+    const saved = response.ok && typeof payload === 'object' && payload !== null && 'ok' in payload && payload.ok === true;
+    return { saved, emailStatus };
   } catch {
-    return 'failed';
+    return { saved: false, emailStatus: fallback };
   }
 }
 
@@ -180,7 +210,8 @@ export function mountCheckQuiz(root: HTMLElement) {
     email: '',
     emailError: '',
     formError: '',
-    save: 'idle',
+    emailStatus: 'none',
+    saved: false,
     plan: null,
     moveFocus: false,
   };
@@ -209,13 +240,15 @@ export function mountCheckQuiz(root: HTMLElement) {
       state.emailError = '';
       state.plan = buildPlan(state.answers);
       state.phase = 'result';
-      state.save = 'saving';
+      state.emailStatus = email ? 'saving' : 'none';
+      state.saved = false;
       state.moveFocus = true;
       paint();
       const plan = state.plan;
       void saveAnswers(state.answers, email).then((save) => {
         if (state.plan !== plan) return;
-        state.save = save;
+        state.saved = save.saved;
+        state.emailStatus = save.emailStatus;
         state.moveFocus = false;
         paint();
       });
@@ -280,6 +313,21 @@ export function mountCheckQuiz(root: HTMLElement) {
       paint();
       return;
     }
+    if (action === 'download' && state.plan) {
+      const plan = state.plan;
+      const payload = {
+        title: plan.title,
+        lede: plan.lede,
+        caution: plan.caution,
+        faithNote: plan.faithNote,
+        phases: plan.phases,
+        trackTitle: plan.track.title,
+        trackHref: plan.track.href,
+      };
+      sessionStorage.setItem('reset:plan-print', JSON.stringify(payload));
+      window.open('/plan', '_blank');
+      return;
+    }
     if (action === 'restart') {
       state.phase = 'question';
       state.step = 0;
@@ -287,7 +335,8 @@ export function mountCheckQuiz(root: HTMLElement) {
       state.email = '';
       state.emailError = '';
       state.formError = '';
-      state.save = 'idle';
+      state.emailStatus = 'none';
+      state.saved = false;
       state.plan = null;
       paint();
     }

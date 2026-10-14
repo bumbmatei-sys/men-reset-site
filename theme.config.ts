@@ -122,7 +122,7 @@ export const themeConfig: ThemeConfig = {
   // LLM and coding assistant settings
   llms: {
     autoGeneration: true,
-    intro: 'A free, plain-language course for men who want to stop porn, quit gaming and the phone, leave alcohol, and build a disciplined life. Christian-rooted and open to anyone. Lessons are short, practical, and original.',
+    intro: 'A free, plain-language course for people quitting an addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian-rooted and open to anyone. Lessons are short, practical, and original.',
     excludePagesPattern: ['/404', '/404_dynamic'],
     includePages: [],
     addArticles: 'none',
@@ -130,10 +130,10 @@ export const themeConfig: ThemeConfig = {
     addFAQ: 'none',
   },
 
-  /** Placeholder until the Whop community has a real join link. */
-  communityUrl: 'https://example.com/join-the-community',
-  /** Placeholder until coaching applications have a real form. */
-  coachingUrl: 'https://example.com/apply-for-coaching',
+  /** Whop community. Also the temporary target for “Apply soon” until growUrl is published. */
+  communityUrl: 'https://whop.com/matei-bumb/call-to-reset-community/',
+  /** Whop grow-further page. Not published yet. Do not link the button here until it is live. */
+  growUrl: 'https://whop.com/matei-bumb/call-to-reset-grow-further/',
 
   sponsorTiers: [
     {

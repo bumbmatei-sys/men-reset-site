@@ -790,7 +790,16 @@ body.nav-open .sponsor-mobile {
 }
 
 .check-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 1.75rem;
+}
+
+.check-progress,
+.check-card {
+  width: min(40rem, 100%);
+  margin-inline: auto;
 }
 
 .check-card {
@@ -855,6 +864,7 @@ body.nav-open .sponsor-mobile {
 .check-consent,
 .check-card > p,
 .check-week p,
+.check-phase p,
 .check-track p {
   margin: 0.75rem 0 0;
   line-height: 1.6;
@@ -948,14 +958,16 @@ body.nav-open .sponsor-mobile {
 }
 
 .check-track,
-.check-week {
+.check-week,
+.check-phase {
   margin-top: 1.15rem;
   padding-top: 1rem;
   border-top: 1px solid color-mix(in srgb, #1b2838 12%, transparent);
 }
 
 :where(.dark) .check-track,
-:where(.dark) .check-week {
+:where(.dark) .check-week,
+:where(.dark) .check-phase {
   border-top-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -973,11 +985,99 @@ body.nav-open .sponsor-mobile {
 }
 
 .check-track h3,
-.check-week h3 {
+.check-week h3,
+.check-phase h3 {
   margin: 0.3rem 0 0;
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+}
+
+.check-days {
+  margin: 0.7rem 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.check-days li {
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.check-day {
+  display: inline-block;
+  min-width: 4.2rem;
+  margin-right: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.takeaway,
+.habit-loop {
+  max-width: 68ch;
+  margin-top: 1.4rem;
+}
+
+.takeaway {
+  padding: 0.9rem 1rem;
+  border-left: 3px solid #c2410c;
+  background: color-mix(in srgb, #f0b04a 18%, white);
+}
+
+:where(.dark) .takeaway {
+  background: rgba(240, 176, 74, 0.1);
+}
+
+.takeaway p:last-child {
+  margin: 0.35rem 0 0;
+  line-height: 1.55;
+}
+
+.habit-loop {
+  display: grid;
+  gap: 0.65rem;
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+@media (min-width: 700px) {
+  .habit-loop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.habit-loop li {
+  padding: 0.8rem 0.85rem;
+  border: 1px solid color-mix(in srgb, #1b2838 14%, transparent);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, white 70%, var(--color-background));
+}
+
+:where(.dark) .habit-loop li {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #1a2330;
+}
+
+.habit-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.habit-loop p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.check-card .takeaway,
+.check-card .habit-loop {
+  max-width: none;
 }
 
 .check-caution {

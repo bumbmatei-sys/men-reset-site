@@ -111,6 +111,21 @@ const breadcrumbs = {
       </ul>
     </section>
 
+    <ol class="habit-loop" aria-label="Habit loop">
+      <li>
+        <span class="habit-label">Trigger</span>
+        <p>The cue that starts it: a time, a feeling, or the device already in your hand.</p>
+      </li>
+      <li>
+        <span class="habit-label">Routine</span>
+        <p>The habit itself. Name it in one word before you try to change it.</p>
+      </li>
+      <li>
+        <span class="habit-label">Reward</span>
+        <p>What the habit was buying. Replace that, or the routine comes back.</p>
+      </li>
+    </ol>
+
     <div class="lesson-prose mt-8">
       <Content />
     </div>
@@ -122,6 +137,11 @@ const breadcrumbs = {
         <footer>{lesson.data.scripture.reference} (KJV)</footer>
       </blockquote>
     </section>
+
+    <aside class="takeaway">
+      <p class="course-kicker">Key takeaway</p>
+      <p>{lesson.data.keyPoints[0]}</p>
+    </aside>
 
     <section class="action-callout" aria-labelledby="action-heading">
       <p class="course-kicker">Do this today</p>

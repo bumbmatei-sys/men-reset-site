@@ -43,7 +43,7 @@ const courseLd = {
   },
   audience: {
     '@type': 'Audience',
-    audienceType: 'Men',
+    audienceType: 'Adults',
   },
   hasPart: lessons.map((lesson) => ({
     '@type': 'LearningResource',
@@ -77,6 +77,24 @@ const breadcrumbs = {
   <p class="course-kicker">{comingSoon ? 'Coming soon' : 'Course'}</p>
   <h1 class="page-title">{track.data.title}</h1>
   <p class="page-lead">{track.data.description}</p>
+  <aside class="takeaway">
+    <p class="course-kicker">Key takeaway</p>
+    <p>Read what is open. Do the one step you can finish today. If the lessons are still coming, the free check writes the thirty days now.</p>
+  </aside>
+  <ol class="habit-loop" aria-label="Habit loop">
+    <li>
+      <span class="habit-label">Trigger</span>
+      <p>Notice the hour or feeling that starts the habit.</p>
+    </li>
+    <li>
+      <span class="habit-label">Routine</span>
+      <p>Name the habit in one word. Do not dress it up.</p>
+    </li>
+    <li>
+      <span class="habit-label">Reward</span>
+      <p>Decide the first ten minutes you will do instead.</p>
+    </li>
+  </ol>
   <div class="lesson-prose page-prose">
     <Content />
   </div>
@@ -100,7 +118,7 @@ const breadcrumbs = {
     </section>
   ) : (
     <p class="mt-8 max-w-[68ch] leading-relaxed">
-      Lessons for this track are not published yet. You can start the open track, <a href="/tracks/break-free-from-porn">break free from porn</a>, or go back to <a href="/tracks">all tracks</a>.
+      Lessons for this track are not published yet. You can take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free-from-porn">break free from porn</a>.
     </p>
   )}
 

@@ -1,0 +1,180 @@
+---
+import Layout from '@layouts/default.astro';
+import { themeConfig } from '~/theme.config';
+
+const title = 'Your 30-day plan';
+const description = 'A printable copy of the 30-day reset from the free check. Open it from the result page on this device.';
+---
+
+<Layout title={title} description={description} robots="noindex, follow">
+  <article class="plan-sheet" id="plan-sheet">
+    <p class="course-kicker">30-day plan</p>
+    <h1 class="page-title" data-plan-title>
+      Your 30-day plan
+    </h1>
+    <p class="page-lead" data-plan-empty>
+      Open this page from your result, after the free check, to print the plan that was written for you. If you asked for the email, the full plan is in that message.
+    </p>
+    <div data-plan-body hidden></div>
+    <div class="plan-actions check-actions">
+      <button type="button" class="btn-primary" data-plan-print hidden>
+        Print or save as PDF
+      </button>
+      <a class="btn-secondary" href="/check">
+        Take the free check
+      </a>
+      <a class="btn-secondary" href={themeConfig.communityUrl} target="_blank" rel="noopener noreferrer">
+        Join the community
+      </a>
+    </div>
+  </article>
+</Layout>
+
+<script>
+  const STORAGE_KEY = 'reset:plan-print';
+
+  type Day = { day: number; action: string };
+  type Phase = { title: string; days: Day[] };
+  type StoredPlan = {
+    title: string;
+    lede: string;
+    caution: string | null;
+    faithNote: string | null;
+    phases: Phase[];
+    trackTitle: string;
+    trackHref: string;
+  };
+
+  function isPlan(value: unknown): value is StoredPlan {
+    if (typeof value !== 'object' || value === null) return false;
+    const plan = value as StoredPlan;
+    return typeof plan.title === 'string' && typeof plan.lede === 'string' && Array.isArray(plan.phases);
+  }
+
+  function text(tag: string, className: string, value: string): HTMLElement {
+    const node = document.createElement(tag);
+    node.className = className;
+    node.textContent = value;
+    return node;
+  }
+
+  function renderPlan(plan: StoredPlan) {
+    const title = document.querySelector<HTMLElement>('[data-plan-title]');
+    const empty = document.querySelector<HTMLElement>('[data-plan-empty]');
+    const body = document.querySelector<HTMLElement>('[data-plan-body]');
+    const print = document.querySelector<HTMLButtonElement>('[data-plan-print]');
+    if (!title || !empty || !body || !print) return;
+    title.textContent = plan.title;
+    document.title = `${plan.title} | Call to Reset`;
+    empty.hidden = true;
+    body.hidden = false;
+    body.replaceChildren();
+    body.append(text('p', 'plan-lede', plan.lede));
+    if (plan.caution) body.append(text('p', 'check-caution', plan.caution));
+
+    const loop = document.createElement('ol');
+    loop.className = 'habit-loop';
+    loop.setAttribute('aria-label', 'Habit loop');
+    for (const item of [
+      ['Trigger', 'The hour or feeling that starts it.'],
+      ['Routine', 'The habit named in this plan.'],
+      ['Reward', 'The first ten minutes you do instead.'],
+    ]) {
+      const li = document.createElement('li');
+      li.append(text('span', 'habit-label', item[0] ?? ''));
+      li.append(text('p', '', item[1] ?? ''));
+      loop.append(li);
+    }
+    body.append(loop);
+
+    for (const phase of plan.phases) {
+      if (!phase || typeof phase.title !== 'string' || !Array.isArray(phase.days)) continue;
+      const section = document.createElement('section');
+      section.className = 'plan-phase';
+      section.append(text('h2', 'page-subhead', phase.title));
+      const list = document.createElement('ol');
+      list.className = 'plan-days';
+      for (const day of phase.days) {
+        if (!day || typeof day.day !== 'number' || typeof day.action !== 'string') continue;
+        const item = document.createElement('li');
+        const label = document.createElement('span');
+        label.className = 'check-day';
+        label.textContent = `Day ${day.day}`;
+        item.append(label, document.createTextNode(` ${day.action}`));
+        list.append(item);
+      }
+      section.append(list);
+      body.append(section);
+    }
+
+    if (plan.faithNote) {
+      const note = document.createElement('aside');
+      note.className = 'takeaway';
+      note.append(text('p', 'course-kicker', 'If faith is part of it'));
+      note.append(text('p', '', plan.faithNote));
+      body.append(note);
+    }
+
+    const takeaway = document.createElement('aside');
+    takeaway.className = 'takeaway';
+    takeaway.append(text('p', 'course-kicker', 'Key takeaway'));
+    takeaway.append(text('p', '', 'Thirty days. One action a day. Do the day in front of you, then stop.'));
+    body.append(takeaway);
+
+    if (plan.trackTitle && plan.trackHref) {
+      const track = document.createElement('p');
+      track.className = 'plan-lede';
+      const link = document.createElement('a');
+      link.href = plan.trackHref;
+      link.textContent = plan.trackTitle;
+      track.append('Next track: ', link);
+      body.append(track);
+    }
+
+    print.hidden = false;
+    print.addEventListener('click', () => window.print());
+  }
+
+  const raw = sessionStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    try {
+      const parsed: unknown = JSON.parse(raw);
+      if (isPlan(parsed)) renderPlan(parsed);
+    } catch {
+      // Leave the empty state. A bad value in this tab should not throw.
+    }
+  }
+</script>
+
+<style>
+  .plan-sheet {
+    max-width: 42rem;
+  }
+  .plan-lede {
+    margin: 0.8rem 0 0;
+    line-height: 1.6;
+  }
+  .plan-phase {
+    margin-top: 1.6rem;
+  }
+  .plan-days {
+    margin: 0.7rem 0 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .plan-days li {
+    margin: 0 0 0.55rem;
+    line-height: 1.5;
+  }
+  @media print {
+    #header,
+    footer,
+    .plan-actions,
+    [data-loader] {
+      display: none !important;
+    }
+    .plan-sheet {
+      max-width: none;
+    }
+  }
+</style>
