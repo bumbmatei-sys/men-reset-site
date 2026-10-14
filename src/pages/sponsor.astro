@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
+import SponsorManage from '@components/sponsors/SponsorManage.astro';
 import { themeConfig } from '~/theme.config';
 
 const tiers = themeConfig.sponsorTiers;
@@ -29,7 +30,7 @@ const faqs = [
   },
   {
     q: 'Is it month to month?',
-    a: 'Yes. Month to month. You can stop before the next month. There is no annual contract.',
+    a: 'Yes. Month to month. Cancel anytime. Your spot stays until the end of the paid month. There is no annual contract.',
   },
   {
     q: 'Where does each tier show?',
@@ -83,6 +84,7 @@ const breadcrumbs = {
   <p class="page-note">
     See who is already listed on the <a href="/sponsors">sponsors directory</a>. Checkout opens on Dodo Payments.
   </p>
+  <SponsorManage />
 
   <ul class="sponsor-tiers">
     {tiers.map((tier) => (

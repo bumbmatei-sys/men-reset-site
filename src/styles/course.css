@@ -1256,6 +1256,20 @@ body.nav-open .sponsor-mobile {
   }
 }
 
+.sponsor-manage {
+  max-width: 42rem;
+  margin-top: 1.25rem;
+}
+
+.sponsor-manage p {
+  margin: 0.35rem 0 0;
+  line-height: 1.5;
+}
+
+.sponsor-manage a {
+  font-weight: 700;
+}
+
 .sponsor-tiers,
 .sponsor-directory {
   display: grid;

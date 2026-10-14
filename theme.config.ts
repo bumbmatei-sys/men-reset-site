@@ -135,6 +135,9 @@ export const themeConfig: ThemeConfig = {
   /** Whop grow-further page. Not published yet. Do not link the button here until it is live. */
   growUrl: 'https://whop.com/matei-bumb/call-to-reset-grow-further/',
 
+  sponsorPortalUrl: 'https://customer.dodopayments.com/login/bus_0NktsnPIFswdL6K7awd7R',
+  sponsorHelpEmail: 'plan@calltoreset.site',
+
   sponsorTiers: [
     {
       id: 'directory',

@@ -1,0 +1,17 @@
+---
+import { themeConfig } from '~/theme.config';
+
+const email = themeConfig.sponsorHelpEmail;
+---
+
+<div class="sponsor-manage">
+  <p>
+    <a href={themeConfig.sponsorPortalUrl} target="_blank" rel="noopener noreferrer">
+      Manage or cancel your sponsorship
+    </a>
+  </p>
+  <p>Cancel anytime. Your spot stays until the end of the paid month.</p>
+  <p>
+    If you need help, email <a href={`mailto:${email}`}>{email}</a>.
+  </p>
+</div>

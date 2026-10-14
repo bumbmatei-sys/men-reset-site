@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
+import SponsorManage from '@components/sponsors/SponsorManage.astro';
 import { themeConfig } from '~/theme.config';
 import { sponsorUrl, sponsors } from '@utils/sponsors';
 
@@ -63,4 +64,11 @@ const itemList = {
       );
     })}
   </ul>
+  <h2 class="page-subhead">Questions</h2>
+  <div class="au-faq-list page-faqs">
+    <details class="au-faq-item">
+      <summary>Manage or cancel your sponsorship</summary>
+      <SponsorManage />
+    </details>
+  </div>
 </Layout>
