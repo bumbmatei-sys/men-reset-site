@@ -148,7 +148,7 @@ body.nav-open .sponsor-mobile {
     display: block;
     position: fixed;
     top: 5.5rem;
-    z-index: 30;
+    z-index: 42;
     width: 200px;
   }
 

@@ -400,6 +400,11 @@ export interface ThemeConfig {
    */
   askAiTrigger?: string;
 
+  /** Public join link for the men's community. A placeholder until Whop is connected. */
+  communityUrl: string;
+  /** Public application link for paid 1:1 coaching. A placeholder until the form exists. */
+  coachingUrl: string;
+
   /**
    * Sponsor tiers. Dollar amounts are rendered only on `/sponsor`.
    * Checkout URLs are public Dodo Payments links, not secrets.

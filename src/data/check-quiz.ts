@@ -104,7 +104,7 @@ export const questions = [
   },
   {
     id: 'source',
-    prompt: 'How did you hear about The Reset?',
+    prompt: 'How did you hear about Call to Reset?',
     options: [
       { value: 'friend', label: 'A friend' },
       { value: 'search', label: 'Search' },

@@ -9,10 +9,10 @@
   --font-*: initial;
   /* Adjust the following font families to your needs */
   /* Mind to import Google Fonts at the layouts via fontsource (e.g. "import "@fontsource/geist/400.css";") - requires them to be also installed via npm and imported at the layout level */
-  --font-sans: Geist, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --font-serif: Georgia, Times New Roman, Times, Garamond, serif;
-  --font-mono: Consolas, Courier, monospace, ui-monospace, SFMono-Regular;
-  --font-headline: var(--font-sans);
+  --font-sans: Inter, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-serif: 'Ancizar Serif', Georgia, 'Times New Roman', Times, serif;
+  --font-mono: 'Azeret Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --font-headline: var(--font-serif);
 
   /* Colors: Base */
   --color-transparent: transparent;
@@ -20,25 +20,25 @@
   --color-white: #fff;
   --color-black: #000;
   /* Colors: Branding */
-  --color-primary: #c2410c;
-  --color-primary-light: #f0b04a;
-  --color-primary-dark: #9a3412;
-  --color-primary-darker: #1b2838;
+  --color-primary: #0f0f0f;
+  --color-primary-light: #fffce0;
+  --color-primary-dark: #0f0f0f;
+  --color-primary-darker: #0f0f0f;
   --color-primary-contrast: #fff;
-  --color-primary-light-contrast: #1b2430;
+  --color-primary-light-contrast: #0f0f0f;
   --color-primary-dark-contrast: #fff;
-  --color-secondary: #e8a54b;
-  --color-secondary-light: #f6d7a8;
-  --color-secondary-dark: #121820;
-  --color-secondary-contrast: #1b2430;
-  --color-secondary-light-contrast: #1b2430;
-  --color-secondary-dark-contrast: #f4efe6;
+  --color-secondary: #acc0d2;
+  --color-secondary-light: #e0e0e0;
+  --color-secondary-dark: #0f0f0f;
+  --color-secondary-contrast: #0f0f0f;
+  --color-secondary-light-contrast: #0f0f0f;
+  --color-secondary-dark-contrast: #f3f1ed;
   --color-brand: var(--color-primary);
   /* Colors: Utility */
-  --color-background: #f4efe6;
-  --color-background-dark: #121820;
-  --color-text: #1b2430;
-  --color-text-dark: #f4efe6;
+  --color-background: #f3f1ed;
+  --color-background-dark: #0f0f0f;
+  --color-text: #212121;
+  --color-text-dark: #f3f1ed;
 
   /* Custom Animations */
   --animate-bounce-slow: bounce-small 2s infinite;

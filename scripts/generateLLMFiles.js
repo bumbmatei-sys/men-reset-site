@@ -67,10 +67,12 @@ function loadThemeConfig() {
     // untouched.
     const themeConfigContent = fs.readFileSync(path.join(rootDir, 'theme.config.ts'), 'utf-8').replace(/^\s*\/\/.*$/gm, '');
 
-    // site URL
+    // site URL. `site` may be a string literal or the `siteUrl` constant above it.
     const siteMatch = themeConfigContent.match(/site:\s*(?:import\.meta\.env\.[A-Z_]+\s*\|\|\s*)?['"]([^'"]+)['"]/);
-    if (siteMatch) {
-      config.site = siteMatch[1].replace(/\/+$/, '');
+    const siteConst = themeConfigContent.match(/const\s+siteUrl\s*=\s*import\.meta\.env\?\.SITE_OVERRIDE\s*\|\|\s*['"]([^'"]+)['"]/);
+    const siteValue = siteMatch?.[1] || siteConst?.[1];
+    if (siteValue) {
+      config.site = siteValue.replace(/\/+$/, '');
       try {
         config.hostname = new URL(config.site).hostname;
       } catch {

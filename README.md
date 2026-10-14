@@ -1,4 +1,4 @@
-# The Reset
+# Call to Reset
 
 A free, static course for men who want to stop porn, quit gaming and the phone, leave alcohol, and build a disciplined life. Christian-rooted, plain, and open to anyone.
 
@@ -85,7 +85,7 @@ npm run build
 npx wrangler pages deploy dist --project-name the-reset
 ```
 
-Change `themeConfig.site` before launch so canonical URLs, the sitemap, and RSS use the real origin. The placeholder origin is `https://the-reset.pages.dev`.
+The production origin is `https://calltoreset.site`, set as `themeConfig.site`. Canonical URLs, the sitemap, robots.txt, RSS, llms.txt, and JSON-LD use that origin.
 
 In the Cloudflare dashboard, disable Speed Brain (Speed → Optimization → Speed Brain). Astro prefetch and Speed Brain can double-fetch.
 

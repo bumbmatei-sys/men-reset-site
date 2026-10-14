@@ -7,15 +7,15 @@ import { expressiveCodeThemes } from './expressive-code-themes.mjs';
 import enStrings from './src/i18n/en.json' with { type: 'json' };
 
 /** The only place the public site name is written. Everything else reads `themeConfig.name`. */
-const siteName = 'The Reset';
-const siteUrl = import.meta.env?.SITE_OVERRIDE || 'https://the-reset.pages.dev';
+const siteName = 'Call to Reset';
+const siteUrl = import.meta.env?.SITE_OVERRIDE || 'https://calltoreset.site';
 
 export const themeConfig: ThemeConfig = {
   // `import.meta.env?.` is guarded because this file is also imported from `ec.config.mjs`,
   // which Node loads as plain ESM where `import.meta.env` is not defined (only Vite injects it).
   site: siteUrl,
-  primaryColor: '#c2410c', // mind to also update the Tailwind config if you change this!
-  themeColor: '#121820',
+  primaryColor: '#0f0f0f', // mind to also update the Tailwind config if you change this!
+  themeColor: '#0f0f0f',
   generateWebmanifest: true,
   name: siteName,
   shortName: siteName,
@@ -129,6 +129,11 @@ export const themeConfig: ThemeConfig = {
     addEvents: 'none',
     addFAQ: 'none',
   },
+
+  /** Placeholder until the Whop community has a real join link. */
+  communityUrl: 'https://example.com/join-the-community',
+  /** Placeholder until coaching applications have a real form. */
+  coachingUrl: 'https://example.com/apply-for-coaching',
 
   sponsorTiers: [
     {

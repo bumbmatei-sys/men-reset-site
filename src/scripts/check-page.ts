@@ -138,7 +138,7 @@ function resultMarkup(plan: Plan, save: SaveState): string {
 }
 
 function minorMarkup(): string {
-  return `<div class="check-card"><h2 class="check-prompt" tabindex="-1">This check is for adults</h2><p>The Reset is for men 18 and older. We stopped here, and we did not save an answer.</p><p>If you are in trouble, talk to a parent or another trusted adult. If you are in immediate danger, contact emergency services. If you are in a mental-health crisis, call or text 988.</p><div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><a class="btn-primary" href="/">Back to the homepage</a></div></div>`;
+  return `<div class="check-card"><h2 class="check-prompt" tabindex="-1">This check is for adults</h2><p>Call to Reset is for adults 18 and older. We stopped here, and we did not save an answer.</p><p>If you are in trouble, talk to a parent or another trusted adult. If you are in immediate danger, contact emergency services. If you are in a mental-health crisis, call or text 988.</p><div class="check-actions"><button type="button" class="btn-secondary" data-action="back">Back</button><a class="btn-primary" href="/">Back to the homepage</a></div></div>`;
 }
 
 function render(root: HTMLElement, state: State) {

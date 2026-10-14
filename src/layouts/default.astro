@@ -1,9 +1,15 @@
 ---
-import "@fontsource/geist/400.css";
-import "@fontsource/geist/600.css";
-import "@fontsource/geist/800.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/ancizar-serif/400.css";
+import "@fontsource/ancizar-serif/500.css";
+import "@fontsource/azeret-mono/400.css";
+import "@fontsource/azeret-mono/500.css";
+import "lenis/dist/lenis.css";
 import "@styles/global.css";
 import "@styles/course.css";
+import "@styles/aureum.css";
 import { ClientRouter } from 'astro:transitions';
 import Footer from "@components/layout/footer.astro";
 import TopBanner from "@components/promo/top-banner.astro";
@@ -19,7 +25,7 @@ import WebPageStructuredData from "@components/structured/webpage.astro";
 import LanguageSelect from "@components/layout/language-select.astro";
 import WebMCPTools from "@components/webmcp-tools.astro";
 import SponsorFrame from "@components/sponsors/SponsorFrame.astro";
-import { useTranslations, getLocaleUrl } from "@utils/i18n";
+import { useTranslations } from "@utils/i18n";
 import { themeConfig } from '~/theme.config';
 import type { CollectionKey } from "astro:content";
 
@@ -102,12 +108,22 @@ const showTopBanner = (themeConfig.promotions?.topBanner && header?.showTopBanne
     <ClientRouter />
   </head>
   <body>
+    <div class="au-loader" data-loader>
+      <span>{themeConfig.name}</span>
+    </div>
+    <script is:inline>
+      try {
+        if (sessionStorage.getItem('reset-loader') || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelector('[data-loader]')?.remove();
+        }
+      } catch {
+        /* storage can be blocked */
+      }
+    </script>
     <SponsorFrame />
     {showTopBanner ? <TopBanner {locale} /> : null}
     <div class="relative w-full">
-      {header?.hidden !== true && (
-        <Header {locale} button={header?.button ?? undefined} ctaButton={{ text: 'Start here', href: '/tracks/break-free-from-porn' }} {isHome} fixed={header?.fixed} overlay={header?.overlay} overlayTheme="dark" scrollDownThreshold={header?.scrollDownThreshold} closeIcon={header?.closeIcon} hasTopBanner={showTopBanner} />
-      )}
+      {header?.hidden !== true && <Header {locale} button={header?.button ?? undefined} ctaButton={{ text: 'Start here', href: '/tracks/break-free-from-porn' }} {isHome} fixed={header?.fixed} overlay={header?.overlay} overlayTheme="dark" scrollDownThreshold={header?.scrollDownThreshold} closeIcon={header?.closeIcon} hasTopBanner={showTopBanner} />}
       <main role="main" class="relative z-40">
         {renderHero && <Hero {locale} />}
         {!noContainer ? (
@@ -124,5 +140,11 @@ const showTopBanner = (themeConfig.promotions?.topBanner && header?.showTopBanne
     </div>
     <LanguageSelect {noi18n} {collection} {contentId} {locale} />
     <WebMCPTools {locale} />
+    <script>
+      import { mountMotion } from '@scripts/aureum-motion';
+
+      mountMotion();
+      document.addEventListener('astro:page-load', mountMotion);
+    </script>
   </body>
 </html>
