@@ -400,10 +400,10 @@ export interface ThemeConfig {
    */
   askAiTrigger?: string;
 
-  /** Public join link for the men's community. A placeholder until Whop is connected. */
+  /** Public join link for the community. */
   communityUrl: string;
-  /** Public application link for paid 1:1 coaching. A placeholder until the form exists. */
-  coachingUrl: string;
+  /** Grow-further page. May be unpublished; the site can point the button at communityUrl until it is live. */
+  growUrl: string;
 
   /**
    * Sponsor tiers. Dollar amounts are rendered only on `/sponsor`.

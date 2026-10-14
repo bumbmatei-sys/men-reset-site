@@ -30,8 +30,8 @@ const description = `How ${themeConfig.name} handles the self-check, optional em
     <p>We do not store your name, IP address, or browser. The rows sit in a Cloudflare D1 database on the free tier, through a Pages Function. There is no secret and no third-party analytics key in this project.</p>
     <p>If saving fails, the plan still appears on the page and nothing from that attempt is stored.</p>
     <h2>Email</h2>
-    <p>The email field is optional. Leave it blank and we store no email.</p>
-    <p>If you enter an email, we store that address with the answers so we can send the 30-day plan. This version does not send mail. No mail provider is connected. The plan is shown on the page either way. To remove an address, the person who operates the site deletes that row in the database. There is no account page for it yet.</p>
+    <p>The email field is optional. Leave it blank and we store no email, and we do not send one.</p>
+    <p>If you enter an email, we store that address with the answers and try to send the 30-day plan from plan@calltoreset.site. The plan still shows on the page if sending fails. To remove an address, the person who operates the site deletes that row in the database. There is no account page for it yet.</p>
     <h2>On your device</h2>
     <p>When you mark a lesson done, the browser stores that mark in localStorage on your device. Clearing site data removes it. We do not receive that list.</p>
     <h2>Sponsors</h2>

@@ -4,6 +4,7 @@ import JsonLd from '@components/seo/JsonLd.astro';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import { getReadingTime } from '@utils/reading-time';
+import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type LessonEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -102,6 +103,14 @@ const breadcrumbs = {
       </button>
     </div>
 
+    <section class="completion-card" data-lesson-complete hidden>
+      <MarbleAccent kind="check" alt="A marble check mark" />
+      <div>
+        <p class="course-kicker" data-completion-kicker>Lesson complete</p>
+        <p data-completion-copy>This lesson is marked done on this device.</p>
+      </div>
+    </section>
+
     <section class="key-points" aria-labelledby="key-points-heading">
       <h2 id="key-points-heading">Key points</h2>
       <ul>
@@ -111,6 +120,21 @@ const breadcrumbs = {
       </ul>
     </section>
 
+    <ol class="habit-loop" aria-label="Habit loop">
+      <li>
+        <span class="habit-label">Trigger</span>
+        <p>The cue that starts it: a time, a feeling, or the device already in your hand.</p>
+      </li>
+      <li>
+        <span class="habit-label">Routine</span>
+        <p>The habit itself. Name it in one word before you try to change it.</p>
+      </li>
+      <li>
+        <span class="habit-label">Reward</span>
+        <p>What the habit was buying. Replace that, or the routine comes back.</p>
+      </li>
+    </ol>
+
     <div class="lesson-prose mt-8">
       <Content />
     </div>
@@ -119,9 +143,14 @@ const breadcrumbs = {
       <h2 id="scripture-heading">Scripture</h2>
       <blockquote>
         <p>{lesson.data.scripture.text}</p>
-        <footer>{lesson.data.scripture.reference} (KJV)</footer>
+        <footer>{lesson.data.scripture.reference}</footer>
       </blockquote>
     </section>
+
+    <aside class="takeaway">
+      <p class="course-kicker">Key takeaway</p>
+      <p>{lesson.data.keyPoints[0]}</p>
+    </aside>
 
     <section class="action-callout" aria-labelledby="action-heading">
       <p class="course-kicker">Do this today</p>
@@ -195,9 +224,22 @@ const breadcrumbs = {
     const bar = root.querySelector<HTMLElement>('[data-progress-bar]');
     const button = root.querySelector<HTMLButtonElement>('[data-progress-toggle]');
     const marked = done.includes(lessonId);
+    const finished = ids.length > 0 && doneInTrack.length === ids.length;
     if (count) count.textContent = `${doneInTrack.length} of ${ids.length} marked done`;
     if (bar) bar.style.width = `${ids.length ? Math.round((doneInTrack.length / ids.length) * 100) : 0}%`;
     if (button) button.textContent = marked ? 'Marked done on this device' : 'Mark this lesson done';
+    const complete = document.querySelector<HTMLElement>('[data-lesson-complete]');
+    if (complete) {
+      complete.hidden = !marked;
+      const kicker = complete.querySelector<HTMLElement>('[data-completion-kicker]');
+      const copy = complete.querySelector<HTMLElement>('[data-completion-copy]');
+      if (kicker) kicker.textContent = finished ? 'Course complete' : 'Lesson complete';
+      if (copy) {
+        copy.textContent = finished
+          ? 'Every lesson in this track is marked done on this device.'
+          : 'This lesson is marked done on this device.';
+      }
+    }
   }
 
   function setupProgress() {

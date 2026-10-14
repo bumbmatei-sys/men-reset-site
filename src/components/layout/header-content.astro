@@ -29,7 +29,7 @@ interface Props {
   logoTheme?: 'light' | 'dark';
 }
 
-const { locale, button, tabIndex = 0, shrink = true, isHome, ctaButton, github } = Astro.props as Props;
+const { locale, button, tabIndex = 0, shrink = true, ctaButton, github } = Astro.props as Props;
 ---
 
 <div data-shrink={`${shrink}`} class:list={['container flex h-20 items-center justify-between gap-3 lg:gap-10', shrink && 'header-content-inner transition-[height] duration-300']}>
@@ -38,8 +38,6 @@ const { locale, button, tabIndex = 0, shrink = true, isHome, ctaButton, github }
       <Icon name="heroicons:arrow-left" class="h-4 w-4" />
       {button.text}
     </a>
-  ) : isHome ? (
-    <span class="wordmark">{themeConfig.name}</span>
   ) : (
     <a href={getLocaleUrl('/', locale)} class="wordmark block w-fit select-none" tabindex={tabIndex}>
       {themeConfig.name}

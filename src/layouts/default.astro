@@ -123,7 +123,7 @@ const showTopBanner = (themeConfig.promotions?.topBanner && header?.showTopBanne
     <SponsorFrame />
     {showTopBanner ? <TopBanner {locale} /> : null}
     <div class="relative w-full">
-      {header?.hidden !== true && <Header {locale} button={header?.button ?? undefined} ctaButton={{ text: 'Start here', href: '/tracks/break-free-from-porn' }} {isHome} fixed={header?.fixed} overlay={header?.overlay} overlayTheme="dark" scrollDownThreshold={header?.scrollDownThreshold} closeIcon={header?.closeIcon} hasTopBanner={showTopBanner} />}
+      {header?.hidden !== true && <Header {locale} button={header?.button ?? undefined} ctaButton={{ text: 'Start here', href: '/check' }} {isHome} fixed={header?.fixed} overlay={header?.overlay} overlayTheme="dark" scrollDownThreshold={header?.scrollDownThreshold} closeIcon={header?.closeIcon} hasTopBanner={showTopBanner} />}
       <main role="main" class="relative z-40">
         {renderHero && <Hero {locale} />}
         {!noContainer ? (

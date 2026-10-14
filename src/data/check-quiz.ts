@@ -1,3 +1,5 @@
+import { buildPhases } from './plan-days';
+
 /** Self-check questions, allowlists, and the 30-day plan. Safe to import from the browser and from the Pages Function. */
 
 export const CONSENT_LINE = 'Your answers are anonymous and help us improve the course. Email is optional.';
@@ -40,6 +42,7 @@ export const questions = [
       { value: 'gaming', label: 'Gaming' },
       { value: 'phone', label: 'The phone' },
       { value: 'alcohol', label: 'Alcohol' },
+      { value: 'substances', label: 'Substances' },
       { value: 'other', label: 'Something else' },
     ],
   },
@@ -123,8 +126,6 @@ export type CheckAnswers = {
   [Id in QuestionId]: OptionValue<Id> | (Id extends 'faith' ? 'skipped' : never);
 };
 
-export type PlanWeek = { title: string; body: string };
-
 export type TrackLink = {
   id: string;
   title: string;
@@ -140,7 +141,7 @@ export type Plan = {
   title: string;
   lede: string;
   caution: string | null;
-  weeks: PlanWeek[];
+  phases: import('./plan-days').PlanPhase[];
   faithNote: string | null;
   companion: TrackLink | null;
 };
@@ -165,10 +166,10 @@ export type ParseResult = { ok: true; row: StoredCheck } | { ok: false; error: '
 const TRACKS: TrackLink[] = [
   {
     id: 'break-free-from-porn',
-    title: 'Break Free from Porn',
+    title: 'Break Free',
     href: '/tracks/break-free-from-porn',
     status: 'available',
-    startHref: '/tracks/break-free-from-porn/how-to-stop-watching-porn',
+    startHref: '/tracks/break-free-from-porn/identity-and-a-clean-slate',
   },
   {
     id: 'quit-gaming-and-the-phone',
@@ -261,6 +262,8 @@ function recommendedTrackId(answers: CheckAnswers): string {
       return 'quit-gaming-and-the-phone';
     case 'alcohol':
       return 'discipline-and-morning-routine';
+    case 'substances':
+      return '30-day-reset';
     default:
       if (answers.want === 'purpose' && (answers.faith === 'christian' || answers.faith === 'distant')) return 'new-identity-in-christ';
       if (answers.want === 'discipline') return 'discipline-and-morning-routine';
@@ -278,6 +281,8 @@ function planTitle(struggle: CheckAnswers['struggle']): string {
       return '30-day phone reset';
     case 'alcohol':
       return '30-day drinking reset';
+    case 'substances':
+      return '30-day substance reset';
     default:
       return '30-day reset';
   }
@@ -313,81 +318,6 @@ function durationLine(duration: CheckAnswers['duration']): string {
   }
 }
 
-function ageLine(age: CheckAnswers['age']): string {
-  switch (age) {
-    case '18-24':
-      return 'If you share a room, the rule is the same: the device charges where you can hear it and cannot scroll it.';
-    case '55-plus':
-      return 'You do not need a new personality. You need tomorrow evening to look like the rule you set tonight.';
-    default:
-      return '';
-  }
-}
-
-function paceLine(pace: 'steady' | 'burst' | 'standard'): string {
-  switch (pace) {
-    case 'steady':
-      return 'Keep this week to one rule.';
-    case 'burst':
-      return 'Your job is the first ten minutes. Once you pass them, do not go back and finish the old habit.';
-    default:
-      return 'Do the rule every day this week, including the easy days.';
-  }
-}
-
-function weekOne(answers: CheckAnswers, pace: 'steady' | 'burst' | 'standard'): string {
-  let action: string;
-  switch (answers.struggle) {
-    case 'porn':
-      action = 'Delete the shortcut you actually use: the private tab, the folder, or the account. Tonight the phone charges outside the room you sleep in.';
-      break;
-    case 'gaming':
-      action = 'Log out of the one game that takes the night, and uninstall it if it is on the phone. Before you sit down any other night this week, write the time you will stop.';
-      break;
-    case 'phone':
-      action = 'Take the apps you open without deciding off the first screen. After the hour you usually get stuck, the screen goes grayscale and the phone leaves the bed.';
-      break;
-    case 'alcohol':
-      action = 'Write the number before you are thirsty: zero drinks, or a stop after a number you pick while sober. The nights you usually drink are the nights this rule is for.';
-      break;
-    default:
-      action = 'Name the habit in one plain sentence, then remove one easy way you start it. If you cannot name it yet, write what you did the last time instead of what you wish you had done.';
-  }
-  return [action, durationLine(answers.duration), paceLine(pace), ageLine(answers.age)].filter(Boolean).join(' ');
-}
-
-function weekTwo(trigger: CheckAnswers['trigger']): string {
-  switch (trigger) {
-    case 'night':
-      return 'Your hard hour is late. This week the phone charges outside the bedroom, and you pick a lights-out time you can keep on a tired night. If you are still awake, you do not take the device back in to check.';
-    case 'boredom':
-      return 'Boredom is the door. Write five things that take twenty minutes and do not use the old habit: a walk, a shower, food, a chore, a call. When the flat feeling shows up, do the next thing on the list before you negotiate.';
-    case 'stress':
-      return 'Stress is the door. Before the old move, take a ten-minute walk or put your hands under cold water. The point is a gap, not a better mood. Then keep the week-1 rule.';
-    case 'alone':
-      return 'Being alone is the door. Before you are deep in it, send one plain text to a person who knows you are working on this: “Long night, staying with the plan.” You do not need a speech.';
-    case 'phone':
-      return 'The phone in your hand is the door. Keep the home screen free of the apps that lead there. Grayscale after the hour you usually slip. The device does not go to bed with you.';
-    case 'after-drinking':
-      return 'The drink comes first, then the habit. On the nights you used to drink, the plan is no drink, or a stop you write down before the first one. Do not decide again once you have started.';
-    default:
-      return 'You are not sure of the trigger. For seven days, write the last time it happened: the hour, the place, what you felt, and what was in your hand. Keep the week-1 rule while you learn the pattern.';
-  }
-}
-
-function weekThree(want: CheckAnswers['want']): string {
-  switch (want) {
-    case 'freedom':
-      return 'Freedom here is a smaller day you can actually live. Each morning, write one sentence: what today is for if you do not lose the night. Do the first physical step of that sentence before you open a feed.';
-    case 'discipline':
-      return 'Discipline is the morning, not a speech at midnight. Wake, drink water, and spend ten minutes on the same task before the phone. Same order on the days you feel flat.';
-    case 'purpose':
-      return 'Write who you are trying to be in one sentence you would not be ashamed to show a friend. Once this week, do a piece of work that matches that sentence, even if it is small.';
-    default:
-      return 'Pick one person. This week, tell them the truth at the size you can manage, or keep one plan you already made with them. A relationship does not repair itself while the nights stay secret.';
-  }
-}
-
 function faithNote(faith: CheckAnswers['faith']): string | null {
   const verse = '1 Corinthians 10:13, King James Version: “There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it.”';
   switch (faith) {
@@ -396,7 +326,7 @@ function faithNote(faith: CheckAnswers['faith']): string | null {
     case 'distant':
       return `You said faith feels distant. You do not have to perform it. If one verse helps, use ${verse} If it does not help, leave it and keep the rule.`;
     case 'other-faith':
-      return 'You named another faith. Use the practice you already trust for restraint. This plan will not replace it. The four weeks are the practical half.';
+      return 'You named another faith. Use the practice you already trust for restraint. This plan will not replace it. The thirty days are the practical half.';
     default:
       return null;
   }
@@ -412,22 +342,18 @@ export function buildPlan(answers: CheckAnswers): Plan {
   const pace = paceOf(answers.duration, answers.frequency);
   const track = trackById(recommendedTrackId(answers)) ?? TRACKS[TRACKS.length - 1];
   const title = planTitle(answers.struggle);
+  const caution =
+    answers.struggle === 'alcohol' || answers.struggle === 'substances'
+      ? 'If this is hurting your health, or you get sick when you stop, talk to a doctor before you cut it off. This is a habit plan, not treatment.'
+      : null;
   return {
     variant: `${answers.struggle}-${pace}`,
     track,
     resetHref: '/tracks/30-day-reset',
     title,
     lede: `This is your ${title}. ${frequencyLine(answers.frequency)} ${durationLine(answers.duration)} Open ${track.title} next.`,
-    caution: answers.struggle === 'alcohol' ? 'If drinking is hurting your health, or you get sick when you stop, talk to a doctor before you cut it off. This is a habit plan, not treatment.' : null,
-    weeks: [
-      { title: 'Week 1 — Cut the easy path', body: weekOne(answers, pace) },
-      { title: 'Week 2 — The hour it happens', body: weekTwo(answers.trigger) },
-      { title: 'Week 3 — What you want this for', body: weekThree(answers.want) },
-      {
-        title: 'Week 4 — One person, and the day after',
-        body: 'Choose one person who is allowed to know. If you do not have that person yet, write the name you will ask. Also write the rule for the day after a slip: no disappearing, back to the week-1 rule the same day, and one sentence about what the hour was. A slip is a day. It does not get the rest of the month.',
-      },
-    ],
+    caution,
+    phases: buildPhases(answers),
     faithNote: faithNote(answers.faith),
     companion: companionFor(answers, track.id),
   };

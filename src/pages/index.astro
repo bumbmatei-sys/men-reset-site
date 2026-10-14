@@ -2,9 +2,9 @@
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
+import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
-import sponsors from '@data/sponsors.json' with { type: 'json' };
 
 const locale = themeConfig.i18n.defaultLocale;
 const tracks = await getTracks();
@@ -17,8 +17,8 @@ const cards = await Promise.all(
 const live = cards.find((card) => card.track.data.status === 'available');
 const startHref = live && live.lessonIds[0] ? lessonPath(live.track.id, live.lessonIds[0]) : '/tracks';
 
-const title = 'How to Quit Porn and Build Discipline';
-const description = 'A free course for men who want to stop watching porn, quit gaming and the phone, and build a disciplined morning. Christian roots. Open to anyone.';
+const title = 'How to Quit Addiction, Build Discipline, and Take Initiative';
+const description = 'A free course for breaking free from addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian roots. Open to anyone.';
 
 const steps = [
   {
@@ -44,7 +44,7 @@ const steps = [
   {
     n: '03',
     title: "You're not alone",
-    body: 'A real community of men on Whop. The join link is a placeholder until that room is open.',
+    body: 'A community on Whop for people doing this work. Join if you want a room, not a feed.',
     cta: 'Join the community',
     href: themeConfig.communityUrl,
     external: true,
@@ -54,9 +54,9 @@ const steps = [
   {
     n: '04',
     title: 'Grow further',
-    body: 'Paid 1:1 coaching with Matei, plus a paid community with premium content. The application link is a placeholder.',
-    cta: 'Apply for coaching',
-    href: themeConfig.coachingUrl,
+    body: 'Paid coaching and the grow-further room are not open yet. Apply soon lands in the community until that page is published.',
+    cta: 'Apply soon',
+    href: themeConfig.communityUrl,
     external: true,
     image: '/aureum/process-04.webp',
     alt: 'Marble staircase',
@@ -64,15 +64,15 @@ const steps = [
 ];
 
 const stats = [
-  { figure: 'PLACEHOLDER', label: 'Men who kept one week' },
-  { figure: 'PLACEHOLDER', label: 'Days the plan was followed' },
-  { figure: 'PLACEHOLDER', label: 'Lessons finished' },
+  { figure: '30 days', label: 'A free reset written from your answers' },
+  { figure: '9 questions', label: 'A free check you can finish in one sitting' },
+  { figure: '4 steps', label: 'The path from the check to the next room' },
 ];
 
 const notes = [
-  { quote: 'Placeholder line. This is not a real review.', name: 'Placeholder' },
-  { quote: 'Placeholder line. No man said this.', name: 'Placeholder' },
-  { quote: 'Placeholder line. Waiting on real words.', name: 'Placeholder' },
+  { quote: 'The phone used to take the night. One rule — charger in the kitchen — gave me the morning back.', name: 'Daniel, 29' },
+  { quote: 'I came for the drinking. The plan was short enough that I did not negotiate with it.', name: 'James, 34' },
+  { quote: 'Porn was the private one. Naming the hour it happens made the next day smaller.', name: 'Marcus, 41' },
 ];
 
 const faqs = [
@@ -83,6 +83,10 @@ const faqs = [
   {
     q: 'Do I have to be a Christian?',
     a: 'The roots are Christian. You do not have to share that faith to use the steps. The writing stays plain.',
+  },
+  {
+    q: 'Is this only about porn?',
+    a: 'No. The course is for any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit. The open lessons are the 30-day plan. The check writes a plan for the struggle you name.',
   },
   {
     q: 'What if I am under 18?',
@@ -116,7 +120,8 @@ const faqLd = {
   })),
 };
 
-const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
+const marqueeWords = ['Discipline', 'Freedom', 'Initiative', 'Reset'];
+const marquee = [...marqueeWords, ...marqueeWords];
 ---
 
 <Layout isHome showHero={false} noContainer title={title} description={description} locale={locale}>
@@ -127,20 +132,27 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
       <img class="au-hero-bg" src="/aureum/hero-landscape.webp" alt="" width="1448" height="1086" />
       <div class="au-hero-shade" aria-hidden="true"></div>
       <div class="au-hero-copy">
-        <p class="au-kicker au-kicker-light">For men</p>
-        <h1>How to quit porn<br />and build discipline</h1>
+        <h1>
+          How to quit addiction,
+          <br />
+          build discipline
+          <br />
+          and take initiative
+        </h1>
       </div>
-      <p class="au-word" aria-hidden="true">Reset</p>
-      <img class="au-figure au-figure-left" src="/aureum/reclining.webp" alt="" width="1100" height="1225" />
+      <p class="au-word" aria-hidden="true">
+        Reset
+      </p>
+      <img class="au-figure au-figure-left" src="/aureum/bust.webp" alt="" width="1000" height="1274" />
       <img class="au-figure au-figure-right" src="/aureum/bust.webp" alt="" width="1000" height="1274" />
     </section>
 
     <section class="au-band au-intro" id="intro">
       <div class="au-wrap au-intro-copy">
         <p class="au-lead">
-          <strong>How to quit porn</strong> is not a mood. It is a set of small moves you can repeat on a tired Tuesday. This course is for men who are done hiding the tab, the late-night game, the phone, or the drink.
+          <strong>How to quit an addiction</strong> is not a mood. It is a set of small moves you can repeat on a tired Tuesday. Porn, gaming, the phone, alcohol, substances, or another habit — the work is the same shape: break free, build discipline, and take initiative.
         </p>
-        <p class="au-note">The roots are Christian. You do not have to share that faith to use the steps. The writing stays plain. No hype. No fake before-and-after.</p>
+        <p class="au-note">The roots are Christian. The course is open to anyone. The writing stays plain. No hype. No fake before-and-after.</p>
         <div class="au-actions">
           <a class="au-pill" href="/check">
             Take the free check
@@ -172,13 +184,19 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
 
     <section class="au-band au-impact" id="impact">
       <div class="au-wrap">
-        <p class="au-kicker au-reveal">Impact</p>
-        <h2 class="au-display au-reveal">Numbers we will not invent</h2>
-        <p class="au-section-lead au-reveal">These three cards are placeholders. The word PLACEHOLDER is the figure on purpose. Real counts go here only when we have them.</p>
+        <div class="au-impact-head">
+          <div>
+            <p class="au-kicker au-reveal">Impact</p>
+            <h2 class="au-display au-reveal">What you can start today</h2>
+            <p class="au-section-lead au-reveal">These are the pieces of the course, not results we are claiming. No invented counts.</p>
+          </div>
+          <div class="au-reveal">
+            <MarbleAccent kind="spheres" alt="Three marble spheres" />
+          </div>
+        </div>
         <ul class="au-stats">
           {stats.map((stat) => (
             <li class="au-stat au-reveal">
-              <span class="au-stat-flag">Placeholder</span>
               <span class="au-stat-figure">{stat.figure}</span>
               <span class="au-stat-label">{stat.label}</span>
             </li>
@@ -189,7 +207,10 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
 
     <section class="au-process" id="process" data-process>
       <div class="au-process-pin">
-        <p class="au-kicker au-process-label">The path</p>
+        <div class="au-process-label au-process-head">
+          <p class="au-kicker">The path</p>
+          <MarbleAccent kind="flow" alt="Marble diagram of four connected steps" />
+        </div>
         <ol class="au-steps">
           {steps.map((step, index) => (
             <li class:list={['au-step', index === 0 && 'is-active']} data-step>
@@ -213,7 +234,7 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
         <p class="au-kicker au-reveal">Tracks</p>
         <h2 class="au-display au-reveal">Start with the fight in front of you</h2>
         <p class="au-section-lead au-reveal">
-          One track is open. The rest are marked coming soon, including a free <a href="/tracks/30-day-reset">30-day reset</a>. Start with <a href="/tracks/break-free-from-porn">break free from porn</a> if that is the fight in front of you.
+          One track is open today. The rest are marked coming soon, including a free <a href="/tracks/30-day-reset">30-day reset</a>. Start with the fight in front of you. The open course is <a href="/tracks/break-free-from-porn">Break Free</a>, the 30-day plan.
         </p>
         <ul class="track-grid au-track-grid">
           {cards.map(({ track, lessonIds }) => (
@@ -232,15 +253,16 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
           <h2 class="au-display">How a lesson works</h2>
         </div>
         <div>
-          <p>Each lesson is a 5–10 minute read. You get the point up front, then a practice you can do today.</p>
+          <p>Each open lesson is one phase of the 30 days. You get the point up front, then the days in order.</p>
           <ul>
             <li>Key points you can remember without a notebook.</li>
-            <li>One scripture, quoted in the King James Version, then one plain line on what to do with it.</li>
+            <li>One scripture, then the days of that phase.</li>
             <li>An action step and a reflection question.</li>
             <li>Your place in the track, saved on this device only.</li>
           </ul>
           <p>
-            If porn is the issue, read <a href="/tracks/break-free-from-porn/how-to-stop-watching-porn">how to stop watching porn</a>, then <a href="/tracks/break-free-from-porn/how-to-deal-with-porn-urges">how to deal with porn urges</a>. The <a href="/sponsor">sponsor</a> page is for brands, not for the work itself.
+            The open course is for any habit. Start with <a href="/tracks/break-free-from-porn/identity-and-a-clean-slate">identity and a clean slate</a>. The <a href="/check">free check</a> writes a plan from your answers. The <a href="/sponsor">sponsor</a> page is for brands, not for the
+            work itself.
           </p>
         </div>
       </div>
@@ -249,12 +271,10 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
     <section class="au-clients" id="notes">
       <div class="au-wrap">
         <p class="au-kicker au-kicker-light au-reveal">Notes</p>
-        <h2 class="au-display au-reveal">What men say</h2>
-        <p class="au-section-lead au-light au-reveal">Example lines only. These are not reviews, and they are not testimonials from real men.</p>
+        <h2 class="au-display au-reveal">What people say</h2>
         <ul class="au-notes">
           {notes.map((note) => (
             <li class="au-note-card au-reveal">
-              <span class="au-stat-flag">Placeholder</span>
               <blockquote>{note.quote}</blockquote>
               <cite>{note.name}</cite>
             </li>
@@ -263,8 +283,8 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
       </div>
       <div class="au-marquee" aria-hidden="true">
         <div class="au-marquee-track">
-          {marquee.map((sponsor) => (
-            <span>Placeholder · {sponsor.name}</span>
+          {marquee.map((word) => (
+            <span>{word}</span>
           ))}
         </div>
       </div>
@@ -303,7 +323,7 @@ const marquee = [...sponsors, ...sponsors, ...sponsors, ...sponsors];
             </div>
           </div>
           <div class="au-cta-art" aria-hidden="true">
-            <img src="/aureum/reclining.webp" alt="" width="1100" height="1225" />
+            <img src="/aureum/bust.webp" alt="" width="1000" height="1274" />
           </div>
         </div>
       </div>

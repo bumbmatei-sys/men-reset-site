@@ -12,8 +12,8 @@ const cards = await Promise.all(
     lessonIds: track.data.status === 'available' ? (await lessonsForTrack(track.id)).map((lesson) => lesson.id) : [],
   })),
 );
-const title = 'Courses to Quit Porn, Gaming, and the Phone';
-const description = 'Free course tracks for men: break free from porn, quit gaming and the phone, build a morning routine, and a 30-day reset. Most tracks are coming soon.';
+const title = 'Courses to Break Free and Build Discipline';
+const description = 'Free course tracks for breaking free from addiction: porn, gaming, the phone, alcohol, substances, discipline, and a 30-day reset. Christian roots. Open to anyone.';
 
 const breadcrumbs = {
   '@context': 'https://schema.org',
@@ -33,9 +33,9 @@ const breadcrumbs = {
     <span>Tracks</span>
   </nav>
   <p class="course-kicker">Tracks</p>
-  <h1 class="page-title">Courses to quit porn, gaming, and the phone</h1>
+  <h1 class="page-title">Break free, then build the day</h1>
   <p class="page-lead">
-    These tracks are the course. <strong>Break free from porn</strong> is the one you can take today. The others are written down so you can see the path, and marked coming soon until the lessons are ready.
+    These tracks are the course. The work is any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit, plus discipline and initiative. <strong>Break Free</strong> is the 30-day plan you can take today. The others are written down so you can see the path, and marked coming soon until the lessons are ready. Christian roots. Open to anyone.
   </p>
   <ul class="track-grid page-stack">
     {cards.map(({ track, lessonIds }) => (

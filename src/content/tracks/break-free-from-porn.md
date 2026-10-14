@@ -1,13 +1,20 @@
 ---
-title: Break Free from Porn
-description: A practical course for men on how to stop watching porn, handle urges, and break the shame loop. Seven short lessons you can use this week.
+title: Break Free
+description: A 30-day plan for anyone who wants to break a habit. Four phases. Jesus first, then the next plain step. Porn, the phone, gaming, alcohol, a substance, or another loop.
 order: 1
 status: available
-targetQuery: how to stop watching porn
+targetQuery: 30 day plan to break a habit
 ---
 
-**How to stop watching porn** starts with a smaller promise than “never again.” You need a way to get through the next urge, a reason the relapse keeps winning, and a next step that is small enough to do when you are tired.
+**Break free** is the open course. It is the 30-day plan. It is for anyone. The habit can be porn, the phone, a game, a drink, a substance, or another loop.
 
-This track is seven lessons. Each one is a short read with an action you can finish today. Take them in order if you can. If you are in the middle of an urge, jump to [how to deal with porn urges](/tracks/break-free-from-porn/how-to-deal-with-porn-urges) and come back.
+Basically, you do not earn a clean record this month. Jesus already bathed you. So the days are foot washing, closed doors, faith you say out loud, and a life pointed at what He gave you to build.
 
-The faith here is Christian, and the steps are usable if you are not. You do not have to perform for the page. You do have to tell the truth about what you do when the door is closed.
+Take the phases in order.
+
+1. [Identity and a clean slate](/tracks/break-free-from-porn/identity-and-a-clean-slate). Days 1 to 7.
+2. [Dismantling triggers](/tracks/break-free-from-porn/dismantling-triggers). Days 8 to 14.
+3. [Activating faith](/tracks/break-free-from-porn/activating-faith). Days 15 to 21.
+4. [Lasting freedom](/tracks/break-free-from-porn/lasting-freedom). Days 22 to 30.
+
+You can also [download the 30-day plan (PDF)](/plan/call-to-reset-30-day-plan.pdf). The free check still writes a plan from your answers and leaves it on the page.

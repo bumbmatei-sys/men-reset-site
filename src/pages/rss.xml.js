@@ -6,7 +6,7 @@ export async function GET(context) {
   const lessons = await getPublishedLessons();
   return rss({
     title: `${themeConfig.name} lessons`,
-    description: 'New lessons from the free course for men leaving porn, gaming, the phone, and alcohol.',
+    description: 'New lessons from the free course for anyone leaving porn, gaming, the phone, alcohol, or another addiction.',
     site: context.site,
     trailingSlash: false,
     items: lessons.map((lesson) => ({

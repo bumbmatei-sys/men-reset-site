@@ -2,19 +2,46 @@
 import Layout from '@layouts/default.astro';
 import { themeConfig } from '~/theme.config';
 
-const title = 'About This Course for Men';
-const description = `What ${themeConfig.name} is: a free, plain course for men leaving porn, gaming, the phone, and alcohol. Christian-rooted and open to anyone.`;
+const title = 'About This Course';
+const description = `What ${themeConfig.name} is: a free, plain course for breaking free from addiction and building discipline and initiative. Christian-rooted and open to anyone.`;
 ---
 
 <Layout title={title} description={description}>
   <p class="course-kicker">About</p>
   <h1 class="page-title">A plain course, not a pulpit</h1>
   <div class="lesson-prose page-prose">
-    <p>This site is a free course for men. The work is to stop porn, quit the game and the phone when they run the day, leave alcohol if it has a grip, and build a morning you can repeat.</p>
-    <p>The roots are Christian. Scripture shows up in the lessons because it is part of the frame, not because you have to pass a test to read them. If you do not share the faith, take the practical steps and leave the verses. If you do, the verses are there without a sermon wrapped around them.</p>
-    <p>
-      Lessons live in Markdown so they can be added one file at a time. The first open track is <a href="/tracks/break-free-from-porn">break free from porn</a>. A <a href="/tracks/30-day-reset">30-day reset</a> is mapped and marked coming soon.
-    </p>
+    <h2>The work</h2>
+    <p>This site is a free course for anyone who wants to break free from addiction, build discipline, and take initiative.</p>
+    <p>The habit can be any of these:</p>
+    <ul>
+      <li>Porn</li>
+      <li>Gaming or the phone</li>
+      <li>Alcohol or other substances</li>
+      <li>Another loop that is running the day</li>
+    </ul>
+    <p>The shape is the same. Name it. Cut the easy path. Meet the hour it happens. Repeat a day you can keep.</p>
+
+    <h2>Christian roots, open to anyone</h2>
+    <p>The roots are Christian. Scripture shows up in the lessons because it is part of the frame, not because you have to pass a test to read them.</p>
+    <aside class="takeaway">
+      <p class="course-kicker">Key takeaway</p>
+      <p>If you do not share the faith, take the practical steps and leave the verses. If you do, the verses are there without a sermon wrapped around them.</p>
+    </aside>
+
+    <h2>How it is built</h2>
+    <ol>
+      <li>
+        Take the <a href="/check">free check</a>. Nine questions, then a 30-day plan.
+      </li>
+      <li>
+        Read the open track, <a href="/tracks/break-free-from-porn">break free from porn</a>, if that is the fight.
+      </li>
+      <li>
+        Use the <a href="/tracks/30-day-reset">30-day reset</a> map. The daily pages are marked coming soon. The plan from the check is the month until they open.
+      </li>
+    </ol>
+
+    <h2>What this is not</h2>
     <p>This is not therapy, a church, or a medical service. If you are in immediate danger, call emergency services. If you are in a mental-health crisis, call or text 988.</p>
     <p>
       Brands can <a href="/sponsor">sponsor</a> the site. The name of the site is set in one config value so it can change without a hunt through the templates.

@@ -1,12 +1,12 @@
 # Call to Reset
 
-A free, static course for men who want to stop porn, quit gaming and the phone, leave alcohol, and build a disciplined life. Christian-rooted, plain, and open to anyone.
+A free, static course for anyone breaking free from addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian-rooted, plain, and open to anyone.
 
 The public name is the `siteName` constant in `theme.config.ts`. Templates read `themeConfig.name`. Change that one string to rename the site.
 
-This project was scaffolded with `npm create stardrive@latest` (Stardrive, by Jens Kuerschner). Pages are static HTML in `dist/`. There is no Workers adapter, no paid API, and no secrets.
+This project was scaffolded with `npm create stardrive@latest` (Stardrive, by Jens Kuerschner). Pages are static HTML in `dist/`. There is no Workers adapter and no ad pixel.
 
-The free check at `/check` is the one exception: a Pages Function at `functions/api/check.ts` can store anonymous answers in D1 (free tier). The quiz still shows the plan if that save fails. See [Cloudflare D1](#cloudflare-d1) below.
+The free check at `/check` is the exception: a Pages Function at `functions/api/check.ts` can store anonymous answers in D1 (free tier) and, when someone opts in with an email, send the 30-day plan through Plunk. The quiz still shows the plan if that save or send fails. See [Cloudflare D1](#cloudflare-d1) below.
 
 ## Scripts
 
@@ -40,7 +40,7 @@ Starting prices and the Dodo Payments checkout URLs are `sponsorTiers` in `theme
 
 ## Cloudflare D1
 
-Anonymous self-check rows live in D1. The schema is `migrations/0001_check_responses.sql`. The binding is `DB` in `wrangler.jsonc`. `database_id` in that file is a placeholder, not a secret. Replace it before a production deploy.
+Anonymous self-check rows live in D1. The schema is `migrations/0001_check_responses.sql`. The binding is `DB` in `wrangler.jsonc`. `database_id` in that file is the production database. It is not a secret.
 
 ```bash
 npx wrangler d1 create the-reset-check
@@ -61,11 +61,11 @@ npx wrangler d1 migrations apply the-reset-check --local
 npx wrangler pages dev dist
 ```
 
-No API token, mail key, or ad pixel belongs in the repo. Email addresses are stored only when someone types one. This version does not send mail.
+No API token or ad pixel belongs in the repo. Email addresses are stored only when someone types one. If they do, `functions/email/send-plan.ts` posts the plan to Plunk (`POST /v1/send`) using the Pages secret `PLUNK_API_KEY`. Set that secret in Cloudflare. Do not commit it. The sender is `plan@calltoreset.site` and that domain has to be verified in Plunk before mail will deliver. If the key is missing or Plunk rejects the message, the result page says so and the plan stays on the page.
 
 ## Cloudflare Pages
 
-Static pages, plus the `/api/check` Function above. No environment variables and no secrets.
+Static pages, plus the `/api/check` Function above. The only secret is the Pages secret `PLUNK_API_KEY`, set in the Cloudflare dashboard, not in the repo.
 
 Create a Pages project and use these build settings:
 
@@ -76,7 +76,7 @@ Create a Pages project and use these build settings:
 | Build output directory | `dist`                  |
 | Root directory         | `/`                     |
 | Node.js version        | `22` (22.22.3 or newer) |
-| Environment variables  | none                    |
+| Environment variables  | `PLUNK_API_KEY` (Pages secret) |
 
 `wrangler.jsonc` sets `pages_build_output_dir` to `./dist` for Wrangler Pages deploys:
 

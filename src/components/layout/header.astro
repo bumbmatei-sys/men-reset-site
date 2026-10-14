@@ -105,7 +105,8 @@ const isOverlayScroll = !fixed && !!overlay && !isClose;
       // How much of the viewport height is covered by the footer.
       const covered = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
       const ratio = vh > 0 ? covered / vh : 0;
-      const shouldHide = ratio > threshold;
+      // A short page can show the footer on first paint. Keep the header until the reader has scrolled.
+      const shouldHide = ratio > threshold && window.scrollY > 80;
 
       if (shouldHide === _footerHideState) return;
       _footerHideState = shouldHide;
