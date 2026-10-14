@@ -16,9 +16,6 @@ scripture:
   text: Be sober-minded; be watchful. Your adversary the devil prowls around like a roaring lion, seeking someone to devour.
 action: Write down the one thing that takes you off the wall most, and tell one trusted person about it this week.
 reflection: Failure is not final. There is the blood of Jesus, and from now on.
-inspiredBy:
-  label: Stand Firm & Act Like Men, Wk 2
-  url: https://www.youtube.com/watch?v=YcHdx3uyUks
 ---
 
 This week I want to talk about being watchful.

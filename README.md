@@ -27,14 +27,13 @@ Lessons are Markdown in `src/content/lessons/`. Tracks are Markdown in `src/cont
 2. Set `track` to the track id (the track filename, without `.md`).
 3. Set `order`, `title`, `description`, and `targetQuery`. Put the query near the front of the title and in the description.
 4. Include `keyPoints`, `scripture` (`reference` and `text`), `action`, and `reflection`.
-5. Optional `inspiredBy` with a real `label` and `url`.
-6. Keep the body a 5–10 minute read. Answer the query in the first sentences.
-7. Link to at least two other lessons or tracks.
-8. Run `npm run build`.
+5. Keep the body a 5–10 minute read. Answer the query in the first sentences.
+6. Link to at least two other lessons or tracks.
+7. Run `npm run build`.
 
 Mark a track `status: coming-soon` until it has lessons. Available tracks use `status: available`.
 
-Sponsors live in `src/data/sponsors.json`. Each entry has a `tier`: `directory` (the `/sponsors` directory only) or `premium` (the directory, plus the top slot on phones and the left rail on desktop). The Harvest is the premium sponsor. One “Your brand here” card stays under it and points at `/sponsor`. Links get `utm_medium=sponsor` and `utm_content` set to the placement (`directory`, `mobile-strip`, or `rail-left`). Dollar amounts stay on `/sponsor` only. There are two monthly tiers: $100 for a directory listing, and $200 for the directory plus those side slots. Sponsors cancel themselves on Dodo's static customer portal (`sponsorPortalUrl` in `theme.config.ts`). That page emails a sign-in link to the address they paid with. No Dodo API key is required for that link. Help mail goes to `plan@calltoreset.site`.
+Sponsors live in `src/data/sponsors.json`. Each entry has a `tier`: `directory` (the `/sponsors` directory only) or `premium` (the directory, plus the top slot on phones and both side rails on desktop). The Harvest is the premium sponsor. One “Your brand here” card stays under it and points at `/sponsor`. Links get `utm_medium=sponsor` and `utm_content` set to the placement (`directory`, `mobile-strip`, `rail-left`, or `rail-right`). Dollar amounts stay on `/sponsor` only. There are two monthly tiers: $100 for a directory listing, and $200 for the directory plus those side slots. Sponsors cancel themselves on Dodo's static customer portal (`sponsorPortalUrl` in `theme.config.ts`). That page emails a sign-in link to the address they paid with. No Dodo API key is required for that link. Help mail goes to `support@calltoreset.site`.
 
 Starting prices and the Dodo Payments checkout URLs are `sponsorTiers` in `theme.config.ts`. Dollar amounts are shown only on `/sponsor`. `/advertise` redirects there. The price rises as traffic grows.
 

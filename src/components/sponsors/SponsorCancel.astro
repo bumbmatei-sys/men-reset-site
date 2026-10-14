@@ -1,0 +1,12 @@
+---
+import { themeConfig } from '~/theme.config';
+
+const email = themeConfig.sponsorHelpEmail;
+---
+
+<p class="sponsor-cancel">
+  Want to stop? Cancel your subscription <a href={themeConfig.sponsorPortalUrl} target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+<p class="sponsor-cancel">
+  If you need help, email <!--email_off--><a href={`mailto:${email}`}>{email}</a><!--/email_off-->.
+</p>

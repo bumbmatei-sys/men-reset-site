@@ -15,9 +15,6 @@ scripture:
   text: Husbands, love your wives, just as Christ also loved the church and gave Himself up for her.
 action: "This week, ask the person closest to you this one question: \"How do you best receive love?\" Then do one thing from their answer, with no expectation in return."
 reflection: Jesus loved us first, while we were still a mess. That is the standard, and it is also the grace.
-inspiredBy:
-  label: Stand Firm & Act Like Men, Wk 5
-  url: https://www.youtube.com/watch?v=72Pe5SV95X8
 ---
 
 Let me be honest with you. When I read Ephesians 5:25, I don't feel strong. I feel small.

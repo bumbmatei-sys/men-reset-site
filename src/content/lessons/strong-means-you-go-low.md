@@ -15,9 +15,6 @@ scripture:
   text: Whoever would be great among you must be your servant, and whoever would be first among you must be your slave, even as the Son of Man came not to be served, but to serve and give his life as a ransom for many.
 action: This week, take the worst job in your home before anyone asks you. Trash, dishes, bathroom, whatever is waiting. Do it quietly.
 reflection: One day people will talk about you. What do you want them to say?
-inspiredBy:
-  label: Stand Firm & Act Like Men, Wk 4
-  url: https://www.youtube.com/watch?v=vo7-W-TnT2Q
 ---
 
 We all have a picture in our head of a strong man. Maybe it is the guy at the gym who moves heavy weight. Maybe it is the man who never cries, never needs anybody, never loses.

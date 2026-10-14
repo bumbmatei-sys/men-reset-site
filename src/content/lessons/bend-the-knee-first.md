@@ -15,9 +15,6 @@ scripture:
   text: Be watchful, stand firm in the faith, act like men, be strong, let all that you do be done in love.
 action: "Every morning this week, before you touch your phone, kneel or sit down and say one line to Jesus: \"Lord, I don't have what it takes on my own. I need You.\" Say it out loud, even when you don't feel it."
 reflection: A man can only stand up after he bends his knee.
-inspiredBy:
-  label: Stand Firm & Act Like Men, Wk 1
-  url: https://www.youtube.com/watch?v=6u2r8-VBHvg
 ---
 
 So let me start with the main thing.

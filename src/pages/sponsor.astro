@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
-import SponsorManage from '@components/sponsors/SponsorManage.astro';
+import SponsorCancel from '@components/sponsors/SponsorCancel.astro';
 import { themeConfig } from '~/theme.config';
 
 const tiers = themeConfig.sponsorTiers;
@@ -12,7 +12,7 @@ function includes(id: string): string {
     case 'directory':
       return 'A listing in the sponsor directory.';
     case 'premium':
-      return 'The directory, plus the side rail on desktop and the top slot on mobile.';
+      return 'The directory, plus the side rails on desktop and the top slot on mobile.';
     default:
       return '';
   }
@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: 'Where does each tier show?',
-    a: 'Directory is a listing in the sponsor directory. Side slots adds the side rail on desktop and the top slot on mobile, on every page.',
+    a: 'Directory is a listing in the sponsor directory. Side slots adds the side rails on desktop and the top slot on mobile, on every page.',
   },
   {
     q: 'What do you need from me?',
@@ -81,10 +81,6 @@ const breadcrumbs = {
   <p class="course-kicker">Sponsors</p>
   <h1 class="page-title">Sponsor the course</h1>
   <p class="page-lead">Two starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
-  <p class="page-note">
-    See who is already listed on the <a href="/sponsors">sponsors directory</a>. Checkout opens on Dodo Payments.
-  </p>
-  <SponsorManage />
 
   <ul class="sponsor-tiers">
     {tiers.map((tier) => (
@@ -111,4 +107,5 @@ const breadcrumbs = {
       </details>
     ))}
   </div>
+  <SponsorCancel />
 </Layout>
