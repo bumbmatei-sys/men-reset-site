@@ -4,7 +4,7 @@ import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { themeConfig } from '~/theme.config';
 
 const title = 'Your 30-day plan';
-const description = 'A printable copy of the 30-day reset from the free check. Open it from the result page on this device.';
+const description = 'Days 1 to 7 from the free check, on this device. The rest of the month comes by email.';
 ---
 
 <Layout title={title} description={description} robots="noindex, follow">
@@ -14,7 +14,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
       Your 30-day plan
     </h1>
     <p class="page-lead" data-plan-empty>
-      Open this page from your result, after the free check, to print the plan that was written for you. If you asked for the email, the full plan is in that message.
+      Days 1 to 7 can be printed from this device after the free check. The rest of the month comes by email.
     </p>
     <div data-plan-body hidden></div>
     <div class="plan-actions check-actions marble-download">
@@ -117,7 +117,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
       const list = document.createElement('ol');
       list.className = 'plan-days';
       for (const day of phase.days) {
-        if (!day || typeof day.day !== 'number' || typeof day.action !== 'string') continue;
+        if (!day || typeof day.day !== 'number' || typeof day.action !== 'string' || day.day > 7) continue;
         const item = document.createElement('li');
         const label = document.createElement('span');
         label.className = 'check-day';
@@ -125,6 +125,7 @@ const description = 'A printable copy of the 30-day reset from the free check. O
         item.append(label, document.createTextNode(` ${day.action}`));
         list.append(item);
       }
+      if (!list.childElementCount) continue;
       section.append(list);
       body.append(section);
     }

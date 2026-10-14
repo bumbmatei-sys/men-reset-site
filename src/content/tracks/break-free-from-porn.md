@@ -17,4 +17,4 @@ Take the phases in order.
 3. [Activating faith](/tracks/break-free-from-porn/activating-faith). Days 15 to 21.
 4. [Lasting freedom](/tracks/break-free-from-porn/lasting-freedom). Days 22 to 30.
 
-You can also [download the 30-day plan (PDF)](/plan/call-to-reset-30-day-plan.pdf). The free check still writes a plan from your answers and leaves it on the page.
+Days 1 to 7 are on this site. Days 8 to 30 come by email, after you ask. The free check still writes days 1 to 7 from your answers.

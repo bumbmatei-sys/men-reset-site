@@ -142,4 +142,4 @@ Freedom is your identity and your inheritance in Jesus.
 
 **Prayer.** Lord Jesus, I close these 30 days in Your presence. I do not walk out as an addict trying to stay clean. I walk out as Your forgiven, loved child. Freedom is already mine. Amen.
 
-The same month is in the [30-day plan (PDF)](/plan/call-to-reset-30-day-plan.pdf).
+The same month is the plan you asked for by email.

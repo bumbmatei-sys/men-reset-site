@@ -8,8 +8,8 @@ targetQuery: how to quit gaming addiction
 
 **How to quit gaming addiction** and how to put the phone down are the same kind of problem for a lot of people. The session was going to be twenty minutes. It became the night. Work, sleep, and the people in the house got whatever was left.
 
-This track is coming soon. The lessons will cover a hard stop time, what you do with your hands in the first ten minutes after you close the game, and a phone setup that does not rely on willpower at 11 p.m.
+This track is still being written. The lessons will cover a hard stop time, what you do with your hands in the first ten minutes after you close the game, and a phone setup that does not rely on willpower at 11 p.m.
 
-Until those lessons are up, use the open track if porn is also in the mix: [break free from porn](/tracks/break-free-from-porn). The urge plan there transfers. Name the cue, leave the room, and do one physical thing before you negotiate with yourself.
+The open course is [Break Free](/tracks/break-free-from-porn). The urge plan there transfers. Name the cue, leave the room, and do one physical thing before you negotiate with yourself.
 
 If the phone is the whole problem, start with one rule you can keep for seven days: no phone in the bedroom, and the charger lives in the kitchen. That is not the full course. It is a stake in the ground while this track is written.

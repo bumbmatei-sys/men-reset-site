@@ -711,6 +711,15 @@ body:has(.au-home) #header-placeholder {
   background: #1d1d1d;
 }
 
+@media (min-width: 701px) {
+  .au-step-image,
+  .au-problem-card img {
+    object-fit: cover;
+    object-position: center top;
+    background: transparent;
+  }
+}
+
 .au-step-copy .au-textlink {
   margin-top: 1.1rem;
 }
@@ -761,15 +770,16 @@ body:has(.au-home) #header-placeholder {
 
   .au-step-image {
     grid-column: 2;
-    width: min(100%, 420px);
+    width: min(100%, 420px, 46vh);
     height: auto;
-    max-height: min(560px, 62vh);
+    max-height: none;
     margin-top: 0;
     margin-inline: auto;
     aspect-ratio: 3 / 4;
     align-self: center;
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover;
+    object-position: center top;
+    background: transparent;
   }
 
   .au-step-num {

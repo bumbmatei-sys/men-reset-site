@@ -28,7 +28,10 @@ interface Props {
 }
 
 const { lesson, trackTitle } = Astro.props as Props;
-const { Content } = await render(lesson);
+const gated = lesson.data.order > 1 && lesson.data.track === 'break-free-from-porn';
+const rendered = gated ? null : await render(lesson);
+const Content = rendered?.Content;
+const phaseLabel = lesson.data.order === 2 ? 'Days 8 to 14' : lesson.data.order === 3 ? 'Days 15 to 21' : 'Days 22 to 30';
 const siblings = await lessonsForTrack(lesson.data.track);
 const index = siblings.findIndex((item) => item.id === lesson.id);
 const previous = index > 0 ? siblings[index - 1] : undefined;
@@ -80,7 +83,11 @@ const breadcrumbs = {
     <p class="course-kicker">{trackTitle}</p>
     <h1 class="lesson-title">{lesson.data.title}</h1>
     <p class="lesson-meta">
-      <span>{minutes} min read</span>
+      {gated ? (
+        <span>{phaseLabel}</span>
+      ) : (
+        <span>{minutes} min read</span>
+      )}
       <span aria-hidden="true"> · </span>
       <span>
         Lesson {index + 1} of {siblings.length}
@@ -90,80 +97,103 @@ const breadcrumbs = {
       <p>{lesson.data.description}</p>
     </blockquote>
 
-    <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
-      <div class="mb-2 flex items-center justify-between gap-3 text-sm">
-        <span data-progress-label>Progress on this device</span>
-        <span data-progress-count>0 of {siblings.length} marked done</span>
-      </div>
-      <div class="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700" aria-hidden="true">
-        <div data-progress-bar class="bg-primary h-full w-0"></div>
-      </div>
-      <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>
-        Mark this lesson done
-      </button>
-    </div>
+    {gated ? (
+      <section class="plan-gate" data-plan-panel>
+        <p>Basically, Jesus already bathed you. So this phase does not start by earning that again. The days themselves come by email.</p>
+        <form class="plan-gate-form" data-plan-gate onsubmit="event.preventDefault()">
+          <h2>Get the full 30-day plan by email</h2>
+          <label class="check-email-label" for="plan-email">Email</label>
+          <input id="plan-email" class="input-primary input-primary-contact" type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required />
+          <p class="check-error" data-plan-error hidden></p>
+          <div class="check-actions">
+            <button type="submit" class="btn-primary">Send the plan</button>
+          </div>
+        </form>
+        <section class="completion-card" data-plan-success hidden>
+          <MarbleAccent kind="check" alt="A marble check mark" />
+          <div>
+            <p class="course-kicker">Sent</p>
+            <p>Your plan is on its way to your inbox</p>
+            <a data-plan-link>Download the 30-day plan (PDF)</a>
+          </div>
+        </section>
+      </section>
+    ) : (
+      <>
+        <div class="progress-card" data-lesson-progress data-track={lesson.data.track} data-lesson={lesson.id} data-lesson-ids={lessonIds}>
+          <div class="mb-2 flex items-center justify-between gap-3 text-sm">
+            <span data-progress-label>Progress on this device</span>
+            <span data-progress-count>0 of {siblings.length} marked done</span>
+          </div>
+          <div class="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700" aria-hidden="true">
+            <div data-progress-bar class="bg-primary h-full w-0"></div>
+          </div>
+          <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>
+            Mark this lesson done
+          </button>
+        </div>
 
-    <section class="completion-card" data-lesson-complete hidden>
-      <MarbleAccent kind="check" alt="A marble check mark" />
-      <div>
-        <p class="course-kicker" data-completion-kicker>Lesson complete</p>
-        <p data-completion-copy>This lesson is marked done on this device.</p>
-      </div>
-    </section>
+        <section class="completion-card" data-lesson-complete hidden>
+          <MarbleAccent kind="check" alt="A marble check mark" />
+          <div>
+            <p class="course-kicker" data-completion-kicker>Lesson complete</p>
+            <p data-completion-copy>This lesson is marked done on this device.</p>
+          </div>
+        </section>
 
-    <section class="key-points" aria-labelledby="key-points-heading">
-      <h2 id="key-points-heading">Key points</h2>
-      <ul>
-        {lesson.data.keyPoints.map((point) => (
-          <li>{point}</li>
-        ))}
-      </ul>
-    </section>
+        <section class="key-points" aria-labelledby="key-points-heading">
+          <h2 id="key-points-heading">Key points</h2>
+          <ul>
+            {lesson.data.keyPoints.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
+        </section>
 
-    <ol class="habit-loop" aria-label="Habit loop">
-      <li>
-        <span class="habit-label">Trigger</span>
-        <p>The cue that starts it: a time, a feeling, or the device already in your hand.</p>
-      </li>
-      <li>
-        <span class="habit-label">Routine</span>
-        <p>The habit itself. Name it in one word before you try to change it.</p>
-      </li>
-      <li>
-        <span class="habit-label">Reward</span>
-        <p>What the habit was buying. Replace that, or the routine comes back.</p>
-      </li>
-    </ol>
+        <ol class="habit-loop" aria-label="Habit loop">
+          <li>
+            <span class="habit-label">Trigger</span>
+            <p>The cue that starts it: a time, a feeling, or the device already in your hand.</p>
+          </li>
+          <li>
+            <span class="habit-label">Routine</span>
+            <p>The habit itself. Name it in one word before you try to change it.</p>
+          </li>
+          <li>
+            <span class="habit-label">Reward</span>
+            <p>What the habit was buying. Replace that, or the routine comes back.</p>
+          </li>
+        </ol>
 
-    <div class="lesson-prose mt-8">
-      <Content />
-    </div>
+        <div class="lesson-prose mt-8">{Content ? <Content /> : null}</div>
 
-    <section class="scripture-block" aria-labelledby="scripture-heading">
-      <h2 id="scripture-heading">Scripture</h2>
-      <blockquote>
-        <p>{lesson.data.scripture.text}</p>
-        <footer>{lesson.data.scripture.reference}</footer>
-      </blockquote>
-    </section>
+        <section class="scripture-block" aria-labelledby="scripture-heading">
+          <h2 id="scripture-heading">Scripture</h2>
+          <blockquote>
+            <p>{lesson.data.scripture.text}</p>
+            <footer>{lesson.data.scripture.reference}</footer>
+          </blockquote>
+        </section>
 
-    <aside class="takeaway">
-      <p class="course-kicker">Key takeaway</p>
-      <p>{lesson.data.keyPoints[0]}</p>
-    </aside>
+        <aside class="takeaway">
+          <p class="course-kicker">Key takeaway</p>
+          <p>{lesson.data.keyPoints[0]}</p>
+        </aside>
 
-    <section class="action-callout" aria-labelledby="action-heading">
-      <p class="course-kicker">Do this today</p>
-      <h2 id="action-heading">Action step</h2>
-      <p>{lesson.data.action}</p>
-    </section>
+        <section class="action-callout" aria-labelledby="action-heading">
+          <p class="course-kicker">Do this today</p>
+          <h2 id="action-heading">Action step</h2>
+          <p>{lesson.data.action}</p>
+        </section>
 
-    <section class="reflection-card" aria-labelledby="reflection-heading">
-      <h2 id="reflection-heading">Reflection</h2>
-      <p>{lesson.data.reflection}</p>
-    </section>
+        <section class="reflection-card" aria-labelledby="reflection-heading">
+          <h2 id="reflection-heading">Reflection</h2>
+          <p>{lesson.data.reflection}</p>
+        </section>
+      </>
+    )}
 
-    {lesson.data.inspiredBy ? (
+    {lesson.data.inspiredBy && !gated ? (
       <p class="mt-8 max-w-[68ch] text-sm leading-relaxed">
         Inspired by{' '}
         <a href={lesson.data.inspiredBy.url} rel="noopener">
@@ -197,6 +227,8 @@ const breadcrumbs = {
 </Layout>
 
 <script>
+  import { mountPlanGate } from '@scripts/plan-gate';
+
   const STORAGE_KEY = 'reset:lesson-progress';
 
   function readDone(): string[] {
@@ -258,5 +290,9 @@ const breadcrumbs = {
   }
 
   setupProgress();
-  document.addEventListener('astro:page-load', setupProgress);
+  mountPlanGate();
+  document.addEventListener('astro:page-load', () => {
+    setupProgress();
+    mountPlanGate();
+  });
 </script>
