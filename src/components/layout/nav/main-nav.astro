@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+import { useTranslations } from "@utils/i18n";
+import type { NavItem } from "~/types/nav";
+
+interface Props {
+  locale: string;
+  tabIndex?: number;
+}
+
+const { locale, tabIndex = 0 } = Astro.props as Props;
+const t = useTranslations(locale);
+
+const navLinks: NavItem[] = [
+  { href: '/tracks', label: 'Tracks' },
+  { href: '/tracks/break-free-from-porn', label: 'Quit porn' },
+  { href: '/tracks/30-day-reset', label: '30-day reset' },
+  { href: '/advertise', label: 'Advertise' },
+];
+---
+
+<!-- Desktop nav -->
+<nav role="navigation" aria-label="Main" class="hidden items-center gap-6 text-sm lg:flex">
+  {navLinks.map((item) => (
+    <a href={item.href} class="hover:text-primary no-underline" tabindex={tabIndex}>
+      {item.label}
+    </a>
+  ))}
+</nav>
+
+<!-- Mobile trigger -->
+<button id="mobile-nav-trigger" data-mobile-nav-trigger class="hover:text-primary outline-primary cursor-pointer rounded-lg outline-offset-8 focus-visible:outline-2 lg:hidden" aria-label={t('labels.open-menu')} tabindex={tabIndex}>
+  <Icon name="heroicons:bars-3" class="h-10 w-10" />
+</button>
+
+<!-- Mobile overlay -->
+<div id="mobile-nav-overlay" data-mobile-nav-overlay class="top-0 left-0 z-50 hidden h-full w-full bg-linear-to-tr from-stone-200 to-stone-50 dark:from-stone-950 dark:to-stone-700">
+  <button data-mobile-nav-close aria-label={t('labels.close-menu')} class="btn-subtle absolute top-5 right-5 rounded-full">
+    <Icon name="heroicons:x-mark" class="h-5 w-5 md:h-8 md:w-8" />
+  </button>
+  <div class="h-full w-full overflow-y-auto">
+    <div class="container mx-auto flex min-h-full w-full max-w-xs flex-col items-center justify-center py-8">
+      <ul class="text-text dark:text-text-dark text-left text-2xl font-semibold">
+        {navLinks.map((item) => (
+          <li class="my-3">
+            <a href={item.href} class="hover:text-primary no-underline">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupMobileNav() {
+    const trigger = document.querySelector<HTMLElement>('[data-mobile-nav-trigger]');
+    const overlay = document.querySelector<HTMLElement>('[data-mobile-nav-overlay]');
+    const close = overlay?.querySelector<HTMLElement>('[data-mobile-nav-close]');
+    if (!trigger || !overlay || !close) return;
+
+    const open = () => {
+      overlay.classList.remove('hidden');
+      overlay.classList.add('fixed');
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('nav-open');
+      close.focus();
+    };
+    const shut = () => {
+      overlay.classList.add('hidden');
+      overlay.classList.remove('fixed');
+      document.body.style.overflow = '';
+      document.body.classList.remove('nav-open');
+      trigger.focus();
+    };
+
+    trigger.onclick = open;
+    close.onclick = shut;
+    overlay.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', shut);
+    });
+  }
+
+  setupMobileNav();
+  document.addEventListener('astro:page-load', setupMobileNav);
+</script>

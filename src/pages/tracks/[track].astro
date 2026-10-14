@@ -1,0 +1,109 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import SponsorSlot from '@components/sponsors/SponsorSlot.astro';
+import { render } from 'astro:content';
+import { themeConfig } from '~/theme.config';
+import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
+
+export async function getStaticPaths() {
+  const tracks = await getTracks();
+  return tracks.map((track) => ({
+    params: { track: track.id },
+    props: { track },
+  }));
+}
+
+interface Props {
+  track: TrackEntry;
+}
+
+const { track } = Astro.props as Props;
+const { Content } = await render(track);
+const lessons = await lessonsForTrack(track.id);
+const comingSoon = track.data.status === 'coming-soon';
+const pageUrl = new URL(trackPath(track.id), themeConfig.site).toString();
+
+const title = track.data.title;
+const description = track.data.description;
+
+const courseLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: track.data.title,
+  description: track.data.description,
+  url: pageUrl,
+  inLanguage: 'en-US',
+  isAccessibleForFree: true,
+  provider: {
+    '@type': 'Organization',
+    name: themeConfig.name,
+    url: themeConfig.site,
+  },
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Men in the United States',
+  },
+  hasPart: lessons.map((lesson) => ({
+    '@type': 'LearningResource',
+    name: lesson.data.title,
+    url: new URL(lessonPath(track.id, lesson.id), themeConfig.site).toString(),
+    learningResourceType: 'Lesson',
+  })),
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
+    { '@type': 'ListItem', position: 2, name: 'Tracks', item: new URL('/tracks', themeConfig.site).toString() },
+    { '@type': 'ListItem', position: 3, name: track.data.title, item: pageUrl },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <JsonLd data={courseLd} />
+  <JsonLd data={breadcrumbs} />
+  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+    <a href="/">Home</a>
+    <span aria-hidden="true"> / </span>
+    <a href="/tracks">Tracks</a>
+    <span aria-hidden="true"> / </span>
+    <span>{track.data.title}</span>
+  </nav>
+  <p class="course-kicker">{comingSoon ? 'Coming soon' : 'Course'}</p>
+  <h1 class="mt-2 max-w-[18ch] text-4xl font-bold tracking-tight">{track.data.title}</h1>
+  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">{track.data.description}</p>
+  <div class="lesson-prose mt-6">
+    <Content />
+  </div>
+
+  {
+    lessons.length > 0 ? (
+      <section class="mt-10" aria-labelledby="lesson-list-heading">
+        <h2 id="lesson-list-heading" class="text-2xl font-bold tracking-tight">Lessons</h2>
+        <ol class="mt-4 grid gap-3">
+          {lessons.map((lesson, index) => (
+            <li>
+              <a class="track-card" href={lessonPath(track.id, lesson.id)}>
+                <span class="text-sm font-semibold text-stone-500">Lesson {index + 1}</span>
+                <span class="text-lg font-bold">{lesson.data.title}</span>
+                <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">{lesson.data.description}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ) : (
+      <p class="mt-8 max-w-[68ch] leading-relaxed">
+        Lessons for this track are not published yet. You can start the open track, <a href="/tracks/break-free-from-porn">break free from porn</a>, or go back to <a href="/tracks">all tracks</a>.
+      </p>
+    )
+  }
+
+  <div class="sponsor-inline mt-10 max-w-sm">
+    <SponsorSlot placement="course-card" label="Sponsor" />
+  </div>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { themeConfig } from '~/theme.config';
+import { getTracks, trackPath } from '@utils/course';
+
+const tracks = await getTracks();
+const title = 'Courses to Quit Porn, Gaming, and the Phone';
+const description = 'Free course tracks for men: break free from porn, quit gaming and the phone, build a morning routine, and a 30-day reset. Most tracks are coming soon.';
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
+    { '@type': 'ListItem', position: 2, name: 'Tracks', item: new URL('/tracks', themeConfig.site).toString() },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <JsonLd data={breadcrumbs} />
+  <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+    <a href="/">Home</a>
+    <span aria-hidden="true"> / </span>
+    <span>Tracks</span>
+  </nav>
+  <h1 class="max-w-[20ch] text-4xl font-bold tracking-tight">Courses to quit porn, gaming, and the phone</h1>
+  <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">
+    These tracks are the course. <strong>Break free from porn</strong> is the one you can take today. The others are written down so you can see the path, and marked coming soon until the lessons are ready.
+  </p>
+  <ul class="mt-8 grid gap-4">
+    {
+      tracks.map((track) => (
+        <li>
+          <a class="track-card" href={trackPath(track.id)}>
+            <span class="flex flex-wrap items-center gap-2">
+              <span class="text-xl font-bold">{track.data.title}</span>
+              {track.data.status === 'coming-soon' ? <span class="coming-soon">Coming soon</span> : <span class="course-kicker">Open</span>}
+            </span>
+            <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">{track.data.description}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

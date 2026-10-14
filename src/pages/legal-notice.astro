@@ -1,0 +1,21 @@
+---
+import Layout from '@layouts/default.astro';
+import { themeConfig } from '~/theme.config';
+
+const title = 'Legal Notice';
+const description = `Legal notice for ${themeConfig.name}. The course is general education, not counseling, medical advice, or a promise of results.`;
+---
+
+<Layout title={title} description={description} robots="noindex, follow">
+  <h1 class="text-4xl font-bold tracking-tight">Legal notice</h1>
+  <div class="lesson-prose mt-6">
+    <p>
+      {themeConfig.name} publishes a free educational course. The lessons are general information for adult men. They are not medical advice, clinical treatment, pastoral counseling, or a promise that you will stop a habit on a schedule.
+    </p>
+    <p>Scripture is quoted from the King James Version, which is in the public domain in the United States. Other translations are not copied here.</p>
+    <p>
+      Sponsor slots are paid placements and are labeled Sponsor. A booking button may point at a placeholder address until a real checkout exists. The price on the advertise page is the published rate.
+    </p>
+    <p>The operator of this deployment should replace this page with a real name and address before a public launch if local law requires an imprint.</p>
+  </div>
+</Layout>

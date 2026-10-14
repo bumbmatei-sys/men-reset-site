@@ -1,0 +1,219 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { render } from 'astro:content';
+import { themeConfig } from '~/theme.config';
+import { getReadingTime } from '@utils/reading-time';
+import { getTracks, lessonsForTrack, lessonPath, trackPath, type LessonEntry } from '@utils/course';
+
+export async function getStaticPaths() {
+  const tracks = await getTracks();
+  const paths = [];
+  for (const track of tracks) {
+    const lessons = await lessonsForTrack(track.id);
+    for (const lesson of lessons) {
+      paths.push({
+        params: { track: track.id, lesson: lesson.id },
+        props: { lesson, trackTitle: track.data.title },
+      });
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  lesson: LessonEntry;
+  trackTitle: string;
+}
+
+const { lesson, trackTitle } = Astro.props as Props;
+const { Content } = await render(lesson);
+const siblings = await lessonsForTrack(lesson.data.track);
+const index = siblings.findIndex((item) => item.id === lesson.id);
+const previous = index > 0 ? siblings[index - 1] : undefined;
+const next = index >= 0 && index < siblings.length - 1 ? siblings[index + 1] : undefined;
+const minutes = getReadingTime(lesson.body) ?? '6';
+const pageUrl = new URL(lessonPath(lesson.data.track, lesson.id), themeConfig.site).toString();
+const trackUrl = new URL(trackPath(lesson.data.track), themeConfig.site).toString();
+const lessonIds = siblings.map((item) => item.id).join(',');
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: lesson.data.title,
+  description: lesson.data.description,
+  datePublished: lesson.data.publishDate.toISOString(),
+  dateModified: (lesson.data.updateDate ?? lesson.data.publishDate).toISOString(),
+  inLanguage: 'en-US',
+  mainEntityOfPage: pageUrl,
+  author: { '@type': 'Organization', name: themeConfig.name, url: themeConfig.site },
+  publisher: { '@type': 'Organization', name: themeConfig.name, url: themeConfig.site },
+  isPartOf: { '@type': 'Course', name: trackTitle, url: trackUrl },
+};
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
+    { '@type': 'ListItem', position: 2, name: 'Tracks', item: new URL('/tracks', themeConfig.site).toString() },
+    { '@type': 'ListItem', position: 3, name: trackTitle, item: trackUrl },
+    { '@type': 'ListItem', position: 4, name: lesson.data.title, item: pageUrl },
+  ],
+};
+---
+
+<Layout title={lesson.data.title} description={lesson.data.description}>
+  <JsonLd data={articleLd} />
+  <JsonLd data={breadcrumbs} />
+  <article>
+    <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tracks">Tracks</a>
+      <span aria-hidden="true"> / </span>
+      <a href={trackPath(lesson.data.track)}>{trackTitle}</a>
+      <span aria-hidden="true"> / </span>
+      <span>{lesson.data.title}</span>
+    </nav>
+    <p class="course-kicker">{trackTitle}</p>
+    <h1 class="mt-2 max-w-[22ch] text-4xl font-bold tracking-tight">{lesson.data.title}</h1>
+    <p class="mt-3 text-sm text-stone-600 dark:text-stone-300">
+      <span>{minutes} min read</span>
+      <span aria-hidden="true"> · </span>
+      <span>Lesson {index + 1} of {siblings.length}</span>
+    </p>
+    <p class="mt-4 max-w-[68ch] text-lg leading-relaxed">{lesson.data.description}</p>
+
+    <div
+      class="mt-6 max-w-[68ch] rounded-xl border border-stone-300/70 p-4 dark:border-white/15"
+      data-lesson-progress
+      data-track={lesson.data.track}
+      data-lesson={lesson.id}
+      data-lesson-ids={lessonIds}
+    >
+      <div class="mb-2 flex items-center justify-between gap-3 text-sm">
+        <span data-progress-label>Progress on this device</span>
+        <span data-progress-count>0 of {siblings.length} marked done</span>
+      </div>
+      <div class="h-2 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700" aria-hidden="true">
+        <div data-progress-bar class="bg-primary h-full w-0"></div>
+      </div>
+      <button type="button" class="btn-secondary mt-3 text-sm" data-progress-toggle>Mark this lesson done</button>
+    </div>
+
+    <section class="mt-8 max-w-[68ch]" aria-labelledby="key-points-heading">
+      <h2 id="key-points-heading" class="text-xl font-bold">Key points</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
+        {lesson.data.keyPoints.map((point) => <li>{point}</li>)}
+      </ul>
+    </section>
+
+    <div class="lesson-prose mt-8">
+      <Content />
+    </div>
+
+    <section class="mt-10 max-w-[68ch] border-l-4 border-primary pl-4" aria-labelledby="scripture-heading">
+      <h2 id="scripture-heading" class="text-xl font-bold">Scripture</h2>
+      <blockquote class="mt-3 text-lg leading-relaxed">
+        <p>{lesson.data.scripture.text}</p>
+        <footer class="mt-2 text-sm font-semibold">{lesson.data.scripture.reference} (KJV)</footer>
+      </blockquote>
+    </section>
+
+    <section class="mt-8 max-w-[68ch]" aria-labelledby="action-heading">
+      <h2 id="action-heading" class="text-xl font-bold">Action step</h2>
+      <p class="mt-3 leading-relaxed">{lesson.data.action}</p>
+    </section>
+
+    <section class="mt-8 max-w-[68ch]" aria-labelledby="reflection-heading">
+      <h2 id="reflection-heading" class="text-xl font-bold">Reflection</h2>
+      <p class="mt-3 leading-relaxed">{lesson.data.reflection}</p>
+    </section>
+
+    {
+      lesson.data.inspiredBy ? (
+        <p class="mt-8 max-w-[68ch] text-sm leading-relaxed">
+          Inspired by <a href={lesson.data.inspiredBy.url} rel="noopener">{lesson.data.inspiredBy.label}</a>. The lesson itself is original writing.
+        </p>
+      ) : null
+    }
+
+    <nav class="mt-10 flex flex-col gap-3 border-t border-stone-300/70 pt-6 sm:flex-row sm:justify-between" aria-label="Lesson">
+      {
+        previous ? (
+          <a class="btn-secondary" href={lessonPath(lesson.data.track, previous.id)}>
+            Previous: {previous.data.title}
+          </a>
+        ) : (
+          <a class="btn-secondary" href={trackPath(lesson.data.track)}>
+            Back to {trackTitle}
+          </a>
+        )
+      }
+      {
+        next ? (
+          <a class="btn-primary" href={lessonPath(lesson.data.track, next.id)}>
+            Next: {next.data.title}
+          </a>
+        ) : (
+          <a class="btn-primary" href="/tracks">
+            All tracks
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</Layout>
+
+<script>
+  const STORAGE_KEY = 'reset:lesson-progress';
+
+  function readDone(): string[] {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const parsed = raw ? (JSON.parse(raw) as { done?: unknown }) : {};
+      return Array.isArray(parsed.done) ? parsed.done.filter((id): id is string => typeof id === 'string') : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function writeDone(done: string[]) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ done }));
+  }
+
+  function paintProgress() {
+    const root = document.querySelector<HTMLElement>('[data-lesson-progress]');
+    if (!root) return;
+    const lessonId = root.dataset.lesson || '';
+    const ids = (root.dataset.lessonIds || '').split(',').filter(Boolean);
+    const done = readDone();
+    const doneInTrack = ids.filter((id) => done.includes(id));
+    const count = root.querySelector<HTMLElement>('[data-progress-count]');
+    const bar = root.querySelector<HTMLElement>('[data-progress-bar]');
+    const button = root.querySelector<HTMLButtonElement>('[data-progress-toggle]');
+    const marked = done.includes(lessonId);
+    if (count) count.textContent = `${doneInTrack.length} of ${ids.length} marked done`;
+    if (bar) bar.style.width = `${ids.length ? Math.round((doneInTrack.length / ids.length) * 100) : 0}%`;
+    if (button) button.textContent = marked ? 'Marked done on this device' : 'Mark this lesson done';
+  }
+
+  function setupProgress() {
+    paintProgress();
+    const root = document.querySelector<HTMLElement>('[data-lesson-progress]');
+    const button = root?.querySelector<HTMLButtonElement>('[data-progress-toggle]');
+    if (!root || !button) return;
+    button.onclick = () => {
+      const lessonId = root.dataset.lesson || '';
+      if (!lessonId) return;
+      const done = readDone();
+      const next = done.includes(lessonId) ? done.filter((id) => id !== lessonId) : [...done, lessonId];
+      writeDone(next);
+      paintProgress();
+    };
+  }
+
+  setupProgress();
+  document.addEventListener('astro:page-load', setupProgress);
+</script>

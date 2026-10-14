@@ -1,0 +1,79 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { themeConfig } from '~/theme.config';
+import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
+
+const locale = themeConfig.i18n.defaultLocale;
+const tracks = await getTracks();
+const live = tracks.find((track) => track.data.status === 'available');
+const firstLessons = live ? await lessonsForTrack(live.id) : [];
+const startHref = live && firstLessons[0] ? lessonPath(live.id, firstLessons[0].id) : '/tracks';
+
+const title = 'How to Quit Porn and Build Discipline';
+const description = 'A free course for men in the US who want to stop watching porn, quit gaming and the phone, and build a disciplined morning. Christian roots. Open to anyone.';
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Course tracks',
+  itemListElement: tracks.map((track, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: track.data.title,
+    url: new URL(trackPath(track.id), themeConfig.site).toString(),
+  })),
+};
+---
+
+<Layout isHome showHero={false} title={title} description={description} locale={locale}>
+  <JsonLd data={itemList} />
+  <header class="mx-auto max-w-[68ch] pb-8">
+    <p class="course-kicker">For men. United States first.</p>
+    <h1 class="mt-3 text-4xl leading-tight font-bold tracking-tight text-balance md:text-5xl">How to quit porn and build discipline</h1>
+    <p class="mt-5 text-lg leading-relaxed">
+      <strong>How to quit porn</strong> is not a mood. It is a set of small moves you can repeat on a tired Tuesday. This course is for men who are done hiding the tab, the late-night game, the phone, or the drink.
+    </p>
+    <p class="mt-3 text-lg leading-relaxed">
+      The roots are Christian. You do not have to share that faith to use the steps. The writing stays plain. No hype. No fake before-and-after.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a class="btn-primary" href={startHref}>Start the first lesson</a>
+      <a class="btn-secondary" href="/tracks">See every track</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="tracks-heading" class="mt-4">
+    <h2 id="tracks-heading" class="text-2xl font-bold tracking-tight">Tracks</h2>
+    <p class="mt-2 max-w-[68ch] text-base leading-relaxed">
+      One track is open. The rest are marked coming soon, including a free <a href="/tracks/30-day-reset">30-day reset</a>. Start with <a href="/tracks/break-free-from-porn">break free from porn</a> if that is the fight in front of you.
+    </p>
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2">
+      {
+        tracks.map((track) => (
+          <li>
+            <a class="track-card" href={trackPath(track.id)}>
+              {track.data.status === 'coming-soon' ? <span class="coming-soon">Coming soon</span> : <span class="course-kicker">Open</span>}
+              <span class="text-xl font-bold tracking-tight">{track.data.title}</span>
+              <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">{track.data.description}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-12 max-w-[68ch]" aria-labelledby="how-heading">
+    <h2 id="how-heading" class="text-2xl font-bold tracking-tight">How a lesson works</h2>
+    <p class="mt-3 leading-relaxed">Each lesson is a 5–10 minute read. You get the point up front, then a practice you can do today.</p>
+    <ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed">
+      <li>Key points you can remember without a notebook.</li>
+      <li>One scripture, quoted in the King James Version, then one plain line on what to do with it.</li>
+      <li>An action step and a reflection question.</li>
+      <li>Your place in the track, saved on this device only.</li>
+    </ul>
+    <p class="mt-4 leading-relaxed">
+      If porn is the issue, read <a href="/tracks/break-free-from-porn/how-to-stop-watching-porn">how to stop watching porn</a>, then <a href="/tracks/break-free-from-porn/how-to-deal-with-porn-urges">how to deal with porn urges</a>. The <a href="/advertise">advertise</a> page is for brands, not for the work itself.
+    </p>
+  </section>
+</Layout>

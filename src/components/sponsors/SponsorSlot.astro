@@ -1,0 +1,36 @@
+---
+import { sponsorUrl, sponsors, type SponsorPlacement } from '@utils/sponsors';
+
+interface Props {
+  placement: SponsorPlacement;
+  class?: string;
+  label?: string;
+}
+
+const { placement, class: className = '', label = 'Sponsor' } = Astro.props;
+---
+
+<div class:list={['sponsor-slot', className]} data-sponsor-slot={placement}>
+  <p class="sponsor-kicker">{label}</p>
+  {
+    sponsors.map((sponsor, index) => {
+      const href = sponsorUrl(sponsor.url, placement);
+      const external = href.startsWith('http');
+      return (
+        <a
+          class="sponsor-card"
+          data-sponsor-card
+          data-sponsor-id={sponsor.id}
+          href={href}
+          hidden={index !== 0}
+          rel={external ? 'sponsored noopener' : 'sponsored'}
+          target={external ? '_blank' : undefined}
+        >
+          <span class="sponsor-name">{sponsor.name}</span>
+          <span class="sponsor-tagline">{sponsor.tagline}</span>
+          <span class="sponsor-cta">{sponsor.cta}</span>
+        </a>
+      );
+    })
+  }
+</div>

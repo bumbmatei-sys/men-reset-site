@@ -1,0 +1,30 @@
+---
+interface Props {
+  locale: string;
+  isHome?: boolean;
+}
+
+const { isHome } = Astro.props;
+---
+
+<nav role="navigation" aria-label="Footer" class="grid w-full grid-cols-1 justify-items-center gap-10 text-left text-sm sm:grid-cols-3 sm:justify-items-start">
+  <div class="flex flex-col items-center sm:items-start">
+    <h3>Tracks</h3>
+    {!isHome ? <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/">Home</a> : null}
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/tracks">All tracks</a>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/tracks/break-free-from-porn">Break free from porn</a>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/tracks/30-day-reset">30-day reset</a>
+  </div>
+  <div class="flex flex-col items-center sm:items-start">
+    <h3>Start</h3>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/tracks/break-free-from-porn/how-to-stop-watching-porn">How to stop watching porn</a>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/tracks/quit-gaming-and-the-phone">Quit gaming and the phone</a>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/tracks/discipline-and-morning-routine">Morning routine</a>
+  </div>
+  <div class="flex flex-col items-center sm:items-start">
+    <h3>Site</h3>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/about">About</a>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/advertise">Advertise</a>
+    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/rss.xml">RSS</a>
+  </div>
+</nav>

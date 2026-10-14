@@ -1,0 +1,23 @@
+[
+  {
+    "id": "placeholder-rails",
+    "name": "Your brand here – Advertise",
+    "tagline": "A quiet card beside the lessons. $200 a month, month to month.",
+    "cta": "Book a spot",
+    "url": "/advertise"
+  },
+  {
+    "id": "placeholder-strip",
+    "name": "Your brand here – Advertise",
+    "tagline": "Reach men who are doing the work to change. Price rises as traffic grows.",
+    "cta": "See the rate",
+    "url": "/advertise"
+  },
+  {
+    "id": "placeholder-course",
+    "name": "Your brand here – Advertise",
+    "tagline": "One line, your link, no shouting. Open a spot while the site is still young.",
+    "cta": "Advertise",
+    "url": "/advertise"
+  }
+]
