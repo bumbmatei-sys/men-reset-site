@@ -3,27 +3,31 @@ import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
-import { getTeachings, teachingPath, formatDate, type TeachingEntry } from '@utils/teachings';
+import { getTeachings, teachingPath, toCard, previewSamples, isBlogPreview, formatDate, type TeachingEntry } from '@utils/teachings';
+import MarbleAccent from '@components/course/MarbleAccent.astro';
+import '../../styles/teachings.css';
 
 export async function getStaticPaths() {
   const entries = await getTeachings();
-  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry, all: entries } }));
 }
 
-const { entry } = Astro.props as { entry: TeachingEntry };
+const { entry, all } = Astro.props as { entry: TeachingEntry; all: TeachingEntry[] };
 const { Content, headings } = await render(entry);
 const d = entry.data;
 const updated = d.updatedDate ?? d.publishDate;
 const pageUrl = new URL(teachingPath(entry), themeConfig.site).toString();
-const imageUrl = new URL(d.image.src, themeConfig.site).toString();
 const bio = 'Matei Bumb is the founder of Call to Reset. He writes plain, scripture-grounded guidance for men leaving porn, gaming and drift behind for a disciplined life in Christ.';
+let more = all.filter((e) => e.id !== entry.id).map(toCard);
+if (isBlogPreview() && more.length < 3) more = [...more, ...previewSamples('/teachings')];
+more = more.slice(0, 3);
 
 const articleLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: d.title,
   description: d.description,
-  image: imageUrl,
+  image: new URL(d.image.src, themeConfig.site).toString(),
   url: pageUrl,
   mainEntityOfPage: pageUrl,
   inLanguage: 'en-US',
@@ -33,11 +37,7 @@ const articleLd = {
   publisher: { '@type': 'Organization', name: themeConfig.name, url: themeConfig.site },
 };
 const faqLd = d.faq.length
-  ? {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-    }
+  ? { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
   : null;
 const breadcrumbs = {
   '@context': 'https://schema.org',
@@ -55,71 +55,85 @@ const toc = headings.filter((h) => h.depth === 2);
   <JsonLd data={articleLd} />
   {faqLd ? <JsonLd data={faqLd} /> : null}
   <JsonLd data={breadcrumbs} />
-  <article class="teaching-article">
-    <nav aria-label="Breadcrumb" class="page-crumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true"> / </span>
-      <a href="/teachings">Teachings</a>
-      <span aria-hidden="true"> / </span>
-      <span>{d.title}</span>
-    </nav>
-    <p class="course-kicker">{d.draft ? 'Teachings · draft preview' : 'Teachings'}</p>
-    <h1 class="lesson-title">{d.title}</h1>
-    <p class="lesson-meta teaching-byline">
-      <span>By <a href="/about">{d.author}</a></span>
-      <span aria-hidden="true"> · </span>
-      <span>Updated <time datetime={updated.toISOString()}>{formatDate(updated)}</time></span>
-      <span aria-hidden="true"> · </span>
-      <span>{d.readingTime} min read</span>
-    </p>
+  <article class="tch tch-article">
+    <header class="tch-article-head">
+      <nav aria-label="Breadcrumb" class="tch-crumb"><a href="/teachings">Teachings</a> <span aria-hidden="true">/</span> {d.category}</nav>
+      <h1 class="tch-article-title">{d.title}</h1>
+      <p class="tch-byline">
+        <img src="/logo/ctr-logo.png" alt="" width="32" height="32" />
+        <span>By <a href="/about">{d.author}</a></span>
+        <span aria-hidden="true">·</span>
+        <span>Updated <time datetime={updated.toISOString()}>{formatDate(updated)}</time></span>
+        <span aria-hidden="true">·</span>
+        <span>{d.readingTime} min read</span>
+      </p>
+    </header>
 
-    {d.takeaways.length > 0 ? (
-      <aside class="takeaway teaching-takeaways" aria-labelledby="takeaways-heading">
-        <p class="course-kicker" id="takeaways-heading">Key takeaways</p>
-        <ul>{d.takeaways.map((t) => <li>{t}</li>)}</ul>
+    <figure class="tch-cover"><img src={d.image.src} alt={d.image.alt} width="1280" height="720" fetchpriority="high" decoding="async" /></figure>
+
+    <div class="tch-read">
+      {d.takeaways.length > 0 ? (
+        <aside class="tch-takeaways" aria-labelledby="takeaways-heading">
+          <MarbleAccent kind="sphere" alt="" />
+          <p class="tch-kicker" id="takeaways-heading">Key takeaways</p>
+          <ul>{d.takeaways.map((t) => <li>{t}</li>)}</ul>
+        </aside>
+      ) : null}
+
+      {toc.length > 2 ? (
+        <nav class="tch-toc" aria-label="On this page">
+          <p class="tch-kicker">On this page</p>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </nav>
+      ) : null}
+
+      <div class="tch-prose"><Content /></div>
+
+      {d.faq.length > 0 ? (
+        <section class="tch-faq" aria-labelledby="faq-heading">
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          {d.faq.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </section>
+      ) : null}
+
+      <section class="tch-cta" aria-labelledby="cta-heading">
+        <p class="tch-kicker">Start here</p>
+        <h2 id="cta-heading">Take the free check</h2>
+        <p>Answer a few honest questions and get a plan written from your answers. About three minutes.</p>
+        <a class="tch-btn" href="/check">Take the free check</a>
+      </section>
+
+      <aside class="tch-bio" aria-label="About the author">
+        <img src="/logo/ctr-logo.png" alt="" width="56" height="56" loading="lazy" />
+        <div>
+          <p class="tch-kicker">Written by</p>
+          <p><strong>{d.author}</strong>. {bio}</p>
+        </div>
       </aside>
-    ) : null}
-
-    <figure class="teaching-cover">
-      <img src={d.image.src} alt={d.image.alt} width="1200" height="750" decoding="async" />
-    </figure>
-
-    {toc.length > 2 ? (
-      <nav class="teaching-toc" aria-label="On this page">
-        <p class="course-kicker">On this page</p>
-        <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
-      </nav>
-    ) : null}
-
-    <div class="lesson-prose mt-8">
-      <Content />
     </div>
 
-    {d.faq.length > 0 ? (
-      <section class="teaching-faq" aria-labelledby="faq-heading">
-        <h2 id="faq-heading" class="page-subhead">Frequently asked questions</h2>
-        {d.faq.map((f) => (
-          <details>
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
+    {more.length > 0 ? (
+      <section class="tch-more" aria-labelledby="more-heading">
+        <h2 id="more-heading" class="tch-section-label">More teachings</h2>
+        <ul class="tch-highlights">
+          {more.map((c) => (
+            <li>
+              <a class="tch-overlay" href={c.href}>
+                <img src={c.image.src} alt={c.image.alt} width="640" height="640" loading="lazy" decoding="async" />
+                <span class="tch-overlay-label">
+                  <span class="tch-kicker">{c.category}</span>
+                  <span class="tch-overlay-title">{c.title}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     ) : null}
-
-    <section class="action-callout teaching-cta" aria-labelledby="cta-heading">
-      <p class="course-kicker">Start here</p>
-      <h2 id="cta-heading">Take the free check</h2>
-      <p>Answer a few honest questions and get a plan written from your answers. It takes about three minutes.</p>
-      <a class="btn-primary" href="/check">Take the free check</a>
-    </section>
-
-    <aside class="teaching-author" aria-label="About the author">
-      <img src="/logo/ctr-logo.png" alt="" width="56" height="56" loading="lazy" />
-      <div>
-        <p class="course-kicker">Written by</p>
-        <p><strong>{d.author}</strong>. {bio}</p>
-      </div>
-    </aside>
   </article>
 </Layout>

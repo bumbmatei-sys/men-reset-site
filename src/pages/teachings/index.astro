@@ -2,36 +2,23 @@
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { themeConfig } from '~/theme.config';
-import { getTeachings, teachingPath, formatDate, isBlogPreview } from '@utils/teachings';
+import { getTeachings, toCard, previewSamples, formatDate, isBlogPreview, type TeachingCard } from '@utils/teachings';
+import MarbleAccent from '@components/course/MarbleAccent.astro';
+import '../../styles/teachings.css';
 
 const preview = isBlogPreview();
-const entries = await getTeachings();
-
-type Card = { href: string; title: string; excerpt: string; date: Date; minutes: number; image: { src: string; alt: string } };
-let cards: Card[] = entries.map((e) => ({
-  href: teachingPath(e),
-  title: e.data.title,
-  excerpt: e.data.description,
-  date: e.data.updatedDate ?? e.data.publishDate,
-  minutes: e.data.readingTime,
-  image: e.data.image,
-}));
-
-// Preview mode only: pad the grid with sample cards so the layout can be reviewed.
-if (preview && cards.length > 0 && cards.length < 3) {
-  const base = cards[0];
-  const samples: Card[] = [
-    { ...base, title: 'Identity in Christ: Who You Are After You Fall', excerpt: 'Sample card. Shame says you are what you did. Scripture says something else.', date: new Date('2026-10-08'), minutes: 6, image: { src: '/aureum/hero-landscape.webp', alt: 'A path leading to a marble temple on a hill' } },
-    { ...base, title: 'A Morning Routine That Holds Under Pressure', excerpt: 'Sample card. Five small things before your phone, every day, for thirty days.', date: new Date('2026-10-01'), minutes: 5, image: { src: '/aureum/problem.webp', alt: 'Classical marble scene' } },
-  ];
-  cards = [...cards, ...samples].slice(0, 3);
-}
+let cards: TeachingCard[] = (await getTeachings()).map(toCard);
+if (preview && cards.length > 0) cards = [...cards, ...previewSamples(cards[0].href)];
 cards.sort((a, b) => b.date.getTime() - a.date.getTime());
 
-const title = 'Teachings: Faith, Freedom and Discipline for Men';
-const description = 'Practical Christian teachings for men: quitting porn, identity in Christ, discipline and a life aimed at something. Updated regularly by Matei Bumb.';
-const pageUrl = new URL('/teachings', themeConfig.site).toString();
+const [featured, ...rest] = cards;
+const highlights = rest.slice(0, 3);
+const latest = rest.slice(3);
+const categories = [...new Set(cards.map((c) => c.category))];
 
+const title = 'Teachings: Faith, Freedom and Discipline for Men';
+const description = 'Practical Christian teachings for men: quitting porn, identity in Christ, discipline and a life aimed at something. Written by Matei Bumb.';
+const pageUrl = new URL('/teachings', themeConfig.site).toString();
 const breadcrumbs = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -44,40 +31,92 @@ const breadcrumbs = {
 
 <Layout title={title} description={description}>
   <JsonLd data={breadcrumbs} />
-  <nav aria-label="Breadcrumb" class="page-crumb">
-    <a href="/">Home</a>
-    <span aria-hidden="true"> / </span>
-    <span>Teachings</span>
-  </nav>
-  <p class="course-kicker">{preview ? 'Teachings · preview' : 'Teachings'}</p>
-  <h1 class="page-title">Teachings</h1>
-  <p class="page-lead">Straight answers for men who want to be free, build discipline and live like sons. Newest first.</p>
+  <div class="tch">
+    <header class="tch-head">
+      <p class="tch-kicker">{preview ? 'Teachings · preview' : 'Teachings'}</p>
+      <div class="tch-head-row"><MarbleAccent kind="pillar" alt="" /><h1 class="tch-head-title">Teachings</h1></div>
+      {categories.length > 1 ? (
+        <ul class="tch-pills" aria-label="Topics">
+          <li><span class="tch-pill is-active">All</span></li>
+          {categories.map((c) => <li><span class="tch-pill">{c}</span></li>)}
+        </ul>
+      ) : null}
+    </header>
 
-  {cards.length > 0 ? (
-    <ul class="teaching-grid">
-      {cards.map((card) => (
-        <li>
-          <a class="teaching-card" href={card.href}>
-            <span class="teaching-card-media">
-              <img src={card.image.src} alt={card.image.alt} loading="lazy" decoding="async" width="640" height="400" />
-            </span>
-            <span class="teaching-card-body">
-              <span class="teaching-meta">
-                <time datetime={card.date.toISOString()}>{formatDate(card.date)}</time>
-                <span aria-hidden="true"> · </span>
-                <span>{card.minutes} min read</span>
-              </span>
-              <span class="track-title">{card.title}</span>
-              <span class="track-desc">{card.excerpt}</span>
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  ) : (
-    <aside class="takeaway">
-      <p class="course-kicker">First teachings coming soon</p>
-      <p>Until then, take the <a href="/check">free check</a> or start the <a href="/tracks/30-day-reset">30-day reset</a>.</p>
-    </aside>
-  )}
+    {featured ? (
+      <>
+        <a class="tch-feature" href={featured.href}>
+          <span class="tch-feature-media"><img src={featured.image.src} alt={featured.image.alt} width="1280" height="720" fetchpriority="high" decoding="async" /></span>
+          <span class="tch-feature-body">
+            <span class="tch-feature-flag"><MarbleAccent kind="laurel" alt="" /><span class="tch-kicker">Latest · {featured.category}</span></span>
+            <span class="tch-feature-title">{featured.title}</span>
+            <span class="tch-excerpt">{featured.excerpt}</span>
+            <span class="tch-meta"><time datetime={featured.date.toISOString()}>{formatDate(featured.date)}</time> · {featured.minutes} min read</span>
+          </span>
+        </a>
+
+        {highlights.length > 0 ? (
+          <ul class="tch-highlights">
+            {highlights.map((c) => (
+              <li>
+                <a class="tch-overlay" href={c.href}>
+                  <img src={c.image.src} alt={c.image.alt} width="640" height="640" decoding="async" />
+                  <span class="tch-overlay-label">
+                    <span class="tch-kicker">{c.category}</span>
+                    <span class="tch-overlay-title">{c.title}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        <div class="tch-split">
+          <section aria-labelledby="latest-heading">
+            {latest.length > 0 ? (
+              <>
+                <h2 id="latest-heading" class="tch-section-label">Latest teachings</h2>
+                <ul class="tch-list">
+                  {latest.map((c) => (
+                    <li>
+                      <a class="tch-row" href={c.href}>
+                        <span class="tch-row-media"><img src={c.image.src} alt={c.image.alt} width="480" height="360" decoding="async" /></span>
+                        <span class="tch-row-body">
+                          <span class="tch-kicker">{c.category}</span>
+                          <span class="tch-row-title">{c.title}</span>
+                          <span class="tch-excerpt tch-clamp">{c.excerpt}</span>
+                          <span class="tch-meta"><time datetime={c.date.toISOString()}>{formatDate(c.date)}</time> · {c.minutes} min read</span>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : <h2 id="latest-heading" class="sr-only">Latest teachings</h2>}
+          </section>
+          <aside class="tch-side">
+            <div class="tch-card">
+              <p class="tch-section-label">About the author</p>
+              <div class="tch-author">
+                <img src="/logo/ctr-logo.png" alt="" width="64" height="64" loading="lazy" />
+                <p class="tch-author-name">Matei Bumb</p>
+              </div>
+              <p class="tch-card-text">Founder of Call to Reset. Plain, scripture-grounded guidance for men leaving porn, gaming and drift behind.</p>
+              <a class="tch-textlink" href="/about">Read more</a>
+            </div>
+            <div class="tch-card">
+              <p class="tch-section-label">Start here</p>
+              <p class="tch-card-text">Answer a few honest questions and get a plan written from your answers. About three minutes.</p>
+              <a class="tch-btn" href="/check">Take the free check</a>
+            </div>
+          </aside>
+        </div>
+      </>
+    ) : (
+      <div class="tch-card tch-empty">
+        <p class="tch-section-label">First teachings coming soon</p>
+        <p class="tch-card-text">Until then, take the <a href="/check">free check</a> or start the <a href="/tracks/30-day-reset">30-day reset</a>.</p>
+      </div>
+    )}
+  </div>
 </Layout>

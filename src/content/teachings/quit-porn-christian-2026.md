@@ -6,9 +6,10 @@ publishDate: 2026-10-15
 updatedDate: 2026-10-15
 author: Matei Bumb
 image:
-  src: /aureum/temple.webp
-  alt: 'A marble armillary sphere on a carved pedestal above golden hills at sunset'
+  src: /images/teachings/quit-porn-christian.webp
+  alt: 'A classical marble scene in warm golden light'
 readingTime: 7
+category: Break free
 draft: true
 takeaways:
   - 'PLACEHOLDER: Shame keeps the cycle going; grace breaks it.'

@@ -166,6 +166,7 @@ const teachings = defineCollection({
     author: z.string().default('Matei Bumb'),
     image: z.object({ src: z.string(), alt: z.string() }),
     readingTime: z.number().int().positive(),
+    category: z.string().default('Teachings'),
     takeaways: z.array(z.string()).default([]),
     faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     draft: z.boolean().default(false),

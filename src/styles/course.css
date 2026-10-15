@@ -1825,62 +1825,15 @@ body.nav-open .sponsor-mobile {
   background: #0d0d0d;
 }
 
-/* Teachings blog */
-.teaching-grid {
-  display: grid;
-  gap: 1.1rem;
-  margin: 1.8rem 0 0;
-  padding: 0;
-  list-style: none;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 640px) {
-  .teaching-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (min-width: 1024px) {
-  .teaching-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-.teaching-card {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, #1b2838 12%, transparent);
-  border-radius: 1.05rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.4)), color-mix(in srgb, var(--color-primary-light) 10%, var(--color-background));
-  color: inherit;
-  text-decoration: none;
-  box-shadow: 0 10px 24px rgba(27, 40, 56, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.teaching-card:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(27, 40, 56, 0.1); }
-:where(.dark) .teaching-card {
-  border-color: rgba(240, 176, 74, 0.18);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 40%), #1a2330;
-  box-shadow: none;
-}
-.teaching-card-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #1b2838; }
-.teaching-card-media img { width: 100%; height: 100%; object-fit: cover; }
-.teaching-card-body { display: flex; flex: 1; flex-direction: column; gap: 0.4rem; padding: 1rem 1.05rem 1.15rem; }
-.teaching-meta { font-size: 0.8rem; font-weight: 600; color: #78716c; }
-:where(.dark) .teaching-meta { color: #a8a29e; }
-.teaching-byline a { color: inherit; text-decoration: underline; text-decoration-color: #f0b04a; text-underline-offset: 3px; }
-.teaching-takeaways ul { margin: 0.5rem 0 0; padding-left: 1.1rem; list-style: disc; line-height: 1.55; }
-.teaching-takeaways li + li { margin-top: 0.3rem; }
-.teaching-cover { max-width: 68ch; margin: 1.6rem 0 0; overflow: hidden; border-radius: 1.05rem; }
-.teaching-cover img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
-.teaching-toc { max-width: 68ch; margin-top: 1.4rem; }
-.teaching-toc ol { margin: 0.4rem 0 0; padding-left: 1.2rem; list-style: decimal; line-height: 1.7; }
-.teaching-faq { max-width: 68ch; margin-top: 2.2rem; }
-.teaching-faq details { margin-top: 0.75rem; padding: 0.85rem 1rem; border: 1px solid color-mix(in srgb, #1b2838 12%, transparent); border-radius: 0.8rem; }
-:where(.dark) .teaching-faq details { border-color: rgba(240, 176, 74, 0.18); }
-.teaching-faq summary { cursor: pointer; font-weight: 700; }
-.teaching-faq details p { margin: 0.5rem 0 0; line-height: 1.6; }
-.teaching-cta { margin-top: 2.2rem; }
-.teaching-cta .btn-primary { display: inline-block; margin-top: 0.8rem; }
-.teaching-author { display: flex; max-width: 68ch; gap: 0.9rem; align-items: flex-start; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid color-mix(in srgb, #1b2838 12%, transparent); }
-:where(.dark) .teaching-author { border-color: rgba(240, 176, 74, 0.18); }
-.teaching-author img { width: 3.5rem; height: 3.5rem; border-radius: 999px; flex: none; }
-.teaching-author p:last-child { margin: 0.25rem 0 0; line-height: 1.55; }
-.teaching-article .lesson-prose ol { padding-left: 1.3rem; list-style: decimal; }
-.teaching-article .lesson-prose ol li + li { margin-top: 0.3rem; }
+
+/* New marble accents: pillar, laurel, sphere on plinth */
+.marble-pillar { width: auto; height: min(5.5rem, 22vw); }
+.marble-laurel { width: min(5.5rem, 24vw); }
+.marble-sphere { width: min(4rem, 18vw); }
+.completion-card .marble-laurel { width: 4.25rem; margin: 0; filter: none; }
+.key-points { position: relative; }
+.key-points > .marble-sphere { float: right; width: 3.4rem; margin: -0.2rem 0 0.4rem 0.9rem; }
+.marble-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.2rem; }
+.marble-head .marble-pillar { display: none; }
+@media (min-width: 768px) { .marble-head .marble-pillar { display: block; height: 7.5rem; margin-bottom: -0.25rem; } }
+:where(.dark) .marble-accent { filter: drop-shadow(0 0.4rem 0.6rem rgba(0, 0, 0, 0.55)); }
