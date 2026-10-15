@@ -8,6 +8,9 @@ author: Matei Bumb
 image:
   src: /images/teachings/quit-porn-christian.webp
   alt: 'A classical marble scene in warm golden light'
+cardImage:
+  src: /images/teachings/quit-porn-christian-card.webp
+  alt: 'A broken iron chain beside a lit oil lamp on a marble ledge at sunset'
 readingTime: 7
 category: Break free
 draft: true

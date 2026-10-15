@@ -8,6 +8,9 @@ author: Matei Bumb
 image:
   src: /images/teachings/identity-in-christ.webp
   alt: 'A classical marble scene in warm golden light'
+cardImage:
+  src: /images/teachings/identity-in-christ-card.webp
+  alt: 'A marble ring resting on an open scroll by a sunlit window'
 readingTime: 7
 category: Identity
 draft: true

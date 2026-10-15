@@ -8,6 +8,9 @@ author: Matei Bumb
 image:
   src: /images/teachings/shame-vs-guilt.webp
   alt: 'A white cloth left on sunlit marble temple steps below an open, glowing doorway at golden hour'
+cardImage:
+  src: /images/teachings/shame-vs-guilt-card.webp
+  alt: 'A marble fountain overflowing with clear water in a sunlit courtyard'
 readingTime: 8
 category: Identity
 draft: true
