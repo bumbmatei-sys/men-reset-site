@@ -146,3 +146,5 @@
 .tch-takeaways { position: relative; }
 .tch-takeaways > .marble-sphere { float: right; width: 3.6rem; margin: -0.3rem -0.2rem 0.3rem 1rem; }
 :where(.dark) .tch-pill.is-active { border-color: #f0b04a; background: #f0b04a; color: #1b2838; }
+
+.tch-author img, .tch-byline img, .tch-bio img { object-fit: cover; background: #111; }
