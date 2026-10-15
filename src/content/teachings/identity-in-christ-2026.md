@@ -130,6 +130,8 @@ So when you fall:
 
 The answer is both. You keep the standard of the Word and you rest in grace. Not to earn His love, but because you already have it.
 
+If porn is the place you keep falling, I wrote about [how to quit porn as a Christian](/teachings/quit-porn-christian-2026) from this same place of identity.
+
 ## How did Jesus set me free?
 
 I grew up in a Christian family but I had nothing to do with Jesus. By the age of 15 I was hooked on alcohol and smoking. I was going to school drunk. I was angry all the time. Under all that I was lonely and there was a huge emptiness inside of me. It turned into a deep depression. For a full year I wanted to die because I did not see a reason to live.
