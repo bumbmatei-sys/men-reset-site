@@ -48,7 +48,7 @@ Get up at the time you set. Wash. Eat. Do the first piece of work or the first c
 
 You may still feel flat. Do the plan anyway. Feelings are slow. The loop is fast. You are interrupting the fast part.
 
-If this cycle has included harm to another person, illegal images, or a fear you might hurt someone, stop reading for tactics and get in-person help now. In the US, if you are in crisis, call or text 988. This course is not a substitute for that.
+If this cycle has included harm to another person, illegal images, or a fear you might hurt someone, stop reading for tactics and get in-person help now. This course is not a substitute for that.
 
 ## Sentences that keep the loop going
 

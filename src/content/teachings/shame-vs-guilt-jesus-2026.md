@@ -114,7 +114,7 @@ Don't misunderstand what I am saying. I am not saying sin does not matter. What 
 
 Basically, you walk out of shame the same way you walked into freedom. By believing what Jesus says about you more than what shame says.
 
-- Agree with God about your identity. You are a new creation, a beloved child. Not a nobody.
+- Agree with God about your [identity](/teachings/identity-in-christ-2026). You are a new creation, a beloved child. Not a nobody.
 - When shame speaks, answer with the truth. Say it out loud if you need to. The Word is a mirror, and you see what God says about you in it.
 - Stop hiding. Bring the struggle into the light with a trusted brother or sister. Shame dies when it is spoken.
 - Stop performing. You do not earn your place back. Fellowship with Jesus is the calling, and everything flows from there.
@@ -129,7 +129,7 @@ I grew up in a Christian family but I had nothing to do with Jesus. By 15 I was 
 
 One night I was in my room, lying on my bed, and I prayed one short simple prayer: Jesus if you really exist, help me. It came out of a crushed, broken heart. In that very moment I was set free from depression. That emptiness was filled with a warm liquid love I had never felt before. The anger and the loneliness were gone for good. Within moments I was a totally different person.
 
-There is a part people rarely talk about. I also lived in shame. Constant shame, because I was a porn addict. I was afraid of failing. I felt like a failure. I was afraid of disappointing everyone around me. I felt like nothing. Shame was the cloud over my whole life.
+There is a part people rarely talk about. I also lived in shame. Constant shame, because I was a porn addict. If that is your fight too, here is [how to quit porn as a Christian](/teachings/quit-porn-christian-2026). I was afraid of failing. I felt like a failure. I was afraid of disappointing everyone around me. I felt like nothing. Shame was the cloud over my whole life.
 
 But Jesus took all of it away. The fear, the insecurity, the shame. I was a nobody but God made me His beloved son. There is so much peace in my mind now, peace I never had before. That is what He does. Not a partial cleaning. A new creation.
 

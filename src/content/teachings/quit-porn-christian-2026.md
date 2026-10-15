@@ -41,7 +41,7 @@ Most of the advice out there is a clinical tip list written for men. But women s
 
 ## Why does shame keep pulling you back into porn?
 
-Because shame tells you that you are the problem, not only what you did. Guilt says "I did something wrong." Shame says "Something is wrong with me." Those two feel similar but they lead to very different places.
+Because shame tells you that you are the problem, not only what you did. Guilt says "I did something wrong." Shame says "Something is wrong with me." Those two feel similar but they lead to very different places. I wrote more about that in [shame vs guilt](/teachings/shame-vs-guilt-jesus-2026).
 
 | Guilt | Shame |
 |---|---|
@@ -64,7 +64,7 @@ So, what does change us? Not fear. Fear makes you hide, and hiding is where the 
 
 ## What does a grace-based plan actually look like?
 
-First things first: identity before behavior. Know that you are a new creation (2 Corinthians 5:17). Then build a simple structure around it. Grace does not mean you do nothing. It means you act from what you already have, not to earn it.
+First things first: identity before behavior. Know that you are a new creation (2 Corinthians 5:17). If you are not sure what that means for you, start with [who you are in Christ](/teachings/identity-in-christ-2026). Then build a simple structure around it. Grace does not mean you do nothing. It means you act from what you already have, not to earn it.
 
 Here is the plan I would give you:
 
@@ -102,7 +102,7 @@ You are not telling them so they can fix you. You are telling them so shame lose
 
 Come to Jesus immediately. Not tomorrow, not after you feel clean enough. Right then. 1 John 1:9 says that "if we confess our sins, He is faithful and righteous to forgive us our sins and to cleanse us from all unrighteousness." He forgave you already at the cross. This is about positioning your heart back on Him.
 
-Then tell your person the same day. Then get back on the plan that same day. Do not wait for Monday, do not wait for a fresh start. A fall is an event. It is not your identity.
+Then tell your person the same day. Then get back on the plan that same day. Do not wait for Monday, do not wait for a fresh start. A fall is an event. It is not your [identity](/teachings/identity-in-christ-2026).
 
 Basically, the enemy wants the fall to become a season. Grace says it is a moment. Get up, look at Jesus, and keep walking.
 
