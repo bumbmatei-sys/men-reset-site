@@ -41,7 +41,7 @@ Most of the advice out there is a clinical tip list written for men. But women s
 
 ## Why does shame keep pulling you back into porn?
 
-Because shame tells you that you are the problem, not only what you did. Guilt says "I did something wrong." Shame says "Something is wrong with me." Those two feel similar but they lead to very different places. I wrote more about that in shame vs guilt.<!-- RELINK: /teachings/shame-vs-guilt-jesus-2026 when published -->
+Because shame tells you that you are the problem, not only what you did. Guilt says "I did something wrong." Shame says "Something is wrong with me." Those two feel similar but they lead to very different places. I wrote more about that in [shame vs guilt](/teachings/shame-vs-guilt-jesus-2026).
 
 | Guilt | Shame |
 |---|---|

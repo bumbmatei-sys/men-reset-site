@@ -13,7 +13,7 @@ cardImage:
   alt: 'A marble fountain overflowing with clear water in a sunlit courtyard'
 readingTime: 8
 category: Identity
-draft: true
+draft: false
 takeaways:
   - 'Guilt points at what you did. Shame points at who you are.'
   - 'Shame never comes from Jesus. It stays after forgiveness and keeps accusing.'
