@@ -4,6 +4,7 @@ import JsonLd from '@components/seo/JsonLd.astro';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+import SupportLine from '@components/course/SupportLine.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -130,6 +131,7 @@ const breadcrumbs = {
       This track has no lessons yet. Take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free">Break Free</a>.
     </p>
   )}
+  {track.id === 'teachings' ? <SupportLine /> : null}
 </Layout>
 
 <script>

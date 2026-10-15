@@ -60,22 +60,22 @@ npx wrangler d1 migrations apply the-reset-check --local
 npx wrangler pages dev dist
 ```
 
-No API token or ad pixel belongs in the repo. Email addresses are stored only when someone types one. If they do, `functions/email/send-plan.ts` posts the plan to Plunk (`POST /v1/send`) using the Pages secret `PLUNK_API_KEY`. Set that secret in Cloudflare. Do not commit it. The sender is `plan@calltoreset.site` and that domain has to be verified in Plunk before mail will deliver. If the key is missing or Plunk rejects the message, the page says so. Days 1 to 7 stay on the page. The PDF is not linked until the send succeeds. The check uses `/api/check`. The phase gate uses `/api/plan`. The newsletter form uses `/api/newsletter`, which stores the address and adds a Plunk contact with `subscribed` set to true. It does not send a message.
+No API token or ad pixel belongs in the repo. Email addresses are stored only when someone types one. If they do, `functions/email/send-plan.ts` posts the plan to Plunk (`POST /v1/send`) using the Pages secret `PLUNK_API_KEY`. Set that secret in Cloudflare. Do not commit it. The sender is `plan@calltoreset.site` and that domain has to be verified in Plunk before mail will deliver. If the key is missing or Plunk rejects the message, the page says so. Days 1 to 7 stay on the page. The PDF is not linked until the send succeeds. The check uses `/api/check`. The phase gate uses `/api/plan`. The newsletter form uses `/api/newsletter`, which stores the address and adds a Plunk contact with `subscribed` set to true. It does not send a message. `/support` asks `POST /api/support-checkout` to open an embedded Dodo checkout. That function uses the Pages secret `DODO_API_KEY` and allows only the four support product ids. Do not commit the key.
 
 ## Cloudflare Pages
 
-Static pages, plus the `/api/check`, `/api/plan`, and `/api/newsletter` Functions. The only secret is the Pages secret `PLUNK_API_KEY`, set in the Cloudflare dashboard, not in the repo.
+Static pages, plus the `/api/check`, `/api/plan`, `/api/newsletter`, and `/api/support-checkout` Functions. The Pages secrets are `PLUNK_API_KEY` and `DODO_API_KEY`, set in the Cloudflare dashboard, not in the repo.
 
 Create a Pages project and use these build settings:
 
-| Setting                | Value                          |
-| ---------------------- | ------------------------------ |
-| Framework preset       | Astro                          |
-| Build command          | `npm run build`                |
-| Build output directory | `dist`                         |
-| Root directory         | `/`                            |
-| Node.js version        | `22` (22.22.3 or newer)        |
-| Environment variables  | `PLUNK_API_KEY` (Pages secret) |
+| Setting                | Value                                           |
+| ---------------------- | ----------------------------------------------- |
+| Framework preset       | Astro                                           |
+| Build command          | `npm run build`                                 |
+| Build output directory | `dist`                                          |
+| Root directory         | `/`                                             |
+| Node.js version        | `22` (22.22.3 or newer)                         |
+| Environment variables  | `PLUNK_API_KEY`, `DODO_API_KEY` (Pages secrets) |
 
 `wrangler.jsonc` sets `pages_build_output_dir` to `./dist` for Wrangler Pages deploys:
 

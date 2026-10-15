@@ -6,6 +6,7 @@ import { themeConfig } from '~/theme.config';
 import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import PlanEmailForm from '@components/course/PlanEmailForm.astro';
+import SupportLine from '@components/course/SupportLine.astro';
 import { getTracks, isPlanPhase, lessonsForTrack, lessonPath, planPhaseLessons, trackPath, type LessonEntry } from '@utils/course';
 
 const PLAN_BUTTON = 'Send me the PDF';
@@ -261,6 +262,7 @@ const breadcrumbs = {
         </a>
       )}
     </nav>
+    <SupportLine />
   </article>
 </Layout>
 
