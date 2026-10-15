@@ -3,7 +3,7 @@ import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
-import { getTeachings, teachingPath, toCard, previewSamples, isBlogPreview, formatDate, type TeachingEntry } from '@utils/teachings';
+import { getTeachings, teachingPath, toCard, isBlogPreview, formatDate, type TeachingEntry } from '@utils/teachings';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import '../../styles/teachings.css';
 
@@ -19,7 +19,6 @@ const updated = d.updatedDate ?? d.publishDate;
 const pageUrl = new URL(teachingPath(entry), themeConfig.site).toString();
 const bio = 'Founder of Call to Reset. He writes so that children of God know their identity, live in holiness and take initiative.';
 let more = all.filter((e) => e.id !== entry.id).map(toCard);
-if (isBlogPreview() && more.length < 3) more = [...more, ...previewSamples('/teachings')];
 more = more.slice(0, 3);
 
 const articleLd = {
@@ -124,8 +123,8 @@ const toc = headings.filter((h) => h.depth === 2);
         <ul class="tch-highlights">
           {more.map((c) => (
             <li>
-              <a class="tch-overlay" href={c.href}>
-                <img src={c.image.src} alt={c.image.alt} width="640" height="640" loading="lazy" decoding="async" />
+              <a class={`tch-overlay${c.image ? '' : ' tch-noimg'}`} href={c.href}>
+                {c.image ? <img src={c.image.src} alt={c.image.alt} width="640" height="640" loading="lazy" decoding="async" /> : null}
                 <span class="tch-overlay-label">
                   <span class="tch-kicker">{c.category}</span>
                   <span class="tch-overlay-title">{c.title}</span>

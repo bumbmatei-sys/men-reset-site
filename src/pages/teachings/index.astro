@@ -2,13 +2,12 @@
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import { themeConfig } from '~/theme.config';
-import { getTeachings, toCard, previewSamples, formatDate, isBlogPreview, type TeachingCard } from '@utils/teachings';
+import { getTeachings, toCard, formatDate, isBlogPreview, type TeachingCard } from '@utils/teachings';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import '../../styles/teachings.css';
 
 const preview = isBlogPreview();
 let cards: TeachingCard[] = (await getTeachings()).map(toCard);
-if (preview && cards.length > 0) cards = [...cards, ...previewSamples(cards[0].href)];
 cards.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 const [featured, ...rest] = cards;
@@ -45,8 +44,8 @@ const breadcrumbs = {
 
     {featured ? (
       <>
-        <a class="tch-feature" href={featured.href}>
-          <span class="tch-feature-media"><img src={featured.image.src} alt={featured.image.alt} width="1280" height="720" fetchpriority="high" decoding="async" /></span>
+        <a class={`tch-feature${featured.image ? '' : ' tch-noimg'}`} href={featured.href}>
+          {featured.image ? <span class="tch-feature-media"><img src={featured.image.src} alt={featured.image.alt} width="1280" height="720" fetchpriority="high" decoding="async" /></span> : null}
           <span class="tch-feature-body">
             <span class="tch-feature-flag"><MarbleAccent kind="laurel" alt="" /><span class="tch-kicker">Latest · {featured.category}</span></span>
             <span class="tch-feature-title">{featured.title}</span>
@@ -59,8 +58,8 @@ const breadcrumbs = {
           <ul class="tch-highlights">
             {highlights.map((c) => (
               <li>
-                <a class="tch-overlay" href={c.href}>
-                  <img src={c.image.src} alt={c.image.alt} width="640" height="640" decoding="async" />
+                <a class={`tch-overlay${c.image ? '' : ' tch-noimg'}`} href={c.href}>
+                  {c.image ? <img src={c.image.src} alt={c.image.alt} width="640" height="640" decoding="async" /> : null}
                   <span class="tch-overlay-label">
                     <span class="tch-kicker">{c.category}</span>
                     <span class="tch-overlay-title">{c.title}</span>
@@ -80,7 +79,7 @@ const breadcrumbs = {
                   {latest.map((c) => (
                     <li>
                       <a class="tch-row" href={c.href}>
-                        <span class="tch-row-media"><img src={c.image.src} alt={c.image.alt} width="480" height="360" decoding="async" /></span>
+                        {c.image ? <span class="tch-row-media"><img src={c.image.src} alt={c.image.alt} width="480" height="360" decoding="async" /></span> : null}
                         <span class="tch-row-body">
                           <span class="tch-kicker">{c.category}</span>
                           <span class="tch-row-title">{c.title}</span>
