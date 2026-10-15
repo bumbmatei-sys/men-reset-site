@@ -150,3 +150,10 @@
 .tch-author img, .tch-byline img, .tch-bio img { object-fit: cover; background: #111; }
 .tch-bio .tch-bio-name { margin-top: 0.25rem; font-family: 'Ancizar Serif', Georgia, serif; font-size: 1.15rem; }
 .tch-bio .tch-bio-name + p { margin-top: 0.2rem; }
+
+/* Text-only cards: used when a teaching has no unique cardImage (images are never reused across the site). */
+.tch-overlay.tch-noimg { aspect-ratio: auto; min-height: 11rem; background: linear-gradient(160deg, #f3ece0, #e6dccb); border: 1px solid rgba(27, 40, 56, 0.08); }
+:where(.dark) .tch-overlay.tch-noimg { background: linear-gradient(160deg, #1b2838, #141b25); }
+.tch-overlay.tch-noimg .tch-overlay-label { position: static; margin: 0.75rem; height: calc(100% - 1.5rem); justify-content: flex-end; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.tch-feature.tch-noimg { grid-template-columns: 1fr; }
+.tch-row:not(:has(.tch-row-media)) { grid-template-columns: minmax(0, 1fr); }

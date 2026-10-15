@@ -165,6 +165,8 @@ const teachings = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Matei Bumb'),
     image: z.object({ src: z.string(), alt: z.string() }),
+    // Separate card thumbnail for /teachings and More teachings. Must be a unique file (never the cover). Cards render text-only when absent.
+    cardImage: z.object({ src: z.string(), alt: z.string() }).optional(),
     readingTime: z.number().int().positive(),
     category: z.string().default('Teachings'),
     takeaways: z.array(z.string()).default([]),
