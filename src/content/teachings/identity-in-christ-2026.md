@@ -118,7 +118,7 @@ The truth makes us uncomfortable because we are comfortable with the lie. So giv
 
 You get up and you go back to Him. Right away. Not after you have punished yourself for three days.
 
-Guilt says "I did something wrong". Shame says "something is wrong with me". Shame is a lie. Jesus did not only die for your sin. He hung naked on a cross for your shame. He went lower than you have ever gone. (Hebrews 12:2).
+Guilt says "I did something wrong". Shame says "something is wrong with me". Shame is a lie. I wrote more about [shame vs guilt](/teachings/shame-vs-guilt-jesus-2026) if you want to go deeper. Jesus did not only die for your sin. He hung naked on a cross for your shame. He went lower than you have ever gone. (Hebrews 12:2).
 
 So when you fall:
 
