@@ -1,8 +1,10 @@
 import { DodoPayments } from 'dodopayments-checkout';
 
 type GiveMode = 'once' | 'monthly';
+type MonthlyDollars = 10 | 25 | 50;
 
 const FRAME_ID = 'support-checkout-frame';
+const DEFAULT_MONTHLY: MonthlyDollars = 10;
 
 function isCheckoutUrl(value: unknown): value is string {
   if (typeof value !== 'string') return false;
@@ -12,6 +14,10 @@ function isCheckoutUrl(value: unknown): value is string {
   } catch {
     return false;
   }
+}
+
+function isMonthlyDollars(value: number): value is MonthlyDollars {
+  return value === 10 || value === 25 || value === 50;
 }
 
 function showStatus(status: HTMLElement | null, message: string): void {
@@ -38,12 +44,33 @@ export function mountSupportCheckout(): void {
   const monthlyPanel = form.querySelector<HTMLElement>('[data-support-monthly]');
   const amountInput = form.querySelector<HTMLInputElement>('[data-support-amount]');
   const status = form.querySelector<HTMLElement>('[data-support-status]');
-  const placeholder = form.querySelector<HTMLElement>('[data-support-placeholder]');
+  const loading = document.querySelector<HTMLElement>('[data-support-loading]');
+  const frame = document.getElementById(FRAME_ID);
   const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
   if (!onceButton || !monthlyButton || !oncePanel || !monthlyPanel || !amountInput || !submit) return;
 
   let mode: GiveMode = 'once';
   let display: 'inline' | 'overlay' | null = null;
+
+  const showLoading = () => {
+    if (loading) loading.hidden = false;
+    if (frame) frame.hidden = true;
+  };
+
+  const hideLoading = () => {
+    if (loading) loading.hidden = true;
+  };
+
+  const showFrame = () => {
+    hideLoading();
+    if (frame) frame.hidden = false;
+  };
+
+  const showError = (message: string) => {
+    hideLoading();
+    if (frame) frame.hidden = true;
+    showStatus(status, message);
+  };
 
   const setMode = (next: GiveMode) => {
     mode = next;
@@ -59,8 +86,8 @@ export function mountSupportCheckout(): void {
   monthlyButton.addEventListener('click', () => setMode('monthly'));
 
   const onEvent = (event: { event_type: string }) => {
-    if (event.event_type === 'checkout.opened' && placeholder) placeholder.hidden = true;
-    if (event.event_type === 'checkout.error') showStatus(status, 'We could not open checkout. Try again.');
+    if (event.event_type === 'checkout.opened' || event.event_type === 'checkout.loaded') showFrame();
+    if (event.event_type === 'checkout.error') showError('We could not open checkout. Try again.');
   };
 
   const openCheckout = (checkoutUrl: string) => {
@@ -94,7 +121,7 @@ export function mountSupportCheckout(): void {
         if (DodoPayments.Checkout.isOpen()) DodoPayments.Checkout.close();
         DodoPayments.Checkout.open({ checkoutUrl });
       } catch {
-        showStatus(status, 'We could not open checkout. Try again.');
+        showError('We could not open checkout. Try again.');
       }
     }
   };
@@ -105,20 +132,21 @@ export function mountSupportCheckout(): void {
       status.hidden = true;
       status.textContent = '';
     }
+    showLoading();
 
-    const body: { plan: GiveMode; amountCents?: number; dollars?: number } = { plan: mode };
+    const body: { plan: GiveMode; amountCents?: number; dollars?: MonthlyDollars } = { plan: mode };
     if (mode === 'once') {
       const amountCents = dollarsToCents(amountInput.value.trim());
       if (amountCents === null) {
-        showStatus(status, 'Enter an amount from $1 to $2,000. $10 is the suggested amount.');
+        showError('Enter an amount from $1 to $2,000. $10 is the suggested amount.');
         return;
       }
       body.amountCents = amountCents;
     } else {
       const selected = form.querySelector<HTMLInputElement>('input[name="monthly"]:checked');
-      const dollars = selected ? Number(selected.value) : NaN;
-      if (dollars !== 5 && dollars !== 10 && dollars !== 25) {
-        showStatus(status, 'Choose $5, $10, or $25 a month.');
+      const dollars = selected ? Number(selected.value) : DEFAULT_MONTHLY;
+      if (!isMonthlyDollars(dollars)) {
+        showError('Choose $10, $25, or $50 a month.');
         return;
       }
       body.dollars = dollars;
@@ -155,11 +183,10 @@ export function mountSupportCheckout(): void {
     submit.textContent = previous || 'Open checkout';
 
     if (!checkoutUrl) {
-      showStatus(status, error === 'amount' || error === 'invalid' ? 'Check the amount and try again.' : 'We could not open checkout. Try again.');
+      showError(error === 'amount' || error === 'invalid' ? 'Check the amount and try again.' : 'We could not open checkout. Try again.');
       return;
     }
 
-    if (placeholder) placeholder.hidden = true;
     openCheckout(checkoutUrl);
   });
 }

@@ -1609,36 +1609,108 @@ body.nav-open .sponsor-mobile {
   font-weight: 600;
 }
 
+.support-page {
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
 .support-checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 36rem;
   margin-top: 1.5rem;
 }
 
 .support-toggle {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+  background: transparent;
+}
+
+:where(.dark) .support-toggle {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .support-choice {
-  border: 1px solid color-mix(in srgb, var(--color-stone-400) 70%, transparent);
+  border: 0;
   border-radius: 999px;
   background: transparent;
-  padding: 0.4rem 0.9rem;
-  font-weight: 700;
+  padding: 0.5rem 1.1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .support-choice[aria-pressed='true'] {
-  border-color: #0f0f0f;
-  background: #0f0f0f;
+  background: #111;
   color: #fff;
 }
 
 :where(.dark) .support-choice[aria-pressed='true'] {
-  border-color: #fffce0;
-  background: #fffce0;
-  color: #0f0f0f;
+  background: #f5f5f4;
+  color: #111;
+}
+
+.support-pills {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.support-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+:where(.dark) .support-pill {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.support-pill:has(input:checked) {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+:where(.dark) .support-pill:has(input:checked) {
+  background: #f5f5f4;
+  color: #111;
+  border-color: #f5f5f4;
+}
+
+.support-pill:has(input:focus-visible) {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.sr-only-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .support-panel {
@@ -1649,8 +1721,14 @@ body.nav-open .sponsor-mobile {
   display: grid;
   gap: 0.35rem;
   max-width: 12rem;
+  margin-inline: auto;
   font-size: 0.85rem;
   font-weight: 700;
+}
+
+.support-amount input {
+  width: 100%;
+  text-align: center;
 }
 
 .support-hint,
@@ -1670,16 +1748,18 @@ body.nav-open .sponsor-mobile {
 
 .support-monthly {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem 0.9rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
   margin: 1rem 0 0;
   padding: 0;
-  border: 0;
+  border: none;
 }
 
 .support-monthly legend {
   width: 100%;
   margin-bottom: 0.15rem;
+  text-align: center;
   font-size: 0.85rem;
   font-weight: 700;
 }
@@ -1691,8 +1771,37 @@ body.nav-open .sponsor-mobile {
   font-weight: 700;
 }
 
+.support-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #6b6b6b;
+}
+
+:where(.dark) .support-loading {
+  color: var(--color-stone-400);
+}
+
+.support-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: support-spin 0.8s linear infinite;
+}
+
+@keyframes support-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.support-loading[hidden],
+.support-frame[hidden],
 .support-panel[hidden] {
-  display: none;
+  display: none !important;
 }
 
 .support-checkout .btn-primary {
@@ -1700,12 +1809,15 @@ body.nav-open .sponsor-mobile {
 }
 
 .support-frame {
+  width: 100%;
+  max-width: 36rem;
   min-height: 28rem;
   margin-top: 0.75rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-stone-400) 45%, transparent);
   border-radius: 0.85rem;
   background: #fff;
+  text-align: left;
 }
 
 :where(.dark) .support-frame {

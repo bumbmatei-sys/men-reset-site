@@ -1488,3 +1488,22 @@ footer[role='contentinfo'] .brand-mark {
     margin-inline: auto;
   }
 }
+
+body .au-hero h1 .au-h1-line {
+  display: block;
+  white-space: nowrap;
+}
+
+body .au-hero .au-hero-copy {
+  width: min(52rem, calc(100% - 2rem));
+}
+
+@media (max-width: 640px) {
+  body .au-hero .au-hero-copy {
+    width: calc(100% - 1.5rem);
+  }
+
+  body .au-hero h1 {
+    font-size: clamp(1.05rem, 5.6vw, 1.62rem);
+  }
+}
