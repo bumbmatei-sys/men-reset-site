@@ -13,7 +13,7 @@ cardImage:
   alt: 'A broken iron chain beside a lit oil lamp on a marble ledge at sunset'
 readingTime: 7
 category: Break free
-draft: true
+draft: false
 takeaways:
   - 'Shame keeps the porn cycle going. Grace breaks it.'
   - 'Settle your identity in Jesus first, then change what you do.'
@@ -41,7 +41,7 @@ Most of the advice out there is a clinical tip list written for men. But women s
 
 ## Why does shame keep pulling you back into porn?
 
-Because shame tells you that you are the problem, not only what you did. Guilt says "I did something wrong." Shame says "Something is wrong with me." Those two feel similar but they lead to very different places. I wrote more about that in [shame vs guilt](/teachings/shame-vs-guilt-jesus-2026).
+Because shame tells you that you are the problem, not only what you did. Guilt says "I did something wrong." Shame says "Something is wrong with me." Those two feel similar but they lead to very different places. I wrote more about that in shame vs guilt.<!-- RELINK: /teachings/shame-vs-guilt-jesus-2026 when published -->
 
 | Guilt | Shame |
 |---|---|
