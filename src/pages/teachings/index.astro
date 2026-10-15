@@ -1,0 +1,83 @@
+---
+import Layout from '@layouts/default.astro';
+import JsonLd from '@components/seo/JsonLd.astro';
+import { themeConfig } from '~/theme.config';
+import { getTeachings, teachingPath, formatDate, isBlogPreview } from '@utils/teachings';
+
+const preview = isBlogPreview();
+const entries = await getTeachings();
+
+type Card = { href: string; title: string; excerpt: string; date: Date; minutes: number; image: { src: string; alt: string } };
+let cards: Card[] = entries.map((e) => ({
+  href: teachingPath(e),
+  title: e.data.title,
+  excerpt: e.data.description,
+  date: e.data.updatedDate ?? e.data.publishDate,
+  minutes: e.data.readingTime,
+  image: e.data.image,
+}));
+
+// Preview mode only: pad the grid with sample cards so the layout can be reviewed.
+if (preview && cards.length > 0 && cards.length < 3) {
+  const base = cards[0];
+  const samples: Card[] = [
+    { ...base, title: 'Identity in Christ: Who You Are After You Fall', excerpt: 'Sample card. Shame says you are what you did. Scripture says something else.', date: new Date('2026-10-08'), minutes: 6, image: { src: '/aureum/hero-landscape.webp', alt: 'A path leading to a marble temple on a hill' } },
+    { ...base, title: 'A Morning Routine That Holds Under Pressure', excerpt: 'Sample card. Five small things before your phone, every day, for thirty days.', date: new Date('2026-10-01'), minutes: 5, image: { src: '/aureum/problem.webp', alt: 'Classical marble scene' } },
+  ];
+  cards = [...cards, ...samples].slice(0, 3);
+}
+cards.sort((a, b) => b.date.getTime() - a.date.getTime());
+
+const title = 'Teachings: Faith, Freedom and Discipline for Men';
+const description = 'Practical Christian teachings for men: quitting porn, identity in Christ, discipline and a life aimed at something. Updated regularly by Matei Bumb.';
+const pageUrl = new URL('/teachings', themeConfig.site).toString();
+
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
+    { '@type': 'ListItem', position: 2, name: 'Teachings', item: pageUrl },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <JsonLd data={breadcrumbs} />
+  <nav aria-label="Breadcrumb" class="page-crumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true"> / </span>
+    <span>Teachings</span>
+  </nav>
+  <p class="course-kicker">{preview ? 'Teachings · preview' : 'Teachings'}</p>
+  <h1 class="page-title">Teachings</h1>
+  <p class="page-lead">Straight answers for men who want to be free, build discipline and live like sons. Newest first.</p>
+
+  {cards.length > 0 ? (
+    <ul class="teaching-grid">
+      {cards.map((card) => (
+        <li>
+          <a class="teaching-card" href={card.href}>
+            <span class="teaching-card-media">
+              <img src={card.image.src} alt={card.image.alt} loading="lazy" decoding="async" width="640" height="400" />
+            </span>
+            <span class="teaching-card-body">
+              <span class="teaching-meta">
+                <time datetime={card.date.toISOString()}>{formatDate(card.date)}</time>
+                <span aria-hidden="true"> · </span>
+                <span>{card.minutes} min read</span>
+              </span>
+              <span class="track-title">{card.title}</span>
+              <span class="track-desc">{card.excerpt}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <aside class="takeaway">
+      <p class="course-kicker">First teachings coming soon</p>
+      <p>Until then, take the <a href="/check">free check</a> or start the <a href="/tracks/30-day-reset">30-day reset</a>.</p>
+    </aside>
+  )}
+</Layout>

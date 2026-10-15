@@ -156,7 +156,12 @@ export default defineConfig({
     sitemap({
       xslURL: '/sitemap.xsl',
       i18n: sitemap_i18n,
-      filter: (page) => !sitemapExcludedPaths.has(new URL(page).pathname),
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        // Preview builds render draft teachings; never list those in a sitemap.
+        if (process.env.BLOG_PREVIEW === '1' && path.startsWith('/teachings/')) return false;
+        return !sitemapExcludedPaths.has(path);
+      },
       customPages: getOnDemandSitemapPages(),
       customSitemaps: themeConfig.events?.dynamicEvents?.pullFromAddToCalendarPro ? [themeConfig.site.replace(/\/+$/, '') + '/dynamic-events-sitemap.xml'] : [],
     }),
