@@ -1,5 +1,5 @@
 ---
-type Kind = 'check' | 'spheres' | 'flow' | 'scroll';
+type Kind = 'check' | 'spheres' | 'flow' | 'scroll' | 'pillar' | 'laurel' | 'sphere';
 
 interface Props {
   kind: Kind;
@@ -11,6 +11,9 @@ const files = {
   spheres: { src: '/images/marble/marble-spheres.webp', width: 512, height: 408 },
   flow: { src: '/images/marble/marble-flow-diagram.webp', width: 854, height: 1024 },
   scroll: { src: '/images/marble/marble-scroll.webp', width: 512, height: 383 },
+  pillar: { src: '/images/marble/marble-pillar.webp', width: 263, height: 696 },
+  laurel: { src: '/images/marble/marble-laurel.webp', width: 778, height: 597 },
+  sphere: { src: '/images/marble/marble-sphere-plinth.webp', width: 516, height: 518 },
 } as const;
 
 const { kind, alt } = Astro.props;

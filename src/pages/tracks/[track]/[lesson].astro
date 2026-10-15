@@ -157,7 +157,7 @@ const breadcrumbs = {
 
     {planPhase ? null : (
       <section class="completion-card" data-lesson-complete hidden>
-        <MarbleAccent kind="check" alt="A marble check mark" />
+        <MarbleAccent kind="laurel" alt="A marble laurel wreath" />
         <div>
           <p class="course-kicker" data-completion-kicker>
             Lesson complete
@@ -169,6 +169,7 @@ const breadcrumbs = {
 
     {locked ? null : (
       <section class="key-points" aria-labelledby="key-points-heading">
+        <MarbleAccent kind="sphere" alt="" />
         <h2 id="key-points-heading">Key points</h2>
         <ul>
           {lesson.data.keyPoints.map((point) => (

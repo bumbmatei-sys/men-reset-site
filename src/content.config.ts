@@ -154,4 +154,23 @@ const lessons = defineCollection({
   }),
 });
 
-export const collections = { articles, events, faq_answers, integration_options, tracks, lessons };
+// Teachings blog (/teachings). Drafts are only built when BLOG_PREVIEW=1.
+const teachings = defineCollection({
+  loader: glob({ pattern: ['**/[^_]**.md'], base: './src/content/teachings' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    slug: z.string(),
+    publishDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().default('Matei Bumb'),
+    image: z.object({ src: z.string(), alt: z.string() }),
+    readingTime: z.number().int().positive(),
+    category: z.string().default('Teachings'),
+    takeaways: z.array(z.string()).default([]),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { articles, events, faq_answers, integration_options, tracks, lessons, teachings };
