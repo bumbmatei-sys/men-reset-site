@@ -33,7 +33,7 @@ const articleLd = {
   inLanguage: 'en-US',
   datePublished: d.publishDate.toISOString(),
   dateModified: updated.toISOString(),
-  author: { '@type': 'Person', name: d.author, url: new URL('/about', themeConfig.site).toString(), description: bio },
+  author: { '@type': 'Person', name: d.author, url: new URL('/about', themeConfig.site).toString(), image: new URL('/images/matei.webp', themeConfig.site).toString(), description: bio },
   publisher: { '@type': 'Organization', name: themeConfig.name, url: themeConfig.site },
 };
 const faqLd = d.faq.length
@@ -60,7 +60,7 @@ const toc = headings.filter((h) => h.depth === 2);
       <nav aria-label="Breadcrumb" class="tch-crumb"><a href="/teachings">Teachings</a> <span aria-hidden="true">/</span> {d.category}</nav>
       <h1 class="tch-article-title">{d.title}</h1>
       <p class="tch-byline">
-        <img src="/logo/ctr-logo.png" alt="" width="32" height="32" />
+        <img src="/images/matei-96.webp" alt="" width="32" height="32" />
         <span>By <a href="/about">{d.author}</a></span>
         <span aria-hidden="true">·</span>
         <span>Updated <time datetime={updated.toISOString()}>{formatDate(updated)}</time></span>
@@ -109,7 +109,7 @@ const toc = headings.filter((h) => h.depth === 2);
       </section>
 
       <aside class="tch-bio" aria-label="About the author">
-        <img src="/logo/ctr-logo.png" alt="" width="56" height="56" loading="lazy" />
+        <img src="/images/matei.webp" alt="Matei Bumb" width="56" height="56" loading="lazy" />
         <div>
           <p class="tch-kicker">Written by</p>
           <p><strong>{d.author}</strong>. {bio}</p>
