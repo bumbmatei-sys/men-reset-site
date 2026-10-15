@@ -4,6 +4,8 @@ import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { themeConfig } from '~/theme.config';
+import { getTeachings, toCard, formatDate } from '@utils/teachings';
+import '../styles/teachings.css';
 import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
 
 const locale = themeConfig.i18n.defaultLocale;
@@ -16,6 +18,12 @@ const cards = await Promise.all(
 );
 const live = cards.find((card) => card.track.data.status === 'available');
 const startHref = live && live.lessonIds[0] ? lessonPath(live.track.id, live.lessonIds[0]) : '/tracks';
+
+const latestTeachings = (await getTeachings())
+  .filter((entry) => !entry.data.draft)
+  .map(toCard)
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .slice(0, 3);
 
 const title = 'How to Quit Addiction, Build Discipline, and Take Initiative';
 const description = 'Break Free is a free 30-day course for breaking free from any addiction. Days 1-7 open on the site. Days 8-30 arrive as a PDF by email. Grace first. Open to anyone.';
@@ -239,6 +247,42 @@ const marquee = [...marqueeWords, ...marqueeWords];
       </div>
     </section>
 
+    {latestTeachings.length > 0 && (
+      <section class="au-band au-teachings" id="teachings">
+        <div class="au-wrap">
+          <div class="au-teachings-head">
+            <div>
+              <p class="au-kicker au-reveal">Teachings</p>
+              <h2 class="au-display au-reveal">Read something true today</h2>
+              <p class="au-section-lead au-reveal">Short teachings on identity in Christ, grace and freedom. Plain words, one point at a time.</p>
+            </div>
+            <div class="au-reveal">
+              <MarbleAccent kind="laurel" alt="" />
+            </div>
+          </div>
+          <div class="tch au-teachings-grid">
+            <ul class="tch-highlights">
+              {latestTeachings.map((c) => (
+                <li class="au-reveal">
+                  <a class={`tch-overlay${c.image ? '' : ' tch-noimg'}`} href={c.href}>
+                    {c.image ? <img src={c.image.src} alt={c.image.alt} width="640" height="640" loading="lazy" decoding="async" /> : null}
+                    <span class="tch-overlay-label">
+                      <span class="tch-kicker">{c.category}</span>
+                      <span class="tch-overlay-title">{c.title}</span>
+                      <span class="tch-meta"><time datetime={c.date.toISOString()}>{formatDate(c.date)}</time> · {c.minutes} min read</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a class="au-textlink au-reveal au-teachings-all" href="/teachings">
+            All teachings <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    )}
+
     <section class="au-lesson" id="lesson">
       <div class="au-wrap au-lesson-grid">
         <div>
@@ -322,3 +366,12 @@ const marquee = [...marqueeWords, ...marqueeWords];
     </section>
   </div>
 </Layout>
+
+<style is:global>
+  .au-teachings-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+  .au-teachings-head .marble-accent, .au-teachings-head img { max-width: 7rem; height: auto; }
+  @media (max-width: 639px) { .au-teachings-head > div:last-child { display: none; } }
+  .au-teachings-grid { max-width: none; padding-bottom: 0; }
+  .au-teachings-grid .tch-highlights { margin-top: 2rem; }
+  .au-teachings-all { display: inline-block; margin-top: 1.6rem; }
+</style>
