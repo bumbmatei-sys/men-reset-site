@@ -10,7 +10,7 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Referrer-Policy: strict-origin-when-cross-origin
   Access-Control-Allow-Methods: GET, HEAD, OPTIONS
-  Content-Security-Policy: base-uri 'self'; font-src 'self' data:; form-action 'self'; img-src 'self' data: zapier-images.imgix.net; object-src 'none'; script-src-attr 'self'; script-src 'self' 'unsafe-inline' data: https://sdk-v2.hs.dodopayments.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; frame-src 'self' www.youtube-nocookie.com https://checkout.dodopayments.com https://*.hs.dodopayments.com; upgrade-insecure-requests;
+  Content-Security-Policy: base-uri 'self'; font-src 'self' data:; form-action 'self'; img-src 'self' data: zapier-images.imgix.net; object-src 'none'; script-src-attr 'self'; script-src 'self' 'unsafe-inline' data: https://sdk-v2.hs.dodopayments.com https://static.cloudflareinsights.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; frame-src 'self' www.youtube-nocookie.com https://checkout.dodopayments.com https://*.hs.dodopayments.com; upgrade-insecure-requests;
   Permissions-Policy: geolocation=(),midi=(),microphone=(),camera=(),gyroscope=(*),encrypted-media=(*),payment=(self "https://checkout.dodopayments.com")
 /
   Link: </llms.txt>; rel="describedby"; type="text/plain"
