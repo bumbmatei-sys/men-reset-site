@@ -12,10 +12,18 @@ export interface Sponsor {
   url: string;
   tier: SponsorTier;
   logo?: string;
+  /** Restricts the sponsor to these placements. Omitted means every placement its tier allows. */
+  placements?: SponsorPlacement[];
 }
 
 function isTier(value: string): value is SponsorTier {
   return value === 'directory' || value === 'premium';
+}
+
+const placements: SponsorPlacement[] = ['mobile-strip', 'rail-left', 'rail-right', 'directory'];
+
+function isPlacement(value: string): value is SponsorPlacement {
+  return (placements as string[]).includes(value);
 }
 
 export const sponsors: Sponsor[] = sponsorsData.flatMap((entry) => {
@@ -29,6 +37,10 @@ export const sponsors: Sponsor[] = sponsorsData.flatMap((entry) => {
     tier: entry.tier,
   };
   if ('logo' in entry && typeof entry.logo === 'string' && entry.logo.startsWith('/')) sponsor.logo = entry.logo;
+  if ('placements' in entry && Array.isArray(entry.placements)) {
+    const allowed = entry.placements.filter((value): value is SponsorPlacement => typeof value === 'string' && isPlacement(value));
+    if (allowed.length > 0) sponsor.placements = allowed;
+  }
   return [sponsor];
 });
 
@@ -39,7 +51,11 @@ export function tierAllows(tier: SponsorTier, placement: SponsorPlacement): bool
 }
 
 export function sponsorsForPlacement(placement: SponsorPlacement): Sponsor[] {
-  return sponsors.filter((sponsor) => tierAllows(sponsor.tier, placement));
+  return sponsors.filter(
+    (sponsor) =>
+      tierAllows(sponsor.tier, placement) &&
+      (!sponsor.placements || sponsor.placements.includes(placement)),
+  );
 }
 
 export function tierLabel(tier: SponsorTier): string {
