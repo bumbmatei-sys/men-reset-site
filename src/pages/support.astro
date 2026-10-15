@@ -1,0 +1,64 @@
+---
+import Layout from '@layouts/default.astro';
+
+const title = 'Support the Work';
+const description = 'Give once or monthly to support Call to Reset. This is support for the work, not a tax-deductible donation.';
+---
+
+<Layout title={title} description={description}>
+  <p class="course-kicker">Support</p>
+  <h1 class="page-title">Support the work</h1>
+  <p class="page-lead">This course is free. If it helped you, you can give toward the work.</p>
+  <p class="page-note">Give once, or give each month. You pick the amount. This is support for the work. It is not a tax-deductible donation.</p>
+
+  <form class="support-checkout" data-support-checkout onsubmit="event.preventDefault()" novalidate>
+    <div class="support-toggle" role="group" aria-label="How to give">
+      <button class="support-choice" type="button" data-support-mode="once" aria-pressed="true">
+        Give once
+      </button>
+      <button class="support-choice" type="button" data-support-mode="monthly" aria-pressed="false">
+        Give monthly
+      </button>
+    </div>
+
+    <div class="support-panel" data-support-once>
+      <label class="support-amount">
+        Amount in dollars
+        <input class="input-primary" data-support-amount type="number" name="amount" min="1" max="2000" step="1" value="10" inputmode="numeric" required />
+      </label>
+      <p class="support-hint">Suggested amount is $10. Change it if you want.</p>
+    </div>
+
+    <fieldset class="support-panel support-monthly" data-support-monthly hidden>
+      <legend>Each month</legend>
+      <label>
+        <input type="radio" name="monthly" value="5" />
+        $5
+      </label>
+      <label>
+        <input type="radio" name="monthly" value="10" checked />
+        $10
+      </label>
+      <label>
+        <input type="radio" name="monthly" value="25" />
+        $25
+      </label>
+    </fieldset>
+
+    <button class="btn-primary" type="submit">
+      Open checkout
+    </button>
+    <p class="support-status" data-support-status role="status" hidden></p>
+    <p class="support-frame-note" data-support-placeholder>
+      The checkout form opens in this box.
+    </p>
+    <div id="support-checkout-frame" class="support-frame"></div>
+  </form>
+</Layout>
+
+<script>
+  import { mountSupportCheckout } from '@scripts/support-checkout';
+
+  mountSupportCheckout();
+  document.addEventListener('astro:page-load', mountSupportCheckout);
+</script>

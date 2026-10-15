@@ -1592,3 +1592,123 @@ body.nav-open .sponsor-mobile {
     display: none !important;
   }
 }
+
+.support-line {
+  max-width: 68ch;
+  margin: 1.75rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-stone-500);
+}
+
+:where(.dark) .support-line {
+  color: var(--color-stone-400);
+}
+
+.support-line a {
+  font-weight: 600;
+}
+
+.support-checkout {
+  max-width: 36rem;
+  margin-top: 1.5rem;
+}
+
+.support-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.support-choice {
+  border: 1px solid color-mix(in srgb, var(--color-stone-400) 70%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.4rem 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.support-choice[aria-pressed='true'] {
+  border-color: #0f0f0f;
+  background: #0f0f0f;
+  color: #fff;
+}
+
+:where(.dark) .support-choice[aria-pressed='true'] {
+  border-color: #fffce0;
+  background: #fffce0;
+  color: #0f0f0f;
+}
+
+.support-panel {
+  margin-top: 1rem;
+}
+
+.support-amount {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 12rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.support-hint,
+.support-frame-note,
+.support-status {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--color-stone-600);
+}
+
+:where(.dark) .support-hint,
+:where(.dark) .support-frame-note,
+:where(.dark) .support-status {
+  color: var(--color-stone-300);
+}
+
+.support-monthly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.9rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.support-monthly legend {
+  width: 100%;
+  margin-bottom: 0.15rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.support-monthly label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+}
+
+.support-panel[hidden] {
+  display: none;
+}
+
+.support-checkout .btn-primary {
+  margin-top: 1rem;
+}
+
+.support-frame {
+  min-height: 28rem;
+  margin-top: 0.75rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-stone-400) 45%, transparent);
+  border-radius: 0.85rem;
+  background: #fff;
+}
+
+:where(.dark) .support-frame {
+  border-color: color-mix(in srgb, white 12%, transparent);
+  background: #0d0d0d;
+}
