@@ -148,3 +148,5 @@
 :where(.dark) .tch-pill.is-active { border-color: #f0b04a; background: #f0b04a; color: #1b2838; }
 
 .tch-author img, .tch-byline img, .tch-bio img { object-fit: cover; background: #111; }
+.tch-bio .tch-bio-name { margin-top: 0.25rem; font-family: 'Ancizar Serif', Georgia, serif; font-size: 1.15rem; }
+.tch-bio .tch-bio-name + p { margin-top: 0.2rem; }
