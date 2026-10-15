@@ -13,7 +13,7 @@ cardImage:
   alt: 'A marble ring resting on an open scroll by a sunlit window'
 readingTime: 7
 category: Identity
-draft: true
+draft: false
 takeaways:
   - 'What you do is your behavior. Who God says you are is your identity.'
   - 'Your old self was crucified with Jesus (Romans 6:6). You are a new creation.'
@@ -37,11 +37,11 @@ faq:
 
 **You are not what you keep doing. You are what Jesus says you already are.** God is not telling you what you need to become. He is telling you who you already are in Christ. When you keep falling, the answer is not to try harder. The answer is to see yourself the way the Father sees you, and let that change the way you live.
 
-## Is what I do my identity?
+## Is what I'm doing my identity?
 
 No. What you do is your behavior. Your identity is what God says about you after Jesus finished His work.
 
-Many people live the other way around. They fall into the same sin again and then say "that is who I am". They say "I am an addict", "I am angry", "I am weak", "I am broken". Basically, they let the struggle become their name.
+Many people live the other way around. They fall into the same sin again and then say "that is who I am". They say "I am an addict", "I am angry", "I am weak", "I am broken". In other words, they let the struggle become their name.
 
 Don't let what you are going through become your identity.
 
@@ -57,9 +57,9 @@ It died. That is not a metaphor. That is a legal fact in heaven.
 
 > **2 Corinthians 5:17 (NASB)**, "Therefore if anyone is in Christ, this person is a new creation; the old things passed away; behold, new things have come."
 
-Let's take a look at Romans 7:1-6. Paul compares it to marriage. A wife is bound to her husband as long as he lives. If the husband dies, she is free to be joined to another. Then Paul says this is exactly what happened to us. Our old nature died with Jesus. Now we are joined to Him. We brought forth fruit to God.
+Let's take a look at Romans 7:1-6. Paul compares it to marriage. A wife is bound to her husband as long as he lives. If the husband dies, she is free to be joined to another. Then Paul says this is exactly what happened to us. Our old nature died with Jesus. Now we are joined to Him. We are bringing forth fruit now to God.
 
-So if you believe that after being born again you still carry a sin nature inside, you are saying the old husband is still alive. Basically, you are living as if you are married to two at once. Paul calls that adultery.
+So if you believe that after being born again you still carry a sin nature inside, you are saying the old husband is still alive. Which means you are living as if you are married to two at once. Paul calls that adultery.
 
 You are not a sinner trying to be saved. You are a saint who sometimes sins. That is a big difference.
 
@@ -102,7 +102,7 @@ By renewing your mind.
 
 > **Romans 12:2 (NASB)**, "And do not be conformed to this world, but be transformed by the renewing of your mind."
 
-You are already new in your spirit. Your mind is the part that needs to catch up. Basically, you believe a lie about yourself long enough and you start living like it is true. The renewing of the mind is going back to the truth until the truth is louder.
+You are already new in your spirit. Your mind is the part that needs to catch up. When you believe a lie about yourself long enough, you start living like it is true. The renewing of the mind is going back to the truth until the truth is louder.
 
 How do you do that practically?
 
@@ -118,7 +118,7 @@ The truth makes us uncomfortable because we are comfortable with the lie. So giv
 
 You get up and you go back to Him. Right away. Not after you have punished yourself for three days.
 
-Guilt says "I did something wrong". Shame says "something is wrong with me". Guilt can be useful. Shame is a lie. Jesus did not only die for your sin. He hung naked on a cross for your shame. He went lower than you have ever gone. (Hebrews 12:2).
+Guilt says "I did something wrong". Shame says "something is wrong with me". Shame is a lie. Jesus did not only die for your sin. He hung naked on a cross for your shame. He went lower than you have ever gone. (Hebrews 12:2).
 
 So when you fall:
 
