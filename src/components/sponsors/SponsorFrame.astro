@@ -3,7 +3,8 @@ import SponsorSlot from './SponsorSlot.astro';
 import { sponsorsForPlacement } from '@utils/sponsors';
 
 const showStrip = sponsorsForPlacement('mobile-strip').length > 0;
-const showRail = sponsorsForPlacement('rail-left').length > 0;
+const showLeft = sponsorsForPlacement('rail-left').length > 0;
+const showRight = sponsorsForPlacement('rail-right').length > 0;
 ---
 
 {showStrip && (
@@ -11,12 +12,12 @@ const showRail = sponsorsForPlacement('rail-left').length > 0;
     <SponsorSlot placement="mobile-strip" label="Sponsor" />
   </div>
 )}
-{showRail && (
+{showLeft && (
   <aside class="sponsor-rail sponsor-rail-left" aria-label="Sponsors">
     <SponsorSlot placement="rail-left" label="Sponsor" />
   </aside>
 )}
-{showRail && (
+{showRight && (
   <aside class="sponsor-rail sponsor-rail-right" aria-label="Sponsors">
     <SponsorSlot placement="rail-right" label="Sponsor" />
   </aside>

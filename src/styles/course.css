@@ -183,10 +183,6 @@ body:has(.sponsor-mobile) {
   background: transparent;
 }
 
-:where(.dark) .sponsor-logo {
-  filter: invert(1);
-}
-
 .sponsor-mobile .sponsor-logo {
   max-width: 1.15rem;
   max-height: 1.45rem;

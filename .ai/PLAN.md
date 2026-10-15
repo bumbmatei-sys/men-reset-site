@@ -35,3 +35,8 @@ and has been verified against the current source, not re-applied.
 - Social fallback images (`og.png`, `x.png`, `structured-preview.png`) still show the boilerplate art.
 - Decide whether the demo map (`./public/map/office.pmtiles`) is dropped or replaced.
 - Review `./public/.well-known/agent-skills` and update digests in `index.json` after any change.
+
+## Done - sponsor pass
+
+- [x] Sponsor logo keeps its colors in dark mode (removed the global `invert(1)` filter in `src/styles/course.css`).
+- [x] The Harvest sponsor renders only in the right desktop rail (optional `placements` array in `src/data/sponsors.json`, honored by `src/utils/sponsors.ts`); the "Your brand here" card stays on both rails. Without `placements`, a sponsor appears in every placement its tier allows.

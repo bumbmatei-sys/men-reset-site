@@ -6,7 +6,8 @@
     "cta": "Visit",
     "url": "https://theharvest.site",
     "tier": "premium",
-    "logo": "/sponsors/the-harvest.webp"
+    "logo": "/sponsors/the-harvest.webp",
+    "placements": ["directory", "mobile-strip", "rail-right"]
   },
   {
     "id": "placeholder-premium",
