@@ -2,6 +2,8 @@
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
+import DoorSoonCard from '@components/course/DoorSoonCard.astro';
+import { DOORS } from '@utils/doors';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import { themeConfig } from '~/theme.config';
 import { getTeachings, toCard, formatDate } from '@utils/teachings';
@@ -25,14 +27,14 @@ const latestTeachings = (await getTeachings())
   .sort((a, b) => b.date.getTime() - a.date.getTime())
   .slice(0, 3);
 
-const title = 'How to Quit Addiction, Build Discipline, and Take Initiative';
-const description = 'Break Free is a free 30-day course for breaking free from any addiction. Days 1-7 open on the site. Days 8-30 arrive as a PDF by email. Grace first. Open to anyone.';
+const title = "Know God's Love, Know Who You Are in Christ, and Live It Out";
+const description = "Free Christian lessons on God's love, your identity in Christ, a holy life and taking initiative. Freedom from addiction is one path inside it. Grace first. For men and women.";
 
 const steps = [
   {
     n: '01',
     title: "See where you're going",
-    body: 'A free self-check shows where you are stuck. Then you start Break Free, the free 30-day reset. Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email.',
+    body: 'A free check shows where you are right now and suggests where to start. If something has a hold on you, the free 30-day reset is there. Days 1 to 7 are open on the site. Days 8 to 30 come as a PDF by email.',
     cta: 'Take the free check',
     href: '/check',
     external: false,
@@ -41,10 +43,10 @@ const steps = [
   },
   {
     n: '02',
-    title: 'Build your future, step by step',
-    body: 'Practical teachings for a life aimed at something. Build with a vision. Take initiative. Know your next steps.',
-    cta: 'Start Break Free',
-    href: '/tracks/break-free',
+    title: 'Grow step by step',
+    body: "Short tracks on God's love, your identity in Christ, a holy life and taking initiative. Pick the one in front of you.",
+    cta: 'See the tracks',
+    href: '/tracks',
     external: false,
     image: '/aureum/process-02.webp',
     alt: 'Marble figure with a compass and a scroll',
@@ -52,7 +54,7 @@ const steps = [
   {
     n: '03',
     title: "You're not alone",
-    body: 'A community for people doing this work. Join the room, not a feed.',
+    body: 'A community of people walking the same road. Join the room, not a feed.',
     cta: 'Join the community',
     href: themeConfig.communityUrl,
     external: true,
@@ -72,16 +74,11 @@ const steps = [
 ];
 
 const stats = [
-  { figure: '30 days', label: 'A free reset program to set you up for a new life.' },
+  { figure: '30 days', label: 'A free 30-day reset to help you walk free from what holds you back.' },
   { figure: '9 questions', label: 'A free check you can finish in one sitting' },
   { figure: '4 steps', label: 'The path from the check into the first steps of your new life.' },
 ];
 
-const notes = [
-  { quote: 'The phone used to take the night. One rule — charger in the kitchen — gave me the morning back.', name: 'Daniel, 29' },
-  { quote: 'I came for the drinking. The plan was short enough that I did not negotiate with it.', name: 'James, 34' },
-  { quote: 'Porn was the private one. Naming the hour it happens made the next day smaller.', name: 'Marcus, 41' },
-];
 
 const faqs = [
   {
@@ -93,12 +90,12 @@ const faqs = [
     a: 'The roots are Christian. You do not have to share that faith to use the steps. The writing stays plain.',
   },
   {
-    q: 'Is this only about porn?',
-    a: 'No. Break Free is for any addiction that is running the day. Porn, gaming, the phone, alcohol, substances, or another habit. The shape of the work is the same. Days 1-7 are open on the site. Days 8-30 arrive as a PDF by email. The check writes a plan for the struggle you name.',
+    q: 'Is this only about addiction?',
+    a: "No. The site is about knowing God's love, knowing who you are in Christ, living a holy life and taking initiative. Freedom from addiction is one part of that. If something has a hold on you, Break Free and the 30-day reset are there, and the check writes a plan for what you name.",
   },
   {
     q: 'What if I am under 18?',
-    a: 'The course is for everyone. Young people fight addictions too. The content stays clean, with no sexual detail.',
+    a: 'The site is for everyone. Young people need to know who they are in Christ too. The content stays clean, with no sexual detail.',
   },
   {
     q: 'Where is the partner price?',
@@ -128,7 +125,7 @@ const faqLd = {
   })),
 };
 
-const marqueeWords = ['Discipline', 'Freedom', 'Initiative', 'Reset'];
+const marqueeWords = ['Love', 'Identity', 'Holiness', 'Initiative'];
 const marquee = [...marqueeWords, ...marqueeWords];
 ---
 
@@ -141,9 +138,9 @@ const marquee = [...marqueeWords, ...marqueeWords];
       <div class="au-hero-shade" aria-hidden="true"></div>
       <div class="au-hero-copy">
         <h1>
-          <span class="au-h1-line">Quit addiction.</span>
-          <span class="au-h1-line">Build discipline.</span>
-          <span class="au-h1-line">Take initiative.</span>
+          <span class="au-h1-line">Know His love.</span>
+          <span class="au-h1-line">Know who you are.</span>
+          <span class="au-h1-line">Live it out.</span>
         </h1>
       </div>
       <p class="au-word" aria-hidden="true">
@@ -155,8 +152,8 @@ const marquee = [...marqueeWords, ...marqueeWords];
 
     <section class="au-band au-intro" id="intro">
       <div class="au-wrap au-intro-copy">
-        <p class="au-lead">Quitting an addiction is not optional. We have to, in order to live a fulfilled life. Porn, gaming, the phone, alcohol, substances, or another habit, the process is the same: break free, build discipline, and take initiative.</p>
-        <p class="au-note">The foundations are Christian. The course is open to anyone.</p>
+        <p class="au-lead">It starts with God's love. Jesus loves you right where you are, and in Him you have a new identity. From there, whatever holds you back, sin, an addiction, fear or no direction at all, there is a way forward. One step at a time, with Him.</p>
+        <p class="au-note">The foundations are Christian. Everyone is welcome, men and women.</p>
         <div class="au-actions">
           <a class="au-pill" href="/check">
             Take the free check
@@ -173,14 +170,14 @@ const marquee = [...marqueeWords, ...marqueeWords];
 
     <section class="au-band au-problem" id="problem">
       <div class="au-wrap">
-        <p class="au-kicker au-reveal">The trap</p>
-        <h2 class="au-display au-reveal">The night's actions overtake the daily living.</h2>
-        <p class="au-section-lead au-reveal">That website, the match, the scroll, the drink or the substance. All have a trigger point. And the loop repeats over and over and over again.</p>
+        <p class="au-kicker au-reveal">What holds you back</p>
+        <h2 class="au-display au-reveal">You were made for more than this.</h2>
+        <p class="au-section-lead au-reveal">For some it's a habit that won't let go. For others it's shame, fear, or just drifting with no direction. It repeats, and after a while it starts to feel like who you are. It isn't.</p>
         <article class="au-problem-card au-reveal">
           <img src="/aureum/problem.webp" alt="Marble figures bent over scrolls" width="720" height="526" />
           <div>
-            <h3>You already know the pattern</h3>
-            <p>Hiding it doesn't make it smaller. The mission of this platform is to name the problem in plain words, then guide you into your freedom. Not a new identity slogan or hype. A next practical step into a better life.</p>
+            <h3>You don't have to stay there</h3>
+            <p>Hiding it doesn't make it smaller. This site names things in plain words, points you to Jesus, and gives you a practical next step. Grace first. Then the walk.</p>
           </div>
         </article>
       </div>
@@ -236,15 +233,25 @@ const marquee = [...marqueeWords, ...marqueeWords];
     <section class="au-band" id="tracks">
       <div class="au-wrap">
         <p class="au-kicker au-reveal">Tracks</p>
-        <h2 class="au-display au-reveal">Start with the fight in front of you</h2>
-        <p class="au-section-lead au-reveal">It doesn't matter what your starting point is. The goal is freedom and advancement into a fulfilled life. Start with the fight in front of you. More content is being added weekly.</p>
-        <ul class="track-grid au-track-grid">
-          {cards.map(({ track, lessonIds }) => (
-            <li class="au-reveal">
-              <TrackCard {track} {lessonIds} />
-            </li>
-          ))}
-        </ul>
+        <h2 class="au-display au-reveal">Four doors. Start with the one in front of you.</h2>
+        <p class="au-section-lead au-reveal">It doesn't matter where you start. Everything here points to the same place: knowing Jesus and living from who He says you are. New lessons are added often.</p>
+        <div class="au-doors">
+          {DOORS.map((door) => {
+            const inDoor = cards.filter(({ track }) => track.data.category === door.name);
+            return (
+              <section class="au-door au-reveal">
+                <h3 class="au-door-title">{door.name}</h3>
+                <p class="au-door-text">{door.text}</p>
+                <ul class="track-grid au-track-grid">
+                  {inDoor.map(({ track, lessonIds }) => (
+                    <li><TrackCard {track} {lessonIds} /></li>
+                  ))}
+                  {inDoor.length === 0 && door.soon ? <li><DoorSoonCard {door} /></li> : null}
+                </ul>
+              </section>
+            );
+          })}
+        </div>
       </div>
     </section>
 
@@ -305,19 +312,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
       </div>
     </section>
 
-    <section class="au-clients" id="notes">
-      <div class="au-wrap">
-        <p class="au-kicker au-kicker-light au-reveal">Notes</p>
-        <h2 class="au-display au-reveal">What people say</h2>
-        <ul class="au-notes">
-          {notes.map((note) => (
-            <li class="au-note-card au-reveal">
-              <blockquote>{note.quote}</blockquote>
-              <cite>{note.name}</cite>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <section class="au-clients au-clients-marquee" id="words">
       <div class="au-marquee" aria-hidden="true">
         <div class="au-marquee-track">
           {marquee.map((word) => (
@@ -349,7 +344,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
         <div class="au-cta">
           <div class="au-cta-copy">
             <p class="au-kicker au-kicker-light">Today</p>
-            <h2>Start the work while the day is still yours</h2>
+            <h2>Start today. He's already there.</h2>
             <div class="au-actions">
               <a class="au-pill" href="/check">
                 Take the free check
@@ -375,4 +370,9 @@ const marquee = [...marqueeWords, ...marqueeWords];
   .au-teachings-grid { max-width: none; padding-bottom: 0; }
   .au-teachings-grid .tch-highlights { margin-top: 2rem; }
   .au-teachings-all { display: inline-block; margin-top: 1.6rem; }
+  .au-clients-marquee { padding-block: 2.5rem; }
+  .au-doors { display: grid; gap: 2.5rem; margin-top: 2rem; }
+  .au-door-title { font-size: 1.6rem; margin: 0 0 .35rem; }
+  .au-door-text { margin: 0 0 1rem; opacity: .85; max-width: 60ch; }
+  .au-door .au-track-grid { margin-top: 0; }
 </style>

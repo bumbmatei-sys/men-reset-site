@@ -4,6 +4,8 @@ import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
 import FilterPills from '@components/course/FilterPills.astro';
+import DoorSoonCard from '@components/course/DoorSoonCard.astro';
+import { DOORS } from '@utils/doors';
 import TopicRequest from '@components/course/TopicRequest.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack } from '@utils/course';
@@ -15,9 +17,12 @@ const cards = await Promise.all(
     lessonIds: (await lessonsForTrack(track.id)).map((lesson) => lesson.id),
   })),
 );
-const trackCategories = [...new Set(tracks.map((t) => t.data.category ?? 'Other'))];
-const title = 'Courses to Break Free and Build Discipline';
-const description = 'Free course tracks for breaking free from addiction: porn, gaming, the phone, alcohol, substances, discipline, and a 30-day plan. Days 1 to 7 open here. The full month comes by email. Christian roots. Open to anyone.';
+const trackCategories = DOORS.map((d) => d.name);
+const emptyDoors = DOORS.filter((d) => d.soon && !tracks.some((t) => t.data.category === d.name));
+const doorRank = (c?: string) => { const i = DOORS.findIndex((d) => d.name === c); return i < 0 ? 99 : i; };
+cards.sort((a, b) => doorRank(a.track.data.category) - doorRank(b.track.data.category));
+const title = "Tracks: God's Love, Identity, Holiness and Initiative";
+const description = 'Free Christian tracks in four doors: know God\'s love, know who you are, walk in holiness, take initiative. Includes a free 30-day reset for any addiction. For men and women.';
 
 const breadcrumbs = {
   '@context': 'https://schema.org',
@@ -38,11 +43,11 @@ const breadcrumbs = {
   </nav>
   <p class="course-kicker">Tracks</p>
   <div class="marble-head">
-    <h1 class="page-title">Break free, then build the day</h1>
+    <h1 class="page-title">Four doors, one direction</h1>
     <MarbleAccent kind="pillar" alt="" />
   </div>
   <p class="page-lead">
-    These tracks are the course. The work is any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit, plus discipline and initiative. Break Free is the 30-day plan. Days 1 to 7 are open here, seven practical lessons you can start today. The rest of the month comes by email. Christian roots. Open to anyone.
+    Every track points to Jesus. Start with the door in front of you. If something has a hold on you, Break Free and the 30-day reset are in Walk in holiness. Days 1 to 7 are open here. The rest of the month comes by email.
   </p>
   <FilterPills categories={trackCategories} label="Filter tracks by topic" scope="tracks" />
   <div data-filter-scope="tracks">
@@ -50,6 +55,11 @@ const breadcrumbs = {
     {cards.map(({ track, lessonIds }) => (
       <li data-filter-item data-category={track.data.category ?? 'Other'}>
         <TrackCard {track} {lessonIds} />
+      </li>
+    ))}
+    {emptyDoors.map((door) => (
+      <li data-filter-item data-category={door.name}>
+        <DoorSoonCard {door} />
       </li>
     ))}
   </ul>

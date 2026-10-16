@@ -4,7 +4,7 @@ description: A free 30-day reset for any habit. Porn, gaming, the phone, alcohol
 order: 6
 status: available
 targetQuery: 30 day reset
-category: Break free
+category: Walk in holiness
 cover:
   src: /images/tracks/30-day-reset-cover.webp
   alt: A marble statue walking out of a doorway at dawn, the cover of the 30-Day Reset

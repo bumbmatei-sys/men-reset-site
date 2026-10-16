@@ -2,6 +2,7 @@
 title: Quit Gaming and the Phone
 description: How to quit gaming addiction and stop the phone from eating the evening. A coming-soon track for anyone who loses hours they meant to keep.
 order: 2
+category: Walk in holiness
 status: coming-soon
 targetQuery: how to quit gaming addiction
 ---

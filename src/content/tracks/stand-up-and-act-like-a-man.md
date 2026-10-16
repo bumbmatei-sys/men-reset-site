@@ -4,7 +4,7 @@ description: A short track about standing firm in Jesus and loving people even w
 order: 2
 status: available
 targetQuery: stand up and act like a man
-category: Character
+category: Take initiative
 cover:
   src: /images/tracks/stand-up-cover.webp
   alt: A marble statue standing firm on a plinth, the cover of Stand Up

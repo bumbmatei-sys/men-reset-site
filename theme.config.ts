@@ -122,7 +122,7 @@ export const themeConfig: ThemeConfig = {
   // LLM and coding assistant settings
   llms: {
     autoGeneration: true,
-    intro: 'A free, plain-language course for people quitting an addiction — porn, gaming, the phone, alcohol, substances, or another habit — and building discipline and initiative. Christian-rooted and open to anyone. Lessons are short, practical, and original.',
+    intro: "Free, plain-language Christian lessons on knowing God's love, knowing your identity in Christ, living a holy life and taking initiative. Freedom from addiction (porn, gaming, the phone, alcohol, substances) is one path inside it. For men and women. Lessons are short, practical and original.",
     excludePagesPattern: ['/404', '/404_dynamic'],
     includePages: [],
     addArticles: 'none',
