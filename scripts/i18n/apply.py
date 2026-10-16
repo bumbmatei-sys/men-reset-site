@@ -117,6 +117,10 @@ def translate_page(rel, loc, d, page_paths, stats):
     for c in s.find_all('link', rel='canonical'):
         c['href'] = SITE + loc_url(path, loc)
     s.html['lang'] = loc
+    if s.head is not None:
+        tag = s.new_tag('script', src=f'/_i18n/{loc}.js')
+        first = s.head.find(['script', 'link', 'style'])
+        (first.insert_before(tag) if first else s.head.append(tag))
     add_alternates(s, path)
     out = os.path.join(DIST, f'{loc}.html') if rel == 'index.html' else os.path.join(DIST, loc, rel)
     os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -146,7 +150,27 @@ def sitemap(page_paths):
     x = re.sub(r'<url>.*</url>', lambda _: ''.join(out), x, count=1, flags=re.S)
     open(p, 'w', encoding='utf-8').write(x)
 
+def client_bundle(loc):
+    p = os.path.join(ROOT, 'src', 'i18n', 'client', f'{loc}.json')
+    d = json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}
+    exact = {k: v for k, v in d.items() if not re.search(r'\{\d+\}', k)}
+    pats = []
+    for k, v in d.items():
+        if re.search(r'\{\d+\}', k):
+            parts = re.split(r'(\{\d+\})', k)
+            src = ''.join('(.+?)' if re.fullmatch(r'\{\d+\}', x) else re.escape(x) for x in parts)
+            # renumber placeholders by order of appearance so m[i+1] lines up
+            order = [int(x[1:-1]) for x in parts if re.fullmatch(r'\{\d+\}', x)]
+            vv = re.sub(r'\{(\d+)\}', lambda m: '{' + str(order.index(int(m.group(1)))) + '}' if int(m.group(1)) in order else m.group(0), v)
+            pats.append([src, vv])
+    js = open(os.path.join(os.path.dirname(__file__), 'runtime.js'), encoding='utf-8').read()
+    js = js.replace('__DICT__', json.dumps(exact, ensure_ascii=False)).replace('__PATTERNS__', json.dumps(pats, ensure_ascii=False))
+    os.makedirs(os.path.join(DIST, '_i18n'), exist_ok=True)
+    open(os.path.join(DIST, '_i18n', f'{loc}.js'), 'w', encoding='utf-8').write(js)
+
 def main():
+    for loc in LOCALES:
+        client_bundle(loc)
     rels = pages()
     page_paths = {page_url(r) for r in rels}
     for loc in LOCALES:

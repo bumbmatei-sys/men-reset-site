@@ -10,7 +10,7 @@
   /* Adjust the following font families to your needs */
   /* Mind to import Google Fonts at the layouts via fontsource (e.g. "import "@fontsource/geist/400.css";") - requires them to be also installed via npm and imported at the layout level */
   --font-sans: Inter, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --font-serif: 'Ancizar Serif', Georgia, 'Times New Roman', Times, serif;
+  --font-serif: 'Ancizar RO', 'Ancizar Serif', Georgia, 'Times New Roman', Times, serif;
   --font-mono: 'Azeret Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
   --font-headline: var(--font-serif);
 

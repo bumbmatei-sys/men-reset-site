@@ -24,11 +24,11 @@ Input: a JSON array of strings. Output: ONLY a JSON array of the same length wit
 TAG = re.compile(r'<[^>]+>')
 def tags(s): return [re.sub(r'\s+', ' ', t.split()[0] if t.startswith('</') else t.split()[0]) for t in TAG.findall(s)]
 
-def call(loc, batch):
+def call(loc, batch, extra=''):
     lang, bible = LANG[loc]
     for attempt in range(3):
         try:
-            r = subprocess.run(['mimo', '--max-tokens', '16000', '-s', SYSTEM.format(lang=lang, bible=bible), json.dumps(batch, ensure_ascii=False)],
+            r = subprocess.run(['mimo', '--max-tokens', '16000', '-s', SYSTEM.format(lang=lang, bible=bible) + extra, json.dumps(batch, ensure_ascii=False)],
                                capture_output=True, text=True, timeout=900)
             out = r.stdout.strip()
             out = re.sub(r'^```(?:json)?|```$', '', out).strip()

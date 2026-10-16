@@ -29,7 +29,7 @@ def pages():
         for f in fs:
             if f.endswith('.html'):
                 r = os.path.normpath(os.path.join(rel, f))
-                if r not in SKIP_PAGES:
+                if r not in SKIP_PAGES and r[:-5] not in LOCALES:
                     out.append(r)
     return sorted(out)
 
