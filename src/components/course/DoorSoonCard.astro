@@ -1,0 +1,18 @@
+---
+import type { Door } from '@utils/doors';
+interface Props { door: Door }
+const { door } = Astro.props;
+---
+<a class="track-card track-card-split door-soon reveal" href={door.soon!.href} data-category={door.name}>
+  <span class="track-card-body">
+    <span class="course-kicker">{door.name} · Coming soon</span>
+    <span class="track-title">{door.name}</span>
+    <span class="track-desc">{door.text}</span>
+    <span class="track-desc door-soon-note">{door.soon!.text} <span aria-hidden="true">→</span></span>
+  </span>
+</a>
+<style>
+  .door-soon { border-style: dashed; }
+  .door-soon .track-card-body { padding: 1.5rem; }
+  .door-soon-note { font-weight: 600; margin-top: .5rem; }
+</style>

@@ -1,7 +1,8 @@
 ---
 title: Faith, Grace, and the Kingdom
-description: Grace and the kingdom of God for anyone who thinks one more failure ends the story. Coming soon, and already pointed at the open lessons.
+description: God's love, grace and His kingdom, for anyone who isn't sure He's for them. Coming soon.
 order: 5
+category: Know God's love
 status: coming-soon
 targetQuery: grace and the kingdom of god
 ---

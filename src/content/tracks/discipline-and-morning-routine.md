@@ -2,6 +2,7 @@
 title: Discipline and a Morning Routine
 description: A morning routine for discipline that anyone with a job can keep. Coming soon, with a simple first version you can try tomorrow.
 order: 3
+category: Take initiative
 status: coming-soon
 targetQuery: morning routine for discipline
 ---

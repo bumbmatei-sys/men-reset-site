@@ -1,7 +1,8 @@
 ---
 title: New Identity in Christ
-description: Identity in Christ for anyone who is tired of defining themselves by the last relapse. A coming-soon track on who you are when the urge is loud.
+description: Who you are in Christ, for anyone who keeps defining themselves by what they did. Coming soon.
 order: 4
+category: Know who you are
 status: coming-soon
 targetQuery: identity in christ
 ---
