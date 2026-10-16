@@ -40,17 +40,30 @@ const itemList = {
   </nav>
   <p class="course-kicker">Directory</p>
   <h1 class="page-title">Partners</h1>
-  <p class="page-actions">
-    <a class="btn-primary" href="/partner">
-      Become a partner
-    </a>
-  </p>
+  <div class="choice-cards">
+    <section class="choice-card">
+      <p class="course-kicker">For individuals</p>
+      <h2>Support the mission</h2>
+      <p>Give what you can and keep these lessons free for the next person.</p>
+      <a class="btn-primary" href="/support">Support the mission</a>
+    </section>
+    <section class="choice-card">
+      <p class="course-kicker">For businesses and ministries</p>
+      <h2>Become a partner</h2>
+      <p>Show your brand in the partner strip and in the directory below.</p>
+      <a class="btn-secondary" href="/partner">See partner options</a>
+    </section>
+  </div>
+  <style>
+    .choice-cards { display: grid; gap: 1rem; margin: 1.5rem 0 2rem; }
+    @media (min-width: 768px) { .choice-cards { grid-template-columns: 1fr 1fr; } }
+    .choice-card { border: 1px solid color-mix(in srgb, currentColor 18%, transparent); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; gap: .75rem; align-items: flex-start; }
+    .choice-card h2 { margin: 0; font-size: 1.5rem; }
+    .choice-card p { margin: 0; }
+    .choice-card a { margin-top: auto; }
+  </style>
+  <h2 class="page-subtitle">Our partners</h2>
   <p class="page-lead">The Harvest partners with this site. One spot is still open.</p>
-  <aside class="takeaway">
-    <p class="course-kicker">Support the mission</p>
-    <p>Not a business? You can still help. Support the mission and keep these lessons free for the next person.</p>
-    <p><a class="btn-primary" href="/support">Support the mission</a></p>
-  </aside>
   <ul class="sponsor-directory">
     {sponsors.map((sponsor) => {
       const href = sponsorUrl(sponsor.url, 'directory');
