@@ -134,6 +134,8 @@ const tracks = defineCollection({
     category: z.string().optional(),
     cover: z.object({ src: z.string(), alt: z.string() }).optional(),
     icon: z.string().optional(),
+    // Planned lesson titles for a coming-soon course. Shown without links.
+    plannedLessons: z.array(z.object({ title: z.string(), summary: z.string().optional() })).optional(),
   }),
 });
 

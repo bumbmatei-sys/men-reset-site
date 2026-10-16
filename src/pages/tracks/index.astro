@@ -10,7 +10,7 @@ import TopicRequest from '@components/course/TopicRequest.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack } from '@utils/course';
 
-const tracks = (await getTracks()).filter((track) => track.data.status === 'available');
+const tracks = (await getTracks()).filter((track) => track.data.status === 'available' || (track.data.plannedLessons?.length ?? 0) > 0);
 const cards = await Promise.all(
   tracks.map(async (track) => ({
     track,

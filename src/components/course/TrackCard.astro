@@ -12,6 +12,7 @@ const open = track.data.status === 'available';
 const cover = track.data.cover && publicImageExists(track.data.cover.src) ? track.data.cover : undefined;
 const icon = publicImageExists(track.data.icon) ? track.data.icon : undefined;
 const category = track.data.category ?? 'Other';
+const planned = open ? [] : (track.data.plannedLessons ?? []);
 ---
 
 <a class="track-card track-card-split reveal" href={trackPath(track.id)} data-track-card data-category={category} data-lesson-ids={open ? lessonIds.join(',') : undefined}>
@@ -22,7 +23,7 @@ const category = track.data.category ?? 'Other';
     </span>
   </span>
   <span class="track-card-body">
-    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} lessons` : ''}{open ? '' : ' · Coming soon'}</span>
+    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} lessons` : ''}{!open && planned.length ? ` · ${planned.length} lessons` : ''}{open ? '' : ' · Coming soon'}</span>
     <span class="track-title">{track.data.title}</span>
     <span class="track-desc">{track.data.description}</span>
     {open && lessonIds.length > 0 ? (
@@ -33,8 +34,18 @@ const category = track.data.category ?? 'Other';
         </span>
       </span>
     ) : null}
+    {planned.length > 0 ? (
+      <ol class="track-planned">
+        {planned.map((lesson) => <li>{lesson.title}</li>)}
+      </ol>
+    ) : null}
   </span>
 </a>
+
+<style>
+  .track-planned { margin: .5rem 0 0; padding-left: 1.25rem; list-style: decimal; font-size: .9rem; line-height: 1.5; opacity: .85; }
+  .track-planned li { margin: .1rem 0; }
+</style>
 
 <script>
   function paintTrackProgress() {
