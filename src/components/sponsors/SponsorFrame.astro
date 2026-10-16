@@ -9,16 +9,16 @@ const showRight = sponsorsForPlacement('rail-right').length > 0;
 
 {showStrip && (
   <div class="sponsor-mobile" data-sponsor-region="mobile-strip">
-    <SponsorSlot placement="mobile-strip" label="Sponsor" />
+    <SponsorSlot placement="mobile-strip" label="Partner" />
   </div>
 )}
 {showLeft && (
-  <aside class="sponsor-rail sponsor-rail-left" aria-label="Sponsors">
-    <SponsorSlot placement="rail-left" label="Sponsor" />
+  <aside class="sponsor-rail sponsor-rail-left" aria-label="Partners">
+    <SponsorSlot placement="rail-left" label="Partner" />
   </aside>
 )}
 {showRight && (
-  <aside class="sponsor-rail sponsor-rail-right" aria-label="Sponsors">
-    <SponsorSlot placement="rail-right" label="Sponsor" />
+  <aside class="sponsor-rail sponsor-rail-right" aria-label="Partners">
+    <SponsorSlot placement="rail-right" label="Partner" />
   </aside>
 )}

@@ -5,22 +5,22 @@ import SponsorCancel from '@components/sponsors/SponsorCancel.astro';
 import { themeConfig } from '~/theme.config';
 import { sponsorUrl, sponsors } from '@utils/sponsors';
 
-const title = 'Sponsors';
-const description = `Brands listed on ${themeConfig.name}. This directory is the listing for every sponsor tier.`;
+const title = 'Partners';
+const description = `Brands listed on ${themeConfig.name}. This directory is the listing for every partner tier.`;
 
 const breadcrumbs = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
-    { '@type': 'ListItem', position: 2, name: 'Sponsors', item: new URL('/sponsors', themeConfig.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Partners', item: new URL('/partners', themeConfig.site).toString() },
   ],
 };
 
 const itemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Sponsors',
+  name: 'Partners',
   itemListElement: sponsors.map((sponsor, index) => ({
     '@type': 'ListItem',
     position: index + 1,
@@ -36,16 +36,16 @@ const itemList = {
   <nav aria-label="Breadcrumb" class="page-crumb">
     <a href="/">Home</a>
     <span aria-hidden="true"> / </span>
-    <span>Sponsors</span>
+    <span>Partners</span>
   </nav>
   <p class="course-kicker">Directory</p>
-  <h1 class="page-title">Sponsors</h1>
+  <h1 class="page-title">Partners</h1>
   <p class="page-actions">
-    <a class="btn-primary" href="/sponsor">
-      Become a sponsor
+    <a class="btn-primary" href="/partner">
+      Become a partner
     </a>
   </p>
-  <p class="page-lead">The Harvest sponsors this site. One spot is still open.</p>
+  <p class="page-lead">The Harvest partners with this site. One spot is still open.</p>
   <ul class="sponsor-directory">
     {sponsors.map((sponsor) => {
       const href = sponsorUrl(sponsor.url, 'directory');

@@ -7,7 +7,7 @@ interface Props {
   label?: string;
 }
 
-const { placement, class: className = '', label = 'Sponsor' } = Astro.props;
+const { placement, class: className = '', label = 'Partner' } = Astro.props;
 const eligible = sponsorsForPlacement(placement);
 ---
 
