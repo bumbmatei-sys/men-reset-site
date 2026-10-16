@@ -19,7 +19,7 @@ h3,
 .wordmark,
 .check-prompt,
 .track-title {
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-weight: 500;
   letter-spacing: -0.03em;
 }
@@ -149,7 +149,7 @@ footer[role='contentinfo'] h3 {
 }
 
 .au-loader span {
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   letter-spacing: -0.04em;
 }
@@ -420,7 +420,7 @@ body:has(.au-home) #header-placeholder {
   left: 50%;
   width: max-content;
   margin: 0;
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-size: clamp(4.6rem, 28vw, 26rem);
   font-weight: 500;
   line-height: 0.82;
@@ -630,7 +630,7 @@ body:has(.au-home) #header-placeholder {
 }
 
 .au-stat-figure {
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   line-height: 1;
   letter-spacing: -0.03em;
@@ -693,7 +693,7 @@ body:has(.au-home) #header-placeholder {
 
 .au-step-num {
   display: block;
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-size: clamp(3.5rem, 7vw, 5.5rem);
   line-height: 0.9;
   letter-spacing: -0.04em;
@@ -860,7 +860,7 @@ body:has(.au-home) #header-placeholder {
 
 .au-note-card blockquote {
   margin: 0;
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-size: 1.45rem;
   line-height: 1.25;
 }
@@ -942,7 +942,7 @@ body:has(.au-home) #header-placeholder {
 
 .au-faq-item summary {
   padding: 1.15rem 0;
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-size: 1.45rem;
   cursor: pointer;
   list-style: none;
@@ -1125,7 +1125,7 @@ body:has(.au-home) #header-placeholder {
 }
 
 .sponsor-tier-price {
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-weight: 500;
 }
 
@@ -1274,7 +1274,7 @@ main .container h1,
 .au-faq-item summary::after {
   content: '+';
   flex: none;
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-size: 1.6rem;
   line-height: 1;
 }
@@ -1329,7 +1329,7 @@ main .container h1,
 }
 
 .scripture-block blockquote {
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-weight: 500;
 }
 
@@ -1454,7 +1454,7 @@ footer[role='contentinfo'] a {
 
 #header .brand .wordmark,
 footer[role='contentinfo'] .brand .wordmark {
-  font-family: 'Ancizar Serif', Georgia, serif;
+  font-family: 'Ancizar RO', 'Ancizar Serif', Georgia, serif;
   font-weight: 500;
   letter-spacing: -0.045em;
 }
@@ -1491,7 +1491,8 @@ footer[role='contentinfo'] .brand-mark {
 
 body .au-hero h1 .au-h1-line {
   display: block;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 body .au-hero .au-hero-copy {
@@ -1613,3 +1614,8 @@ li:has(> .track-card[hidden]) { display: none; }
 /* Lesson hero image (courses v2). */
 .lesson-hero { margin: 1.25rem 0 0.5rem; overflow: hidden; border-radius: 1.1rem; aspect-ratio: 16 / 9; background: #1b2838; }
 .lesson-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Fontsource's Ancizar Serif latin-ext subset maps U+021A/U+021B (Ț ț) to a plain T/t glyph.
+   These patched files point them at the comma-below glyphs. Declared last so they win for this range. */
+@font-face { font-family: 'Ancizar RO'; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/ancizar-serif-ro-fix-400.woff2) format('woff2'); unicode-range: U+0218-021B; }
+@font-face { font-family: 'Ancizar RO'; font-style: normal; font-weight: 500; font-display: swap; src: url(/fonts/ancizar-serif-ro-fix-500.woff2) format('woff2'); unicode-range: U+0218-021B; }

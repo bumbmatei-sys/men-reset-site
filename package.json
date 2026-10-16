@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && python3 scripts/i18n/apply.py",
+    "i18n:translate": "python3 scripts/i18n/translate.py",
     "preview": "astro preview",
     "postbuild": "scripts/postbuild.js",
     "purge:cloudflare": "node scripts/purgeCloudflareCache.js",

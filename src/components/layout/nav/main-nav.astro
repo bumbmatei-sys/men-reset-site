@@ -1,4 +1,5 @@
 ---
+import LanguageSwitcher from '../LanguageSwitcher.astro';
 import { Icon } from "astro-icon/components";
 import { useTranslations } from "@utils/i18n";
 import type { NavItem } from "~/types/nav";
@@ -23,7 +24,7 @@ const navLinks: NavItem[] = [
 <!-- Desktop nav -->
 <nav role="navigation" aria-label="Main" class="hidden items-center gap-4 text-sm min-[1100px]:flex xl:gap-6">
   {navLinks.map((item) => (
-    <a href={item.href} class="hover:text-primary no-underline" tabindex={tabIndex}>
+    <a href={item.href} class="hover:text-primary no-underline whitespace-nowrap" tabindex={tabIndex}>
       {item.label}
     </a>
   ))}
@@ -55,6 +56,7 @@ const navLinks: NavItem[] = [
           </li>
         ))}
       </ul>
+      <LanguageSwitcher variant="menu" />
     </div>
   </div>
 </div>

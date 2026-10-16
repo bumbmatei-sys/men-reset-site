@@ -7,34 +7,24 @@ import { themeConfig } from '~/theme.config';
 const tiers = themeConfig.sponsorTiers;
 const money = (amount: number) => `$${amount}`;
 
-function includes(id: string): string {
-  switch (id) {
-    case 'directory':
-      return 'A listing in the partner directory.';
-    case 'premium':
-      return 'The directory, plus the side rails on desktop and the top slot on mobile.';
-    default:
-      return '';
-  }
-}
-
-const priceSentence = tiers.map((tier) => `${tier.name} ${money(tier.priceMonthly)} a month`).join(', ');
+const tier = tiers[0];
+const price = money(tier.priceMonthly);
 
 const title = 'Partner with the Course';
-const description = `Two starting prices, month to month: ${priceSentence}. The price rises as traffic grows.`;
+const description = `One partner spot, ${price} a month: your brand in the partner directory and in the side rails on every page (the top strip on mobile).`;
 
 const faqs = [
   {
     q: 'How much does a spot cost?',
-    a: `Starting prices, month to month: ${priceSentence}. There is no auction and no per-click fee. The price rises as traffic grows. The rate on this page is the rate for a new booking.`,
+    a: `${price} a month. One tier, month to month. No auction and no per-click fee.`,
+  },
+  {
+    q: 'Where does my brand show?',
+    a: 'In the partner directory, and in the side rails on desktop on every page. On mobile the side rails become the top strip.',
   },
   {
     q: 'Is it month to month?',
-    a: 'Yes. Month to month. Cancel anytime. Your spot stays until the end of the paid month. There is no annual contract.',
-  },
-  {
-    q: 'Where does each tier show?',
-    a: 'Directory is a listing in the partner directory. Side slots adds the side rails on desktop and the top slot on mobile, on every page.',
+    a: 'Yes. Cancel anytime. Your spot stays until the end of the paid month. There is no annual contract.',
   },
   {
     q: 'What do you need from me?',
@@ -45,8 +35,8 @@ const faqs = [
     a: 'No porn, no gambling sites, no payday loans, and nothing that sells the habits this course is helping people leave.',
   },
   {
-    q: 'When does the price change?',
-    a: 'The price rises as traffic grows. A partner who is already live keeps the rate they booked until they cancel. A new partner pays the rate posted that day.',
+    q: 'Can the price change?',
+    a: 'The price may rise as traffic grows. A partner who is already live keeps the rate they booked until they cancel.',
   },
 ];
 
@@ -80,23 +70,33 @@ const breadcrumbs = {
   </nav>
   <p class="course-kicker">Partners</p>
   <h1 class="page-title">Partner with the course</h1>
-  <p class="page-lead">Two starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
+  <p class="page-lead">One spot, one price, month to month. You get a plain placement, not a takeover.</p>
 
-  <ul class="sponsor-tiers">
-    {tiers.map((tier) => (
-      <li class="sponsor-tier">
-        <h2>{tier.name}</h2>
-        <p class="sponsor-tier-price">
-          {money(tier.priceMonthly)}
-          <span>/mo</span>
-        </p>
-        <p>{includes(tier.id)}</p>
-        <a class="btn-primary" href={tier.checkoutUrl} rel="noopener noreferrer" target="_blank">
-          Become a partner
-        </a>
-      </li>
-    ))}
-  </ul>
+  <div class="sponsor-tiers sponsor-tiers-single">
+    <section class="sponsor-tier">
+      <h2>{tier.name}</h2>
+      <p class="sponsor-tier-price">
+        {price}
+        <span>/mo</span>
+      </p>
+      <ul class="sponsor-tier-list">
+        <li>Your brand in the partner directory</li>
+        <li>The side rails on desktop, on every page</li>
+        <li>The top strip on mobile, on every page</li>
+        <li>Month to month. Cancel anytime.</li>
+      </ul>
+      <a class="btn-primary" href={tier.checkoutUrl} rel="noopener noreferrer" target="_blank">
+        Become a partner
+      </a>
+    </section>
+  </div>
+  <style>
+    .sponsor-tiers-single { display: block; max-width: 28rem; margin-inline: auto; }
+    .sponsor-tiers-single .sponsor-tier { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+    .sponsor-tier-list { list-style: none; margin: 0.25rem 0 0.5rem; padding: 0; display: grid; gap: 0.4rem; }
+    .sponsor-tier-list li { margin: 0; }
+    .sponsor-tier-list li::before { content: '✓ '; font-weight: 700; }
+  </style>
 
   <h2 class="page-subhead">Questions</h2>
   <div class="au-faq-list page-faqs">
