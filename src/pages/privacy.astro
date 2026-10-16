@@ -4,7 +4,7 @@ import { CONSENT_LINE } from '@data/check-quiz';
 import { themeConfig } from '~/theme.config';
 
 const title = 'Privacy';
-const description = `How ${themeConfig.name} handles the self-check, optional email, lesson progress on your device, and sponsor links.`;
+const description = `How ${themeConfig.name} handles the self-check, optional email, lesson progress on your device, and partner links.`;
 ---
 
 <Layout title={title} description={description} robots="noindex, follow">
@@ -39,8 +39,8 @@ const description = `How ${themeConfig.name} handles the self-check, optional em
     <p>The join form asks for an email only. If you send it, we store that address in the same Cloudflare D1 database and add you as a contact in Plunk, marked subscribed. This form does not send the plan. To come off the list, the person who operates the site deletes that row and the Plunk contact. There is no account page for it yet.</p>
     <h2>On your device</h2>
     <p>When you mark a lesson done, the browser stores that mark in localStorage on your device. Clearing site data removes it. We do not receive that list.</p>
-    <h2>Sponsors</h2>
-    <p>Sponsor cards link away from the site, or to the sponsor page. Those links include utm_medium=sponsor and utm_content set to the placement, so a sponsor can tell which slot was clicked. We do not add your name or email to those links.</p>
+    <h2>Partners</h2>
+    <p>Partner cards link away from the site, or to the partner page. Those links include utm_medium=sponsor and utm_content set to the placement, so a partner can tell which slot was clicked. We do not add your name or email to those links.</p>
     <h2>Hosting</h2>
     <p>Pages are static files. A host such as Cloudflare may log ordinary web requests. We do not copy those logs into the check database. We do not sell this information.</p>
   </div>

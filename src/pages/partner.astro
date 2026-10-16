@@ -10,7 +10,7 @@ const money = (amount: number) => `$${amount}`;
 function includes(id: string): string {
   switch (id) {
     case 'directory':
-      return 'A listing in the sponsor directory.';
+      return 'A listing in the partner directory.';
     case 'premium':
       return 'The directory, plus the side rails on desktop and the top slot on mobile.';
     default:
@@ -20,7 +20,7 @@ function includes(id: string): string {
 
 const priceSentence = tiers.map((tier) => `${tier.name} ${money(tier.priceMonthly)} a month`).join(', ');
 
-const title = 'Sponsor the Course';
+const title = 'Partner with the Course';
 const description = `Two starting prices, month to month: ${priceSentence}. The price rises as traffic grows.`;
 
 const faqs = [
@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: 'Where does each tier show?',
-    a: 'Directory is a listing in the sponsor directory. Side slots adds the side rails on desktop and the top slot on mobile, on every page.',
+    a: 'Directory is a listing in the partner directory. Side slots adds the side rails on desktop and the top slot on mobile, on every page.',
   },
   {
     q: 'What do you need from me?',
@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: 'When does the price change?',
-    a: 'The price rises as traffic grows. A sponsor who is already live keeps the rate they booked until they cancel. A new sponsor pays the rate posted that day.',
+    a: 'The price rises as traffic grows. A partner who is already live keeps the rate they booked until they cancel. A new partner pays the rate posted that day.',
   },
 ];
 
@@ -65,7 +65,7 @@ const breadcrumbs = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: themeConfig.site },
-    { '@type': 'ListItem', position: 2, name: 'Sponsor', item: new URL('/sponsor', themeConfig.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Partner', item: new URL('/partner', themeConfig.site).toString() },
   ],
 };
 ---
@@ -76,10 +76,10 @@ const breadcrumbs = {
   <nav aria-label="Breadcrumb" class="page-crumb">
     <a href="/">Home</a>
     <span aria-hidden="true"> / </span>
-    <span>Sponsor</span>
+    <span>Partner</span>
   </nav>
-  <p class="course-kicker">Sponsors</p>
-  <h1 class="page-title">Sponsor the course</h1>
+  <p class="course-kicker">Partners</p>
+  <h1 class="page-title">Partner with the course</h1>
   <p class="page-lead">Two starting prices, month to month. The price rises as traffic grows. You get a plain placement, not a takeover.</p>
 
   <ul class="sponsor-tiers">
@@ -92,7 +92,7 @@ const breadcrumbs = {
         </p>
         <p>{includes(tier.id)}</p>
         <a class="btn-primary" href={tier.checkoutUrl} rel="noopener noreferrer" target="_blank">
-          Become a sponsor
+          Become a partner
         </a>
       </li>
     ))}
