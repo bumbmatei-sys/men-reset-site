@@ -1,6 +1,6 @@
 ---
 title: Know His Love
-description: Six lessons on living from the Father's love, not for it. Why He loves you, why it can be hard to feel, and how it flows through you to others. For men and women. Coming soon.
+description: Live from the Father's love, not for it.
 order: 0
 status: coming-soon
 category: Know God's love

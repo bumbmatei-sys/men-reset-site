@@ -23,7 +23,7 @@ const planned = open ? [] : (track.data.plannedLessons ?? []);
     </span>
   </span>
   <span class="track-card-body">
-    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} lessons` : ''}{!open && planned.length ? ` · ${planned.length} lessons` : ''}{open ? '' : ' · Coming soon'}</span>
+    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} lessons` : ''}{!open && planned.length ? ` · ${planned.length} lessons` : ''}</span>
     <span class="track-title">{track.data.title}</span>
     <span class="track-desc">{track.data.description}</span>
     {open && lessonIds.length > 0 ? (
@@ -34,18 +34,15 @@ const planned = open ? [] : (track.data.plannedLessons ?? []);
         </span>
       </span>
     ) : null}
-    {planned.length > 0 ? (
-      <ol class="track-planned">
-        {planned.map((lesson) => <li>{lesson.title}</li>)}
-      </ol>
+    {!open ? (
+      <span class="track-meter">
+        <span class="track-meter-bar" style="width: 0%" />
+        <span class="track-meter-label">Coming soon</span>
+      </span>
     ) : null}
   </span>
 </a>
 
-<style>
-  .track-planned { margin: .5rem 0 0; padding-left: 1.25rem; list-style: decimal; font-size: .9rem; line-height: 1.5; opacity: .85; }
-  .track-planned li { margin: .1rem 0; }
-</style>
 
 <script>
   function paintTrackProgress() {

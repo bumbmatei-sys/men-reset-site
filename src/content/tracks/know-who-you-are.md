@@ -1,6 +1,6 @@
 ---
 title: Know Who You Are
-description: Six lessons on your identity in Christ. Not an orphan trying to earn a place, but a son or daughter of the Father. For men and women. Coming soon.
+description: You are not an orphan. You are a son or daughter of the Father.
 order: 0
 status: coming-soon
 category: Know who you are
