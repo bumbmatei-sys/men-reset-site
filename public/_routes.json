@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/_astro/*",
+    "/images/*",
+    "/flags/*",
+    "/logo/*",
+    "/aureum/*",
+    "/sponsors/*",
+    "/data/*",
+    "/plan/*",
+    "/ro/*",
+    "/es/*",
+    "/fr/*",
+    "/pt/*",
+    "/nb/*",
+    "/de/*"
+  ]
+}

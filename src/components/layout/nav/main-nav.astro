@@ -1,4 +1,5 @@
 ---
+import LanguageSwitcher from '../LanguageSwitcher.astro';
 import { Icon } from "astro-icon/components";
 import { useTranslations } from "@utils/i18n";
 import type { NavItem } from "~/types/nav";
@@ -55,6 +56,7 @@ const navLinks: NavItem[] = [
           </li>
         ))}
       </ul>
+      <LanguageSwitcher variant="menu" />
     </div>
   </div>
 </div>

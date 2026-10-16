@@ -1,4 +1,5 @@
 ---
+import LanguageSwitcher from './LanguageSwitcher.astro';
 import { Icon } from "astro-icon/components";
 import { getLocaleUrl } from "@utils/i18n";
 import MainNav from "@components/layout/nav/main-nav.astro";
@@ -47,6 +48,7 @@ const { locale, button, tabIndex = 0, shrink = true, ctaButton, github } = Astro
   <div class="flex flex-row-reverse items-center gap-2 lg:flex-row lg:gap-8">
     <MainNav {locale} {tabIndex} />
     <div class="flex items-center gap-2 sm:gap-3">
+      <LanguageSwitcher />
       {themeConfig.darkMode && <LightModeSwitch tabIndex={tabIndex} />}
       {ctaButton && (
         <a href={ctaButton.href} class="btn-primary hidden text-sm sm:block" tabindex={tabIndex}>
