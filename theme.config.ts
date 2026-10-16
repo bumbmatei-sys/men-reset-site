@@ -138,18 +138,13 @@ export const themeConfig: ThemeConfig = {
   sponsorPortalUrl: 'https://customer.dodopayments.com/login/bus_0NktsnPIFswdL6K7awd7R',
   sponsorHelpEmail: 'support@calltoreset.site',
 
+  /** One partner tier: directory listing + side rails (desktop) + top strip (mobile). */
   sponsorTiers: [
     {
-      id: 'directory',
-      name: 'Directory',
-      priceMonthly: 100,
-      checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzErvPQTh33lNbTqj?quantity=1',
-    },
-    {
       id: 'premium',
-      name: 'Side slots',
-      priceMonthly: 200,
-      checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0NpiKzInABfQesqBVCJbN?quantity=1',
+      name: 'Partner',
+      priceMonthly: 300,
+      checkoutUrl: 'https://checkout.dodopayments.com/buy/pdt_0Nprln8LmHxuuYjWeJPGd?quantity=1',
     },
   ],
 };
