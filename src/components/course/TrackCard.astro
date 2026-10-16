@@ -12,6 +12,7 @@ const open = track.data.status === 'available';
 const cover = track.data.cover && publicImageExists(track.data.cover.src) ? track.data.cover : undefined;
 const icon = publicImageExists(track.data.icon) ? track.data.icon : undefined;
 const category = track.data.category ?? 'Other';
+const planned = open ? [] : (track.data.plannedLessons ?? []);
 ---
 
 <a class="track-card track-card-split reveal" href={trackPath(track.id)} data-track-card data-category={category} data-lesson-ids={open ? lessonIds.join(',') : undefined}>
@@ -22,7 +23,7 @@ const category = track.data.category ?? 'Other';
     </span>
   </span>
   <span class="track-card-body">
-    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} lessons` : ''}{open ? '' : ' · Coming soon'}</span>
+    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} lessons` : ''}{!open && planned.length ? ` · ${planned.length} lessons` : ''}</span>
     <span class="track-title">{track.data.title}</span>
     <span class="track-desc">{track.data.description}</span>
     {open && lessonIds.length > 0 ? (
@@ -33,8 +34,15 @@ const category = track.data.category ?? 'Other';
         </span>
       </span>
     ) : null}
+    {!open ? (
+      <span class="track-meter">
+        <span class="track-meter-bar" style="width: 0%" />
+        <span class="track-meter-label">Coming soon</span>
+      </span>
+    ) : null}
   </span>
 </a>
+
 
 <script>
   function paintTrackProgress() {

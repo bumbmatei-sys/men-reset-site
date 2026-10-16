@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import SupportLine from '@components/course/SupportLine.astro';
+import { publicImageExists } from '@utils/public-image';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -24,6 +25,8 @@ const { Content } = await render(track);
 const lessons = await lessonsForTrack(track.id);
 const mapPage = track.id === '30-day-reset';
 const comingSoon = track.data.status === 'coming-soon';
+const planned = comingSoon ? (track.data.plannedLessons ?? []) : [];
+const cover = planned.length && track.data.cover && publicImageExists(track.data.cover.src) ? track.data.cover : undefined;
 const pageUrl = new URL(trackPath(track.id), themeConfig.site).toString();
 
 const title = track.data.title;
@@ -78,6 +81,7 @@ const breadcrumbs = {
   <p class="course-kicker">{comingSoon ? 'Coming soon' : 'Course'}</p>
   <h1 class="page-title">{track.data.title}</h1>
   <p class="page-lead">{track.data.description}</p>
+  {cover ? <img class="course-cover" src={cover.src} alt={cover.alt} width="1200" height="750" decoding="async" /> : null}
   {lessons.length > 0 && (
     <section class="completion-card" data-track-complete data-lesson-ids={lessons.map((lesson) => lesson.id).join(',')} hidden>
       <MarbleAccent kind="laurel" alt="A marble laurel wreath" />
@@ -87,6 +91,7 @@ const breadcrumbs = {
       </div>
     </section>
   )}
+  {planned.length === 0 && (<>
   <aside class="takeaway">
     <p class="course-kicker">Key takeaway</p>
     <p>Read what is open. Do the one step you can finish today. The free check writes a plan from your answers.</p>
@@ -105,6 +110,7 @@ const breadcrumbs = {
       <p>Decide the first ten minutes you will do instead.</p>
     </li>
   </ol>
+  </>)}
   <div class="lesson-prose page-prose">
     <Content />
   </div>
@@ -126,6 +132,19 @@ const breadcrumbs = {
         ))}
       </ol>
     </section>
+  ) : planned.length > 0 ? (
+    <section class="page-stack" aria-labelledby="lesson-list-heading">
+      <h2 id="lesson-list-heading" class="page-subhead">The {planned.length} lessons</h2>
+      <ol class="mt-4 grid gap-3">
+        {planned.map((lesson, index) => (
+          <li><div class="track-card planned-lesson">
+            <span class="text-sm font-semibold text-stone-500">Lesson {index + 1} · Coming soon</span>
+            <span class="text-lg font-bold">{lesson.title}</span>
+            {lesson.summary ? <span class="text-sm leading-relaxed text-stone-600 dark:text-stone-300">{lesson.summary}</span> : null}
+          </div></li>
+        ))}
+      </ol>
+    </section>
   ) : mapPage ? null : (
     <p class="mt-8 max-w-[68ch] leading-relaxed">
       This track has no lessons yet. Take the <a href="/check">free check</a>, read the <a href="/tracks/30-day-reset">30-day reset</a>, or start the open track, <a href="/tracks/break-free">Break Free</a>.
@@ -133,6 +152,12 @@ const breadcrumbs = {
   )}
   {track.id === 'teachings' ? <SupportLine /> : null}
 </Layout>
+
+<style>
+  .course-cover { width: 100%; max-width: 52rem; height: auto; border-radius: 1rem; margin: 1.5rem 0; display: block; }
+  .planned-lesson { cursor: default; border-style: dashed; display: flex; flex-direction: column; align-items: flex-start; gap: .25rem; }
+  .planned-lesson:hover { transform: none; }
+</style>
 
 <script>
   const STORAGE_KEY = 'reset:lesson-progress';
