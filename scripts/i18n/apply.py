@@ -190,5 +190,21 @@ def main():
     with open(os.path.join(DIST, 'i18n-pages.json'), 'w') as fh:
         json.dump(sorted(page_paths), fh)
 
+def hide():
+    """I18N_PUBLIC!=1 (production default): English only. No locale pages, no switcher, no hreflang,
+    no first-visit redirect (middleware only routed for /api), locale URLs 301 to English."""
+    for rel in pages():
+        src = os.path.join(DIST, rel)
+        s = soup(src)
+        for el in s.select('[data-lang-switch], .lang-switch-list, link[rel~=alternate][hreflang]'):
+            el.decompose()
+        with open(src, 'w', encoding='utf-8') as fh:
+            fh.write(str(s))
+    with open(os.path.join(DIST, '_routes.json'), 'w') as fh:
+        json.dump({'version': 1, 'include': ['/api/*', '/email/*'], 'exclude': []}, fh)
+    with open(os.path.join(DIST, '_redirects'), 'a') as fh:
+        fh.write('\n' + ''.join(f'/{l} / 301\n/{l}/* /:splat 301\n' for l in LOCALES))
+    print('[i18n] hidden (I18N_PUBLIC != 1): English only')
+
 if __name__ == '__main__':
-    main()
+    hide() if os.environ.get('I18N_PUBLIC') != '1' else main()
