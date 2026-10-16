@@ -1,10 +1,10 @@
 import { DodoPayments } from 'dodopayments-checkout';
 
 type GiveMode = 'once' | 'monthly';
-type MonthlyDollars = 10 | 25 | 50;
+type MonthlyDollars = 20 | 50 | 100;
 
 const FRAME_ID = 'support-checkout-frame';
-const DEFAULT_MONTHLY: MonthlyDollars = 10;
+const DEFAULT_MONTHLY: MonthlyDollars = 20;
 
 function isCheckoutUrl(value: unknown): value is string {
   if (typeof value !== 'string') return false;
@@ -17,7 +17,7 @@ function isCheckoutUrl(value: unknown): value is string {
 }
 
 function isMonthlyDollars(value: number): value is MonthlyDollars {
-  return value === 10 || value === 25 || value === 50;
+  return value === 20 || value === 50 || value === 100;
 }
 
 function showStatus(status: HTMLElement | null, message: string): void {
@@ -146,7 +146,7 @@ export function mountSupportCheckout(): void {
       const selected = form.querySelector<HTMLInputElement>('input[name="monthly"]:checked');
       const dollars = selected ? Number(selected.value) : DEFAULT_MONTHLY;
       if (!isMonthlyDollars(dollars)) {
-        showError('Choose $10, $25, or $50 a month.');
+        showError('Choose $20, $50, or $100 a month.');
         return;
       }
       body.dollars = dollars;
