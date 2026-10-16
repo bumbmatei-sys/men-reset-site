@@ -5,7 +5,6 @@ track: build-your-future
 order: 6
 targetQuery: write the vision and make it plain meaning
 publishDate: 2026-10-16
-draft: true
 keyPoints:
   - A vision starts with God. You get quiet, you look and you listen before you write.
   - Without a vision you don't stop living. You just drift wherever life pushes you.

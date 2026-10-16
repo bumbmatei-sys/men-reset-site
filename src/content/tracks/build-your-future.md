@@ -3,7 +3,6 @@ title: Build Your Future
 description: Six lessons on how God redeems your past, uses your story and leads you one step at a time into what He made you for. For men and women.
 order: 4
 status: available
-draft: true
 category: Purpose
 targetQuery: build your future with god
 cover:

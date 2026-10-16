@@ -5,7 +5,6 @@ track: build-your-future
 order: 3
 targetQuery: power of your testimony bible
 publishDate: 2026-10-16
-draft: true
 keyPoints:
   - Your story is not your past. It is the record of what Jesus did in your past.
   - A testimony is a promise in disguise. What God did once, He is willing to do again.

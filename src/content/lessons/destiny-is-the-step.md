@@ -5,7 +5,6 @@ track: build-your-future
 order: 5
 targetQuery: how to find your destiny as a christian
 publishDate: 2026-10-16
-draft: true
 keyPoints:
   - God usually gives a direction, not a full map. That keeps you close to Him.
   - Big callings start with small, ordinary first steps.

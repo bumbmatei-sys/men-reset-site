@@ -5,7 +5,6 @@ track: build-your-future
 order: 4
 targetQuery: how to overcome fear as a christian
 publishDate: 2026-10-16
-draft: true
 keyPoints:
   - Fear started in the garden, and it still makes us hide from the One who is looking for us.
   - Fear has a cost. The servant who buried his talent lost what he was afraid to lose.

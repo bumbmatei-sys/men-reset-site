@@ -5,7 +5,6 @@ track: build-your-future
 order: 2
 targetQuery: god redeems the lows redeemer meaning
 publishDate: 2026-10-16
-draft: true
 keyPoints:
   - To redeem means to put value back into something you thought was spent.
   - In the Old Testament a redeemer was a close relative who paid to buy back what the family had lost.

@@ -5,7 +5,6 @@ track: build-your-future
 order: 1
 targetQuery: romans 8:28 he wastes nothing
 publishDate: 2026-10-16
-draft: true
 keyPoints:
   - God didn't cause your worst season. He uses it, and those aren't the same thing.
   - '"Work together" means things combined in His hands, and "good" means becoming like Jesus, not comfort.'
