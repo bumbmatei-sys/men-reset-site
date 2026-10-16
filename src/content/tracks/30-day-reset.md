@@ -4,6 +4,11 @@ description: A free 30-day reset for any habit. Porn, gaming, the phone, alcohol
 order: 6
 status: available
 targetQuery: 30 day reset
+category: Break free
+cover:
+  src: /images/tracks/30-day-reset-cover.webp
+  alt: A marble statue walking out of a doorway at dawn, the cover of the 30-Day Reset
+icon: /images/marble/icon-30-day-reset.webp
 ---
 
 Want the month shaped to where you are stuck? Take the [free check](/check). It reads your answers and writes a 30-day plan right there on the page.

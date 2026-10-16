@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import { getTeachings, teachingPath, toCard, isBlogPreview, formatDate, type TeachingEntry } from '@utils/teachings';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+import SupportLine from '@components/course/SupportLine.astro';
 import '../../styles/teachings.css';
 
 export async function getStaticPaths() {
@@ -115,6 +116,7 @@ const toc = headings.filter((h) => h.depth === 2);
           <p>{bio}</p>
         </div>
       </aside>
+      <SupportLine />
     </div>
 
     {more.length > 0 ? (

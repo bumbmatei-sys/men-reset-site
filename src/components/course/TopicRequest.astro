@@ -1,0 +1,93 @@
+---
+interface Props {
+  source: 'tracks' | 'teachings';
+}
+const { source } = Astro.props;
+const what = source === 'tracks' ? 'a course' : 'a teaching';
+---
+
+<p class="topic-line">
+  <span>Interested in a specific topic?</span>
+  <button type="button" class="topic-open" data-topic-open aria-haspopup="dialog">Tell me what you want to hear about</button>
+</p>
+
+<dialog class="topic-dialog" data-topic-dialog aria-labelledby="topic-title">
+  <form data-topic-form novalidate>
+    <div class="topic-dialog-head">
+      <img src="/images/marble/marble-scroll.webp" alt="" width="96" height="72" />
+      <h2 id="topic-title">What should I write about?</h2>
+    </div>
+    <p>Tell me the topic. When {what} on it goes up, I'll send you one email. That's it.</p>
+    <label>
+      Topic
+      <textarea name="topic" rows="3" maxlength="300" required placeholder="For example: anxiety, forgiving my father, my calling"></textarea>
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" maxlength="254" required autocomplete="email" placeholder="you@example.com" />
+    </label>
+    <input type="hidden" name="source" value={source} />
+    <label class="topic-hp" aria-hidden="true">
+      Website
+      <input type="text" name="website" tabindex="-1" autocomplete="off" />
+    </label>
+    <p class="topic-status" role="status" aria-live="polite" data-topic-status></p>
+    <div class="topic-actions">
+      <button type="button" data-topic-close>Close</button>
+      <button type="submit" class="topic-submit" data-topic-submit>Send</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+  function setupTopic() {
+    const dialog = document.querySelector<HTMLDialogElement>('[data-topic-dialog]');
+    const opener = document.querySelector<HTMLButtonElement>('[data-topic-open]');
+    if (!dialog || !opener || dialog.dataset.ready) return;
+    dialog.dataset.ready = '1';
+    const form = dialog.querySelector<HTMLFormElement>('[data-topic-form]')!;
+    const status = dialog.querySelector<HTMLElement>('[data-topic-status]')!;
+    const submit = dialog.querySelector<HTMLButtonElement>('[data-topic-submit]')!;
+    const say = (text: string, state: 'ok' | 'error' | '') => {
+      status.textContent = text;
+      status.dataset.state = state;
+    };
+    opener.addEventListener('click', () => {
+      say('', '');
+      dialog.showModal();
+      form.querySelector<HTMLTextAreaElement>('textarea')?.focus();
+    });
+    dialog.querySelector('[data-topic-close]')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('close', () => opener.focus());
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const topic = String(data.get('topic') || '').trim();
+      const email = String(data.get('email') || '').trim();
+      if (topic.length < 2) return say('Write the topic first.', 'error');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return say('That email does not look right.', 'error');
+      submit.disabled = true;
+      say('Sending...', '');
+      try {
+        const res = await fetch('/api/topic-request', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ topic, email, source: data.get('source'), website: data.get('website'), page: location.pathname }),
+        });
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        if (!res.ok) throw new Error(body.error || 'Something went wrong. Try again in a minute.');
+        form.reset();
+        say('Got it. Thank you. You will hear from me when it is up.', 'ok');
+      } catch (err) {
+        say(err instanceof Error ? err.message : 'Something went wrong. Try again in a minute.', 'error');
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+  setupTopic();
+  document.addEventListener('astro:page-load', setupTopic);
+</script>

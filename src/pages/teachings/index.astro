@@ -4,6 +4,8 @@ import JsonLd from '@components/seo/JsonLd.astro';
 import { themeConfig } from '~/theme.config';
 import { getTeachings, toCard, formatDate, isBlogPreview, type TeachingCard } from '@utils/teachings';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
+import FilterPills from '@components/course/FilterPills.astro';
+import TopicRequest from '@components/course/TopicRequest.astro';
 import '../../styles/teachings.css';
 
 const preview = isBlogPreview();
@@ -34,17 +36,13 @@ const breadcrumbs = {
     <header class="tch-head">
       <p class="tch-kicker">{preview ? 'Teachings · preview' : 'Teachings'}</p>
       <div class="tch-head-row"><MarbleAccent kind="pillar" alt="" /><h1 class="tch-head-title">Teachings</h1></div>
-      {categories.length > 1 ? (
-        <ul class="tch-pills" aria-label="Topics">
-          <li><span class="tch-pill is-active">All</span></li>
-          {categories.map((c) => <li><span class="tch-pill">{c}</span></li>)}
-        </ul>
-      ) : null}
+      <FilterPills categories={categories} label="Filter teachings by topic" scope="teachings" />
     </header>
 
+    <div data-filter-scope="teachings">
     {featured ? (
       <>
-        <a class={`tch-feature${featured.image ? '' : ' tch-noimg'}`} href={featured.href}>
+        <a class={`tch-feature${featured.image ? '' : ' tch-noimg'}`} href={featured.href} data-filter-item data-category={featured.category}>
           {featured.image ? <span class="tch-feature-media"><img src={featured.image.src} alt={featured.image.alt} width="1280" height="720" fetchpriority="high" decoding="async" /></span> : null}
           <span class="tch-feature-body">
             <span class="tch-feature-flag"><MarbleAccent kind="laurel" alt="" /><span class="tch-kicker">Latest · {featured.category}</span></span>
@@ -55,9 +53,9 @@ const breadcrumbs = {
         </a>
 
         {highlights.length > 0 ? (
-          <ul class="tch-highlights">
+          <ul class="tch-highlights" data-filter-group>
             {highlights.map((c) => (
-              <li>
+              <li data-filter-item data-category={c.category}>
                 <a class={`tch-overlay${c.image ? '' : ' tch-noimg'}`} href={c.href}>
                   {c.image ? <img src={c.image.src} alt={c.image.alt} width="640" height="640" decoding="async" /> : null}
                   <span class="tch-overlay-label">
@@ -71,13 +69,13 @@ const breadcrumbs = {
         ) : null}
 
         <div class="tch-split">
-          <section aria-labelledby="latest-heading">
+          <section aria-labelledby="latest-heading" data-filter-group>
             {latest.length > 0 ? (
               <>
                 <h2 id="latest-heading" class="tch-section-label">Latest teachings</h2>
                 <ul class="tch-list">
                   {latest.map((c) => (
-                    <li>
+                    <li data-filter-item data-category={c.category}>
                       <a class="tch-row" href={c.href}>
                         {c.image ? <span class="tch-row-media"><img src={c.image.src} alt={c.image.alt} width="480" height="360" decoding="async" /></span> : null}
                         <span class="tch-row-body">
@@ -117,5 +115,8 @@ const breadcrumbs = {
         <p class="tch-card-text">Until then, take the <a href="/check">free check</a> or start the <a href="/tracks/30-day-reset">30-day reset</a>.</p>
       </div>
     )}
+    <p class="filter-empty" data-filter-empty hidden>Nothing here yet in this topic.</p>
+    </div>
+    <TopicRequest source="teachings" />
   </div>
 </Layout>

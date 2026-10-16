@@ -3,6 +3,8 @@ import MarbleAccent from '@components/course/MarbleAccent.astro';
 import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import TrackCard from '@components/course/TrackCard.astro';
+import FilterPills from '@components/course/FilterPills.astro';
+import TopicRequest from '@components/course/TopicRequest.astro';
 import { themeConfig } from '~/theme.config';
 import { getTracks, lessonsForTrack } from '@utils/course';
 
@@ -13,6 +15,7 @@ const cards = await Promise.all(
     lessonIds: (await lessonsForTrack(track.id)).map((lesson) => lesson.id),
   })),
 );
+const trackCategories = [...new Set(tracks.map((t) => t.data.category ?? 'Other'))];
 const title = 'Courses to Break Free and Build Discipline';
 const description = 'Free course tracks for breaking free from addiction: porn, gaming, the phone, alcohol, substances, discipline, and a 30-day plan. Days 1 to 7 open here. The full month comes by email. Christian roots. Open to anyone.';
 
@@ -41,11 +44,16 @@ const breadcrumbs = {
   <p class="page-lead">
     These tracks are the course. The work is any addiction that is running the day: porn, gaming, the phone, alcohol, substances, or another habit, plus discipline and initiative. Break Free is the 30-day plan. Days 1 to 7 are open here, seven practical lessons you can start today. The rest of the month comes by email. Christian roots. Open to anyone.
   </p>
+  <FilterPills categories={trackCategories} label="Filter tracks by topic" scope="tracks" />
+  <div data-filter-scope="tracks">
   <ul class="track-grid page-stack">
     {cards.map(({ track, lessonIds }) => (
-      <li>
+      <li data-filter-item data-category={track.data.category ?? 'Other'}>
         <TrackCard {track} {lessonIds} />
       </li>
     ))}
   </ul>
+  <p class="filter-empty" data-filter-empty hidden>Nothing here yet in this topic.</p>
+  </div>
+  <TopicRequest source="tracks" />
 </Layout>

@@ -7,6 +7,7 @@ import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import PlanEmailForm from '@components/course/PlanEmailForm.astro';
 import SupportLine from '@components/course/SupportLine.astro';
+import { publicImageExists } from '@utils/public-image';
 import { getTracks, isPlanPhase, lessonsForTrack, lessonPath, planPhaseLessons, trackPath, type LessonEntry } from '@utils/course';
 
 const PLAN_BUTTON = 'Send me the PDF';
@@ -75,6 +76,7 @@ const siblings = planPhase ? phases : await lessonsForTrack(lesson.data.track);
 const index = siblings.findIndex((item) => item.id === lesson.id);
 const previous = index > 0 ? siblings[index - 1] : undefined;
 const next = index >= 0 && index < siblings.length - 1 ? siblings[index + 1] : undefined;
+const heroImage = lesson.data.image && publicImageExists(lesson.data.image.src) ? lesson.data.image : undefined;
 const minutes = getReadingTime(lesson.body) ?? '6';
 const pageUrl = new URL(lessonPath(lesson.data.track, lesson.id), themeConfig.site).toString();
 const trackUrl = new URL(trackPath(planPhase ? '30-day-reset' : lesson.data.track), themeConfig.site).toString();
@@ -136,6 +138,11 @@ const breadcrumbs = {
         )}
       </p>
     )}
+    {heroImage ? (
+      <figure class="lesson-hero">
+        <img src={heroImage.src} alt={heroImage.alt} width="1600" height="900" fetchpriority="high" decoding="async" />
+      </figure>
+    ) : null}
     <blockquote class="pull-quote">
       <p>{lesson.data.description}</p>
     </blockquote>
