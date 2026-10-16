@@ -16,3 +16,7 @@
 /sitemap.xml /sitemap-index.xml 301
 /sitemap_index.xml /sitemap-index.xml 301
 /plan/call-to-reset-30-day-plan.pdf / 301
+/tracks/new-identity-in-christ /tracks/know-who-you-are 301
+/tracks/new-identity-in-christ/* /tracks/know-who-you-are 301
+/tracks/faith-grace-and-the-kingdom /tracks/know-gods-love 301
+/tracks/faith-grace-and-the-kingdom/* /tracks/know-gods-love 301
