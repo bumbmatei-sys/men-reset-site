@@ -118,7 +118,7 @@ def translate_page(rel, loc, d, page_paths, stats):
         c['href'] = SITE + loc_url(path, loc)
     s.html['lang'] = loc
     add_alternates(s, path)
-    out = os.path.join(DIST, loc, rel)
+    out = os.path.join(DIST, f'{loc}.html') if rel == 'index.html' else os.path.join(DIST, loc, rel)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, 'w', encoding='utf-8') as fh:
         fh.write(str(s))
