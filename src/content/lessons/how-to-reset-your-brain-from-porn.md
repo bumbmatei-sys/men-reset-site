@@ -54,7 +54,7 @@ Do this especially in the hour before bed. That hour is training, whether you me
 
 There is no certificate at the end of this track. There is a life that keeps the plan. Friction on the path, a ten-minute script, one witness, a morning-after truth, and attention pointed at something that can bear weight.
 
-Go back to [lesson one](/tracks/break-free/how-to-stop-watching-porn) if the path got easy again. Look at the [new identity](/tracks/new-identity-in-christ) track when it opens if you need language for who you are when the urge argues. Until then, keep the sentence you can prove.
+Go back to [lesson one](/tracks/break-free/how-to-stop-watching-porn) if the path got easy again. Look at the [Know Who You Are](/tracks/know-who-you-are) course when it opens if you need language for who you are when the urge argues. Until then, keep the sentence you can prove.
 
 ## Seven days of attention
 
