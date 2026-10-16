@@ -4,6 +4,11 @@ description: A short track about standing firm in Jesus and loving people even w
 order: 2
 status: available
 targetQuery: stand up and act like a man
+category: Character
+cover:
+  src: /images/tracks/stand-up-cover.webp
+  alt: A marble statue standing firm on a plinth, the cover of Stand Up
+icon: /images/marble/icon-stand-up.webp
 ---
 
 Paul said it short. "Be on the alert, stand firm in the faith, act like men, be strong. Let all that you do be done in love." (1 Corinthians 16:13-14)

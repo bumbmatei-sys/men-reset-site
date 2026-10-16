@@ -3,8 +3,11 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export type TrackEntry = CollectionEntry<'tracks'>;
 export type LessonEntry = CollectionEntry<'lessons'>;
 
+/** Draft tracks and lessons only build for preview deploys (BLOG_PREVIEW=1). */
+const isPreview = () => process.env.BLOG_PREVIEW === '1';
+
 export async function getTracks(): Promise<TrackEntry[]> {
-  const tracks = await getCollection('tracks');
+  const tracks = await getCollection('tracks', ({ data }) => isPreview() || data.draft !== true);
   return tracks.sort((a, b) => a.data.order - b.data.order);
 }
 
@@ -23,7 +26,7 @@ export function isPlanPhase(lessonId: string): boolean {
 }
 
 export async function getPublishedLessons(): Promise<LessonEntry[]> {
-  const lessons = await getCollection('lessons', ({ data }) => data.draft !== true);
+  const lessons = await getCollection('lessons', ({ data }) => isPreview() || data.draft !== true);
   return lessons.sort((a, b) => a.data.order - b.data.order);
 }
 

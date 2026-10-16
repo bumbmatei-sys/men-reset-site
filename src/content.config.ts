@@ -130,6 +130,10 @@ const tracks = defineCollection({
     order: z.number().int(),
     status: z.enum(['available', 'coming-soon']),
     targetQuery: z.string(),
+    draft: z.boolean().optional(),
+    category: z.string().optional(),
+    cover: z.object({ src: z.string(), alt: z.string() }).optional(),
+    icon: z.string().optional(),
   }),
 });
 
@@ -151,6 +155,7 @@ const lessons = defineCollection({
     }),
     action: z.string(),
     reflection: z.string(),
+    image: z.object({ src: z.string(), alt: z.string() }).optional(),
   }),
 });
 

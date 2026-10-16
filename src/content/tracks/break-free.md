@@ -4,6 +4,11 @@ description: A 7-day plan for anyone who wants to break a habit. Jesus as the st
 order: 1
 status: available
 targetQuery: 30 day plan to break a habit
+category: Break free
+cover:
+  src: /images/tracks/break-free-cover.webp
+  alt: A marble statue breaking a chain, the cover of Break Free
+icon: /images/marble/icon-break-free.webp
 ---
 
 **Break Free** is the open course. Seven practical lessons. Anyone can read them, men and women.

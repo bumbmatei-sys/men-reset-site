@@ -159,7 +159,7 @@ export default defineConfig({
       filter: (page) => {
         const path = new URL(page).pathname;
         // Preview builds render draft teachings; never list those in a sitemap.
-        if (process.env.BLOG_PREVIEW === '1' && path.startsWith('/teachings/')) return false;
+        if (process.env.BLOG_PREVIEW === '1' && (path.startsWith('/teachings/') || path.startsWith('/tracks/build-your-future'))) return false;
         return !sitemapExcludedPaths.has(path);
       },
       customPages: getOnDemandSitemapPages(),
