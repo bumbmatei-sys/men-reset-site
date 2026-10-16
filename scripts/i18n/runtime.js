@@ -31,7 +31,7 @@
   function walk(root) {
     if (root.nodeType === 3) { var p = root.parentNode; if (p && !(p.closest && p.closest('[data-no-translate],script,style'))) text(root); return; }
     if (root.nodeType !== 1) return;
-    if (/^(SCRIPT|STYLE|NOSCRIPT)$/.test(root.tagName) || root.hasAttribute('data-no-translate')) return;
+    if (/^(SCRIPT|STYLE|NOSCRIPT)$/.test(root.tagName) || (root.closest && root.closest('[data-no-translate]'))) return;
     el(root);
     var w = document.createTreeWalker(root, 5, {
       acceptNode: function (n) {
