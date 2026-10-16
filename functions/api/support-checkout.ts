@@ -12,9 +12,9 @@ const RETURN_URL = 'https://calltoreset.site/support/thanks';
 const CHECKOUT_ENDPOINT = 'https://live.dodopayments.com/checkouts';
 const ONCE_PRODUCT = 'pdt_0Npo0393DhfZjbT4kxfwo';
 const MONTHLY_PRODUCTS = {
-  10: 'pdt_0Npo03LGyc3LtgrWE4xt1',
-  25: 'pdt_0Npo03PVrgqkJwo3qqKAc',
+  20: 'pdt_0NprFSxj4NQqrGzt0EsJh',
   50: 'pdt_0Npo4huqSgeHSA9412Hc1',
+  100: 'pdt_0NprFT37jcd74rgvVUewR',
 } as const;
 
 const MIN_CENTS = 100;
@@ -46,9 +46,9 @@ function productCart(payload: Record<string, unknown>): { product_id: string; qu
 
   if (payload.plan === 'monthly') {
     const dollars = payload.dollars;
-    if (dollars === 10) return [{ product_id: MONTHLY_PRODUCTS[10], quantity: 1 }];
-    if (dollars === 25) return [{ product_id: MONTHLY_PRODUCTS[25], quantity: 1 }];
+    if (dollars === 20) return [{ product_id: MONTHLY_PRODUCTS[20], quantity: 1 }];
     if (dollars === 50) return [{ product_id: MONTHLY_PRODUCTS[50], quantity: 1 }];
+    if (dollars === 100) return [{ product_id: MONTHLY_PRODUCTS[100], quantity: 1 }];
   }
 
   return null;
