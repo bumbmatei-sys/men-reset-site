@@ -136,6 +136,8 @@ const tracks = defineCollection({
     icon: z.string().optional(),
     // Planned lesson titles for a coming-soon course. Shown without links.
     plannedLessons: z.array(z.object({ title: z.string(), summary: z.string().optional() })).optional(),
+    // Hide the generic takeaway + habit-loop box on the course page.
+    hideHabitBox: z.boolean().optional(),
   }),
 });
 
