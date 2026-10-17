@@ -91,7 +91,7 @@ const breadcrumbs = {
       </div>
     </section>
   )}
-  {planned.length === 0 && (<>
+  {planned.length === 0 && !track.data.hideHabitBox && (<>
   <aside class="takeaway">
     <p class="course-kicker">Key takeaway</p>
     <p>Read what is open. Do the one step you can finish today. The free check writes a plan from your answers.</p>

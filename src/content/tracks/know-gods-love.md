@@ -3,6 +3,7 @@ title: Know His Love
 description: Live from the Father's love, not for it.
 order: 0
 status: available
+hideHabitBox: true
 category: Know God's love
 targetQuery: how to know god loves you
 cover:
