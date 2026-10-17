@@ -261,7 +261,7 @@ const breadcrumbs = {
         </a>
       )}
       {next ? (
-        <a class="btn-primary" href={lessonPath(lesson.data.track, next.id)}>
+        <a class="btn-primary" data-next-lesson href={lessonPath(lesson.data.track, next.id)}>
           Next: {next.data.title}
         </a>
       ) : (
@@ -323,6 +323,19 @@ const breadcrumbs = {
   function setupProgress() {
     paintProgress();
     const root = document.querySelector<HTMLElement>('[data-lesson-progress]');
+    // Clicking "Next lesson" marks the current lesson done, then navigates.
+    document.querySelectorAll<HTMLAnchorElement>('[data-next-lesson]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const lessonId = root?.dataset.lesson || '';
+        if (!lessonId) return;
+        try {
+          const done = readDone();
+          if (!done.includes(lessonId)) writeDone([...done, lessonId]);
+        } catch {
+          // Storage unavailable; navigate anyway.
+        }
+      });
+    });
     const button = root?.querySelector<HTMLButtonElement>('[data-progress-toggle]');
     if (!root || !button) return;
     button.onclick = () => {
