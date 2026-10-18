@@ -166,3 +166,4 @@
 .tch-head { display: block; }
 .tch-head .filter-bar { margin-top: 1.25rem; }
 .tch-head .filter-pills { margin: 0; }
+@media (min-width: 640px) { .tch-highlights .tch-overlay-label { min-height: 8.75rem; justify-content: flex-start; } }
