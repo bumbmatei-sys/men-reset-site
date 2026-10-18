@@ -26,7 +26,7 @@ const lessons = await lessonsForTrack(track.id);
 const mapPage = track.id === '30-day-reset';
 const comingSoon = track.data.status === 'coming-soon';
 const planned = comingSoon ? (track.data.plannedLessons ?? []) : [];
-const cover = planned.length && track.data.cover && publicImageExists(track.data.cover.src) ? track.data.cover : undefined;
+const cover = track.data.cover && publicImageExists(track.data.cover.src) ? track.data.cover : undefined;
 const pageUrl = new URL(trackPath(track.id), themeConfig.site).toString();
 
 const title = track.data.title;
@@ -81,7 +81,7 @@ const breadcrumbs = {
   <p class="course-kicker">{comingSoon ? 'Coming soon' : 'Course'}</p>
   <h1 class="page-title">{track.data.title}</h1>
   <p class="page-lead">{track.data.description}</p>
-  {cover ? <img class="course-cover" src={cover.src} alt={cover.alt} width="1200" height="750" decoding="async" /> : null}
+  {cover ? <img class="course-cover" src={cover.src} alt={cover.alt} width="1200" height="750" decoding="async" fetchpriority="high" /> : null}
   {lessons.length > 0 && (
     <section class="completion-card" data-track-complete data-lesson-ids={lessons.map((lesson) => lesson.id).join(',')} hidden>
       <MarbleAccent kind="laurel" alt="A marble laurel wreath" />
@@ -154,7 +154,8 @@ const breadcrumbs = {
 </Layout>
 
 <style>
-  .course-cover { width: 100%; max-width: 52rem; height: auto; border-radius: 1rem; margin: 1.5rem 0; display: block; }
+  .course-cover { width: 100%; max-width: 52rem; aspect-ratio: 16 / 10; object-fit: cover; height: auto; border-radius: 1.25rem; margin: 1.25rem 0 1.75rem; display: block; box-shadow: 0 12px 32px -18px rgb(0 0 0 / 0.45); }
+  @media (min-width: 768px) { .course-cover { aspect-ratio: 16 / 9; max-height: 26rem; } }
   .planned-lesson { cursor: default; border-style: dashed; display: flex; flex-direction: column; align-items: flex-start; gap: .25rem; }
   .planned-lesson:hover { transform: none; }
 </style>
