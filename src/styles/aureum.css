@@ -1625,3 +1625,8 @@ body .au-hero .au-hero-copy { margin-top: clamp(2rem, 6vh, 4rem); }
 @media (max-width: 640px) {
   body .au-hero .au-hero-copy { margin-top: 1.75rem; }
 }
+
+/* Pills: every pill on one line. A global `li + li` margin pushed all but the first pill down. */
+.filter-pills { align-items: center; }
+.filter-pills > li { margin: 0 !important; padding: 0; line-height: 1; display: flex; }
+.filter-pill { display: inline-flex; align-items: center; box-sizing: border-box; line-height: 1.2; border-width: 1px; }

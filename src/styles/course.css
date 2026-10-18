@@ -1919,8 +1919,6 @@ body.nav-open .sponsor-mobile {
 /* /tracks header: pillar centered beside the title, pills aligned with the content edge. */
 .marble-head { align-items: center; }
 @media (min-width: 768px) { .marble-head .marble-pillar { height: 5.5rem; margin-bottom: 0; } }
-.filter-bar { margin: 1.25rem 0 0; padding: 0; }
-.filter-bar .filter-pills { margin: 0; padding-left: 0; }
 .track-grid { align-items: stretch; }
 .track-grid > li { display: flex; }
 .track-grid > li > .track-card { flex: 1; }

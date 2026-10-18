@@ -162,8 +162,4 @@
 .tch-highlights { align-items: stretch !important; }
 .tch-highlights > li { display: flex; margin: 0 !important; padding: 0 !important; line-height: 0; }
 .tch-highlights > li > a { flex: 1; line-height: normal; }
-/* /teachings header: title row, then pills on their own row, left-aligned with content. */
-.tch-head { display: block; }
-.tch-head .filter-bar { margin-top: 1.25rem; }
-.tch-head .filter-pills { margin: 0; }
 @media (min-width: 640px) { .tch-highlights .tch-overlay-label { min-height: 8.75rem; justify-content: flex-start; } }
