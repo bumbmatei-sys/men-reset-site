@@ -135,6 +135,7 @@ const tracks = defineCollection({
     cover: z.object({ src: z.string(), alt: z.string() }).optional(),
     icon: z.string().optional(),
     // Planned lesson titles for a coming-soon course. Shown without links.
+    // Never put a "The N lessons" list in the track body: the page renders the Lessons list automatically.
     plannedLessons: z.array(z.object({ title: z.string(), summary: z.string().optional() })).optional(),
     // Hide the generic takeaway + habit-loop box on the course page.
     hideHabitBox: z.boolean().optional(),
