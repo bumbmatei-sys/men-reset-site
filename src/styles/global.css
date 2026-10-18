@@ -179,18 +179,18 @@
   line-height: 1.5;
 }
 :is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1.25rem 0.5rem 0.75rem;
   vertical-align: top;
   text-align: left;
-  border-bottom: 1px solid rgb(120 113 108 / 0.25);
+  border: 0;
 }
 :is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) + :is(th, td) {
-  border-left: 1.25rem solid transparent; /* visible gap between columns */
-  background-clip: padding-box;
+  border-left: 1px solid rgb(120 113 108 / 0.35); /* single column separator */
+  padding-left: 1.25rem;
 }
 :is(.tch-prose, .lesson-prose, .page-prose, .prose) th {
   font-weight: 600;
-  border-bottom-width: 2px;
+  border-bottom: 1px solid rgb(120 113 108 / 0.35);
 }
 @media (max-width: 640px) {
   :is(.tch-prose, .lesson-prose, .page-prose, .prose) table {
@@ -200,9 +200,9 @@
   }
   :is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) {
     min-width: 9rem;
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.6rem;
   }
   :is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) + :is(th, td) {
-    border-left-width: 0.75rem;
+    padding-left: 0.75rem;
   }
 }
