@@ -5,7 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import { unified, rehypeHeadingIds } from '@astrojs/markdown-remark';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import astroExpressiveCode from 'astro-expressive-code';
 import { externalLinking } from './src/plugins/external-linking';
 import { rehypeYoutubePlugin } from './src/plugins/youtube-embed';
@@ -125,13 +124,7 @@ export default defineConfig({
     processor: unified({
       rehypePlugins: [
         rehypeYoutubePlugin, // custom plugin to create optimized youtube embeds from youtube links in markdown content; see src/plugins/youtube-embed.ts for details
-        rehypeHeadingIds, // adds ids to markdown headings, which are needed for the autolink plugin and also the table of contents generation
-        [
-          rehypeAutolinkHeadings, // adds anchor links to markdown headings; needs to be added after the rehypeHeadingIds plugin, so that it can find the generated ids
-          {
-            behavior: 'wrap',
-          },
-        ],
+        rehypeHeadingIds, // adds ids to markdown headings (anchors + table of contents). Headings stay plain text: no autolink wrapping.
         [
           externalLinking, // custom plugin to add target="_blank" and rel="noopener" to external links in markdown content; see src/plugins/external-linking.ts for details
           {
