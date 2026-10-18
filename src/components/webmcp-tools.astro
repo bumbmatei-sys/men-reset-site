@@ -8,9 +8,8 @@
  * defined. The data is collected at build time and queried client-side, so the
  * tools work offline without any backend calls.
  */
-import { getCollection } from "astro:content";
-import { collections } from "@/content.config";
-import { useTranslations, getLocaleUrl } from "@utils/i18n";
+import { getTeachings, teachingPath } from "@utils/teachings";
+import { getTracks, lessonsForTrack, lessonPath } from "@utils/course";
 import { toSafeJsonScript } from "@utils/security";
 import { themeConfig } from "~/theme.config";
 
@@ -19,99 +18,64 @@ interface Props {
 }
 
 const locale = Astro.props.locale || themeConfig.i18n.defaultLocale;
-const t = useTranslations(locale);
 
-const hasArticles = "articles" in collections;
-const hasFaq = "faq_answers" in collections;
+// Real site content: Teachings + live course lessons (blog), Teachings FAQs (faq).
+const hasArticles = true;
+const hasFaq = true;
 
-// `getCollection` and `CollectionEntry` are typed against the collection names
-// defined in the current `content.config.ts`. The Blog (`articles`) and FAQ
-// (`faq_answers`) collections can be trimmed out of that config, in which case
-// referencing their names here would raise a compile error even though the
-// `... in collections` runtime guard already prevents the call from executing.
-// This loosely-typed wrapper keeps the runtime behaviour while accepting any
-// collection name and a caller-provided shape for the entry data.
-const getEntries = getCollection as unknown as <T>(
-  collection: string,
-  filter?: (entry: { id: string; data: T }) => unknown,
-) => Promise<{ id: string; body?: string; data: T }[]>;
+const teachingEntries = await getTeachings();
+const tracks = (await getTracks()).filter((tr) => tr.data.status === "available");
+const lessonEntries: { title: string; description: string; url: string; date: string; track: string; trackTitle: string }[] = [];
+for (const tr of tracks) {
+  for (const l of await lessonsForTrack(tr.id)) {
+    lessonEntries.push({
+      title: l.data.title,
+      description: l.data.description,
+      url: lessonPath(tr.id, l.id),
+      date: l.data.publishDate.toISOString().slice(0, 10),
+      track: tr.id,
+      trackTitle: tr.data.title,
+    });
+  }
+}
 
-// --- Blog data (only if the `articles` collection is defined) ---
 let blog: {
   tags: { id: string; label: string }[];
   categories: { id: string; label: string }[];
-  posts: {
-    title: string;
-    url: string;
-    // date/tags/categories are kept only for client-side filtering, not returned
-    date: string;
-    tags: string[];
-    categories: string[];
-  }[];
-} | null = null;
-
-if (hasArticles) {
-  type ArticleData = {
-    title: string;
-    publishDate: Date;
-    featured?: boolean;
-    draft?: boolean;
-    tags?: string[];
-    categories?: string[];
-  };
-
-  const articles = (
-    await getEntries<ArticleData>("articles", ({ id, data }) => !data.draft && id.startsWith(locale + "/"))
-  ).sort((a, b) => {
-    if (a.data.featured && !b.data.featured) return -1;
-    if (!a.data.featured && b.data.featured) return 1;
-    return b.data.publishDate.getTime() - a.data.publishDate.getTime();
-  });
-
-  const tagIds = [...new Set(articles.flatMap((a) => a.data.tags ?? []))];
-  const categoryIds = [...new Set(articles.flatMap((a) => a.data.categories ?? []))];
-
-  blog = {
-    tags: tagIds.map((id) => ({ id, label: t(`tags-t.${id}`) })),
-    categories: categoryIds.map((id) => ({ id, label: t(`categories-t.${id}`) })),
-    posts: articles.map((a) => ({
-      title: a.data.title,
-      url: getLocaleUrl("blog/" + a.id.split("/").slice(-1)[0], locale),
-      date: a.data.publishDate.toISOString().slice(0, 10),
-      tags: a.data.tags ?? [],
-      categories: a.data.categories ?? [],
+  posts: { title: string; description: string; url: string; date: string; tags: string[]; categories: string[] }[];
+} | null = {
+  tags: [],
+  categories: [
+    { id: "teachings", label: "Teachings" },
+    ...tracks.map((tr) => ({ id: tr.id, label: tr.data.title })),
+  ],
+  posts: [
+    ...teachingEntries.map((e) => ({
+      title: e.data.title,
+      description: e.data.description,
+      url: teachingPath(e),
+      date: e.data.publishDate.toISOString().slice(0, 10),
+      tags: [],
+      categories: ["teachings"],
     })),
-  };
-}
+    ...lessonEntries.map((l) => ({
+      title: l.title,
+      description: l.description,
+      url: l.url,
+      date: l.date,
+      tags: [],
+      categories: [l.track],
+    })),
+  ],
+};
 
-// --- FAQ data (only if the `faq_answers` collection is defined) ---
 let faq: {
   categories: { id: string; label: string }[];
   entries: { question: string; category: string; answer: string }[];
-} | null = null;
-
-if (hasFaq) {
-  type FaqData = {
-    question: string;
-    category?: string;
-    draft?: boolean;
-  };
-
-  const faqEntries = (
-    await getEntries<FaqData>("faq_answers", ({ id, data }) => !data.draft && id.startsWith(locale + "/"))
-  ).sort((a, b) => a.data.question.localeCompare(b.data.question, locale));
-
-  const faqCategoryIds = [...new Set(faqEntries.map((e) => e.data.category).filter(Boolean) as string[])];
-
-  faq = {
-    categories: faqCategoryIds.map((id) => ({ id, label: t(`categories-t.${id}`) })),
-    entries: faqEntries.map((e) => ({
-      question: e.data.question,
-      category: e.data.category ?? "",
-      answer: e.body ?? "",
-    })),
-  };
-}
+} | null = {
+  categories: teachingEntries.filter((e) => e.data.faq.length).map((e) => ({ id: e.data.slug, label: e.data.title })),
+  entries: teachingEntries.flatMap((e) => e.data.faq.map((f) => ({ question: f.q, category: e.data.slug, answer: f.a }))),
+};
 
 // Tool/parameter descriptions, passed to the client script. These are read only
 // by the AI agent (never shown in user-facing UI), so they are hard-coded in
