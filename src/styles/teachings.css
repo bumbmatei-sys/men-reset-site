@@ -157,3 +157,9 @@
 .tch-overlay.tch-noimg .tch-overlay-label { position: static; margin: 0.75rem; height: calc(100% - 1.5rem); justify-content: flex-end; background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
 .tch-feature.tch-noimg { grid-template-columns: 1fr; }
 .tch-row:not(:has(.tch-row-media)) { grid-template-columns: minmax(0, 1fr); }
+
+/* Alignment: cards in highlight rows share one top and height; labels sit at the same spot. */
+.tch-highlights { align-items: stretch !important; }
+.tch-highlights > li { display: flex; margin: 0 !important; padding: 0 !important; line-height: 0; }
+.tch-highlights > li > a { flex: 1; line-height: normal; }
+@media (min-width: 640px) { .tch-highlights .tch-overlay-label { min-height: 8.75rem; justify-content: flex-start; } }
