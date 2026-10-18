@@ -169,3 +169,40 @@
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'/%3E%3C/svg%3E") center / contain no-repeat;
   }
 }
+
+/* Prose tables (articles, lessons, course bodies): readable column spacing, sitewide. */
+:is(.tch-prose, .lesson-prose, .page-prose, .prose) table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+:is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) {
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid rgb(120 113 108 / 0.25);
+}
+:is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) + :is(th, td) {
+  border-left: 1.25rem solid transparent; /* visible gap between columns */
+  background-clip: padding-box;
+}
+:is(.tch-prose, .lesson-prose, .page-prose, .prose) th {
+  font-weight: 600;
+  border-bottom-width: 2px;
+}
+@media (max-width: 640px) {
+  :is(.tch-prose, .lesson-prose, .page-prose, .prose) table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  :is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) {
+    min-width: 9rem;
+    padding: 0.5rem 0.6rem;
+  }
+  :is(.tch-prose, .lesson-prose, .page-prose, .prose) :is(th, td) + :is(th, td) {
+    border-left-width: 0.75rem;
+  }
+}
