@@ -23,7 +23,7 @@ const planned = open ? [] : (track.data.plannedLessons ?? []);
     </span>
   </span>
   <span class="track-card-body">
-    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} lessons` : ''}{!open && planned.length ? ` · ${planned.length} lessons` : ''}</span>
+    <span class="course-kicker">{category}{open && lessonIds.length ? ` · ${lessonIds.length} ${lessonIds.length === 1 ? 'lesson' : 'lessons'}` : ''}{!open && planned.length ? ` · ${planned.length} lessons` : ''}</span>
     <span class="track-title">{track.data.title}</span>
     <span class="track-desc">{track.data.description}</span>
     {open && lessonIds.length > 0 ? (
