@@ -2,7 +2,8 @@
 title: Know Who You Are
 description: You are not an orphan. You are a son or daughter of the Father.
 order: 0
-status: coming-soon
+status: available
+hideHabitBox: true
 category: Know who you are
 targetQuery: identity in christ
 cover:
@@ -29,5 +30,3 @@ plannedLessons:
 A lot of us live like orphans. We try to earn a place, prove ourselves, and hide when we fail. But Jesus did not die to make you a better orphan. He brought you home as a son or daughter.
 
 So this course is about identity in Christ. Who the Father says you are, what you already have in Him, and how that changes the way you live and work.
-
-The lessons are being written now. Until they open, read [Identity in Christ](/teachings/identity-in-christ-2026).
