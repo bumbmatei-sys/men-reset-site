@@ -235,7 +235,7 @@ const breadcrumbs = {
         <p class="course-kicker">Do this today</p>
         <h2 id="action-heading">Action step</h2>
         {lesson.data.actionSteps ? (
-          <Checklist id="action-step" items={lesson.data.actionSteps} printTitle={`${lesson.data.title}: Action step`} />
+          <Checklist id="action-step" items={lesson.data.actionSteps} />
         ) : (
           <p>{lesson.data.action}</p>
         )}

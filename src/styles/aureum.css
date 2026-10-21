@@ -1637,17 +1637,6 @@ body .au-hero .au-hero-copy { margin-top: clamp(2rem, 6vh, 4rem); }
   margin-top: 0.85rem;
 }
 
-.checklist-print-title,
-.checklist-print-root {
-  display: none;
-}
-
-@media print {
-  .checklist-print-root {
-    display: block;
-  }
-}
-
 .checklist-title {
   font-size: 1.25rem;
   letter-spacing: -0.02em;
@@ -1799,44 +1788,4 @@ body .au-hero .au-hero-copy { margin-top: clamp(2rem, 6vh, 4rem); }
 
 .tracker-card .checklist {
   margin-top: 0;
-}
-
-@media print {
-  .checklist-actions {
-    display: none !important;
-  }
-
-  .checklist-item {
-    border-color: #999 !important;
-    background: #fff !important;
-    color: #000 !important;
-    break-inside: avoid;
-  }
-
-  .checklist-item:has(input:checked) span {
-    color: #000 !important;
-  }
-
-  /* Print button: only the chosen list prints. */
-  html.print-checklist body > *:not(.checklist-print-root) {
-    display: none !important;
-  }
-
-  .checklist-print-root .checklist {
-    max-width: none;
-    margin: 0;
-    color: #000;
-  }
-
-  .checklist-print-root .checklist-title {
-    display: none;
-  }
-
-  .checklist-print-root .checklist-print-title {
-    display: block;
-    margin: 0 0 0.75rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-
 }

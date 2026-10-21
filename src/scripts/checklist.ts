@@ -1,4 +1,4 @@
-// Checklist behavior: localStorage per page + list id, a count, Clear, and a Print that prints only one list.
+// Checklist behavior: localStorage per page + list id, a count, and Clear.
 const PREFIX = 'reset:checklist:';
 
 function storageKey(root: HTMLElement): string {
@@ -31,36 +31,6 @@ function paint(root: HTMLElement) {
   root.classList.toggle('is-complete', boxes.length > 0 && checked === boxes.length);
 }
 
-function printOne(root: HTMLElement) {
-  const html = document.documentElement;
-  document.querySelector('.checklist-print-root')?.remove();
-  const holder = document.createElement('div');
-  holder.className = 'checklist-print-root';
-  const copy = root.cloneNode(true) as HTMLElement;
-  copy.removeAttribute('id');
-  copy.removeAttribute('data-checklist');
-  copy.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
-  const live = root.querySelectorAll<HTMLInputElement>('[data-checklist-box]');
-  copy.querySelectorAll<HTMLInputElement>('[data-checklist-box]').forEach((box, i) => {
-    box.toggleAttribute('checked', Boolean(live[i]?.checked));
-    box.checked = Boolean(live[i]?.checked);
-  });
-  holder.append(copy);
-  document.body.append(holder);
-  html.classList.add('print-checklist');
-  let cleaned = false;
-  const done = () => {
-    if (cleaned) return;
-    cleaned = true;
-    holder.remove();
-    html.classList.remove('print-checklist');
-  };
-  window.addEventListener('afterprint', done, { once: true });
-  window.print();
-  // window.print() blocks in most browsers; this covers the ones where afterprint never fires.
-  setTimeout(done, 1500);
-}
-
 export function mountChecklists() {
   document.querySelectorAll<HTMLElement>('[data-checklist]').forEach((root) => {
     if (root.dataset.checklistReady) return;
@@ -83,7 +53,6 @@ export function mountChecklists() {
       write(key, []);
       paint(root);
     });
-    root.querySelector('[data-checklist-print]')?.addEventListener('click', () => printOne(root));
     paint(root);
   });
 }
