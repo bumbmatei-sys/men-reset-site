@@ -6,6 +6,7 @@ import { themeConfig } from '~/theme.config';
 import { getTeachings, teachingPath, toCard, isBlogPreview, formatDate, type TeachingEntry } from '@utils/teachings';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import SupportLine from '@components/course/SupportLine.astro';
+import Checklist from '@components/course/Checklist.astro';
 import '../../styles/teachings.css';
 
 export async function getStaticPaths() {
@@ -88,6 +89,10 @@ const toc = headings.filter((h) => h.depth === 2);
       ) : null}
 
       <div class="tch-prose"><Content /></div>
+
+      {d.checklist && d.checklist.length > 0 ? (
+        <div class="tch-checklist"><Checklist id={`teaching-${d.slug}`} items={d.checklist} /></div>
+      ) : null}
 
       {d.faq.length > 0 ? (
         <section class="tch-faq" aria-labelledby="faq-heading">

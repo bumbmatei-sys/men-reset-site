@@ -186,6 +186,8 @@ const teachings = defineCollection({
     category: z.string().default('Teachings'),
     takeaways: z.array(z.string()).default([]),
     faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    // Optional hands-on checklist, rendered right after the article body (ticks save per page).
+    checklist: z.array(z.string()).optional(),
     draft: z.boolean().default(false),
   }),
 });

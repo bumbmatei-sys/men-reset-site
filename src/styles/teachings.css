@@ -163,3 +163,4 @@
 .tch-highlights > li { display: flex; margin: 0 !important; padding: 0 !important; line-height: 0; }
 .tch-highlights > li > a { flex: 1; line-height: normal; }
 @media (min-width: 640px) { .tch-highlights .tch-overlay-label { min-height: 8.75rem; justify-content: flex-start; } }
+.tch-checklist { margin-top: 1.5rem; }
