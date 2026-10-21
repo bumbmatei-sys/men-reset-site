@@ -7,7 +7,10 @@ updatedDate: 2026-10-21
 author: Matei Bumb
 image:
   src: /images/teachings/side-effects-of-masturbation.webp
-  alt: 'A classical marble scene in warm golden light'
+  alt: 'Marble statue holding a lantern over broken masks in the Tuscan hills'
+cardImage:
+  src: /images/teachings/side-effects-of-masturbation-card.webp
+  alt: 'Marble statue holding a lantern over broken masks in the Tuscan hills'
 readingTime: 9
 category: Break free
 draft: false
