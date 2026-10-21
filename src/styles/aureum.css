@@ -1667,6 +1667,11 @@ body .au-hero .au-hero-copy { margin-top: clamp(2rem, 6vh, 4rem); }
   gap: 0.5rem;
 }
 
+.checklist-items > li {
+  margin: 0;
+  padding: 0;
+}
+
 .checklist-item {
   display: grid;
   grid-template-columns: 1.25rem minmax(0, 1fr);
@@ -1745,7 +1750,11 @@ body .au-hero .au-hero-copy { margin-top: clamp(2rem, 6vh, 4rem); }
 
 /* Day tracker: a grid of small boxes. */
 .checklist-grid .checklist-items {
-  grid-template-columns: repeat(auto-fill, minmax(5.25rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
+}
+
+.checklist-grid .checklist-item span {
+  white-space: nowrap;
 }
 
 .checklist-grid .checklist-item {
@@ -1817,6 +1826,10 @@ body .au-hero .au-hero-copy { margin-top: clamp(2rem, 6vh, 4rem); }
     max-width: none;
     margin: 0;
     color: #000;
+  }
+
+  .checklist-print-root .checklist-title {
+    display: none;
   }
 
   .checklist-print-root .checklist-print-title {
