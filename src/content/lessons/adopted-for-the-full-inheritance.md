@@ -4,7 +4,7 @@ description: What the inheritance in Christ already includes, how to receive it 
 track: know-who-you-are
 order: 2
 targetQuery: inheritance in christ
-publishDate: 2026-10-23
+publishDate: 2026-10-21
 keyPoints:
   - An adopted child is not a second-class member of the family. In Christ you are a full heir.
   - A joint heir with Jesus shares what is His. You do not get a smaller cut.
