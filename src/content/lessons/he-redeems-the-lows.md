@@ -15,6 +15,10 @@ scripture:
   reference: Job 19:25
   text: As for me, I know that my Redeemer lives, and at the last He will take His stand on the earth.
 action: Write down the lowest season of your life in one sentence. Under it, write what you think it cost you. Then pray over that list and tell Jesus, plainly, that you hand Him the receipt.
+actionSteps:
+  - "Write down the lowest season of your life in one sentence."
+  - "Under it, write what you think it cost you."
+  - "Then pray over that list and tell Jesus, plainly, that you hand Him the receipt."
 reflection: Where have you been calling yourself empty, the way Naomi did, when God has already started buying it back?
 image:
   src: /images/lessons/build-your-future-02.webp

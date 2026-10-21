@@ -15,6 +15,9 @@ scripture:
   reference: Malachi 3:6
   text: For I am the Lord, I do not change; therefore you are not consumed, O sons of Jacob.
 action: This week, write down the picture of God you carry when you mess up. What is His face doing? What is He saying? Then read Hosea 11:1-4 out loud and write one line about how His real face differs from yours.
+actionSteps:
+  - "This week, write down the picture of God you carry when you mess up. What is His face doing? What is He saying?"
+  - "Then read Hosea 11:1-4 out loud and write one line about how His real face differs from yours."
 reflection: Whose face do you see when you picture God after you fail, and where did you first learn that face?
 image:
   src: /images/lessons/know-gods-love-02.webp

@@ -15,6 +15,10 @@ scripture:
   reference: Philippians 4:8
   text: "Finally, brethren, whatsoever things are true, whatsoever things are honest, whatsoever things are just, whatsoever things are pure, whatsoever things are lovely, whatsoever things are of good report; if there be any virtue, and if there be any praise, think on these things."
 action: Choose one daily block of twenty minutes with no phone and no feed connected to your habit. Fill it with a real thing. A walk, a paper book, a conversation, or a chore with a finish. Do it today and put it on tomorrow's calendar.
+actionSteps:
+  - "Choose one daily block of twenty minutes with no phone and no feed connected to your habit."
+  - "Fill it with a real thing. A walk, a paper book, a conversation, or a chore with a finish."
+  - "Do it today and put it on tomorrow's calendar."
 reflection: What do you look at in the hour before bed, and is it training the attention you actually want?
 ---
 

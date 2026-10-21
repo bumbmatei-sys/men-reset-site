@@ -15,6 +15,9 @@ scripture:
   reference: John 14:18
   text: I will not leave you orphans; I will come to you.
 action: Once a day this week, when you catch yourself striving, comparing or hiding, stop and say, "Heavenly Father, I am not an orphan. I already have a place with You." Write down what you were doing when you caught it.
+actionSteps:
+  - "Once a day this week, when you catch yourself striving, comparing or hiding, stop and say, \"Heavenly Father, I am not an orphan. I already have a place with You.\""
+  - "Write down what you were doing when you caught it."
 reflection: Where are you still working for a place you already have?
 image:
   src: /images/lessons/know-who-you-are-01.webp

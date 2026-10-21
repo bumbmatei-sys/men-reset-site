@@ -15,6 +15,9 @@ scripture:
   reference: Romans 12:2
   text: "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."
 action: Write one sentence that starts with "I am a person who..." and names a behavior you will do today before 8 p.m. Do that behavior, then tell one person or write it down that you did it.
+actionSteps:
+  - "Write one sentence that starts with \"I am a person who...\" and names a behavior you will do today before 8 p.m."
+  - "Do that behavior, then tell one person or write it down that you did it."
 reflection: If someone only watched your evenings for a week, what would they say you are practicing?
 ---
 

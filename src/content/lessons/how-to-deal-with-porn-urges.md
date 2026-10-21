@@ -15,6 +15,9 @@ scripture:
   reference: James 1:14
   text: "But every man is tempted, when he is drawn away of his own lust, and enticed."
 action: "Write a three-line urge script on a card or in your phone's lock-screen note: where you will go, what your body will do, and who or what you will tell. Rehearse it once this afternoon, not during the urge."
+actionSteps:
+  - "Write a three-line urge script on a card or in your phone's lock-screen note: where you will go, what your body will do, and who or what you will tell."
+  - "Rehearse it once this afternoon, not during the urge."
 reflection: In the last urge you remember, what was the first physical thing you did? And did it move you toward the habit or away from it?
 ---
 

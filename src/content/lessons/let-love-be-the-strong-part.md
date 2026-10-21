@@ -14,6 +14,9 @@ scripture:
   reference: "1 Corinthians 16:13-14"
   text: Be on the alert, stand firm in the faith, act like men, be strong. Let all that you do be done in love.
 action: "Each morning ask Jesus \"Lord, who do You want to love through me today?\" Then do one concrete thing for that person that costs you real time or real comfort."
+actionSteps:
+  - "Each morning ask Jesus \"Lord, who do You want to love through me today?\""
+  - "Then do one concrete thing for that person that costs you real time or real comfort."
 reflection: You can only give away what you have received.
 ---
 

@@ -159,8 +159,13 @@ const lessons = defineCollection({
       text: z.string(),
     }),
     action: z.string(),
+    // Optional checklist for the action step. The steps must be the action text split up, word for word, so no new wording sneaks in.
+    actionSteps: z.array(z.string()).min(2).max(6).optional(),
     reflection: z.string(),
     image: z.object({ src: z.string(), alt: z.string() }).optional(),
+  }).refine((data) => !data.actionSteps || data.actionSteps.join(' ') === data.action, {
+    message: 'actionSteps joined with single spaces must equal action exactly.',
+    path: ['actionSteps'],
   }),
 });
 

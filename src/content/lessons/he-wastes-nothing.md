@@ -16,6 +16,10 @@ scripture:
   reference: Romans 8:28
   text: And we know that God causes all things to work together for good to those who love God, to those who are called according to His purpose.
 action: Write down one season you'd call wasted. Next to it, write one thing it taught you or one kind of person you now understand. Then think of one person this week who's where you used to be, and reach out.
+actionSteps:
+  - "Write down one season you'd call wasted."
+  - "Next to it, write one thing it taught you or one kind of person you now understand."
+  - "Then think of one person this week who's where you used to be, and reach out."
 reflection: Which part of your story have you been hiding that God might want to use to comfort someone else?
 image:
   src: /images/lessons/build-your-future-01.webp

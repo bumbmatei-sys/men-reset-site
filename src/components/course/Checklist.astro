@@ -1,0 +1,61 @@
+---
+/**
+ * Reusable checklist. Ticks save in localStorage per page (and per list id).
+ * Print button prints only this list. Plain labels, no emojis.
+ *
+ * variant="list" for action steps, variant="grid" for a day tracker.
+ */
+interface Props {
+  id: string;
+  items: string[];
+  title?: string;
+  headingLevel?: 2 | 3;
+  variant?: 'list' | 'grid';
+  printTitle?: string;
+  note?: string;
+  countNoun?: string;
+}
+
+const { id, items, title, headingLevel = 2, variant = 'list', printTitle, note, countNoun = 'done' } = Astro.props as Props;
+const Heading = headingLevel === 3 ? 'h3' : 'h2';
+const domId = `checklist-${id.replace(/[^a-z0-9-]/gi, '-')}`;
+const headingId = title ? `${domId}-heading` : undefined;
+---
+
+<section
+  class:list={['checklist', `checklist-${variant}`]}
+  id={domId}
+  data-checklist
+  data-checklist-id={id}
+  data-count-noun={countNoun}
+  aria-labelledby={headingId}
+  aria-label={title ? undefined : printTitle || 'Checklist'}
+>
+  {printTitle ? <p class="checklist-print-title">{printTitle}</p> : null}
+  {title ? <Heading id={headingId} class="checklist-title">{title}</Heading> : null}
+  {note ? <p class="checklist-note">{note}</p> : null}
+  <ul class="checklist-items" role="list">
+    {items.map((item, index) => (
+      <li>
+        <label class="checklist-item">
+          <input type="checkbox" data-checklist-box value={String(index)} />
+          <span>{item}</span>
+        </label>
+      </li>
+    ))}
+  </ul>
+  <div class="checklist-footer">
+    <p class="checklist-count" data-checklist-count aria-live="polite">0 of {items.length} {countNoun}</p>
+    <div class="checklist-actions">
+      <button type="button" class="btn-secondary checklist-button" data-checklist-print>Print</button>
+      <button type="button" class="btn-secondary checklist-button" data-checklist-clear>Clear</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { mountChecklists } from '@scripts/checklist';
+
+  mountChecklists();
+  document.addEventListener('astro:page-load', mountChecklists);
+</script>

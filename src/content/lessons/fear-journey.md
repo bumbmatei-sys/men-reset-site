@@ -15,6 +15,10 @@ scripture:
   reference: 2 Timothy 1:7
   text: For God has not given us a spirit of fear, but of power and of love and of a sound mind.
 action: Write down the one thing you keep avoiding because you are afraid. Under it, write what the opposite of that fear might say about your calling. Then take one small step toward it this week and tell God before you do it.
+actionSteps:
+  - "Write down the one thing you keep avoiding because you are afraid."
+  - "Under it, write what the opposite of that fear might say about your calling."
+  - "Then take one small step toward it this week and tell God before you do it."
 reflection: If fear had no vote in your life, what would you start doing this month?
 image:
   src: /images/lessons/build-your-future-04.webp

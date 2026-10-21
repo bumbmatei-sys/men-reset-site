@@ -15,6 +15,10 @@ scripture:
   reference: John 21:17
   text: He said to him the third time, "Simon, son of Jonah, do you love Me?" Peter was grieved because He said to him the third time, "Do you love Me?" And he said to Him, "Lord, You know all things; You know that I love You." Jesus said to him, "Feed My sheep."
 action: The next time you fail this week, do not wait. Within the hour, tell God plainly what you did. Then read John 21:15-17 and hear Jesus ask you, "Do you love Me?" Answer Him honestly, and do the next good thing in front of you.
+actionSteps:
+  - "The next time you fail this week, do not wait. Within the hour, tell God plainly what you did."
+  - "Then read John 21:15-17 and hear Jesus ask you, \"Do you love Me?\""
+  - "Answer Him honestly, and do the next good thing in front of you."
 reflection: "After you fail, what do you usually do first: hide, punish yourself, or run back to Him? What would it look like to run back faster?"
 image:
   src: /images/lessons/know-gods-love-05.webp
