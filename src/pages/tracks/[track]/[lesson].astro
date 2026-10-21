@@ -44,7 +44,7 @@ export async function getStaticPaths() {
     for (const lesson of lessons) {
       paths.push({
         params: { track: track.id, lesson: lesson.id },
-        props: { lesson, trackTitle: track.data.title },
+        props: { lesson, trackTitle: track.data.title, hideHabitBox: !!track.data.hideHabitBox },
       });
     }
   }
@@ -53,7 +53,7 @@ export async function getStaticPaths() {
     for (const lesson of await planPhaseLessons()) {
       paths.push({
         params: { track: breakFree.id, lesson: lesson.id },
-        props: { lesson, trackTitle: breakFree.data.title },
+        props: { lesson, trackTitle: breakFree.data.title, hideHabitBox: !!breakFree.data.hideHabitBox },
       });
     }
   }
@@ -63,9 +63,10 @@ export async function getStaticPaths() {
 interface Props {
   lesson: LessonEntry;
   trackTitle: string;
+  hideHabitBox?: boolean;
 }
 
-const { lesson, trackTitle } = Astro.props as Props;
+const { lesson, trackTitle, hideHabitBox } = Astro.props as Props;
 const planPhase = isPlanPhase(lesson.id);
 const phaseCopy = PHASE_COPY[lesson.id];
 const locked = planPhase && !phaseCopy?.closing;
@@ -186,7 +187,7 @@ const breadcrumbs = {
       </section>
     )}
 
-    {planPhase ? null : (
+    {planPhase || hideHabitBox ? null : (
       <ol class="habit-loop" aria-label="Habit loop">
         <li>
           <span class="habit-label">Trigger</span>
