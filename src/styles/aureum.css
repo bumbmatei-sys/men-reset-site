@@ -1630,3 +1630,162 @@ body .au-hero .au-hero-copy { margin-top: clamp(2rem, 6vh, 4rem); }
 .filter-pills { align-items: center; }
 .filter-pills > li { margin: 0 !important; padding: 0; line-height: 1; display: flex; }
 .filter-pill { display: inline-flex; align-items: center; box-sizing: border-box; line-height: 1.5; border-width: 1px; }
+
+/* Checklist and day tracker (components/course/Checklist.astro). */
+.checklist {
+  max-width: 68ch;
+  margin-top: 0.85rem;
+}
+
+.checklist-title {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.checklist-note {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.checklist-items {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.checklist-items > li {
+  margin: 0;
+  padding: 0;
+}
+
+.checklist-item {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #0f0f0f;
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.checklist-item input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  accent-color: #0f0f0f;
+  cursor: pointer;
+}
+
+.checklist-item:has(input:checked) span {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  color: #555;
+}
+
+.checklist-item:has(input:focus-visible) {
+  outline: 2px solid #0f0f0f;
+  outline-offset: 2px;
+}
+
+:where(.dark) .checklist-item {
+  border-color: #333;
+  background: #141414;
+  color: #f3f1ed;
+}
+
+:where(.dark) .checklist-item input {
+  accent-color: #fffce0;
+}
+
+:where(.dark) .checklist-item:has(input:checked) span {
+  color: #a8a29e;
+}
+
+:where(.dark) .checklist-item:has(input:focus-visible) {
+  outline-color: #fffce0;
+}
+
+.checklist-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.checklist .checklist-count {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.checklist-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.checklist-button {
+  padding: 0.4rem 0.95rem;
+  font-size: 0.875rem;
+}
+
+/* Day tracker: a grid of small boxes. */
+.checklist-grid .checklist-items {
+  grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
+}
+
+.checklist-grid .checklist-item span {
+  white-space: nowrap;
+}
+
+.checklist-grid .checklist-item {
+  grid-template-columns: 1.15rem minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: center;
+  padding: 0.55rem 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.checklist-grid .checklist-item input {
+  margin-top: 0;
+}
+
+.checklist-grid .checklist-item:has(input:checked) {
+  border-color: #0f0f0f;
+  background: #fffce0;
+}
+
+.checklist-grid .checklist-item:has(input:checked) span {
+  text-decoration: none;
+  color: #0f0f0f;
+}
+
+:where(.dark) .checklist-grid .checklist-item:has(input:checked) {
+  border-color: #fffce0;
+  background: #fffce0;
+}
+
+.tracker-card {
+  max-width: 68ch;
+  margin-top: 2rem;
+  padding: 1.1rem 1.15rem 1.2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+}
+
+:where(.dark) .tracker-card {
+  border-color: #333;
+}
+
+.tracker-card .checklist {
+  margin-top: 0;
+}

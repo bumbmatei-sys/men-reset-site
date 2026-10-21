@@ -14,6 +14,9 @@ scripture:
   reference: "1 Corinthians 16:13-14"
   text: Be watchful, stand firm in the faith, act like men, be strong, let all that you do be done in love.
 action: "Every morning this week, before you touch your phone, kneel or sit down and say one line to Jesus: \"Lord, I don't have what it takes on my own. I need You.\" Say it out loud, even when you don't feel it."
+actionSteps:
+  - "Every morning this week, before you touch your phone, kneel or sit down and say one line to Jesus: \"Lord, I don't have what it takes on my own. I need You.\""
+  - "Say it out loud, even when you don't feel it."
 reflection: A man can only stand up after he bends his knee.
 ---
 

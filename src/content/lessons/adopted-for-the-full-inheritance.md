@@ -15,6 +15,9 @@ scripture:
   reference: Romans 8:17
   text: and if children, then heirs, heirs of God and joint heirs with Christ, if indeed we suffer with Him, that we may also be glorified together.
 action: Each morning this week, read one verse about what you have in Christ out loud and say, "This is already mine in Jesus." Write down the one that is hardest to say.
+actionSteps:
+  - "Each morning this week, read one verse about what you have in Christ out loud and say, \"This is already mine in Jesus.\""
+  - "Write down the one that is hardest to say."
 reflection: Which part of your inheritance do you still live like you do not have?
 image:
   src: /images/lessons/know-who-you-are-02.webp

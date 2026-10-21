@@ -16,6 +16,11 @@ scripture:
   reference: Habakkuk 2:2-3
   text: Record the vision and inscribe it on tablets, that the one who reads it may run. For the vision is yet for the appointed time; it hurries toward the goal and it will not fail. Though it delays, wait for it; for it will certainly come, it will not delay long.
 action: Take twenty quiet minutes with God this week. Ask Him what He wants your life to carry in the next few years. Write what comes in plain words on one page, in a few lines you could read in one minute. Put it somewhere you will see it every day.
+actionSteps:
+  - "Take twenty quiet minutes with God this week."
+  - "Ask Him what He wants your life to carry in the next few years."
+  - "Write what comes in plain words on one page, in a few lines you could read in one minute."
+  - "Put it somewhere you will see it every day."
 reflection: If you wrote your vision down today, would it be yours, or just a copy of what other people expect from you?
 image:
   src: /images/lessons/build-your-future-06.webp

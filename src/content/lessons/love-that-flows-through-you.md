@@ -15,6 +15,9 @@ scripture:
   reference: 1 John 4:11
   text: Beloved, if God so loved us, we also ought to love one another.
 action: Ask God, "Who have I stopped wanting good for?" Write down the first name that comes. This week, pray for good things for that person by name every day, and do one kind thing for them that they cannot repay.
+actionSteps:
+  - "Ask God, \"Who have I stopped wanting good for?\" Write down the first name that comes."
+  - "This week, pray for good things for that person by name every day, and do one kind thing for them that they cannot repay."
 reflection: Where does your love come with a hook, and what would it look like to give it freely this week?
 image:
   src: /images/lessons/know-gods-love-06.webp

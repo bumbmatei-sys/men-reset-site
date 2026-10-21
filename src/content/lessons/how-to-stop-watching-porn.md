@@ -15,6 +15,9 @@ scripture:
   reference: 1 Corinthians 10:13
   text: "There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it."
 action: Tonight, move the charger out of the bedroom and turn off private browsing on the device you actually use. Write the time of day you are most likely to fall into the habit, and put that note where you will see it before that hour.
+actionSteps:
+  - "Tonight, move the charger out of the bedroom and turn off private browsing on the device you actually use."
+  - "Write the time of day you are most likely to fall into the habit, and put that note where you will see it before that hour."
 reflection: What is the real cue on your worst nights? Boredom, anger, loneliness, or the simple fact that nobody is in the room?
 ---
 

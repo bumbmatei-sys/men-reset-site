@@ -15,6 +15,9 @@ scripture:
   reference: John 13:23-25
   text: Now there was leaning on Jesus' bosom one of His disciples, whom Jesus loved. Simon Peter therefore motioned to him to ask who it was of whom He spoke. Then, leaning back on Jesus' breast, he said to Him, "Lord, who is it?"
 action: Each morning this week, before you check your phone, say out loud, "I am the one Jesus loves." Then bring Him one real question you have been carrying and wait a few minutes in quiet before you move on.
+actionSteps:
+  - "Each morning this week, before you check your phone, say out loud, \"I am the one Jesus loves.\""
+  - "Then bring Him one real question you have been carrying and wait a few minutes in quiet before you move on."
 reflection: If you truly believed you were the one Jesus loves, what would you stop doing, and what would you start bringing to Him?
 image:
   src: /images/lessons/know-gods-love-04.webp

@@ -15,6 +15,10 @@ scripture:
   reference: John 13:10
   text: Anyone who has bathed needs only to wash his feet and is clean all over.
 action: Take a sheet of paper. Write every guilt-thought and past failure that haunts you. Across the page write BATHED IN FULL. POSITIONALLY CLEAN. Tear it up and throw it away.
+actionSteps:
+  - "Take a sheet of paper. Write every guilt-thought and past failure that haunts you."
+  - "Across the page write BATHED IN FULL. POSITIONALLY CLEAN."
+  - "Tear it up and throw it away."
 reflection: Which guilt-thought are you still treating as your name, after Jesus already bathed you?
 ---
 

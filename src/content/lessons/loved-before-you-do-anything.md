@@ -15,6 +15,10 @@ scripture:
   reference: Romans 5:8
   text: But God demonstrates His own love toward us, in that while we were yet sinners, Christ died for us.
 action: Once a day this week, sit for two minutes without asking for anything. Say, "Father, You loved me before I did anything today." Then stay quiet and receive. Write down any thought that tries to argue with it.
+actionSteps:
+  - "Once a day this week, sit for two minutes without asking for anything."
+  - "Say, \"Father, You loved me before I did anything today.\" Then stay quiet and receive."
+  - "Write down any thought that tries to argue with it."
 reflection: Where are you still doing things to be loved, instead of doing them because you already are?
 image:
   src: /images/lessons/know-gods-love-01.webp

@@ -15,6 +15,10 @@ scripture:
   reference: Psalm 119:105
   text: Your word is a lamp to my feet and a light to my path.
 action: Write down the one thing you believe God has put on your heart for your future. Under it, write the smallest real step toward it that you can take this week. Do it before Sunday.
+actionSteps:
+  - "Write down the one thing you believe God has put on your heart for your future."
+  - "Under it, write the smallest real step toward it that you can take this week."
+  - "Do it before Sunday."
 reflection: What is the next step you already know, but keep waiting to understand fully before you take it?
 image:
   src: /images/lessons/build-your-future-05.webp

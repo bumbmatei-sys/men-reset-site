@@ -15,6 +15,10 @@ scripture:
   reference: 1 John 4:18
   text: There is no fear in love; but perfect love casts out fear, because fear involves torment. But he who fears has not been made perfect in love.
 action: Pick the one blockage from this lesson that hit closest. Each day this week, take five unhurried minutes, name it to God out loud, and ask Him, "What do You want to say to me about this?" Then sit still and listen. Write down what comes.
+actionSteps:
+  - "Pick the one blockage from this lesson that hit closest."
+  - "Each day this week, take five unhurried minutes, name it to God out loud, and ask Him, \"What do You want to say to me about this?\""
+  - "Then sit still and listen. Write down what comes."
 reflection: Which blockage do you recognize most in yourself, and when did it start?
 image:
   src: /images/lessons/know-gods-love-03.webp

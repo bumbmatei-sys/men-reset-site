@@ -15,6 +15,10 @@ scripture:
   reference: Revelation 12:11
   text: And they overcame him because of the blood of the Lamb and because of the word of their testimony.
 action: Write down three moments where God clearly came through for you, big or small. Read them out loud before you face the next hard thing this week. Then tell one of them to one person.
+actionSteps:
+  - "Write down three moments where God clearly came through for you, big or small."
+  - "Read them out loud before you face the next hard thing this week."
+  - "Then tell one of them to one person."
 reflection: Which thing God has already done for you have you stopped believing actually happened?
 image:
   src: /images/lessons/build-your-future-03.webp

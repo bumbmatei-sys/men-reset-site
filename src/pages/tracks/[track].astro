@@ -5,6 +5,7 @@ import { render } from 'astro:content';
 import { themeConfig } from '~/theme.config';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import SupportLine from '@components/course/SupportLine.astro';
+import Checklist from '@components/course/Checklist.astro';
 import { publicImageExists } from '@utils/public-image';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
 
@@ -114,6 +115,19 @@ const breadcrumbs = {
   <div class="lesson-prose page-prose">
     <Content />
   </div>
+
+  {mapPage ? (
+    <div class="tracker-card">
+      <Checklist
+        id="30-day-tracker"
+        title="30-day tracker"
+        note="Tick each day when it is done. It saves on this device."
+        variant="grid"
+        countNoun="days done"
+        items={Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`)}
+      />
+    </div>
+  ) : null}
 
   {lessons.length > 0 ? (
     <section class="page-stack" aria-labelledby="lesson-list-heading">

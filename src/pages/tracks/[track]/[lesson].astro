@@ -7,6 +7,7 @@ import { getReadingTime } from '@utils/reading-time';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import PlanEmailForm from '@components/course/PlanEmailForm.astro';
 import SupportLine from '@components/course/SupportLine.astro';
+import Checklist from '@components/course/Checklist.astro';
 import { publicImageExists } from '@utils/public-image';
 import { getTracks, isPlanPhase, lessonsForTrack, lessonPath, planPhaseLessons, trackPath, type LessonEntry } from '@utils/course';
 
@@ -234,7 +235,11 @@ const breadcrumbs = {
       <section class="action-callout" aria-labelledby="action-heading">
         <p class="course-kicker">Do this today</p>
         <h2 id="action-heading">Action step</h2>
-        <p>{lesson.data.action}</p>
+        {lesson.data.actionSteps ? (
+          <Checklist id="action-step" items={lesson.data.actionSteps} />
+        ) : (
+          <p>{lesson.data.action}</p>
+        )}
       </section>
     )}
 

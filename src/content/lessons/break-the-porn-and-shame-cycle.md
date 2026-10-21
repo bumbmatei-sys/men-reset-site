@@ -15,6 +15,9 @@ scripture:
   reference: 1 John 1:9
   text: "If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness."
 action: If you slipped in the last month, write a three-sentence account. What happened, what the cue was, what you will do differently tonight. Give it to one safe person, or read it aloud to God and leave it where you can see it in the morning.
+actionSteps:
+  - "If you slipped in the last month, write a three-sentence account. What happened, what the cue was, what you will do differently tonight."
+  - "Give it to one safe person, or read it aloud to God and leave it where you can see it in the morning."
 reflection: When shame hits, do you move toward a person or toward a darker room?
 ---
 

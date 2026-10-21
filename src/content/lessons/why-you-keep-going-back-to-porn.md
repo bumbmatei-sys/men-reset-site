@@ -15,6 +15,10 @@ scripture:
   reference: Proverbs 24:16
   text: "For a just man falleth seven times, and riseth up again: but the wicked shall fall into mischief."
 action: Write the sentence you tell yourself right before you go back. Under it, write the action you will do instead the next time that sentence shows up. Put both where you will see them tonight.
+actionSteps:
+  - "Write the sentence you tell yourself right before you go back."
+  - "Under it, write the action you will do instead the next time that sentence shows up."
+  - "Put both where you will see them tonight."
 reflection: What do you get from going back that you are not getting, in an honest form, anywhere else in the day?
 ---
 

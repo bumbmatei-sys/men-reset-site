@@ -14,6 +14,9 @@ scripture:
   reference: "Ephesians 5:25"
   text: Husbands, love your wives, just as Christ also loved the church and gave Himself up for her.
 action: "This week, ask the person closest to you this one question: \"How do you best receive love?\" Then do one thing from their answer, with no expectation in return."
+actionSteps:
+  - "This week, ask the person closest to you this one question: \"How do you best receive love?\""
+  - "Then do one thing from their answer, with no expectation in return."
 reflection: Jesus loved us first, while we were still a mess. That is the standard, and it is also the grace.
 ---
 

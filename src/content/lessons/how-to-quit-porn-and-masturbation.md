@@ -15,6 +15,10 @@ scripture:
   reference: 1 Corinthians 6:18
   text: "Flee fornication. Every sin that a man doeth is without the body; but he that committeth fornication sinneth against his own body."
 action: Write the rule in one line. What you will not do when you are alone tonight. Put it in the place where you usually start. Then set an alarm ten minutes before that usual time, labeled "leave the room."
+actionSteps:
+  - "Write the rule in one line. What you will not do when you are alone tonight."
+  - "Put it in the place where you usually start."
+  - "Then set an alarm ten minutes before that usual time, labeled \"leave the room.\""
 reflection: Where do you still give yourself a technical pass that keeps the same loop alive?
 ---
 
