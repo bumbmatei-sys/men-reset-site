@@ -2,15 +2,15 @@
 title: 'How to Build Self-Discipline as a Christian (Even When You Don''t Feel Like It)'
 description: 'What the Bible says about self-discipline, why you keep starting and stopping, and a simple way to build habits from love instead of fear, so they hold on the days you feel nothing.'
 slug: christian-self-discipline-2026
-publishDate: 2026-10-22
-updatedDate: 2026-10-22
+publishDate: 2026-10-27
+updatedDate: 2026-10-27
 author: Matei Bumb
 image:
   src: /images/teachings/christian-self-discipline.webp
-  alt: 'Marble statue of a man kneeling in prayer at first light beside an open Bible and a small oil lamp, with a stone path climbing a Tuscan hill'
+  alt: 'Marble statue of a man kneeling in prayer inside a marble temple colonnade, beside an open Bible and a small oil lamp on a stone pedestal, in warm golden light'
 cardImage:
   src: /images/teachings/christian-self-discipline-card.webp
-  alt: 'Marble statue of a man kneeling in prayer beside an open Bible and an oil lamp on a stone bench in golden morning light'
+  alt: 'Marble statue of a man praying in a sunlit temple hallway of marble columns, beside an open Bible and an oil lamp'
 readingTime: 8
 category: Take initiative
 draft: false
