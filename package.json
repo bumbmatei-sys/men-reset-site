@@ -14,6 +14,7 @@
     "preview": "astro preview",
     "postbuild": "scripts/postbuild.js",
     "purge:cloudflare": "node scripts/purgeCloudflareCache.js",
+    "indexnow": "node scripts/indexnow.mjs",
     "check": "npm run check:astro && npm run check:type && npm run check:eslint && npm run check:prettier",
     "check:astro": "astro check",
     "check:type": "npm run generate-types && tsc --noEmit",

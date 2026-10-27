@@ -90,7 +90,7 @@ The production origin is `https://calltoreset.site`, set as `themeConfig.site`. 
 
 In the Cloudflare dashboard, disable Speed Brain (Speed → Optimization → Speed Brain). Astro prefetch and Speed Brain can double-fetch.
 
-The file `public/the-reset-indexnow-placeholder.txt` is an IndexNow key placeholder. Replace the key and the filename with a real IndexNow key before you submit URLs. The file body must be the key.
+IndexNow: the key file is `public/87311d254ac36fef9aa959f0bf4f922b.txt` (the body is the key). After a production deploy, run `npm run indexnow` to submit every sitemap URL to IndexNow (Bing, Yandex, Seznam, Naver and others). Pass URLs as arguments to submit only those.
 
 `public/_headers` sends a `Link` header pointing at `/llms.txt`. `public/_redirects` sends `/sitemap` and `/sitemap.xml` to `/sitemap-index.xml`.
 
@@ -102,4 +102,4 @@ The file `public/the-reset-indexnow-placeholder.txt` is an IndexNow key placehol
 - `/llms.txt` (generated in `postbuild`)
 - `/rss.xml`
 - Course, Article, FAQ, and Breadcrumb JSON-LD
-- `public/the-reset-indexnow-placeholder.txt`
+- `public/87311d254ac36fef9aa959f0bf4f922b.txt` (IndexNow key)
