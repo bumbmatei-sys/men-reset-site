@@ -7,7 +7,7 @@ interface Props {
   heading?: string;
 }
 
-const { source, heading = 'Join the 30-day reset list' } = Astro.props;
+const { source, heading = 'Get notified' } = Astro.props;
 // Set PUBLIC_RESET_SIGNUP=0 at build time to ship the form switched off.
 const enabled = import.meta.env.PUBLIC_RESET_SIGNUP !== '0';
 const id = `signup-${source.replace(/[^a-z0-9]+/gi, '-')}`;
@@ -16,7 +16,7 @@ const id = `signup-${source.replace(/[^a-z0-9]+/gi, '-')}`;
 <section class="cr-box cr-signup" aria-labelledby={`${id}-heading`}>
   <p class="cr-kicker">Free 30-day reset</p>
   <h2 id={`${id}-heading`}>{heading}</h2>
-  <p>Leave your email and Matei will write to you about the 30-day reset. Your name is optional.</p>
+  <p>Get notified about the 30-day reset. Your name is optional.</p>
   <form data-reset-signup data-source={source} onsubmit="event.preventDefault()" novalidate>
     <div class="cr-row">
       <label>
@@ -27,7 +27,7 @@ const id = `signup-${source.replace(/[^a-z0-9]+/gi, '-')}`;
         <span>Email</span>
         <input type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required disabled={!enabled} />
       </label>
-      <button type="submit" class="btn-primary" disabled={!enabled}>Join</button>
+      <button type="submit" class="btn-primary" disabled={!enabled}>Get notified</button>
     </div>
     <label class="cr-hp" aria-hidden="true">
       <span>Leave this empty</span>
@@ -75,7 +75,7 @@ const id = `signup-${source.replace(/[^a-z0-9]+/gi, '-')}`;
         ok = false;
       }
       if (ok) {
-        say('ok', 'You are on the list. Thank you.');
+        say('ok', 'Thanks. You will be notified about the 30-day reset.');
         form.querySelectorAll<HTMLInputElement>('input').forEach((input) => (input.disabled = true));
       } else {
         say('error', 'That did not go through. Please try again in a minute.');
