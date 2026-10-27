@@ -1,0 +1,28 @@
+---
+import type { RelatedItem } from '@utils/related';
+import '../../styles/growth.css';
+
+interface Props {
+  items: RelatedItem[];
+  heading?: string;
+}
+
+const { items, heading = 'Related reading' } = Astro.props;
+---
+
+{items.length > 0 ? (
+  <section class="cr-box cr-related" aria-labelledby="related-heading">
+    <p class="cr-kicker">Keep going</p>
+    <h2 id="related-heading">{heading}</h2>
+    <ul>
+      {items.map((item) => (
+        <li>
+          <a href={item.href}>
+            <span class="cr-item-title">{item.title}</span>
+            <span class="cr-item-meta">{item.kind === 'Lesson' ? `Lesson in ${item.groupTitle}` : 'Teaching'}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+) : null}

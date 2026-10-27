@@ -28,6 +28,7 @@ import SponsorFrame from "@components/sponsors/SponsorFrame.astro";
 import JoinNewsletter from "@components/promo/JoinNewsletter.astro";
 import { useTranslations } from "@utils/i18n";
 import { themeConfig } from '~/theme.config';
+import { snippet, absoluteUrl } from '@utils/seo';
 import type { CollectionKey } from "astro:content";
 
 interface Props {
@@ -64,20 +65,24 @@ interface Props {
   contentId?: string; // we need this (for things like events or integration_options) to identify whether pages are translated or not
   noContainer?: boolean; // if true, the content will not be wrapped in a container div (useful for full-width pages like the homepage)
   showHero?: boolean;
+  /** Public path of this page's cover, used as its share image (og:image / twitter:image). */
+  image?: { src: string; alt?: string; width?: number; height?: number };
+  ogType?: 'website' | 'article';
 }
 
 const locale = Astro.props.locale || themeConfig.i18n.defaultLocale;
 const t = useTranslations(locale);
 
 const title = Astro.props.title || t('meta.title');
-const description = Astro.props.description || t('meta.description');
+const description = snippet(Astro.props.description || t('meta.description'));
+const { image, ogType } = Astro.props;
 const { isError, noi18n, noTitleSlug, robots, isHome, schemaType, header, showFooterBanner, collection, contentId, noContainer, showHero } = Astro.props;
 const renderHero = showHero ?? Boolean(isHome);
 
 const ogTitle = themeConfig.ogTitle ?? themeConfig.name ?? t('meta.og-site-name');
 const metaTitle = noTitleSlug ? title : `${title} | ${themeConfig.name}`;
 
-const structuredDataImage = '/images/structured-preview.png'; // inside the public dir; 16:9, min 1920x1080px recommended
+const structuredDataImage = image?.src ?? '/images/structured-preview.png'; // inside the public dir; 16:9, min 1920x1080px recommended
 const type = schemaType || 'WebPage';
 const i18nStructured = themeConfig.i18n.translatedStructuredData ? themeConfig.i18n.translatedStructuredData[locale.toString()] : null;
 const author = {
@@ -101,7 +106,7 @@ const showTopBanner = (themeConfig.promotions?.topBanner && header?.showTopBanne
   <head>
     <HeadBase title={metaTitle} {description} {locale} {robots} {isError} />
     <HeadHrefLang {locale} {noi18n} {collection} {contentId} />
-    <HeadOgX {locale} title={metaTitle} {description} {ogTitle} />
+    <HeadOgX {locale} title={metaTitle} {description} {ogTitle} ogImage={image ? absoluteUrl(image.src) : undefined} xImage={image ? absoluteUrl(image.src) : undefined} imageAlt={image?.alt} imageWidth={image?.width} imageHeight={image?.height} type={ogType} />
     <!-- Structured Data -->
     {isHome ? <WebsiteStructuredData {title} image={structuredDataImage} {author} {publisher} {locale} /> : null}
     <WebPageStructuredData {type} {title} {description} image={structuredDataImage} {author} {publisher} {locale} />

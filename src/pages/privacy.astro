@@ -37,6 +37,10 @@ const description = `How ${themeConfig.name} handles the self-check, optional em
     </p>
     <h2>Newsletter</h2>
     <p>The join form asks for an email only. If you send it, we store that address in the same Cloudflare D1 database and add you as a contact in Plunk, marked subscribed. This form does not send the plan. To come off the list, the person who operates the site deletes that row and the Plunk contact. There is no account page for it yet.</p>
+    <h2>30-day reset list</h2>
+    <p>The 30-day reset list form asks for an email and, if you want, a first name. If you send it, we store the email, the name, the page you signed up on and the date in Cloudflare KV on the free tier, through a Pages Function. We do not store your IP address or browser, and the form sends no email and calls no other service. To come off the list, ask and the person who operates the site deletes your entry.</p>
+    <h2>Share buttons</h2>
+    <p>The share buttons are plain links to X, Facebook and WhatsApp, or your device's own share sheet. Nothing loads from those sites until you click one.</p>
     <h2>On your device</h2>
     <p>When you mark a lesson done, the browser stores that mark in localStorage on your device. Clearing site data removes it. We do not receive that list.</p>
     <h2>Partners</h2>

@@ -1,0 +1,87 @@
+---
+import '../../styles/growth.css';
+
+interface Props {
+  /** Where the form sits, stored with the signup (e.g. "track:30-day-reset" or "teaching:what-is-grace-2026"). */
+  source: string;
+  heading?: string;
+}
+
+const { source, heading = 'Get notified' } = Astro.props;
+// Set PUBLIC_RESET_SIGNUP=0 at build time to ship the form switched off.
+const enabled = import.meta.env.PUBLIC_RESET_SIGNUP !== '0';
+const id = `signup-${source.replace(/[^a-z0-9]+/gi, '-')}`;
+---
+
+<section class="cr-box cr-signup" aria-labelledby={`${id}-heading`}>
+  <p class="cr-kicker">Free 30-day reset</p>
+  <h2 id={`${id}-heading`}>{heading}</h2>
+  <p>Get notified about the 30-day reset. Your name is optional.</p>
+  <form data-reset-signup data-source={source} onsubmit="event.preventDefault()" novalidate>
+    <div class="cr-row">
+      <label>
+        <span>Name (optional)</span>
+        <input type="text" name="name" maxlength="80" autocomplete="given-name" disabled={!enabled} />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="you@example.com" required disabled={!enabled} />
+      </label>
+      <button type="submit" class="btn-primary" disabled={!enabled}>Get notified</button>
+    </div>
+    <label class="cr-hp" aria-hidden="true">
+      <span>Leave this empty</span>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" />
+    </label>
+    <p data-signup-status role="status" hidden={enabled}>{enabled ? '' : 'Signups open soon.'}</p>
+  </form>
+  <p class="cr-muted">We keep your email, and your name if you give one, only for this list. Nothing is sold or shared and there is no tracking. Ask and we delete it. <a href="/privacy">Privacy</a></p>
+</section>
+
+<script>
+  function mountResetSignup() {
+    if (document.documentElement.dataset.resetSignupMounted === '1') return;
+    document.documentElement.dataset.resetSignupMounted = '1';
+    document.addEventListener('submit', async (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement) || !form.hasAttribute('data-reset-signup')) return;
+      event.preventDefault();
+      const status = form.querySelector<HTMLElement>('[data-signup-status]');
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const data = new FormData(form);
+      const email = String(data.get('email') || '').trim();
+      const say = (state: 'ok' | 'error', text: string) => {
+        if (!status) return;
+        status.hidden = false;
+        status.dataset.state = state;
+        status.textContent = text;
+      };
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        say('error', 'Enter a valid email.');
+        return;
+      }
+      if (button) button.disabled = true;
+      let ok = false;
+      try {
+        const response = await fetch('/api/reset-signup', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email, name: String(data.get('name') || '').trim(), website: String(data.get('website') || ''), source: form.dataset.source || '' }),
+          signal: AbortSignal.timeout(8000),
+        });
+        const payload = (await response.json().catch(() => null)) as { ok?: boolean } | null;
+        ok = response.ok && payload?.ok === true;
+      } catch {
+        ok = false;
+      }
+      if (ok) {
+        say('ok', 'Thanks. You will be notified about the 30-day reset.');
+        form.querySelectorAll<HTMLInputElement>('input').forEach((input) => (input.disabled = true));
+      } else {
+        say('error', 'That did not go through. Please try again in a minute.');
+        if (button) button.disabled = false;
+      }
+    });
+  }
+  mountResetSignup();
+</script>
