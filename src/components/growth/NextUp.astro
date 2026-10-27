@@ -1,0 +1,34 @@
+---
+import '../../styles/growth.css';
+
+interface Props {
+  /** The next lesson in this track, if there is one. */
+  next?: { href: string; title: string; description: string };
+  /** When the track is finished: the track to start next. */
+  nextTrack?: { href: string; title: string; description: string; firstLessonHref?: string };
+  trackTitle: string;
+}
+
+const { next, nextTrack, trackTitle } = Astro.props;
+---
+
+{next ? (
+  <section class="cr-box cr-next" aria-labelledby="next-up-heading">
+    <p class="cr-kicker">Up next in {trackTitle}</p>
+    <h2 id="next-up-heading">{next.title}</h2>
+    <p>{next.description}</p>
+    <div class="cr-actions">
+      <a class="btn-primary" data-next-lesson href={next.href}>Read the next lesson</a>
+    </div>
+  </section>
+) : nextTrack ? (
+  <section class="cr-box cr-next" aria-labelledby="next-up-heading">
+    <p class="cr-kicker">You reached the end of {trackTitle}</p>
+    <h2 id="next-up-heading">Start another track: {nextTrack.title}</h2>
+    <p>{nextTrack.description}</p>
+    <div class="cr-actions">
+      <a class="btn-primary" data-next-lesson href={nextTrack.firstLessonHref ?? nextTrack.href}>{nextTrack.firstLessonHref ? 'Start lesson 1' : 'Open the track'}</a>
+      <a class="btn-secondary" href="/tracks">See all tracks</a>
+    </div>
+  </section>
+) : null}

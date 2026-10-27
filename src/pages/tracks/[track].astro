@@ -6,7 +6,8 @@ import { themeConfig } from '~/theme.config';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import SupportLine from '@components/course/SupportLine.astro';
 import Checklist from '@components/course/Checklist.astro';
-import { publicImageExists } from '@utils/public-image';
+import { publicImageExists, shareImage } from '@utils/public-image';
+import ResetSignup from '@components/growth/ResetSignup.astro';
 import { getTracks, lessonsForTrack, lessonPath, trackPath, type TrackEntry } from '@utils/course';
 
 export async function getStaticPaths() {
@@ -31,7 +32,12 @@ const cover = track.data.cover && publicImageExists(track.data.cover.src) ? trac
 const pageUrl = new URL(trackPath(track.id), themeConfig.site).toString();
 
 const title = track.data.title;
-const description = track.data.description;
+// Short track blurbs make thin snippets. Add the lesson count and the first lesson for search.
+const description =
+  track.data.description.length < 110 && lessons.length > 0
+    ? `${track.data.description} A free Christian course in ${lessons.length} short ${lessons.length === 1 ? 'lesson' : 'lessons'}, starting with "${lessons[0].data.title}".`
+    : track.data.description;
+const ogImage = await shareImage(cover);
 
 const courseLd = {
   '@context': 'https://schema.org',
@@ -69,7 +75,7 @@ const breadcrumbs = {
 };
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={ogImage}>
   <JsonLd data={courseLd} />
   <JsonLd data={breadcrumbs} />
   <nav aria-label="Breadcrumb" class="page-crumb">
@@ -128,6 +134,8 @@ const breadcrumbs = {
       />
     </div>
   ) : null}
+
+  {mapPage ? <ResetSignup source="track:30-day-reset" /> : null}
 
   {lessons.length > 0 ? (
     <section class="page-stack" aria-labelledby="lesson-list-heading">

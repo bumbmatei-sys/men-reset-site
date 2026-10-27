@@ -13,4 +13,11 @@
       "migrations_dir": "migrations",
     },
   ],
+  // 30-day reset list signups (functions/api/reset-signup.ts). Free-tier KV namespace "calltoreset-reset-signups".
+  "kv_namespaces": [
+    {
+      "binding": "SIGNUPS",
+      "id": "ee5a1a62bcef45f99af6871cacae1098",
+    },
+  ],
 }

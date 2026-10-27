@@ -8,7 +8,11 @@ import MarbleAccent from '@components/course/MarbleAccent.astro';
 import PlanEmailForm from '@components/course/PlanEmailForm.astro';
 import SupportLine from '@components/course/SupportLine.astro';
 import Checklist from '@components/course/Checklist.astro';
-import { publicImageExists } from '@utils/public-image';
+import { publicImageExists, shareImage } from '@utils/public-image';
+import RelatedReading from '@components/growth/RelatedReading.astro';
+import NextUp from '@components/growth/NextUp.astro';
+import ShareBar from '@components/growth/ShareBar.astro';
+import { relatedFor } from '@utils/related';
 import { getTracks, isPlanPhase, lessonsForTrack, lessonPath, planPhaseLessons, trackPath, type LessonEntry } from '@utils/course';
 
 const PLAN_BUTTON = 'Send me the PDF';
@@ -86,6 +90,33 @@ const lessonIds = siblings.map((item) => item.id).join(',');
 const crumbTrackHref = planPhase ? '/tracks/30-day-reset' : trackPath(lesson.data.track);
 const crumbTrackTitle = planPhase ? 'Free 30-Day Reset' : trackTitle;
 
+// Share image: the lesson cover, else the track cover.
+const allTracks = await getTracks();
+const ownTrack = allTracks.find((item) => item.id === (planPhase ? '30-day-reset' : lesson.data.track));
+const ogImage = (await shareImage(heroImage)) ?? (await shareImage(ownTrack?.data.cover));
+
+// End of a track: suggest the next open track (by order), wrapping round, never the current one.
+let nextTrack: { href: string; title: string; description: string; firstLessonHref?: string } | undefined;
+if (!next) {
+  const currentTrackId = planPhase ? 'break-free' : lesson.data.track;
+  const open = allTracks.filter((item) => item.data.status === 'available' && item.id !== currentTrackId && item.id !== 'teachings' && item.id !== '30-day-reset');
+  const currentOrder = allTracks.find((item) => item.id === currentTrackId)?.data.order ?? 0;
+  const ordered = [...open.filter((item) => item.data.order > currentOrder), ...open.filter((item) => item.data.order <= currentOrder)];
+  for (const candidate of ordered) {
+    const first = (await lessonsForTrack(candidate.id))[0];
+    if (!first) continue;
+    nextTrack = { href: trackPath(candidate.id), title: candidate.data.title, description: candidate.data.description, firstLessonHref: lessonPath(candidate.id, first.id) };
+    break;
+  }
+}
+const nextUp = next ? { href: lessonPath(lesson.data.track, next.id), title: next.data.title, description: next.data.description } : undefined;
+const related = await relatedFor({
+  href: lessonPath(lesson.data.track, lesson.id),
+  group: lesson.data.track,
+  text: [lesson.data.title, lesson.data.description, lesson.data.targetQuery, ...lesson.data.keyPoints].join(' '),
+  exclude: nextUp ? [nextUp.href] : [],
+});
+
 const articleLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -112,7 +143,7 @@ const breadcrumbs = {
 };
 ---
 
-<Layout title={lesson.data.title} description={pageDescription}>
+<Layout title={lesson.data.title} description={pageDescription} image={ogImage} ogType="article">
   <JsonLd data={articleLd} />
   <JsonLd data={breadcrumbs} />
   <article>
@@ -250,11 +281,16 @@ const breadcrumbs = {
       </section>
     )}
 
+    <ShareBar url={pageUrl} title={lesson.data.title} />
+
     {phaseCopy ? (
       <PlanEmailForm heading={phaseCopy.heading} buttonLabel={PLAN_BUTTON} successMessage={PLAN_SUCCESS}>
         <p>{phaseCopy.closing ?? phaseCopy.teaser}</p>
       </PlanEmailForm>
     ) : null}
+
+    <NextUp next={nextUp} nextTrack={nextTrack} trackTitle={crumbTrackTitle} />
+    <RelatedReading items={related} />
 
     <nav class="mt-10 flex flex-col gap-3 border-t border-stone-300/70 pt-6 sm:flex-row sm:justify-between" aria-label="Lesson">
       {previous ? (

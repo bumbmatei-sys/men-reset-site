@@ -1,0 +1,65 @@
+---
+import { Icon } from 'astro-icon/components';
+import '../../styles/growth.css';
+
+interface Props {
+  url: string;
+  title: string;
+}
+
+const { url, title } = Astro.props;
+const u = encodeURIComponent(url);
+const text = encodeURIComponent(title);
+---
+
+<div class="cr-share" data-share data-share-url={url} data-share-title={title}>
+  <span class="cr-share-label">Share</span>
+  <button type="button" data-share-native>
+    <Icon name="heroicons:share" aria-hidden="true" />
+    <span data-share-native-label>Copy link</span>
+  </button>
+  <a href={`https://x.com/intent/post?url=${u}&text=${text}`} target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+    <Icon name="fa7-brands:x-twitter" aria-hidden="true" /> X
+  </a>
+  <a href={`https://www.facebook.com/sharer/sharer.php?u=${u}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+    <Icon name="fa7-brands:facebook-f" aria-hidden="true" /> Facebook
+  </a>
+  <a href={`https://api.whatsapp.com/send?text=${text}%20${u}`} target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+    <Icon name="fa7-brands:whatsapp" aria-hidden="true" /> WhatsApp
+  </a>
+  <span class="cr-share-status" data-share-status role="status"></span>
+</div>
+
+<script>
+  function mountShare() {
+    document.querySelectorAll<HTMLElement>('[data-share]').forEach((root) => {
+      if (root.dataset.shareMounted === '1') return;
+      root.dataset.shareMounted = '1';
+      const button = root.querySelector<HTMLButtonElement>('[data-share-native]');
+      const label = root.querySelector<HTMLElement>('[data-share-native-label]');
+      const status = root.querySelector<HTMLElement>('[data-share-status]');
+      const url = root.dataset.shareUrl || location.href;
+      const title = root.dataset.shareTitle || document.title;
+      const canShare = typeof navigator.share === 'function';
+      if (canShare && label) label.textContent = 'Share';
+      button?.addEventListener('click', async () => {
+        if (canShare) {
+          try {
+            await navigator.share({ title, url });
+            return;
+          } catch (error) {
+            if (error instanceof DOMException && error.name === 'AbortError') return;
+          }
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          if (status) status.textContent = 'Link copied.';
+        } catch {
+          window.prompt('Copy this link:', url);
+        }
+      });
+    });
+  }
+  mountShare();
+  document.addEventListener('astro:page-load', mountShare);
+</script>

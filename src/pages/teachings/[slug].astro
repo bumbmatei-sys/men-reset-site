@@ -6,6 +6,11 @@ import { themeConfig } from '~/theme.config';
 import { getTeachings, teachingPath, toCard, isBlogPreview, formatDate, type TeachingEntry } from '@utils/teachings';
 import MarbleAccent from '@components/course/MarbleAccent.astro';
 import SupportLine from '@components/course/SupportLine.astro';
+import RelatedReading from '@components/growth/RelatedReading.astro';
+import ShareBar from '@components/growth/ShareBar.astro';
+import ResetSignup from '@components/growth/ResetSignup.astro';
+import { relatedFor } from '@utils/related';
+import { shareImage } from '@utils/public-image';
 import '../../styles/teachings.css';
 
 export async function getStaticPaths() {
@@ -49,9 +54,14 @@ const breadcrumbs = {
   ],
 };
 const toc = headings.filter((h) => h.depth === 2);
+const ogImage = await shareImage(d.image);
+const related = await relatedFor({ href: teachingPath(entry), group: 'teachings', text: [d.title, d.description, ...d.takeaways].join(' ') });
+// "More teachings" below lists other teachings; skip the ones already in Related.
+const relatedHrefs = new Set(related.map((r) => r.href));
+more = all.filter((e) => e.id !== entry.id).map(toCard).filter((c) => !relatedHrefs.has(c.href)).slice(0, 3);
 ---
 
-<Layout title={d.title} description={d.description} robots={d.draft ? 'noindex, nofollow' : undefined}>
+<Layout title={d.title} description={d.description} robots={d.draft ? 'noindex, nofollow' : undefined} image={ogImage} ogType="article">
   <JsonLd data={articleLd} />
   {faqLd ? <JsonLd data={faqLd} /> : null}
   <JsonLd data={breadcrumbs} />
@@ -100,6 +110,10 @@ const toc = headings.filter((h) => h.depth === 2);
           ))}
         </section>
       ) : null}
+
+      <ShareBar url={pageUrl} title={d.title} />
+      <RelatedReading items={related} />
+      <ResetSignup source={`teaching:${d.slug}`} />
 
       <section class="tch-cta" aria-labelledby="cta-heading">
         <p class="tch-kicker">Start here</p>
