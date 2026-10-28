@@ -157,12 +157,22 @@ const lessons = defineCollection({
     scripture: z.object({
       reference: z.string(),
       text: z.string(),
+      // Translation label shown after the reference. Defaults to KJV.
+      version: z.string().optional(),
     }),
     action: z.string(),
     // Optional checklist for the action step. The steps must be the action text split up, word for word, so no new wording sneaks in.
     actionSteps: z.array(z.string()).min(2).max(6).optional(),
     reflection: z.string(),
     image: z.object({ src: z.string(), alt: z.string() }).optional(),
+    // Optional search title for the <title> tag. The page heading stays `title`.
+    seoTitle: z.string().optional(),
+    // Optional day tracker shown under the action step (reuses the Checklist component).
+    tracker: z.object({
+      title: z.string(),
+      note: z.string().optional(),
+      items: z.array(z.string()).min(2).max(31),
+    }).optional(),
   }).refine((data) => !data.actionSteps || data.actionSteps.join(' ') === data.action, {
     message: 'actionSteps joined with single spaces must equal action exactly.',
     path: ['actionSteps'],
