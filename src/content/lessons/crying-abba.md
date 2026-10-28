@@ -14,6 +14,7 @@ keyPoints:
   - Your heavenly Father is not a bigger version of your earthly dad. Jesus shows you what He is really like.
 scripture:
   reference: Romans 8:15
+  version: NKJV
   text: "For you did not receive the spirit of bondage again to fear, but you received the Spirit of adoption by whom we cry out, \"Abba, Father.\""
 action: For the rest of this week, each time you feel fear, shame or pressure, stop and pray, "Abba, come and be my heavenly Father in this moment." Then write one line about what changed, even if it was small.
 actionSteps:

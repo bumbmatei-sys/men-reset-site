@@ -249,7 +249,7 @@ const breadcrumbs = {
           <p>{lesson.data.scripture.text}</p>
           <footer>
             {lesson.data.scripture.reference}
-            {planPhase ? '' : ' (KJV)'}
+            {planPhase ? '' : ` (${lesson.data.scripture.version ?? 'KJV'})`}
           </footer>
         </blockquote>
       </section>

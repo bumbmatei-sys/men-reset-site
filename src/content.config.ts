@@ -157,6 +157,8 @@ const lessons = defineCollection({
     scripture: z.object({
       reference: z.string(),
       text: z.string(),
+      // Translation label shown after the reference. Defaults to KJV.
+      version: z.string().optional(),
     }),
     action: z.string(),
     // Optional checklist for the action step. The steps must be the action text split up, word for word, so no new wording sneaks in.
