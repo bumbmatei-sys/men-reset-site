@@ -143,7 +143,7 @@ const breadcrumbs = {
 };
 ---
 
-<Layout title={lesson.data.title} description={pageDescription} image={ogImage} ogType="article">
+<Layout title={lesson.data.seoTitle ?? lesson.data.title} description={pageDescription} image={ogImage} ogType="article">
   <JsonLd data={articleLd} />
   <JsonLd data={breadcrumbs} />
   <article>
@@ -271,6 +271,16 @@ const breadcrumbs = {
         ) : (
           <p>{lesson.data.action}</p>
         )}
+        {lesson.data.tracker ? (
+          <Checklist
+            id="lesson-tracker"
+            title={lesson.data.tracker.title}
+            headingLevel={3}
+            note={lesson.data.tracker.note}
+            countNoun="days done"
+            items={lesson.data.tracker.items}
+          />
+        ) : null}
       </section>
     )}
 
