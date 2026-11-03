@@ -7,10 +7,10 @@ updatedDate: 2026-11-03
 author: Matei Bumb
 image:
   src: /images/teachings/christian-morning-routine-men.webp
-  alt: 'A man reading a book at a long white marble table inside a sunlit marble castle hall, tall arched windows glowing with golden sunrise light'
+  alt: 'Marble statue of a man seated at a long white marble table reading an open book, inside a marble castle hall with gold veining and tall arched windows glowing with golden sunrise light'
 cardImage:
   src: /images/teachings/christian-morning-routine-men-card.webp
-  alt: 'A man reading at a white marble table under arched windows in golden morning light'
+  alt: 'Close view of a marble statue of a man reading an open book at a white marble table in golden morning light'
 readingTime: 9
 category: Take initiative
 draft: false
