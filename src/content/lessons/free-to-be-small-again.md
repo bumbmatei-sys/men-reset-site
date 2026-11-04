@@ -34,7 +34,7 @@ tracker:
 reflection: Where are you still trying to be strong on your own instead of leaning on your heavenly Father?
 image:
   src: /images/lessons/know-who-you-are-04.webp
-  alt: "Marble statue of a seated father with a young son resting at his side in a gold-veined white marble palace hall, lit by warm golden light through a tall arched window"
+  alt: "White marble statue of a kneeling father embracing his young son, holding him close, in a white marble palace hall with gold veining in the floor, lit by golden light through a tall window"
 ---
 
 In the world, growing up means needing people less. You move out, pay your own bills and handle things yourself. Independence is the goal.
