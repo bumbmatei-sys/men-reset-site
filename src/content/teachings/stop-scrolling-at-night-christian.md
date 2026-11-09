@@ -7,10 +7,10 @@ updatedDate: 2026-11-09
 author: Matei Bumb
 image:
   src: /images/teachings/stop-scrolling-at-night.webp
-  alt: 'A white marble statue of a man seated in thought between tall marble columns on a balcony, with a golden-hour sky behind him'
+  alt: 'A gold-veined marble statue of a man placing a phone down on a bedside table beside a bed, with twilight in the window'
 cardImage:
   src: /images/teachings/stop-scrolling-at-night-card.webp
-  alt: 'A marble statue of a man resting between marble columns in golden-hour light'
+  alt: 'A gold-veined marble statue placing a phone down beside a bed at twilight'
 readingTime: 9
 category: Take initiative
 draft: false
