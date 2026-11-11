@@ -138,7 +138,7 @@ Short, honest prayers count. A boy who calls "Dad" does not give a speech.
 
 ## Coming up next
 
-In the next lesson, "Working From Rest", we will see that you do not work for your heavenly Father's approval. You work from it.
+In the next lesson, ["Working From Rest"](/tracks/know-who-you-are/working-from-rest), we will see that you do not work for your heavenly Father's approval. You work from it.
 
 ## Do this today
 
