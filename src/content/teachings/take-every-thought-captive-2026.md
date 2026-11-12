@@ -3,7 +3,7 @@ title: "Best Way to Stop Bad Thoughts as a Christian (Take Every Thought Captive
 description: 'What 2 Corinthians 10:5 really means, how to tell a lie from the Holy Spirit, and a simple four step way to take every thought captive when fear, shame or temptation shows up.'
 slug: take-every-thought-captive-2026
 publishDate: 2026-10-18
-updatedDate: 2026-10-18
+updatedDate: 2026-11-12
 author: Matei Bumb
 image:
   src: /images/teachings/take-every-thought-captive.webp
@@ -78,7 +78,7 @@ A helpful way to see it: every thought comes with a coating. Some thoughts are c
 | Leaves you hopeless | Leaves you with a next step |
 | Keeps replaying after you repent | Ends when you repent |
 
-If a thought makes you want to run from God, it did not come from God. The Spirit convicts to bring you home, never to push you out. If this is a big fight for you, read [shame vs guilt](/teachings/shame-vs-guilt-jesus-2026).
+If a thought makes you want to run from God, it did not come from God. The Spirit convicts to bring you home, never to push you out. If this is a big fight for you, read [shame vs guilt](/teachings/shame-vs-guilt-jesus-2026). If the thoughts you fight are lustful, keep the pocket card from [Bible Verses for Lust](/teachings/bible-verses-for-lust) close.
 
 ## How do you take a thought captive, step by step?
 
