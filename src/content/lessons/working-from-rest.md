@@ -173,7 +173,7 @@ That is not permission to keep falling. It is the ground you stand on while you 
 
 ## Coming up next
 
-In the next lesson we look at "I Am, I Have, I Do": who you are in Christ, what you have in Him, and what you can do because of it.
+In the next lesson, ["I Am, I Have, I Do"](/tracks/know-who-you-are/i-am-i-have-i-do), we look at who you are in Christ, what you have in Him, and what you can do because of it.
 
 ## Do this today
 
