@@ -5,7 +5,7 @@ description: "Does loneliness ever go away? Often slowly, and not in a straight 
 track: a-less-lonely-life
 order: 6
 targetQuery: does loneliness ever go away
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Loneliness usually fades slowly and not in a straight line. A lonely week does not mean the plan failed.
   - Even Paul had days when everyone left. The Lord stood with him, and He stands with you.
@@ -109,7 +109,7 @@ This is the last lesson of A Less Lonely Life. If you want to go deeper into who
 
 On a day you still feel alone, do three things. Tell your heavenly Father the truth in one sentence, read 2 Timothy 4:17 out loud, and send one message to one person from this course. Then keep your next step, the group, the table, or the call, even if you do not feel like it.
 
-If you feel so low that you think about ending your life, call or text **988** right away, any time. If the loneliness has turned into a heavy low that will not lift for weeks, see a doctor or a counselor, and tell your pastor. That is not a lack of faith. It is wisdom.
+If you feel so low that you think about ending your life, tell someone and get help right away. If the loneliness has turned into a heavy low that will not lift for weeks, see a doctor or a counselor, and tell your pastor. That is not a lack of faith. It is wisdom.
 
 Want to talk to a real person on our team? Go to [Support](/support). Not sure where you stand? [Take the free check](/check).
 

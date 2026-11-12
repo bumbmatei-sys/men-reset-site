@@ -5,7 +5,7 @@ description: "Why do you feel lonely at church, and how do you get involved? Mov
 track: a-less-lonely-life
 order: 4
 targetQuery: how to get involved at church
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - You can sit in church for years and still feel alone. Attending and belonging are not the same thing.
   - The early church did four things together, and only one of them happened in a big room.

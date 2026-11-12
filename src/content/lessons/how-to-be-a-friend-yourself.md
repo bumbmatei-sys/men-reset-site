@@ -5,7 +5,7 @@ description: "What is a true Christian friend, and how do you become one? Show u
 track: a-less-lonely-life
 order: 3
 targetQuery: how to be a good friend
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The fastest way to have a friend is to be one. Jesus called His disciples friends and then laid down His life for them.
   - Show up, especially in the hard weeks. Presence says more than the right words.
@@ -72,7 +72,7 @@ If he tells you something private, it stays with you. Not with your wife "just s
 
 "A talebearer reveals secrets, But he who is of a faithful spirit conceals a matter" (Proverbs 11:13). A man who repeats one secret will not be trusted with a second.
 
-There is one exception. If he tells you he plans to hurt himself or someone else, or that a child is being harmed, you do not keep that quiet. You get help right away, and you call or text 988 or 911 if it is urgent. Love sometimes means telling him you cannot keep this one.
+There is one exception. If he tells you he plans to hurt himself or someone else, or that a child is being harmed, you do not keep that quiet. You get help right away, and you get emergency help if it is urgent. Love sometimes means telling him you cannot keep this one.
 
 ## Say the good you see
 

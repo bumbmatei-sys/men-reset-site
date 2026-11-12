@@ -5,7 +5,7 @@ description: "How do you practice Christian hospitality when you are not a host 
 track: a-less-lonely-life
 order: 5
 targetQuery: how to practice christian hospitality
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - One regular meal, coffee, or walk, at the same time every week, does more than a dozen one-time plans.
   - Christian hospitality is not about a nice house. It is about an open door and a simple meal.

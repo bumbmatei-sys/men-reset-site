@@ -5,7 +5,7 @@ description: "How do you find Christian friends as a man? Start with one. Where 
 track: a-less-lonely-life
 order: 2
 targetQuery: how to find christian friends
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Aim for one friend, not a crowd. One faithful friend changes more than a hundred contacts.
   - Look where you will see the same men again and again. Friendship grows from repeated time.
@@ -123,7 +123,7 @@ Finding a friend is half of it. The other half is being one. Next we look at wha
 
 Fill in your first-step plan. Pick one place where you will see the same men every week, and write down one man you have already noticed. This week, make one specific invitation, out loud or by text, with a day and a time in it.
 
-If you are in a very low place right now, do not wait for a friendship to form. Call or text **988** any time, and tell your pastor this week.
+If you are in a very low place right now, do not wait for a friendship to form. Tell someone today and get help, and tell your pastor this week.
 
 Want to talk to a real person on our team? Go to [Support](/support). Not sure where you stand? [Take the free check](/check).
 

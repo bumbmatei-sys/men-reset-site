@@ -5,7 +5,7 @@ description: "Is loneliness a punishment from God? No. He called being alone not
 track: a-less-lonely-life
 order: 1
 targetQuery: is loneliness a punishment from god
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Loneliness is not a punishment from God. He said being alone was not good before sin ever entered the world.
   - Naming it honestly is the first step. Saying "I am fine" keeps you where you are.
@@ -115,7 +115,7 @@ Next we take the first real step toward people: not a crowd, just one friend. Wh
 
 Fill in the "Where I stand today" table honestly. Then tell your heavenly Father in one plain sentence, "Father, I feel alone," and read Galatians 4:6-7 out loud. Each day this week, notice when the feeling comes and bring it to Him in that moment.
 
-If loneliness ever turns into thoughts of ending your life, call or text **988** right away, any time. If the low lasts for weeks, see a doctor or a counselor, and tell your pastor. You are worth helping.
+If loneliness ever turns into thoughts of ending your life, tell someone and get help right away. If the low lasts for weeks, see a doctor or a counselor, and tell your pastor. You are worth helping.
 
 Want to talk to a real person on our team? Go to [Support](/support). Not sure where you stand? [Take the free check](/check).
 
