@@ -5,7 +5,7 @@ description: "How do you control anger at home when you grew up with it? Many me
 track: breaking-the-family-pattern
 order: 4
 targetQuery: how to control anger at home
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Under stress, most men fall back on one of three old moves they learned at home. Blowing up, shutting down, or walking out.
   - Anger itself is not sin. What you do with it is. "Be angry, and do not sin" (Ephesians 4:26).
@@ -100,11 +100,11 @@ Read it once in the morning for a week. You are training your reflex while you a
 
 This lesson is for ordinary hard moments. Some things are not ordinary.
 
-If your anger has ever turned into hitting, pushing, breaking things near someone, threatening, or making anyone at home afraid of you, get help today, not after the course. Talk to your pastor and a licensed counselor. The **National Domestic Violence Hotline** (**1-800-799-7233**, or text START to 88788) also talks with people who are worried about their own behavior. If anyone is in immediate danger, call **911**.
+If your anger has ever turned into hitting, pushing, breaking things near someone, threatening, or making anyone at home afraid of you, get help today, not after the course. Talk to your pastor and a licensed counselor, and do not ask anyone to keep it quiet. If anyone is in immediate danger, get emergency help.
 
-If you are the one who is not safe at home, the same hotline is for you too.
+If you are the one who is not safe at home, the same is true for you. Tell someone you trust and get help today.
 
-If you feel very low, hopeless, or unsafe with yourself after a hard moment, call or text **988** any time.
+If you feel very low, hopeless, or unsafe with yourself after a hard moment, tell someone and get help right away.
 
 Getting help is not a failure of faith. It is what a man does to protect the people he loves.
 

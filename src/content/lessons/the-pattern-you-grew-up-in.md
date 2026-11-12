@@ -5,7 +5,7 @@ description: "What are generational patterns, and what does the Bible say about 
 track: breaking-the-family-pattern
 order: 1
 targetQuery: what are generational patterns
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A generational pattern is a way of living that gets handed down, often without anyone choosing it. Addiction, anger, or absence can become the air of a house.
   - Naming the pattern is not blaming your parents. It is telling the truth so you can choose differently.
@@ -113,7 +113,7 @@ No. A pattern is learned, and what is learned can be unlearned with God's help a
 
 ## When to get more help
 
-Some memories are heavy. If looking back brings up more than you can carry, talk to your pastor and a licensed Christian counselor. That is wisdom, not weak faith. If alcohol or drugs are part of your own life now, talk to your doctor, or call the free SAMHSA National Helpline at **1-800-662-4357**. And if you ever feel very low or unsafe, call or text **988**, any time.
+Some memories are heavy. If looking back brings up more than you can carry, talk to your pastor and a licensed Christian counselor. That is wisdom, not weak faith. If alcohol or drugs are part of your own life now, talk to your doctor and get help. And if you ever feel very low or unsafe, tell someone and get help right away.
 
 ## Coming up next
 

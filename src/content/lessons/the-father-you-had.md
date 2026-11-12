@@ -5,7 +5,7 @@ description: "What is the father wound, and how does it show up in men? A pastor
 track: breaking-the-family-pattern
 order: 3
 targetQuery: how to heal the father wound
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The father wound is the gap between what a boy needed from his father and what he got. It can come from absence, harshness, or a father who was there but never close.
   - It often shows up in men as striving to prove yourself, anger, shutting down, or keeping everyone at a distance.
@@ -117,7 +117,7 @@ There is no single answer. Pray, talk to your pastor or a counselor, and think a
 | To be shown how to be a man | | John 14:9 |
 | One thing I still need | | |
 
-If going back over your father brings you to a very low or unsafe place, stop and get help. Call or text **988** any time, and tell your pastor or a trusted friend today.
+If going back over your father brings you to a very low or unsafe place, stop and get help. Tell your pastor or a trusted friend today.
 
 ## Coming up next
 

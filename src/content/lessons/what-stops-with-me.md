@@ -5,7 +5,7 @@ description: "How do you break generational curses as a Christian? Not with fear
 track: breaking-the-family-pattern
 order: 2
 targetQuery: how to break generational curses
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Breaking a family pattern is a decision you make before God, not a speech you make to your family.
   - Ezekiel 18 describes a son who sees his father's sins and does not do likewise. That son can be you.

@@ -5,7 +5,7 @@ description: "You will slip back into the old family pattern some days. How long
 track: breaking-the-family-pattern
 order: 6
 targetQuery: how long does it take to break a cycle
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - You will slip back into the old way some days. A slip is not proof that nothing has changed.
   - Repair the same day. Own it, say sorry without excuses, and make it right where you can.
@@ -84,7 +84,7 @@ You may never have heard a father apologize. That is exactly why this matters. A
 
 Repair with her too, the same way. Own it, no excuses, no pressure on her to be fine right away. Her forgiveness is her choice and her timing. Give her room.
 
-If what happened was more than a sharp word, if anyone was hurt, threatened, or afraid of you, a sorry is not enough by itself. Get help today. Call the **National Domestic Violence Hotline** at **1-800-799-7233** (or text START to 88788), talk to your pastor, and see a licensed counselor. If anyone is in danger, call **911**.
+If what happened was more than a sharp word, if anyone was hurt, threatened, or afraid of you, a sorry is not enough by itself. Get help today. Talk to your pastor, see a licensed counselor, and do not ask anyone to keep it quiet. If anyone is in danger, get emergency help.
 
 ## When to get more help
 
@@ -94,7 +94,7 @@ Slips are normal. A pattern that keeps getting worse is not. Get help if:
 - Alcohol, drugs, or another addiction is part of it.
 - You feel hopeless, or you are thinking about hurting yourself.
 
-Talk to your doctor and a licensed Christian counselor. That is wisdom, not weak faith. If you feel very low or unsafe, call or text **988** any time. And keep one trusted man close. If you do not have one, read [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner).
+Talk to your doctor and a licensed Christian counselor. That is wisdom, not weak faith. If you feel very low or unsafe, tell someone and get help right away. And keep one trusted man close. If you do not have one, read [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner).
 
 Coming back to God after a slip is the same as coming back after any sin. "If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness" (1 John 1:9). His mercies "are new every morning; Great is Your faithfulness" (Lamentations 3:23). If you are wondering whether He still wants you, read [Does God Still Love Me After Porn?](/teachings/does-god-still-love-me-after-porn). The answer it gives is true for every slip.
 

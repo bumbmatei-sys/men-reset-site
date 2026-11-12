@@ -5,7 +5,7 @@ description: "What does a Christian home look like when you never saw one growin
 track: breaking-the-family-pattern
 order: 5
 targetQuery: how to build a christian home
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A different home is built from small things done daily, not from one big change.
   - Presence first. Put the phone away and be in the room with the people you love.
