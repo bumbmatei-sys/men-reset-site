@@ -5,7 +5,7 @@ description: "What is the root of anger? Often it is fear, shame, pride, exhaust
 track: anger-that-doesnt-destroy
 order: 5
 targetQuery: what is the root of anger
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - God asked Cain, "Why are you angry?" (Genesis 4:6). He was inviting him to look underneath before sin was at the door.
   - Anger is often a cover for something harder to feel. Fear, shame, hurt, pride, exhaustion, or feeling unheard.

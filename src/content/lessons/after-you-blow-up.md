@@ -5,7 +5,7 @@ description: "How do you apologize for an anger outburst? Repair the same day. N
 track: anger-that-doesnt-destroy
 order: 4
 targetQuery: how to apologize for anger outburst
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Repair the same day if you can. Calm down first, then go back. Do not let the sun go down on it.
   - Name exactly what you did. "I shouted at you and called you careless." Not "I'm sorry if you were upset."

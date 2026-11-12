@@ -5,7 +5,7 @@ description: "How do you control anger in the moment? Step away without disappea
 track: anger-that-doesnt-destroy
 order: 3
 targetQuery: how to control anger in the moment
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - In the moment your only job is to not make it worse. Solving the problem comes later.
   - Step away with a sentence, not a slammed door. Say how long you will be gone, and come back when you said.

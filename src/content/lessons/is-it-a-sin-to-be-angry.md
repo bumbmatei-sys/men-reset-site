@@ -5,7 +5,7 @@ description: "Is it a sin to be angry? The Bible says, \"Be angry, and do not si
 track: anger-that-doesnt-destroy
 order: 1
 targetQuery: is it a sin to be angry
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Feeling angry is not a sin by itself. Jesus was angry, and the Bible says, "Be angry, and do not sin" (Ephesians 4:26).
   - Anger turns into sin through what it does. Harsh words, threats, contempt, cold punishment, and grudges kept overnight.

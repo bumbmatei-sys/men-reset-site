@@ -5,7 +5,7 @@ description: "How do you control anger at home? Learn the early signs in your bo
 track: anger-that-doesnt-destroy
 order: 2
 targetQuery: how to control anger at home
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Anger rarely comes from nowhere. It rises in steps, and your body usually knows before your mouth does.
   - Learn your early signs. A tight jaw, a hot face, a raised voice, a sharp first word, a need to win.

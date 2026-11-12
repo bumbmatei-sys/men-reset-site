@@ -5,7 +5,7 @@ description: "Can you control anger permanently? Not with a switch, but with a l
 track: anger-that-doesnt-destroy
 order: 6
 targetQuery: how to control anger permanently
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - There is no switch that removes anger for good. There is a long, steady practice, and the Holy Spirit doing real work in you.
   - Self-control is a fruit of the Spirit. It is self under the Spirit's control, not self gritting its teeth.
