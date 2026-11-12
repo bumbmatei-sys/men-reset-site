@@ -5,7 +5,7 @@ description: "How do you limit gaming time when one more game always wins? Pick 
 track: quit-gaming-and-the-phone
 order: 2
 targetQuery: how to limit gaming time
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A hard stop is a clock time, like 9:45 p.m. Not "after this match" and not "when I feel tired."
   - Decide the stop before you start. The person who sits down at 8 p.m. is wiser than the one still playing at 11.

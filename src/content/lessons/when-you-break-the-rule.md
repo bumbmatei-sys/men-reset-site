@@ -5,7 +5,7 @@ description: "How do you quit gaming for good when you keep going past your stop
 track: quit-gaming-and-the-phone
 order: 6
 targetQuery: how to quit gaming for good
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Breaking your stop once does not undo the course. Giving up after it does.
   - Come back the same hour. Close it, stand up, and do your one thing, even if it is 1 a.m.

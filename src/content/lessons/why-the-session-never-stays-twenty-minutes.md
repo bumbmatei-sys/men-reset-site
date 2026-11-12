@@ -5,7 +5,7 @@ description: "Can't stop playing video games once you start? A short session tur
 track: quit-gaming-and-the-phone
 order: 1
 targetQuery: can't stop playing video games
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A game or a feed is built so there is always a next thing. If you have no end decided, the night ends when you are too tired to go on.
   - The hours do not come from nowhere. They come out of sleep, work and the people in the house.

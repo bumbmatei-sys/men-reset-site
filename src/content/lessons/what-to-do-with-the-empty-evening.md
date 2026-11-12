@@ -5,7 +5,7 @@ description: "What do you do instead of gaming once the game stops on time? Name
 track: quit-gaming-and-the-phone
 order: 5
 targetQuery: what to do instead of gaming
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - When the game and the phone stop taking the evening, there is a hole. If you do not fill it on purpose, the old habit fills it for you.
   - Ask what the game was really giving you. Rest, company, a sense of progress, or a break from your thoughts.

@@ -5,7 +5,7 @@ description: "How do you stop using your phone at night when willpower is gone b
 track: quit-gaming-and-the-phone
 order: 4
 targetQuery: how to stop using phone at night
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The version of you at 11 p.m. is tired. Do not leave the decision to him. Set the phone up during the day.
   - Take the games off the phone, or at least off the home screen. If the phone is your console, the bedroom becomes the game room.

@@ -5,7 +5,7 @@ description: "How do you stop playing video games when the pull comes right back
 track: quit-gaming-and-the-phone
 order: 3
 targetQuery: how to stop playing video games
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Closing the game is not the end of the fight. The next ten minutes are where most people slide back in or pick up the phone.
   - Leave the room where you play. Distance does more than willpower.
