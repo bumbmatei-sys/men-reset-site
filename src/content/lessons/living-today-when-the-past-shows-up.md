@@ -5,7 +5,7 @@ description: "How do you live with trauma when the past keeps showing up? Hope w
 track: overcoming-trauma
 order: 6
 targetQuery: how to live with trauma
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - You do not have to be over it to live well today. Healing and hard days can exist side by side.
   - Live one day at a time. Tomorrow's trouble is not yours to carry this morning.
@@ -103,7 +103,7 @@ Some days will still be hard. On those days, go back to the tools from this cour
 - Remember the distinctions table from lesson 4 if anger or pressure to forgive is rising.
 - Reach out to someone on your support plan from lesson 5.
 
-If a day gets dark, and you feel unsafe or think about ending your life, call or text **988** in the US, any time. You are not a burden. That line exists for exactly that moment.
+If a day gets dark, and you feel unsafe or think about ending your life, reach out right away, any time. Tell someone near you and get help. You are not a burden. Help exists for exactly that moment.
 
 ## What this course was about
 

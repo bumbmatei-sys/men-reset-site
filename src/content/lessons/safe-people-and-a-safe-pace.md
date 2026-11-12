@@ -5,7 +5,7 @@ description: "Who should you talk to about trauma, and how much should you share
 track: overcoming-trauma
 order: 5
 targetQuery: who to talk to about trauma
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - You were not meant to carry this alone. But not everyone is the right person to carry it with you.
   - Safe people listen more than they talk, keep what you share private, do not rush you, and do not make it about themselves.
@@ -107,7 +107,7 @@ Fill this in. Leave a box empty if you do not have that person yet. That empty b
 | Pastor or mature believer | | Prayer, faith questions, the long walk | |
 | Close friend 1 | | How I am really doing this week | |
 | Close friend 2 | | Someone to call on a hard day | |
-| Crisis line | 988 (call or text, US) | Any moment I feel unsafe | Any time, day or night |
+| Someone I can reach any hour | | Any moment I feel unsafe | Any time, day or night |
 
 If loneliness itself is a big part of your struggle, read [Loneliness and Temptation](/teachings/loneliness-and-temptation) for practical ways to build a few real friendships.
 

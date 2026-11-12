@@ -5,7 +5,7 @@ description: "What does the Bible say about trauma? It takes your pain seriously
 track: overcoming-trauma
 order: 1
 targetQuery: what does the bible say about trauma
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The Bible takes trauma seriously. It is full of people who were hurt, and it never tells them to pretend it did not happen.
   - What happened to you is real. It is not your name. Your heavenly Father calls you His son.
@@ -90,7 +90,7 @@ Fill this in for yourself. Start with just one row if that is all you can do tod
 
 You do not need to write details of what happened in the middle column. A few words are enough, like "age nine" or "the army" or "after the divorce." Keep the paper somewhere private.
 
-If an old sentence keeps coming back even after you answer it, the lesson [When the Same Thought Keeps Coming Back](/tracks/renew-your-mind/when-the-same-thought-keeps-coming-back) will help. And if a low or unsafe moment comes while you do this, stop. In the US you can call or text 988 at any hour.
+If an old sentence keeps coming back even after you answer it, the lesson [When the Same Thought Keeps Coming Back](/tracks/renew-your-mind/when-the-same-thought-keeps-coming-back) will help. And if a low or unsafe moment comes while you do this, stop. Tell someone you trust and get help right away.
 
 ## Coming up next
 

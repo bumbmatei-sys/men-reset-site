@@ -5,7 +5,7 @@ description: "How do you deal with trauma triggers? Why an ordinary day can sudd
 track: overcoming-trauma
 order: 2
 targetQuery: how to deal with trauma triggers
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A trigger is something in the present that your body treats like danger from the past. It can be a sound, a smell, a tone of voice, a place or a date.
   - Reacting is not a sin and not a lack of faith. It is a body that learned to protect you and has not yet learned it is safe.
@@ -106,7 +106,7 @@ Please talk to a trained counselor and your doctor if any of these are true:
 
 That is not giving up on God. It is using the help He has put around you.
 
-If at any point you feel unsafe, or have thoughts of ending your life, call or text **988** in the US, any time of day. If you are in immediate danger, call 911.
+If at any point you feel unsafe, or have thoughts of ending your life, tell someone near you and get help right away, any time of day. If you are in immediate danger, get emergency help.
 
 ## Coming up next
 

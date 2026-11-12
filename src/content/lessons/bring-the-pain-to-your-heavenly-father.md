@@ -5,7 +5,7 @@ description: "What are the psalms of lament, and how do you pray when you are hu
 track: overcoming-trauma
 order: 3
 targetQuery: what are the psalms of lament
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A lament is an honest prayer of pain. Many of the Psalms are laments, and God put them in the Bible on purpose.
   - You do not have to clean up your words, hide your anger, or feel spiritual before you pray.
@@ -107,7 +107,7 @@ If your prayers feel flat right now, the lesson [Why You Can't Feel It](/tracks/
 
 Writing a lament can stir up strong feelings. Go slowly. Set a timer for ten minutes. When it rings, stop, put the paper away, and do something ordinary, like a walk or a meal. If writing brings up memories that overwhelm you, that is a good thing to bring to a counselor rather than pushing through alone.
 
-If you ever feel unsafe or have thoughts of ending your life, call or text **988** in the US, at any hour.
+If you ever feel unsafe or have thoughts of ending your life, do not wait. Tell someone near you today and get help right away, any hour.
 
 ## Coming up next
 

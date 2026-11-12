@@ -29,7 +29,7 @@ plannedLessons:
 
 This course is for the men on this site, and for anyone else who needs it. Six short lessons, one gentle step each. You will see that what happened to you is not who you are. You will learn why your body and memory can still react on a normal day, and make a plan for when it hits. You will practice honest prayer, the kind the Psalms are full of. You will see what forgiveness is and what it is not. You will choose safe people and a safe pace. And you will learn to live today, even when the past still shows up.
 
-This is not a therapy course, and it does not replace one. A trained counselor, and a doctor when your body or sleep is struggling, are part of God's help, not a sign of weak faith. If you are in danger right now, or thinking about ending your life, call or text **988** in the US (the Suicide and Crisis Lifeline), or call 911.
+This is not a therapy course, and it does not replace one. A trained counselor, and a doctor when your body or sleep is struggling, are part of God's help, not a sign of weak faith. If you are in danger right now, or thinking about ending your life, get emergency help and tell someone near you today.
 
 Your heavenly Father is not the person who hurt you. He is near to the brokenhearted, and He is patient. You can go slowly here.
 

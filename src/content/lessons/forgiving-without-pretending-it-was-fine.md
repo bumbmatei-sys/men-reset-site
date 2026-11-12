@@ -5,7 +5,7 @@ description: "How do you forgive an abuser as a Christian? Forgiveness is not sa
 track: overcoming-trauma
 order: 4
 targetQuery: how to forgive an abuser as a christian
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Forgiveness is handing the debt to God and giving up your right to get even. It is not saying what happened was fine.
   - Forgiveness is not the same as trust, and it does not require going back to an unsafe person. Reconciliation needs real change from the other side.
@@ -16,11 +16,11 @@ scripture:
   reference: Romans 12:19
   version: NKJV
   text: "Beloved, do not avenge yourselves, but rather give place to wrath; for it is written, \"Vengeance is Mine, I will repay,\" says the Lord."
-action: "Today, read the distinctions table in this lesson and circle the row you have been most confused about. Then write one honest sentence to your heavenly Father about where you are with forgiveness right now, even if it is \"I am not ready.\" If you are not safe where you live, tell one trusted person or call a hotline today."
+action: "Today, read the distinctions table in this lesson and circle the row you have been most confused about. Then write one honest sentence to your heavenly Father about where you are with forgiveness right now, even if it is \"I am not ready.\" If you are not safe where you live, tell one trusted person and get help today."
 actionSteps:
   - "Today, read the distinctions table in this lesson and circle the row you have been most confused about."
   - "Then write one honest sentence to your heavenly Father about where you are with forgiveness right now, even if it is \"I am not ready.\""
-  - "If you are not safe where you live, tell one trusted person or call a hotline today."
+  - "If you are not safe where you live, tell one trusted person and get help today."
 reflection: "What have you believed forgiveness would require of you? Which part of that is not actually what forgiveness means?"
 image:
   src: /images/lessons/overcoming-trauma-04.webp
@@ -69,7 +69,7 @@ If someone is still hurting you, or could, you are allowed to protect yourself a
 
 Leaving an unsafe home, keeping your children away from someone, refusing to be alone with a person, going to the police when a crime was committed: none of that is a lack of forgiveness. Forgiveness deals with your heart toward the debt. Safety deals with what happens next. Both can be true at once.
 
-If you are in danger where you live right now, in the US you can call the National Domestic Violence Hotline at 1-800-799-7233, or call 911 in an emergency. If you are in a low or unsafe place in your own mind, call or text **988**.
+If you are in danger where you live right now, get emergency help and tell one trusted person today. Your safety comes first. If you are in a low or unsafe place in your own mind, do not carry it alone. Tell someone and get help right away.
 
 ## The distinctions table
 
@@ -110,7 +110,7 @@ Forgiveness and safety both need wise people around you. In the next lesson: "Sa
 
 ## Do this today
 
-Today, read the distinctions table in this lesson and circle the row you have been most confused about. Then write one honest sentence to your heavenly Father about where you are with forgiveness right now, even if it is "I am not ready." If you are not safe where you live, tell one trusted person or call a hotline today.
+Today, read the distinctions table in this lesson and circle the row you have been most confused about. Then write one honest sentence to your heavenly Father about where you are with forgiveness right now, even if it is "I am not ready." If you are not safe where you live, tell one trusted person and get help today.
 
 ## Reflect
 
