@@ -5,7 +5,7 @@ description: "How do you maintain long-term sobriety or freedom from a habit? No
 track: staying-free
 order: 4
 targetQuery: how to maintain long term sobriety
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Long-term freedom is mostly built on ordinary weeks, not dramatic days.
   - Think in weeks, not only days. A bad Tuesday does not ruin a week that has a shape.

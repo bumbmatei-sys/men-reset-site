@@ -5,7 +5,7 @@ description: "How do you stop a relapse before it happens? What to do in the hou
 track: staying-free
 order: 3
 targetQuery: how to stop a relapse before it happens
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A close call is not a failure. It is the way of escape God promised, taken.
   - In the hour itself, move first and think second. Change rooms, then tell someone.

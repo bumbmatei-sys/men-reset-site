@@ -5,7 +5,7 @@ description: "How do you deal with boredom in recovery? The flat stretch after q
 track: staying-free
 order: 5
 targetQuery: how to deal with boredom in recovery
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Boredom is not a sign that freedom is a mistake. It is a sign that your days need filling with better things.
   - The old habit gave you fast, cheap stimulation. Real life is slower, and your taste needs time to come back.

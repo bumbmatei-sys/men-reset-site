@@ -5,7 +5,7 @@ description: "Does staying sober get easier? Often it feels harder after the fir
 track: staying-free
 order: 1
 targetQuery: does staying sober get easier
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The first weeks run on resolve and relief. The later months run on habits, people, and your heavenly Father. Plan for the switch.
   - Feeling weaker in month two than in week one is common. It does not mean you are going backward.
@@ -94,7 +94,7 @@ Look at what God did first. He did not lecture him. "Then as he lay and slept un
 
 Sleep and food came before the next word. When you are exhausted, hungry, or running on four hours of sleep, the old habit will look better than it should. Sometimes the most spiritual thing you can do this week is go to bed on time.
 
-If you ever feel the way Elijah did, so low that you do not want to live, please do not keep it to yourself. In the US you can call or text 988 any time. Tell someone near you today, and talk to a doctor or a counselor as well as your pastor.
+If you ever feel the way Elijah did, so low that you do not want to live, please do not keep it to yourself. Tell someone near you today and get help right away, and talk to a doctor or a counselor as well as your pastor.
 
 ## What carries you in the later months
 

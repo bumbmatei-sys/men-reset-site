@@ -5,7 +5,7 @@ description: "How do you stop the relapse cycle? Not by never falling, but by re
 track: staying-free
 order: 6
 targetQuery: how to stop the relapse cycle
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The cycle is rarely one fall. It is the fall, then shame, then hiding, then "I already blew it," then more.
   - Break the cycle at the shame step. Get up the same day, not on Monday or the first of the month.
@@ -103,7 +103,7 @@ If you are falling over and over, getting up quickly is still right. But it is a
 
 Talk to your pastor or a mature Christian you trust. Think about seeing a Christian counselor, especially if the habit seems tied to old pain, anxiety, or something you have never told anyone. That is not weak faith. It is wisdom.
 
-If you ever feel so low that you do not want to live, or you think you might hurt yourself, please reach out right away. In the US, call or text 988 any time. If you are in immediate danger, call 911.
+If you ever feel so low that you do not want to live, or you think you might hurt yourself, please reach out right away. Tell someone near you and get help today. If you are in immediate danger, get emergency help.
 
 ## The end of this course
 

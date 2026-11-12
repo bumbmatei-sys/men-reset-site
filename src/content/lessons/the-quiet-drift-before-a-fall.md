@@ -5,7 +5,7 @@ description: "What are the early warning signs of relapse? Most falls start week
 track: staying-free
 order: 2
 targetQuery: early warning signs of relapse
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A fall usually starts weeks before the night it happens. That gives you time to turn back.
   - The earliest signs do not look like temptation at all. They look like poor sleep, pulling away from people, and skipped habits.
