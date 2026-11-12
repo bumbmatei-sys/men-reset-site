@@ -31,6 +31,6 @@ This course is for the man who loves his wife and kids and still hears himself s
 
 It is pastoral, not clinical. You are not doing this by willpower. Self-control is a fruit of the Spirit (Galatians 5:22-23). Your part is to keep bringing your anger into the light, to your heavenly Father and to one trusted brother.
 
-If you have hurt, threatened, or frightened someone in your home, do not wait for the end of this course. Get help today. Call the National Domestic Violence Hotline at **1-800-799-7233** (they help people who are worried about their own behavior too), and call **911** if anyone is in danger right now. If you feel very low or out of control, call or text **988**. Seeing a counselor is wisdom, not weak faith.
+If you have hurt, threatened, or frightened someone in your home, do not wait for the end of this course. Get help today, and get emergency help if anyone is in danger right now. If you feel very low or out of control, tell someone today. Seeing a counselor is wisdom, not weak faith.
 
 If you are not yet sure your heavenly Father is for you, start with [Know His Love](/tracks/know-gods-love). A man who knows he is loved has less to defend.
