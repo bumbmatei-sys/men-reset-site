@@ -5,7 +5,7 @@ description: "How do you wake up at the same time every day? Not with a perfect 
 track: discipline-and-morning-routine
 order: 1
 targetQuery: how to wake up at the same time every day
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A morning routine starts with one thing you can actually keep. A wake time you hit four days this week beats a perfect plan you drop by Wednesday.
   - Pick your time from your real life. Count back from when you have to leave, then add twenty minutes.

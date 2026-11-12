@@ -5,7 +5,7 @@ description: "Why make your bed every morning? Because one real chore before you
 track: discipline-and-morning-routine
 order: 3
 targetQuery: why make your bed every morning
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The most dangerous moment of the morning is the first time you sit down. The couch and the phone are waiting there.
   - Do one real chore while you are still standing. Make the bed, empty the dishwasher, or take out the trash.

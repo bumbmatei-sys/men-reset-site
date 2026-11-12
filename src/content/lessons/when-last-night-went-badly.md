@@ -5,7 +5,7 @@ description: "What do you do after a bad night, when you slept badly, scrolled l
 track: discipline-and-morning-routine
 order: 6
 targetQuery: what to do after a bad night sleep
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A bad night does not cancel the morning. The morning is where you get back up.
   - Get up at your normal time if you can. Sleeping in late usually makes the next night worse. Rest later in the day instead.

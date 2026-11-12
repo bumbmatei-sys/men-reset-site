@@ -5,7 +5,7 @@ description: "How do you stop checking your phone first thing in the morning? Wa
 track: discipline-and-morning-routine
 order: 5
 targetQuery: how to not check phone first thing in the morning
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The riskiest part of the morning is often the last few minutes. You are ready, you have time, and the phone fills it.
   - Set up the door the night before. Bag, keys and shoes in one place, so leaving takes one move.

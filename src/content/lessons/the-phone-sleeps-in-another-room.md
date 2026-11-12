@@ -5,7 +5,7 @@ description: "Should you sleep with your phone in another room? Yes. Charge it i
 track: discipline-and-morning-routine
 order: 2
 targetQuery: sleeping with phone in another room
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Your morning is decided the night before. Where the phone sleeps decides what you reach for first.
   - Willpower is weakest when you are tired. So do not plan to use it at 11 p.m. or at 6 a.m. Set things up while you are strong.

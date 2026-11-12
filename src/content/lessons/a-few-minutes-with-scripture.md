@@ -5,7 +5,7 @@ description: "How do you read the Bible in the morning when you have a job and l
 track: discipline-and-morning-routine
 order: 4
 targetQuery: how to read the bible in the morning
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A few honest minutes you keep beat a long quiet time you drop by Thursday.
   - Decide what you will read the night before. A Gospel or a Psalm, one short passage at a time.
