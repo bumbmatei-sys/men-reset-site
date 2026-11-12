@@ -5,7 +5,7 @@ description: "Who am I in Christ? Start with who you are, then what you have, th
 track: know-who-you-are
 order: 6
 targetQuery: who i am in christ
-publishDate: 2026-11-18
+publishDate: 2026-11-12
 keyPoints:
   - Most of life teaches do, then have, then be. In Christ the order runs the other way. I am, I have, I do.
   - I am a child of God. That is the first word over your life, and it comes before you do anything.
