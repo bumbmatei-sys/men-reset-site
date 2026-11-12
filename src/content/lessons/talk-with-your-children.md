@@ -5,7 +5,7 @@ description: "How do you be a Christian father your kids can talk to? Be present
 track: how-to-lead-your-home
 order: 5
 targetQuery: how to be a christian father
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A Christian father shows his children what their heavenly Father is like. Not perfectly, but truly.
   - Children open up to a father who listens more than he lectures.
@@ -101,7 +101,7 @@ Yes, wisely and at their level. You do not need to share every detail. But a fat
 
 ## When a child is not safe
 
-If a child tells you about harm, abuse, or thoughts of hurting themselves, believe them and get help. Call **911** if they are in danger right now. Call or text **988** if they or you are in crisis. If anyone in your home has been hurt, threatened, or frightened, including by you, call the National Domestic Violence Hotline at **1-800-799-7233** today, and do not ask anyone to keep it quiet. A Christian counselor is wisdom, not weak faith.
+If a child tells you about harm, abuse, or thoughts of hurting themselves, believe them and get help. Get emergency help if they are in danger right now, and get help right away if they or you are in crisis. If anyone in your home has been hurt, threatened, or frightened, including by you, get help today, and do not ask anyone to keep it quiet. A Christian counselor is wisdom, not weak faith.
 
 ## Coming up next
 

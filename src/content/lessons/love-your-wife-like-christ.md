@@ -5,7 +5,7 @@ description: "How do you love your wife as Christ loved the church? Serve her, l
 track: how-to-lead-your-home
 order: 4
 targetQuery: how to love your wife as christ loved the church
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Christ loved the church by giving Himself. Loving your wife starts with what you give, not what you get.
   - Listen to understand her, not to fix her or to win.
@@ -92,7 +92,7 @@ Seeing a Christian marriage counselor together, or on your own, is wisdom, not w
 
 ## What if I have hurt or frightened her?
 
-Yes. If you have hurt, threatened, or frightened your wife, love means taking responsibility, not asking her to forget it. Get help today. Call the National Domestic Violence Hotline at **1-800-799-7233**, and call **911** if anyone is in danger. Do not ask her or anyone to keep it quiet. If she needs space or safety, respect it. If you feel very low or unsafe yourself, call or text **988**.
+Yes. If you have hurt, threatened, or frightened your wife, love means taking responsibility, not asking her to forget it. Get help today, and get emergency help if anyone is in danger. Do not ask her or anyone to keep it quiet. If she needs space or safety, respect it. If you feel very low or unsafe yourself, tell someone and get help right away.
 
 ## Your weekly love plan
 

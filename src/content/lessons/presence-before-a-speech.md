@@ -5,7 +5,7 @@ description: "How do you become more present with your family? Be home when you 
 track: how-to-lead-your-home
 order: 3
 targetQuery: how to be more present with your family
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Your family needs your presence before they need your speeches.
   - Being in the house is not the same as being home. The phone is usually the difference.
@@ -109,7 +109,7 @@ Then presence takes more planning, not less. Call at a set time and give that ca
 
 ## When home feels heavy
 
-If you find yourself avoiding home because it feels tense, painful, or unsafe, do not just push harder. Talk to a pastor or a licensed Christian counselor. If you feel very low, call or text **988**. If anyone in your home has been hurt, threatened, or made afraid, call the National Domestic Violence Hotline at **1-800-799-7233**, and **911** if anyone is in danger right now.
+If you find yourself avoiding home because it feels tense, painful, or unsafe, do not just push harder. Talk to a pastor or a licensed Christian counselor. If you feel very low, tell someone and get help. If anyone in your home has been hurt, threatened, or made afraid, get help today, and get emergency help if anyone is in danger right now.
 
 ## Coming up next
 

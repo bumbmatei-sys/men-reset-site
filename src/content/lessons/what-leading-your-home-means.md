@@ -5,7 +5,7 @@ description: "What does it mean to be the spiritual leader of the home? It means
 track: how-to-lead-your-home
 order: 1
 targetQuery: what does it mean to be the spiritual leader of the home
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Leading your home means going first in love, prayer, apology, and service. It is not being in charge of everyone.
   - Jesus said the rulers of the world lord it over people, and "it shall not be so among you" (Mark 10:42-43).
@@ -97,7 +97,7 @@ Pick the one row that stings the most. That is where your leading starts.
 
 No. Some people search for this, so it needs a clear answer. A husband has no right to punish, hit, frighten, or control his wife. Nothing in Christ's love for the church looks like that. Paul writes, "Husbands, love your wives and do not be bitter toward them" (Colossians 3:19).
 
-If you have hurt, threatened, or frightened your wife or children, get help today. Call the National Domestic Violence Hotline at **1-800-799-7233**, and call **911** if anyone is in danger. Do not ask anyone to keep it quiet. If you feel very low or unsafe yourself, call or text **988**. A Christian counselor is wisdom, not weak faith.
+If you have hurt, threatened, or frightened your wife or children, get help today, and get emergency help if anyone is in danger. Do not ask anyone to keep it quiet. If you feel very low or unsafe yourself, tell someone and get help right away. A Christian counselor is wisdom, not weak faith.
 
 ## What if I have never led my family well?
 

@@ -5,7 +5,7 @@ description: "How do you become a better spiritual leader for your family after 
 track: how-to-lead-your-home
 order: 6
 targetQuery: how to be a better spiritual leader for my family
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Every husband and father fails at home. What matters is what you do the same day.
   - Own what you did with no excuses, and do not make your family carry your shame.
@@ -90,9 +90,9 @@ Tell them you will wait as long as they need, and then keep showing up.
 
 ## When failure means someone was hurt
 
-Some failures are not small. If you have hurt, threatened, or frightened your wife or your children, an apology is not enough on its own. Get help today. Call the National Domestic Violence Hotline at **1-800-799-7233** (they help people worried about their own behavior too), and call **911** if anyone is in danger right now. Do not ask anyone in your home to keep it quiet. Respect any space they need to be safe.
+Some failures are not small. If you have hurt, threatened, or frightened your wife or your children, an apology is not enough on its own. Get help today, from your pastor and a licensed Christian counselor, and get emergency help if anyone is in danger right now. Do not ask anyone in your home to keep it quiet. Respect any space they need to be safe.
 
-If you feel very low, hopeless, or unsafe after a failure, call or text **988**. A licensed Christian counselor is wisdom, not weak faith. If anger is part of the pattern, the [Anger That Doesn't Destroy](/tracks/anger-that-doesnt-destroy) course is a good next step. If you need someone to walk with you, read [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner).
+If you feel very low, hopeless, or unsafe after a failure, tell someone and get help right away. A licensed Christian counselor is wisdom, not weak faith. If anger is part of the pattern, the [Anger That Doesn't Destroy](/tracks/anger-that-doesnt-destroy) course is a good next step. If you need someone to walk with you, read [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner).
 
 ## Faithful for the long run
 

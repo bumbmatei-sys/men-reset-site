@@ -5,7 +5,7 @@ description: "How do you become the spiritual leader of your home? Start with yo
 track: how-to-lead-your-home
 order: 2
 targetQuery: how to be the spiritual leader of your home
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - You cannot give your family a faith you are not living. Your own walk comes first.
   - Start small. Ten minutes of prayer and Scripture you actually keep beats an hour you skip.
@@ -101,7 +101,7 @@ That is a gift, not a threat. Thank God for her. Learn from her. Leading is not 
 
 ## When should I get more help?
 
-If you feel low most days, cannot sleep, or have thoughts of harming yourself, please do not try to push through alone. Call or text **988**. Talk to your doctor or a licensed Christian counselor. Getting help is wisdom, not weak faith.
+If you feel low most days, cannot sleep, or have thoughts of harming yourself, please do not try to push through alone. Tell someone today and get help. Talk to your doctor or a licensed Christian counselor. Getting help is wisdom, not weak faith.
 
 ## Coming up next
 

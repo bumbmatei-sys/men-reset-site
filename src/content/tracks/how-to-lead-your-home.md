@@ -31,6 +31,6 @@ This course is for husbands and fathers, and for the man who is preparing to be 
 
 It is pastoral, not clinical. You do not have to be a perfect man to start. You have to be a willing one. "Unless the Lord builds the house, They labor in vain who build it" (Psalm 127:1). Your heavenly Father is the One who builds. Your part is to show up, day after day.
 
-Leading never includes control, threats, or fear. If you have hurt, threatened, or frightened your wife or children, or if anyone in your home is not safe, do not wait for the end of this course. Get help today. Call the National Domestic Violence Hotline at **1-800-799-7233** (they also help people worried about their own behavior), and call **911** if anyone is in danger right now. Do not ask anyone to keep it quiet. If you feel very low or unsafe, call or text **988**. Seeing a counselor is wisdom, not weak faith.
+Leading never includes control, threats, or fear. If you have hurt, threatened, or frightened your wife or children, or if anyone in your home is not safe, do not wait for the end of this course. Get help today, and get emergency help if anyone is in danger right now. Do not ask anyone to keep it quiet. If you feel very low or unsafe, tell someone and get help right away. Seeing a counselor is wisdom, not weak faith.
 
 If you are not sure your heavenly Father is for you, start with [Know His Love](/tracks/know-gods-love). A man who knows he is loved has something to give.
