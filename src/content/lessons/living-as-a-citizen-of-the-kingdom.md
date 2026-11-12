@@ -5,7 +5,7 @@ description: "What does seek first the kingdom of God and His righteousness mean
 track: faith-grace-and-the-kingdom
 order: 6
 targetQuery: seek first the kingdom of god meaning
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - To seek first the Kingdom means to put the King's rule and His right way of living ahead of every other worry, and to trust Him for the rest.
   - Your citizenship is in heaven. You live here as an ambassador, carrying the King's ways into your home, your work, and your town.

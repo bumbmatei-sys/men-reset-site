@@ -5,7 +5,7 @@ description: "How do you have faith in God when you feel nothing, or when everyt
 track: faith-grace-and-the-kingdom
 order: 2
 targetQuery: how to have faith in god
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Faith is trust and reliance on God. It rests on who He is and what He said, not on how you feel today.
   - Feelings come and go. Faith can say, "I am afraid, and I will trust You," in the same breath.
@@ -88,7 +88,7 @@ Look at Abraham. He waited years for a promise that looked impossible. "He did n
 
 He was not convinced by his circumstances. He was convinced by the One who promised. In a hard season, go back to what God has said, not to what you can see.
 
-Hard seasons are also when you should not carry things alone. If you have felt low for weeks, cannot sleep, or have lost interest in nearly everything, talk to a doctor or a counselor as well as your pastor. That is wisdom, not weak faith. If you ever feel you might harm yourself, call or text **988** (the Suicide and Crisis Lifeline in the US), any time, or call **911** if you are in danger now.
+Hard seasons are also when you should not carry things alone. If you have felt low for weeks, cannot sleep, or have lost interest in nearly everything, talk to a doctor or a counselor as well as your pastor. That is wisdom, not weak faith. If you ever feel you might harm yourself, tell someone and get help right away, or get emergency help if you are in danger now.
 
 ## Your trust table
 

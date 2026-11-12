@@ -5,7 +5,7 @@ description: "What does faith without works is dead mean, and do Paul and James 
 track: faith-grace-and-the-kingdom
 order: 4
 targetQuery: what does faith without works mean
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Faith without works is dead because real trust always shows up in what you do. A faith that never moves your hands is not the real thing.
   - Works do not earn the Father's love. You are saved by grace, not by works, and saved for good works.

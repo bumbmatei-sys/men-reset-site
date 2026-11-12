@@ -5,7 +5,7 @@ description: "What does the kingdom of God mean, and is it here now or only some
 track: faith-grace-and-the-kingdom
 order: 3
 targetQuery: what does kingdom of god mean
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - The kingdom of God means the reign of God. First a King and His rule, then the people and places where that rule is lived out.
   - Jesus' first message was that the Kingdom is at hand. In Him, the King had come near.

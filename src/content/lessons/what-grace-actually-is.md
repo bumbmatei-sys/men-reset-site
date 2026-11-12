@@ -5,7 +5,7 @@ description: "What does saved by grace through faith mean? Grace is a gift you c
 track: faith-grace-and-the-kingdom
 order: 1
 targetQuery: saved by grace through faith meaning
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Grace is God's free favor toward people who could never earn it. Faith is the open hand that receives it.
   - Grace is not a wage. If you could earn it, it would stop being grace (Romans 11:6).

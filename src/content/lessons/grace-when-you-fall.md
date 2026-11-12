@@ -5,7 +5,7 @@ description: "Does God's grace run out when you keep falling? No. Grace is not t
 track: faith-grace-and-the-kingdom
 order: 5
 targetQuery: does god's grace run out
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - God's grace does not run out. Where sin abounded, grace abounded much more (Romans 5:20).
   - Grace is not the prize for climbing back. It is the hand that lifts you. You come back now, not after you have proven yourself.
@@ -106,7 +106,7 @@ Write your own version, in your own words.
 
 If you keep falling in the same place and cannot get out, that is not a reason to give up. It is a reason to get more help. Talk to your pastor. Consider a Christian counselor. An accountability partner can make a real difference; [Christian Accountability Partner](/teachings/christian-accountability-partner) explains how to find one. Getting help is wisdom, not weak faith.
 
-If after a fall you feel so low that you think about hurting yourself, call or text **988**, the Suicide and Crisis Lifeline, any time. If you are in danger right now, call **911**. Your life matters to your heavenly Father, and to the people around you.
+If after a fall you feel so low that you think about hurting yourself, tell someone and get help right away. If you are in danger right now, get emergency help. Your life matters to your heavenly Father, and to the people around you.
 
 ## Coming up next
 
