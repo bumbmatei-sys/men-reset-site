@@ -5,7 +5,7 @@ description: "How do I rebuild trust with my wife after porn? What the first day
 track: rebuilding-trust-after-porn
 order: 1
 targetQuery: how do i rebuild trust with my wife
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Telling her was the start, not the finish. Trust is rebuilt after the confession, one ordinary day at a time.
   - In the first days, her reaction is not your problem to fix. Your job is to be safe, honest, and steady.
@@ -100,7 +100,7 @@ You cannot rebuild this alone, and she should not be your only help.
 
 Tell one brother you trust. If you do not have one, read [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner). Talk to your pastor. And think seriously about a counselor, ideally one experienced with couples and betrayal. Many couples meet with someone together and the husband also meets with someone on his own. A counselor is wisdom, not weak faith.
 
-If she is in danger in your home, or there is harm going on that is bigger than this, her safety comes first. In the US she can call the National Domestic Violence Hotline at 1-800-799-7233, or 911 in an emergency. Lesson 3 says more about this. If you or she is in a dark place emotionally, call or text **988**, any time.
+If she is in danger in your home, or there is harm going on that is bigger than this, her safety comes first. Get emergency help if anyone is in danger. Lesson 3 says more about this. If you or she is in a dark place emotionally, do not carry it alone. Get help right away.
 
 ## Coming up next
 

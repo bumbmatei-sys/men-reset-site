@@ -5,7 +5,7 @@ description: "What actions rebuild trust after porn? Not a big speech. A pattern
 track: rebuilding-trust-after-porn
 order: 2
 targetQuery: what actions rebuild trust
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - A promise is a word about the future. Trust is built from a pattern in the past she can actually look at.
   - Small, boring, repeated actions rebuild more trust than one dramatic gesture.

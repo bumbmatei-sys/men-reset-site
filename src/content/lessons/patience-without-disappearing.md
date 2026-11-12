@@ -5,7 +5,7 @@ description: "How long does it take to rebuild trust in a marriage after porn? L
 track: rebuilding-trust-after-porn
 order: 4
 targetQuery: how long does it take to rebuild trust in a marriage
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - There is no honest number for how long trust takes. Many couples need many months, often years. Her pace is not a verdict on your effort.
   - Patience is not waiting from a distance. It is staying warm and present while it is slow.

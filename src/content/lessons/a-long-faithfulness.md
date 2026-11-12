@@ -5,7 +5,7 @@ description: "How do you rebuild broken trust in a Christian marriage? Not with 
 track: rebuilding-trust-after-porn
 order: 6
 targetQuery: how to rebuild broken trust in a christian marriage
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Trust is not rebuilt in a weekend of being good. It is rebuilt over months and years of ordinary faithfulness.
   - A faithful man keeps his word even when it costs him, and even when no one is checking.
@@ -112,7 +112,7 @@ If you want to go deeper into who you are as His son, the course [Know Who You A
 
 Pick the practices from this course you will keep for the next twelve weeks and write them at the top of the tracker. Put a reminder in your calendar for the same time each week to look back honestly. Tell your brother the plan, so someone checks on it when the crisis feels far away.
 
-If you or she is in a dark place at any point along the way, call or text **988**, any time. If there is ever danger at home, the National Domestic Violence Hotline is 1-800-799-7233, or call 911 in an emergency.
+If you or she is in a dark place at any point along the way, do not carry it alone. Get help right away. If there is ever danger at home, her safety comes first, so get emergency help.
 
 Want to talk to a real person on our team? Go to [Support](/support). Not sure where you stand? [Take the free check](/check).
 

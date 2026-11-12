@@ -5,7 +5,7 @@ description: "How should you respond when your wife is triggered or still hurtin
 track: rebuilding-trust-after-porn
 order: 3
 targetQuery: how to respond when your wife is triggered
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Her pain is not a sign the repair is failing. It is part of the repair.
   - When she is triggered, slow down. Listen first, speak little, and do not defend yourself.
@@ -92,7 +92,7 @@ Here are some moments that often come up. Write your own words in the last colum
 
 Sometimes the hurt is not the only problem. If there has been any threat, violence, or control in your home, or if she does not feel physically safe with you, that comes before anything else in this course. Her safety matters more than your marriage plan.
 
-If you have hurt or threatened her, stop and get help today, from a pastor and a trained counselor, and do not ask her to keep it quiet. If she is in danger at home right now, in the US she can call the National Domestic Violence Hotline at 1-800-799-7233, or 911 in an emergency. If you or she is in a low or unsafe place in your own mind, call or text **988**, any time.
+If you have hurt or threatened her, stop and get help today, from a pastor and a trained counselor, and do not ask her to keep it quiet. If she is in danger at home right now, her safety comes first, so get emergency help. If you or she is in a low or unsafe place in your own mind, get help right away.
 
 A counselor experienced with couples and betrayal can help you both. If she wants to see someone on her own, support her in that. It is not a threat to you. It is care for her.
 

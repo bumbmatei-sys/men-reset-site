@@ -5,7 +5,7 @@ description: "How do you stop feeling ashamed of your past when you have hurt yo
 track: rebuilding-trust-after-porn
 order: 5
 targetQuery: how to stop feeling ashamed of your past
-publishDate: 2026-11-13
+publishDate: 2026-11-12
 keyPoints:
   - Your wife needs your honesty and your ownership. She does not need to manage your shame on top of her own pain.
   - Remorse looks at the person you hurt. Shame keeps looking back at yourself.
@@ -109,7 +109,7 @@ You have learned where to carry your shame. Now we lift our eyes from the hard w
 
 Fill in the sorting table with what you have been bringing to your wife that belongs somewhere else. This week, take one of those things to your heavenly Father in prayer and one to your brother or counselor. When shame rises at home, say quietly, "That has been forgiven," and turn your attention back to her.
 
-If shame ever turns into thoughts of hurting yourself, call or text **988** right away, any time. You are worth helping.
+If shame ever turns into thoughts of hurting yourself, tell someone and get help right away. You are worth helping.
 
 Want to talk to a real person on our team? Go to [Support](/support). Not sure where you stand? [Take the free check](/check).
 
