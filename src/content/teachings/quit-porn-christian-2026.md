@@ -3,7 +3,7 @@ title: 'How to Quit Porn as a Christian (2026): A Grace-Based Plan for Men and W
 description: 'A grace-first plan to quit porn as a Christian, for men and women: why shame keeps the cycle going, what to do in the first ten minutes of an urge, and how to get up after a relapse.'
 slug: quit-porn-christian-2026
 publishDate: 2026-10-16
-updatedDate: 2026-10-16
+updatedDate: 2026-11-12
 author: Matei Bumb
 image:
   src: /images/teachings/quit-porn-christian.webp
@@ -96,7 +96,7 @@ Tell one trusted person of the same sex. A friend, someone from your church, a l
 
 Same sex matters because this is deep vulnerability, and opening that kind of rawness with the other sex can start other problems. Keep it clean and keep it simple.
 
-You are not telling them so they can fix you. You are telling them so shame loses its power. What is hidden controls you. What is spoken out loud becomes something you can walk through with Jesus and with a brother or a sister beside you. For sure this is scary the first time. Do it scared.
+You are not telling them so they can fix you. You are telling them so shame loses its power. What is hidden controls you. What is spoken out loud becomes something you can walk through with Jesus and with a brother or a sister beside you. For sure this is scary the first time. Do it scared. If you do not know who to ask, read [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner). If you are married, [How to Tell Your Wife You Watched Porn](/teachings/how-to-tell-your-wife-about-porn) walks through that conversation with care.
 
 ## What do I do right after a relapse?
 
@@ -104,7 +104,7 @@ Come to Jesus immediately. Not tomorrow, not after you feel clean enough. Right 
 
 Then tell your person the same day. Then get back on the plan that same day. Do not wait for Monday, do not wait for a fresh start. A fall is an event. It is not your [identity](/teachings/identity-in-christ-2026).
 
-Basically, the enemy wants the fall to become a season. Grace says it is a moment. Get up, look at Jesus, and keep walking.
+Basically, the enemy wants the fall to become a season. Grace says it is a moment. Get up, look at Jesus, and keep walking. For the full plan for the next hour, day and week, read [What to Do After a Porn Relapse](/teachings/what-to-do-after-porn-relapse), and if you wonder whether He still wants you, read [Does God Still Love Me After Porn?](/teachings/does-god-still-love-me-after-porn).
 
 ## How did Jesus free me from shame?
 
