@@ -78,7 +78,7 @@ If you have worked through this course and you are still shouting, threatening, 
 
 Talk to your pastor. Find a licensed Christian counselor who works with anger. Ask about a men's group or a structured anger program. Tell one man everything, not just the cleaned-up version. Seeking help is wisdom, not weak faith. "Without counsel, plans go awry, But in the multitude of counselors they are established" (Proverbs 15:22).
 
-If you have hurt, threatened, or frightened anyone, do not wait. Call the National Domestic Violence Hotline at **1-800-799-7233** today. Their advocates talk with people who think they may be hurting their partner, and can point you to programs near you. If anyone is in danger right now, call **911**. Never ask your wife or children to keep it quiet. If you feel very low, out of control, or unsafe, call or text **988**, any time.
+If you have hurt, threatened, or frightened anyone, do not wait. Get help today. A licensed Christian counselor or a program for men who want to stop hurting their families can help you change, and your pastor can walk with you. If anyone is in danger right now, get emergency help. Never ask your wife or children to keep it quiet. If you feel very low, out of control, or unsafe, tell someone today and get help right away.
 
 ## What is righteous anger?
 

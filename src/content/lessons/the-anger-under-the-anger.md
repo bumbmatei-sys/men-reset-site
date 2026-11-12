@@ -113,7 +113,7 @@ A man who knows who he is in Christ has less to defend. If shame or pride keeps 
 
 ## When to get more help
 
-Sometimes what is under the anger is heavy. Grief, trauma, depression, or something from childhood. A licensed Christian counselor can help you look at it safely. That is wisdom, not weak faith. If what you find leaves you feeling very low or unsafe, call or text **988**, any time. If your anger has led you to hurt, threaten, or frighten anyone, get help today: call the National Domestic Violence Hotline at **1-800-799-7233**, or **911** if anyone is in danger, and do not ask anyone to keep it quiet.
+Sometimes what is under the anger is heavy. Grief, trauma, depression, or something from childhood. A licensed Christian counselor can help you look at it safely. That is wisdom, not weak faith. If what you find leaves you feeling very low or unsafe, tell someone today and get help. If your anger has led you to hurt, threaten, or frighten anyone, get help today, get emergency help if anyone is in danger, and do not ask anyone to keep it quiet.
 
 ## Coming up next
 

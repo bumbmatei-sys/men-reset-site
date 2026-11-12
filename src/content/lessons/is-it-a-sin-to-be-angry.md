@@ -99,7 +99,7 @@ Yes. Being a believer does not mean you no longer struggle. It means you no long
 
 ## When to get more help
 
-If your anger has led you to hurt, threaten, or frighten anyone in your home, get help today. Call the National Domestic Violence Hotline at **1-800-799-7233**. Their advocates also talk with people who think they may be [hurting their partner](https://www.thehotline.org/resources/intervention-programs-for-abusive-behavior/). If anyone is in danger right now, call **911**. Do not ask your wife or kids to keep it quiet. If you feel very low or out of control, call or text **988**, any time. A licensed Christian counselor is wisdom, not weak faith.
+If your anger has led you to hurt, threaten, or frighten anyone in your home, get help today. Talk to a licensed Christian counselor and your pastor, and ask about programs for men who want to stop hurting their families. If anyone is in danger right now, get emergency help. Do not ask your wife or kids to keep it quiet. If you feel very low or out of control, tell someone today. A licensed Christian counselor is wisdom, not weak faith.
 
 ## Coming up next
 
