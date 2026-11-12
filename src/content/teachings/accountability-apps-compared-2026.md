@@ -3,7 +3,7 @@ title: 'Accountability Apps Compared: Honest Prices and a Free Option'
 description: 'Honest 2026 prices for Covenant Eyes, Accountable2You, Canopy, and Ever Accountable, plus free iPhone Screen Time and Android Family Link options. An app is a fence, not a Savior.'
 slug: accountability-apps-compared-2026
 publishDate: 2026-11-06
-updatedDate: 2026-11-06
+updatedDate: 2026-11-12
 author: Matei Bumb
 image:
   src: /images/teachings/accountability-apps-compared.webp
@@ -157,7 +157,7 @@ Filters and apps do not make you holy. They do not change your heart. They suppo
 
 > **[1 John 1:7 (NKJV)](https://www.biblegateway.com/passage/?search=1+John+1:7&version=NKJV)** "But if we walk in the light as He is in the light, we have fellowship with one another, and the blood of Jesus Christ His Son cleanses us from all sin." Walking in the light is a daily posture. The app just keeps the gate shut long enough for you to choose it.
 
-So use the fence. Then go after the roots. If you want a full path, read [How to Quit Porn as a Christian](/teachings/quit-porn-christian-2026). If shame is loudest in your head, read [Shame vs Guilt: How Jesus Took Away Your Shame](/teachings/shame-vs-guilt-jesus-2026). If you need to know who you are now, read [Identity in Christ](/teachings/identity-in-christ-2026). For the mental battle itself, see [Take Every Thought Captive](/teachings/take-every-thought-captive-2026).
+So use the fence. Then go after the roots. If you want a full path, read [How to Quit Porn as a Christian](/teachings/quit-porn-christian-2026). If shame is loudest in your head, read [Shame vs Guilt: How Jesus Took Away Your Shame](/teachings/shame-vs-guilt-jesus-2026). If you need to know who you are now, read [Identity in Christ](/teachings/identity-in-christ-2026). For the mental battle itself, see [Take Every Thought Captive](/teachings/take-every-thought-captive-2026). And every app needs a person on the other end, so read [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner) next.
 
 When you are ready for structure, the [30-Day Reset](/tracks/30-day-reset) and [Break Free](/tracks/break-free) tracks give you daily steps with Scripture and simple actions. And if you want to talk to a real person on our team, go to [Support](/support).
 

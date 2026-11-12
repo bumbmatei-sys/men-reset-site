@@ -3,7 +3,7 @@ title: 'How to Stop Scrolling at Night (A Christian Phone Reset for Bedtime)'
 description: 'How to stop scrolling at night: give your phone a bedtime, move it out of reach, and use the 3-minute Night Handoff to give your heavenly Father what you are still carrying.'
 slug: stop-scrolling-at-night-christian
 publishDate: 2026-11-09
-updatedDate: 2026-11-09
+updatedDate: 2026-11-12
 author: Matei Bumb
 image:
   src: /images/teachings/stop-scrolling-at-night.webp
@@ -136,7 +136,7 @@ First, decide in the morning what you will read at night, if anything. A chosen 
 
 Second, practice taking thoughts captive in real time. When you notice your chest tightening, say the thought out loud to God and ask if it is true and if it is yours to carry tonight. There is a full teaching on this in [Take Every Thought Captive](/teachings/take-every-thought-captive-2026).
 
-Third, if your late scrolling includes porn, that is a different battle and it deserves a different plan. No shame here. Just honesty and tools. Read [How to Quit Porn as a Christian](/teachings/quit-porn-christian-2026) and [Accountability Apps Compared](/teachings/accountability-apps-compared-2026). Bring in another person. That is how the weight actually moves.
+Third, if your late scrolling includes porn, that is a different battle and it deserves a different plan. No shame here. Just honesty and tools. Read [How to Quit Porn as a Christian](/teachings/quit-porn-christian-2026) and [Accountability Apps Compared](/teachings/accountability-apps-compared-2026). If last night already went wrong, read [What to Do After a Porn Relapse](/teachings/what-to-do-after-porn-relapse). Bring in another person. That is how the weight actually moves.
 
 ## What if my phone is my alarm?
 
