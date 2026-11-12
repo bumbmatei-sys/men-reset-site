@@ -3,7 +3,7 @@ title: 'What Is Grace in the Bible? Power to Change, Not Permission to Sin'
 description: 'What grace really means in the Bible, why you cannot earn it, why it is not a license to sin, and how grace actually helps you say no to what keeps pulling you back.'
 slug: what-is-grace-2026
 publishDate: 2026-10-20
-updatedDate: 2026-10-20
+updatedDate: 2026-11-12
 author: Matei Bumb
 image:
   src: /images/teachings/what-is-grace.webp
@@ -99,7 +99,7 @@ Read that slowly. Your faith becomes effective as you recognize what is already 
 
 Peter says the same thing: "Grace and peace be multiplied to you in the knowledge of God and of Jesus our Lord" (2 Peter 1:2). Multiplied through knowing Him. Not through striving, not through being more special than anyone else. Peter even says we have received the same precious faith he had (2 Peter 1:1).
 
-So if you keep falling in the same place, do not just ask God for more willpower. Ask Him to show you who you are in Christ. More on that in [your identity in Christ](/teachings/identity-in-christ-2026).
+So if you keep falling in the same place, do not just ask God for more willpower. Ask Him to show you who you are in Christ. More on that in [your identity in Christ](/teachings/identity-in-christ-2026). And if you are tired of praying the same prayer, read [How to Pray When You Keep Falling](/teachings/how-to-pray-when-you-keep-falling).
 
 ## How do you experience more of His grace?
 
