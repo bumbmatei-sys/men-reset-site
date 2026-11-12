@@ -114,7 +114,7 @@ She may be. Let her be. You do not need to defend yourself or match her. Listen.
 
 ## When to get more help
 
-If your outbursts have included hurting, threatening, or frightening your wife or children, an apology is not enough on its own. Get help today. Call the National Domestic Violence Hotline at **1-800-799-7233**, and call **911** if anyone is in danger. Do not ask your family to keep it quiet. If shame after a blowup leaves you feeling very low or unsafe, call or text **988**. A licensed Christian counselor is wisdom, not weak faith. If you need someone to tell, [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner) can help.
+If your outbursts have included hurting, threatening, or frightening your wife or children, an apology is not enough on its own. Get help today, and get emergency help if anyone is in danger. Do not ask your family to keep it quiet. If shame after a blowup leaves you feeling very low or unsafe, tell someone today. A licensed Christian counselor is wisdom, not weak faith. If you need someone to tell, [How to Find a Christian Accountability Partner](/teachings/christian-accountability-partner) can help.
 
 ## Coming up next
 

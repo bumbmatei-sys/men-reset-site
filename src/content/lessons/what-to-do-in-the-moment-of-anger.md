@@ -117,7 +117,7 @@ Some wives feel abandoned when a husband walks away mid-conversation, especially
 
 ## When to get more help
 
-If you ever feel like you might hurt someone, leave right away and call someone. If you have hurt, threatened, or frightened anyone in your home, get help today. Call the National Domestic Violence Hotline at **1-800-799-7233**, and call **911** if anyone is in danger. Do not ask anyone to keep it quiet. If you feel very low, out of control, or unsafe, call or text **988**, any time. A licensed Christian counselor can help you build a plan that holds. That is wisdom, not weak faith. For more on praying when you keep falling short, read [How to Pray When You Keep Falling](/teachings/how-to-pray-when-you-keep-falling).
+If you ever feel like you might hurt someone, leave right away and call someone. If you have hurt, threatened, or frightened anyone in your home, get help today, and get emergency help if anyone is in danger. Do not ask anyone to keep it quiet. If you feel very low, out of control, or unsafe, tell someone today. A licensed Christian counselor can help you build a plan that holds. That is wisdom, not weak faith. For more on praying when you keep falling short, read [How to Pray When You Keep Falling](/teachings/how-to-pray-when-you-keep-falling).
 
 ## Coming up next
 

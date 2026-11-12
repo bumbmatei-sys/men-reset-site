@@ -119,7 +119,7 @@ That is normal at the start. Do not give up. Each time, look back afterward and 
 
 ## When to get more help
 
-If your anger often goes from 1 to 10 in seconds, if you have ever hurt, threatened, or frightened someone, or if anyone at home is afraid of you, get help today. Call the National Domestic Violence Hotline at **1-800-799-7233**, and call **911** if anyone is in danger now. Do not ask anyone to keep it quiet. If you feel very low or out of control, call or text **988**. A licensed Christian counselor can help you learn your signs faster. That is wisdom, not weak faith.
+If your anger often goes from 1 to 10 in seconds, if you have ever hurt, threatened, or frightened someone, or if anyone at home is afraid of you, get help today. If anyone is in danger now, get emergency help. Do not ask anyone to keep it quiet. If you feel very low or out of control, tell someone today. A licensed Christian counselor can help you learn your signs faster. That is wisdom, not weak faith.
 
 ## Coming up next
 
