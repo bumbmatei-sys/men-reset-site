@@ -3,6 +3,7 @@ import LanguageSwitcher from '../LanguageSwitcher.astro';
 import { Icon } from "astro-icon/components";
 import { useTranslations } from "@utils/i18n";
 import type { NavItem } from "~/types/nav";
+import { SPONSORS_ENABLED } from "@data/site";
 
 interface Props {
   locale: string;
@@ -17,7 +18,7 @@ const navLinks: NavItem[] = [
   { href: '/teachings', label: 'Teachings' },
   { href: '/tracks/30-day-reset', label: '30-day reset' },
   { href: '/about', label: 'About' },
-  { href: '/partners', label: 'Partners' },
+  ...(SPONSORS_ENABLED ? [{ href: '/partners', label: 'Partners' } satisfies NavItem] : []),
 ];
 ---
 

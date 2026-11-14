@@ -79,7 +79,7 @@
   --breakpoint-2xl: 1600px;
 }
 
-/* One centered column. Equal side padding at every width. 920px at desktop leaves room for the sponsor rails. */
+/* One centered column. Equal side padding at every width. */
 @utility container {
   width: 100%;
   max-width: 40rem;
@@ -93,8 +93,11 @@
     max-width: 920px;
     padding-inline: 2rem;
   }
-  /* Rails are 200px. Keep the column clear of them from 1280px up. */
-  @media (width >= 1280px) {
+}
+
+/* Rails are 200px. Keep the column clear of them from 1280px up, only while they are shown. */
+@media (width >= 1280px) {
+  .sponsors-on .container {
     max-width: min(920px, calc(100vw - 30rem));
   }
 }
