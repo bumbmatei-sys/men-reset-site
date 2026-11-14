@@ -9,6 +9,7 @@ import astroExpressiveCode from 'astro-expressive-code';
 import { externalLinking } from './src/plugins/external-linking';
 import { rehypeYoutubePlugin } from './src/plugins/youtube-embed';
 import { themeConfig } from './theme.config';
+import { SPONSORS_ENABLED } from './src/data/site';
 import { setOnDemandPrerender, getOnDemandSitemapPages } from './src/utils/on-demand-render';
 // i18n config for sitemap integration
 export const sitemap_i18n = {
@@ -153,6 +154,7 @@ export default defineConfig({
         const path = new URL(page).pathname;
         // Preview builds render draft teachings; never list those in a sitemap.
         if (process.env.BLOG_PREVIEW === '1' && (path.startsWith('/teachings/') || path.startsWith('/tracks/build-your-future'))) return false;
+        if (!SPONSORS_ENABLED && (path === '/partner' || path === '/partners')) return false;
         return !sitemapExcludedPaths.has(path);
       },
       customPages: getOnDemandSitemapPages(),

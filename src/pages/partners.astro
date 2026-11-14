@@ -3,6 +3,11 @@ import Layout from '@layouts/default.astro';
 import JsonLd from '@components/seo/JsonLd.astro';
 import SponsorCancel from '@components/sponsors/SponsorCancel.astro';
 import { themeConfig } from '~/theme.config';
+import { SPONSORS_ENABLED } from '@data/site';
+
+if (!SPONSORS_ENABLED) {
+  return Astro.redirect('/');
+}
 import { sponsorUrl, sponsors } from '@utils/sponsors';
 
 const title = 'Partners';

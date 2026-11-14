@@ -1,10 +1,11 @@
 ---
 import SponsorSlot from './SponsorSlot.astro';
 import { sponsorsForPlacement } from '@utils/sponsors';
+import { SPONSORS_ENABLED } from '@data/site';
 
-const showStrip = sponsorsForPlacement('mobile-strip').length > 0;
-const showLeft = sponsorsForPlacement('rail-left').length > 0;
-const showRight = sponsorsForPlacement('rail-right').length > 0;
+const showStrip = SPONSORS_ENABLED && sponsorsForPlacement('mobile-strip').length > 0;
+const showLeft = SPONSORS_ENABLED && sponsorsForPlacement('rail-left').length > 0;
+const showRight = SPONSORS_ENABLED && sponsorsForPlacement('rail-right').length > 0;
 ---
 
 {showStrip && (

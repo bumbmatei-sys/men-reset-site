@@ -1,4 +1,6 @@
 ---
+import { SPONSORS_ENABLED } from '@data/site';
+
 interface Props {
   locale: string;
   isHome?: boolean;
@@ -36,9 +38,11 @@ const { isHome } = Astro.props;
     <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/about">
       About
     </a>
-    <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/partners">
-      Partners
-    </a>
+    {SPONSORS_ENABLED ? (
+      <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/partners">
+        Partners
+      </a>
+    ) : null}
     <a class="unstyle-link text-text-dark/80 hover:text-text-dark w-fit pt-1.5" href="/support">
       Support
     </a>

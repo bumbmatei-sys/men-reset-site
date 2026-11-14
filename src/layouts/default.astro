@@ -28,6 +28,7 @@ import SponsorFrame from "@components/sponsors/SponsorFrame.astro";
 import JoinNewsletter from "@components/promo/JoinNewsletter.astro";
 import { useTranslations } from "@utils/i18n";
 import { themeConfig } from '~/theme.config';
+import { SPONSORS_ENABLED } from '@data/site';
 import { snippet, absoluteUrl } from '@utils/seo';
 import type { CollectionKey } from "astro:content";
 
@@ -113,7 +114,7 @@ const showTopBanner = (themeConfig.promotions?.topBanner && header?.showTopBanne
     <!-- Transitions -->
     <ClientRouter />
   </head>
-  <body>
+  <body class:list={{ "sponsors-on": SPONSORS_ENABLED }}>
     <div class="au-loader" data-loader>
       <span>{themeConfig.name}</span>
     </div>

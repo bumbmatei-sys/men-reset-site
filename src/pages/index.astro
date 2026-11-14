@@ -9,6 +9,7 @@ import { themeConfig } from '~/theme.config';
 import { getTeachings, toCard, formatDate } from '@utils/teachings';
 import '../styles/teachings.css';
 import { getTracks, lessonsForTrack, lessonPath, trackPath } from '@utils/course';
+import { SPONSORS_ENABLED } from '@data/site';
 
 const locale = themeConfig.i18n.defaultLocale;
 const tracks = (await getTracks()).filter((track) => track.data.status === 'available' || (track.data.plannedLessons?.length ?? 0) > 0);
@@ -83,7 +84,9 @@ const stats = [
 const faqs = [
   {
     q: 'Is the course free?',
-    a: 'Yes. The lessons that are open can be read with no account and no payment. Partnership does not unlock a lesson.',
+    a: SPONSORS_ENABLED
+      ? 'Yes. The lessons that are open can be read with no account and no payment. Partnership does not unlock a lesson.'
+      : 'Yes. The lessons that are open can be read with no account and no payment.',
   },
   {
     q: 'Do I have to be a Christian?',
@@ -97,10 +100,14 @@ const faqs = [
     q: 'What if I am under 18?',
     a: 'The site is for everyone. Young people need to know who they are in Christ too. The content stays clean, with no sexual detail.',
   },
-  {
-    q: 'Where is the partner price?',
-    a: 'On the partner page. There is one partner spot, billed monthly. The home page does not list prices.',
-  },
+  ...(SPONSORS_ENABLED
+    ? [
+        {
+          q: 'Where is the partner price?',
+          a: 'On the partner page. There is one partner spot, billed monthly. The home page does not list prices.',
+        },
+      ]
+    : []),
 ];
 
 const itemList = {
@@ -306,7 +313,7 @@ const marquee = [...marqueeWords, ...marqueeWords];
             <li>Your progress is saved on this device only.</li>
           </ul>
           <p>
-            The 30-day PDF plan is separate. You get it by email from the free <a href="/check">check</a>. The <a href="/partner">partner</a> page is for brands, not for the work itself.
+            The 30-day PDF plan is separate. You get it by email from the free <a href="/check">check</a>.{SPONSORS_ENABLED ? <> The <a href="/partner">partner</a> page is for brands, not for the work itself.</> : null}
           </p>
         </div>
       </div>

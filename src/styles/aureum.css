@@ -178,10 +178,10 @@ footer[role='contentinfo'] h3 {
 }
 
 @media (min-width: 1280px) {
-  .au-wrap,
-  .au-process-label,
-  .au-steps,
-  .au-marquee {
+  .sponsors-on .au-wrap,
+  .sponsors-on .au-process-label,
+  .sponsors-on .au-steps,
+  .sponsors-on .au-marquee {
     width: min(920px, calc(100% - 30rem));
     margin-inline: auto;
   }
@@ -1480,10 +1480,10 @@ footer[role='contentinfo'] .brand-mark {
 
 /* Later width rules were winning over the rail gutter. Keep this after them. */
 @media (min-width: 1280px) {
-  .au-wrap,
-  .au-process-label,
-  .au-steps,
-  .au-marquee {
+  .sponsors-on .au-wrap,
+  .sponsors-on .au-process-label,
+  .sponsors-on .au-steps,
+  .sponsors-on .au-marquee {
     width: min(920px, calc(100% - 30rem));
     margin-inline: auto;
   }
