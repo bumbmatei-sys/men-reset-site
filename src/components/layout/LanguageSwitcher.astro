@@ -3,10 +3,7 @@
  *  so the post-build translator (scripts/i18n) leaves this block alone (data-no-translate). */
 interface Props { variant?: 'header' | 'menu' }
 const { variant = 'header' } = Astro.props;
-const langs = [
-  ['en', 'English', 'us'], ['ro', 'Română', 'ro'], ['es', 'Español', 'es'], ['fr', 'Français', 'fr'],
-  ['pt', 'Português', 'pt'], ['nb', 'Norsk', 'no'], ['de', 'Deutsch', 'de'],
-];
+const langs = [['en', 'English', 'us'], ['de', 'Deutsch', 'de']];
 const flag = (f: string) => `/flags/${f}.svg`;
 const check = '<svg class="lang-check" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 10.5l3.2 3L15 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 ---
@@ -28,7 +25,11 @@ const check = '<svg class="lang-check" viewBox="0 0 20 20" width="16" height="16
 )}
 
 <script>
-  const LOCALES = ['ro', 'es', 'fr', 'pt', 'nb', 'de'];
+  const LOCALES = ['de'];
+  // The build writes a list of German routes that passed full-content translation.
+  const publishedGerman = fetch('/i18n-pages-de.json')
+    .then((response) => response.ok ? response.json() as Promise<string[]> : [])
+    .catch(() => [] as string[]);
   function setupLang() {
     const parts = location.pathname.split('/');
     const current = LOCALES.includes(parts[1]) ? parts[1] : 'en';
@@ -53,7 +54,20 @@ const check = '<svg class="lang-check" viewBox="0 0 20 20" width="16" height="16
     });
     document.querySelectorAll<HTMLAnchorElement>('a[data-lang]').forEach((a) => {
       const code = a.dataset.lang!;
-      a.href = (code === 'en' ? base || '/' : `/${code}${base}`) + location.search;
+      const currentPath = base || '/';
+      if (code === 'en') {
+        a.href = currentPath + location.search;
+      } else {
+        // Start with a safe destination until the translation manifest loads.
+        a.href = '/de';
+        void publishedGerman.then((paths) => {
+          if (!a.isConnected) return;
+          const fallback = currentPath.startsWith('/teachings/') ? '/teachings'
+            : currentPath.startsWith('/tracks/') ? '/tracks' : '/';
+          const target = paths.includes(currentPath) ? currentPath : paths.includes(fallback) ? fallback : '/';
+          a.href = (target === '/' ? '/de' : `/de${target}`) + location.search;
+        });
+      }
       a.setAttribute('aria-current', code === current ? 'true' : 'false');
       if (a.dataset.bound) return;
       a.dataset.bound = '1';
