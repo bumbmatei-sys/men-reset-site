@@ -5,6 +5,7 @@ import sys, os, json, re
 from bs4 import NavigableString, BeautifulSoup
 sys.path.insert(0, os.path.dirname(__file__))
 from common import *
+from publish import PUBLIC_LOCALES, eligible_paths, prune_unavailable_content
 
 SITE = 'https://calltoreset.site'
 
@@ -13,17 +14,17 @@ def loc_url(path, loc):
         return path
     return f'/{loc}' if path == '/' else f'/{loc}{path}'
 
-def add_alternates(s, path):
+def add_alternates(s, path, published):
     head = s.head
     for l in head.find_all('link', rel='alternate'):
         if l.get('hreflang'):
             l.decompose()
-    for loc in ['en', *LOCALES]:
+    for loc in ['en', *[loc for loc in PUBLIC_LOCALES if path in published[loc]]]:
         t = s.new_tag('link', rel='alternate', hreflang=loc, href=SITE + loc_url(path, loc))
         head.append(t)
     head.append(s.new_tag('link', rel='alternate', hreflang='x-default', href=SITE + path))
 
-def translate_page(rel, loc, d, page_paths, stats):
+def translate_page(rel, loc, d, page_paths, published, stats):
     src = os.path.join(DIST, rel)
     s = soup(src)
     path = page_url(rel)
@@ -102,6 +103,8 @@ def translate_page(rel, loc, d, page_paths, stats):
         if isinstance(data, dict) and data.get('@type') in ('WebPage', 'Article', 'BlogPosting', 'Course', 'WebSite', 'CollectionPage') and 'inLanguage' not in data:
             data['inLanguage'] = loc
         sc.string = json.dumps(data, ensure_ascii=False)
+    # The directory and course listings must never show untranslated content cards.
+    prune_unavailable_content(s, page_paths, path)
     # links
     for a in s.find_all(['a', 'link', 'form']):
         attr = 'action' if a.name == 'form' else 'href'
@@ -121,7 +124,7 @@ def translate_page(rel, loc, d, page_paths, stats):
         tag = s.new_tag('script', src=f'/_i18n/{loc}.js')
         first = s.head.find(['script', 'link', 'style'])
         (first.insert_before(tag) if first else s.head.append(tag))
-    add_alternates(s, path)
+    add_alternates(s, path, published)
     out = os.path.join(DIST, f'{loc}.html') if rel == 'index.html' else os.path.join(DIST, loc, rel)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, 'w', encoding='utf-8') as fh:
@@ -129,7 +132,7 @@ def translate_page(rel, loc, d, page_paths, stats):
     stats['hit'] = stats.get('hit', 0) + hit
     stats['miss'] = stats.get('miss', 0) + miss
 
-def sitemap(page_paths):
+def sitemap(page_paths, published):
     p = os.path.join(DIST, 'sitemap-0.xml')
     if not os.path.exists(p):
         return
@@ -141,12 +144,14 @@ def sitemap(page_paths):
     for u in urls:
         m = re.search(r'<loc>(.*?)</loc>', u)
         path = m.group(1)[len(SITE):] or '/'
-        alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{loc_url(path, l)}"/>' for l in ['en', *LOCALES]) + f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{path}"/>'
+        visible = ['en', *[l for l in PUBLIC_LOCALES if path in published[l]]]
+        alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{loc_url(path, l)}"/>' for l in visible) + f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{path}"/>'
         clean = re.sub(r'<xhtml:link[^>]*/>', '', u)
         out.append(f'<url>{clean}{alts}</url>')
         if path in page_paths:
-            for l in LOCALES:
-                out.append(f'<url>{clean.replace(m.group(0), f"<loc>{SITE}{loc_url(path, l)}</loc>")}{alts}</url>')
+            for l in PUBLIC_LOCALES:
+                if path in published[l]:
+                    out.append(f'<url>{clean.replace(m.group(0), f"<loc>{SITE}{loc_url(path, l)}</loc>")}{alts}</url>')
     x = re.sub(r'<url>.*</url>', lambda _: ''.join(out), x, count=1, flags=re.S)
     open(p, 'w', encoding='utf-8').write(x)
 
@@ -169,29 +174,46 @@ def client_bundle(loc):
     open(os.path.join(DIST, '_i18n', f'{loc}.js'), 'w', encoding='utf-8').write(js)
 
 def main():
-    for loc in LOCALES:
-        client_bundle(loc)
+    # Only German is published. Other dictionaries remain in source for future review.
     rels = pages()
-    page_paths = {page_url(r) for r in rels}
-    for loc in LOCALES:
-        d = load_dict(loc)
+    english_paths = {page_url(r) for r in rels}
+    dictionaries = {loc: load_dict(loc) for loc in PUBLIC_LOCALES}
+    published = {}
+    for loc in PUBLIC_LOCALES:
+        allowed, rejected = eligible_paths(rels, dictionaries[loc], DIST)
+        published[loc] = allowed
+        print(f'[i18n] {loc}: {len(allowed)} pages eligible, {len(rejected)} content pages withheld')
+
+    for loc in PUBLIC_LOCALES:
+        client_bundle(loc)
         stats = {}
         for rel in rels:
-            translate_page(rel, loc, d, page_paths, stats)
-        print(f'[i18n] {loc}: {len(rels)} pages, {stats.get("hit",0)} strings translated, {stats.get("miss",0)} left in English ({len(stats.get("missing", []))} unique)')
-    # English pages: add alternates + keep lang
+            if page_url(rel) in published[loc]:
+                translate_page(rel, loc, dictionaries[loc], published[loc], published, stats)
+        print(f'[i18n] {loc}: {stats.get("hit", 0)} strings translated, {stats.get("miss", 0)} unmatched in eligible pages')
+
+    # English remains complete; its German alternates exist only for published URLs.
     for rel in rels:
         src = os.path.join(DIST, rel)
         s = soup(src)
-        add_alternates(s, page_url(rel))
+        add_alternates(s, page_url(rel), published)
         with open(src, 'w', encoding='utf-8') as fh:
             fh.write(str(s))
-    sitemap(page_paths)
+    sitemap(english_paths, published)
     with open(os.path.join(DIST, 'i18n-pages.json'), 'w') as fh:
-        json.dump(sorted(page_paths), fh)
+        json.dump(sorted(english_paths), fh)
+    with open(os.path.join(DIST, 'i18n-pages-de.json'), 'w') as fh:
+        json.dump(sorted(published['de']), fh)
+
+    # Unreleased languages continue to resolve to English, not broken locale URLs.
+    with open(os.path.join(DIST, '_redirects'), 'a', encoding='utf-8') as fh:
+        for loc in LOCALES:
+            if loc not in PUBLIC_LOCALES:
+                fh.write(f'\n/{loc} / 301\n/{loc}/* /:splat 301\n')
+
 
 def hide():
-    """I18N_PUBLIC!=1 (production default): English only. No locale pages, no switcher, no hreflang,
+    """I18N_PUBLIC=0: hide every locale page, switcher and hreflang,
     no first-visit redirect (middleware only routed for /api), locale URLs 301 to English."""
     for rel in pages():
         src = os.path.join(DIST, rel)
@@ -204,7 +226,7 @@ def hide():
         json.dump({'version': 1, 'include': ['/api/*', '/email/*'], 'exclude': []}, fh)
     with open(os.path.join(DIST, '_redirects'), 'a') as fh:
         fh.write('\n' + ''.join(f'/{l} / 301\n/{l}/* /:splat 301\n' for l in LOCALES))
-    print('[i18n] hidden (I18N_PUBLIC != 1): English only')
+    print('[i18n] hidden (I18N_PUBLIC=0): English only')
 
 if __name__ == '__main__':
-    hide() if os.environ.get('I18N_PUBLIC') != '1' else main()
+    hide() if os.environ.get('I18N_PUBLIC') == '0' else main()
