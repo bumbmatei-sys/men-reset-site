@@ -2,13 +2,10 @@
  * First-visit language redirect. Only for English (unprefixed) HTML pages, only when no `lang`
  * cookie is set, and never for bots. The header language switcher sets the cookie.
  */
-const LOCALES = ['ro', 'es', 'fr', 'pt', 'nb', 'de'] as const;
+const LOCALES = ['de'] as const;
 type Locale = (typeof LOCALES)[number];
 const BOT = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|quora|pinterest|whatsapp|telegram|discord|slack|linkedin|vkshare|w3c_validator|lighthouse|headless|preview|curl|wget|python|httpclient|go-http|java\/|axios|node-fetch|monitor|uptime|ahrefs|semrush|mj12|dotbot|petal|yandex|baidu|duckduck|applebot|google|bing/i;
-const COUNTRY: Record<string, Locale> = {
-  RO: 'ro', MD: 'ro', ES: 'es', MX: 'es', AR: 'es', CO: 'es', CL: 'es', PE: 'es', VE: 'es', EC: 'es', GT: 'es', CU: 'es', BO: 'es', DO: 'es', HN: 'es', PY: 'es', SV: 'es', NI: 'es', CR: 'es', PA: 'es', UY: 'es',
-  FR: 'fr', BE: 'fr', LU: 'fr', MC: 'fr', SN: 'fr', CI: 'fr', CM: 'fr', CD: 'fr', PT: 'pt', BR: 'pt', AO: 'pt', MZ: 'pt', NO: 'nb', DE: 'de', AT: 'de', LI: 'de',
-};
+const COUNTRY: Record<string, Locale> = { DE: 'de', AT: 'de', LI: 'de' };
 
 function fromAcceptLanguage(header: string | null): Locale | 'en' | null {
   if (!header) return null;
@@ -24,7 +21,6 @@ function fromAcceptLanguage(header: string | null): Locale | 'en' | null {
   for (const { tag } of prefs) {
     const base = tag.split('-')[0];
     if (base === 'en') return 'en';
-    if (base === 'no' || base === 'nn' || base === 'nb') return 'nb';
     if ((LOCALES as readonly string[]).includes(base)) return base as Locale;
   }
   return prefs.length ? 'en' : null;
