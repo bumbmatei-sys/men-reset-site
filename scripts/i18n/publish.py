@@ -53,6 +53,11 @@ def content_units(page, kind):
     result = list(body_text)
     for node in extras:
         result.extend(text_units(node))
+    # Metadata used by the overview cards must also be translated.
+    for meta in page.select('meta[name="description"], meta[property="og:description"]'):
+        value = norm(meta.get('content', ''))
+        if translatable(value):
+            result.append(value)
     return result
 
 
