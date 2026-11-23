@@ -39,6 +39,25 @@ Sponsors live in `src/data/sponsors.json`. Each entry has a `tier`: `directory` 
 
 Starting prices and the Dodo Payments checkout URLs are `sponsorTiers` in `theme.config.ts`. Dollar amounts are shown only on `/sponsor`. `/advertise` redirects there. The price rises as traffic grows.
 
+## German-language publishing
+
+German is the only public translated language. The default `npm run build` creates
+`/de` and shared German pages, but content pages are published only when the
+complete article, course, or lesson body and its key metadata have German
+dictionary entries. Untranslated content is omitted from German listings, links,
+`hreflang`, and sitemap URLs. English remains complete and available.
+
+The German dictionaries are in `src/i18n/site/de.json` and
+`src/i18n/client/de.json`. Rebuild after new translations are added.
+Run `python3 -m unittest discover -s scripts/i18n -p 'test_*.py'` to
+test the publication gate. Use `I18N_PUBLIC=0` to hide translated pages.
+Other language dictionaries remain in the repository but are not public.
+
+**Deployment:** This site is a Cloudflare Pages direct-upload project, not a
+GitHub-connected auto-build. Merging a commit does not deploy it. Build the
+latest `main` checkout and deploy `dist/` through the established Wrangler
+Pages workflow to the `calltoreset` project.
+
 ## Cloudflare D1
 
 Anonymous self-check rows live in D1. The schema is `migrations/0001_check_responses.sql`. Plan-gate emails live in `migrations/0002_plan_emails.sql`. Newsletter emails live in `migrations/0003_newsletter_subscribers.sql`. The binding is `DB` in `wrangler.jsonc`. `database_id` in that file is the production database. It is not a secret. Apply `0002` before the plan form can store an address. Apply `0003` before the newsletter form can store an address.
