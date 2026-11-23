@@ -13,17 +13,17 @@ def loc_url(path, loc):
         return path
     return f'/{loc}' if path == '/' else f'/{loc}{path}'
 
-def add_alternates(s, path):
+def add_alternates(s, path, published=None):
     head = s.head
     for l in head.find_all('link', rel='alternate'):
         if l.get('hreflang'):
             l.decompose()
-    for loc in ['en', *LOCALES]:
+    for loc in ['en', *(published if published is not None else LOCALES)]:
         t = s.new_tag('link', rel='alternate', hreflang=loc, href=SITE + loc_url(path, loc))
         head.append(t)
     head.append(s.new_tag('link', rel='alternate', hreflang='x-default', href=SITE + path))
 
-def translate_page(rel, loc, d, page_paths, stats):
+def translate_page(rel, loc, d, page_paths, stats, published_paths=None):
     src = os.path.join(DIST, rel)
     s = soup(src)
     path = page_url(rel)
@@ -113,6 +113,12 @@ def translate_page(rel, loc, d, page_paths, stats):
         p, sep, rest = re.match(r'([^?#]*)([?#]?)(.*)', h).groups()
         p2 = p.rstrip('/') or '/'
         if p2 in page_paths:
+            if published_paths is not None and p2 not in published_paths:
+                if a.name == 'a':
+                    # Do not expose untranslated content in localized lists or navigation.
+                    card = a.find_parent(['article', 'li'])
+                    (card if card is not None and not card.find(['a'], href=lambda v: isinstance(v, str) and v != h) else a).decompose()
+                continue
             a[attr] = loc_url(p2, loc) + sep + rest
     for c in s.find_all('link', rel='canonical'):
         c['href'] = SITE + loc_url(path, loc)
@@ -121,7 +127,7 @@ def translate_page(rel, loc, d, page_paths, stats):
         tag = s.new_tag('script', src=f'/_i18n/{loc}.js')
         first = s.head.find(['script', 'link', 'style'])
         (first.insert_before(tag) if first else s.head.append(tag))
-    add_alternates(s, path)
+    add_alternates(s, path, [loc] if published_paths is not None else None)
     out = os.path.join(DIST, f'{loc}.html') if rel == 'index.html' else os.path.join(DIST, loc, rel)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, 'w', encoding='utf-8') as fh:
@@ -168,27 +174,59 @@ def client_bundle(loc):
     os.makedirs(os.path.join(DIST, '_i18n'), exist_ok=True)
     open(os.path.join(DIST, '_i18n', f'{loc}.js'), 'w', encoding='utf-8').write(js)
 
-def main():
-    for loc in LOCALES:
-        client_bundle(loc)
+def german_only():
+    """Publish only complete German pages; no English fallback and no other locales."""
+    loc = 'de'
     rels = pages()
-    page_paths = {page_url(r) for r in rels}
-    for loc in LOCALES:
-        d = load_dict(loc)
-        stats = {}
-        for rel in rels:
-            translate_page(rel, loc, d, page_paths, stats)
-        print(f'[i18n] {loc}: {len(rels)} pages, {stats.get("hit",0)} strings translated, {stats.get("miss",0)} left in English ({len(stats.get("missing", []))} unique)')
-    # English pages: add alternates + keep lang
+    d = load_dict(loc)
+    eligible = []
+    for rel in rels:
+        units = {norm(u) for u in collect_page(os.path.join(DIST, rel)) if translatable(u)}
+        # An absent translation or a copied English value does not count as translated.
+        if units and all(u in d and norm(d[u]) and norm(d[u]) != u for u in units):
+            eligible.append(rel)
+    paths = {page_url(r) for r in eligible}
+    stats = {}
+    client_bundle(loc)
+    for rel in eligible:
+        translate_page(rel, loc, d, paths, stats, paths)
     for rel in rels:
         src = os.path.join(DIST, rel)
         s = soup(src)
-        add_alternates(s, page_url(rel))
+        if page_url(rel) in paths:
+            add_alternates(s, page_url(rel), ['de'])
         with open(src, 'w', encoding='utf-8') as fh:
             fh.write(str(s))
-    sitemap(page_paths)
+    # Sitemap German entries and hreflang only for published translations.
+    sitemap_german(paths)
     with open(os.path.join(DIST, 'i18n-pages.json'), 'w') as fh:
-        json.dump(sorted(page_paths), fh)
+        json.dump(sorted(paths), fh)
+    print(f'[i18n] German published: {len(eligible)}/{len(rels)} fully translated pages; other languages hidden')
+
+
+def sitemap_german(paths):
+    p = os.path.join(DIST, 'sitemap-0.xml')
+    if not os.path.exists(p):
+        return
+    x = open(p, encoding='utf-8').read()
+    if 'xmlns:xhtml' not in x:
+        x = x.replace('<urlset ', '<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" ', 1)
+    def entry(m):
+        u = m.group(0)
+        found = re.search(r'<loc>(.*?)</loc>', u)
+        if not found:
+            return u
+        path = found.group(1)[len(SITE):] or '/'
+        if path not in paths:
+            return u
+        alt = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{loc_url(path,l)}"/>' for l in ['en','de'])
+        german = u.replace(found.group(0), f'<loc>{SITE}{loc_url(path,"de")}</loc>')
+        return u.replace('</url>', alt + '</url>') + german.replace('</url>', alt + '</url>')
+    x = re.sub(r'<url>.*?</url>', entry, x, flags=re.S)
+    open(p, 'w', encoding='utf-8').write(x)
+
+def main():
+    german_only()
 
 def hide():
     """I18N_PUBLIC!=1 (production default): English only. No locale pages, no switcher, no hreflang,
@@ -207,4 +245,4 @@ def hide():
     print('[i18n] hidden (I18N_PUBLIC != 1): English only')
 
 if __name__ == '__main__':
-    hide() if os.environ.get('I18N_PUBLIC') != '1' else main()
+    main() if os.environ.get('I18N_PUBLIC') in ('de', '1') else hide()
