@@ -1,0 +1,34 @@
+name: German publication validation
+on:
+  pull_request:
+    paths:
+      - 'scripts/i18n/**'
+      - 'src/i18n/**'
+      - '.github/workflows/german-release-check.yml'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: python3 -m pip install beautifulsoup4
+      - run: npm run check
+      - run: npm run build
+        env:
+          I18N_PUBLIC: de
+      - name: Verify German-only output
+        run: |
+          test -f dist/de.html
+          test -f dist/i18n-pages.json
+          python3 - <<'PY'
+          import json, os
+          pages=json.load(open('dist/i18n-pages.json'))
+          assert '/' in pages, 'German homepage missing'
+          assert all(not os.path.exists('dist/'+lang+'.html') for lang in ['ro','es','fr','pt','nb'])
+          print('German pages:',len(pages))
+          PY
