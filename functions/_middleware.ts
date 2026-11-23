@@ -31,8 +31,9 @@ export const onRequest: PagesFunction = async (context) => {
   if (request.method !== 'GET') return next();
   const url = new URL(request.url);
   const path = url.pathname;
-  const first = path.split('/')[1];
-  if ((LOCALES as readonly string[]).includes(first) || path.startsWith('/api/') || /\.[a-z0-9]+$/i.test(path)) return next();
+  // An untranslated deep link has no German counterpart. Never redirect it to a 404.
+  // The homepage and both directory indexes always exist in German.
+  if (path !== '/' && path !== '/teachings' && path !== '/tracks') return next();
   const accept = request.headers.get('accept') || '';
   if (!accept.includes('text/html')) return next();
   const cookie = request.headers.get('cookie') || '';
