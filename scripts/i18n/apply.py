@@ -103,7 +103,7 @@ def translate_page(rel, loc, d, page_paths, stats, published_paths=None):
             data['inLanguage'] = loc
         sc.string = json.dumps(data, ensure_ascii=False)
     # links
-    for a in s.find_all(['a', 'link', 'form']):
+    for a in list(s.find_all(['a', 'link', 'form'])):
         attr = 'action' if a.name == 'form' else 'href'
         h = a.get(attr)
         if not isinstance(h, str) or not h.startswith('/') or h.startswith('//') or no_translate(a):
@@ -117,7 +117,7 @@ def translate_page(rel, loc, d, page_paths, stats, published_paths=None):
                 if a.name == 'a':
                     # Do not expose untranslated content in localized lists or navigation.
                     card = a.find_parent(['article', 'li'])
-                    (card if card is not None and not card.find(['a'], href=lambda v: isinstance(v, str) and v != h) else a).decompose()
+                    (card if card is not None else a).decompose()
                 continue
             a[attr] = loc_url(p2, loc) + sep + rest
     for c in s.find_all('link', rel='canonical'):
@@ -186,21 +186,27 @@ def german_only():
         if units and all(u in d and norm(d[u]) and norm(d[u]) != u for u in units):
             eligible.append(rel)
     paths = {page_url(r) for r in eligible}
+    all_paths = {page_url(r) for r in rels}
     stats = {}
     client_bundle(loc)
     for rel in eligible:
-        translate_page(rel, loc, d, paths, stats, paths)
+        translate_page(rel, loc, d, all_paths, stats, paths)
     for rel in rels:
         src = os.path.join(DIST, rel)
         s = soup(src)
         if page_url(rel) in paths:
             add_alternates(s, page_url(rel), ['de'])
+        else:
+            for el in s.select('[data-lang-switch] a[href^="/de"], .lang-switch-list a[href^="/de"]'):
+                el.decompose()
         with open(src, 'w', encoding='utf-8') as fh:
             fh.write(str(s))
     # Sitemap German entries and hreflang only for published translations.
     sitemap_german(paths)
     with open(os.path.join(DIST, 'i18n-pages.json'), 'w') as fh:
         json.dump(sorted(paths), fh)
+    if '/' not in paths:
+        raise RuntimeError('German homepage is incomplete: refusing to publish an unusable German site')
     print(f'[i18n] German published: {len(eligible)}/{len(rels)} fully translated pages; other languages hidden')
 
 
